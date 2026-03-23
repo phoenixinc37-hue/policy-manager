@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achilles Athletics - Move Forward</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a1628; color: white; min-height: 100vh; }
+        
+        /* Login Screen */
+        .screen { display: none; padding: 20px; min-height: 100vh; }
+        .screen.active { display: block; }
+        
+        .logo { text-align: center; padding: 40px 0; }
+        .logo h1 { font-size: 36px; color: #c9a962; margin-bottom: 10px; }
+        .logo p { color: #8a9cb8; font-size: 14px; }
+        
+        .tagline { text-align: center; color: #6ab0f3; font-size: 18px; margin-bottom: 40px; }
+        
+        input, select, textarea { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #1e3a5f; background: #132840; color: white; font-size: 16px; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #c9a962; }
+        
+        .btn { width: 100%; padding: 15px; border-radius: 10px; border: none; font-size: 16px; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+        .btn-primary { background: linear-gradient(135deg, #c9a962, #8b7355); color: #0a1628; }
+        .btn-secondary { background: #1e3a5f; color: white; }
+        
+        .athlete-card { background: #132840; padding: 20px; border-radius: 15px; margin-bottom: 15px; }
+        .athlete-name { font-size: 20px; font-weight: bold; color: #c9a962; }
+        .athlete-sport { color: #8a9cb8; margin-top: 5px; }
+        
+        .drill-card { background: #132840; padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid #c9a962; }
+        .drill-name { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+        .drill-desc { color: #8a9cb8; font-size: 14px; margin-bottom: 10px; }
+        
+        .zone-btn { padding: 15px; margin: 5px; border-radius: 10px; border: 2px solid; cursor: pointer; font-size: 16px; font-weight: bold; }
+        .zone-red { background: #3d1f1f; border-color: #ff4444; color: #ff4444; }
+        .zone-red.selected { background: #ff4444; color: white; }
+        .zone-yellow { background: #3d331f; border-color: #ffaa00; color: #ffaa00; }
+        .zone-yellow.selected { background: #ffaa00; color: #0a1628; }
+        .zone-green { background: #1f3d1f; border-color: #44ff44; color: #44ff44; }
+        .zone-green.selected { background: #44ff44; color: #0a1628; }
+        
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+        .stat-box { background: #132840; padding: 15px; border-radius: 10px; text-align: center; }
+        .stat-num { font-size: 24px; font-weight: bold; color: #c9a962; }
+        .stat-label { font-size: 12px; color: #8a9cb8; }
+        
+        .chart-container { background: #132840; padding: 20px; border-radius: 15px; margin: 20px 0; }
+        .bar-chart { display: flex; align-items: flex-end; height: 150px; gap: 10px; padding-top: 20px; }
+        .bar { flex: 1; background: #c9a962; border-radius: 5px 5px 0 0; position: relative; }
+        .bar-label { position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 12px; color: #8a9cb8; white-space: nowrap; }
+        .bar-value { position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 14px; color: #c9a962; }
+        
+        .nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0a1628; border-top: 1px solid #1e3a5f; display: flex; padding: 10px; gap: 10px; }
+        .nav-btn { flex: 1; padding: 12px; background: #132840; border: none; border-radius: 10px; color: #8a9cb8; font-size: 14px; cursor: pointer; }
+        .nav-btn.active { background: #c9a962; color: #0a1628; }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        .back-btn { background: none; border: none; color: #c9a962; font-size: 24px; cursor: pointer; }
+        
+        h2 { color: #c9a962; margin-bottom: 20px; }
+        
+        .goal-input { display: flex; gap: 10px; margin-bottom: 15px; }
+        .goal-input input { margin: 0; }
+        
+        .result-logged { background: #1f3d1f; padding: 15px; border-radius: 10px; margin-top: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login" class="screen active">
+    <div class="logo">
+        <h1>🏛️ ACHILLES</h1>
+        <!-- Logo: heel with scar - to be added -->
+        <div style="font-size: 40px; margin-bottom: 10px;">🦶💪</div>
+        <p>ATHLETICS</p>
+    </div>
+    <p class="tagline">Move Forward</p>
+    
+    <input type="text" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button class="btn btn-primary" onclick="login()">LOGIN</button>
+    <button class="btn btn-secondary" onclick="showScreen('register')">CREATE ACCOUNT</button>
+</div>
+
+<!-- REGISTER SCREEN -->
+<div id="register" class="screen">
+    <div class="header">
+        <button class="back-btn" onclick="showScreen('login')">←</button>
+        <h2>Create Account</h2>
+        <div></div>
+    </div>
+    
+    <input type="text" id="regName" placeholder="Full Name">
+    <input type="email" id="regEmail" placeholder="Email">
+    <input type="password" id="regPassword" placeholder="Password">
+    <select id="regRole">
+        <option value="athlete">Athlete</option>
+        <option value="coach">Coach</option>
+    </select>
+    <input type="text" id="regSport" placeholder="Sport (e.g., Baseball, Softball, Hockey)">
+    <input type="text" id="regAge" placeholder="Age">
+    <button class="btn btn-primary" onclick="register()">CREATE ACCOUNT</button>
+</div>
+
+<!-- ATHLETE DASHBOARD -->
+<div id="dashboard" class="screen">
+    <div class="header">
+        <h2>Welcome, <span id="athleteName">Athlete</span></h2>
+        <button class="back-btn" onclick="logout()">🚪</button>
+    </div>
+    
+    <div class="stat-grid">
+        <div class="stat-box">
+            <div class="stat-num" id="streakCount">0</div>
+            <div class="stat-label">Day Streak</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num" id="drillsCount">0</div>
+            <div class="stat-label">Drills Done</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num" id="goalsProgress">0%</div>
+            <div class="stat-label">Goal Progress</div>
+        </div>
+    </div>
+    
+    <h2>Today's Drills</h2>
+    <div id="todayDrills"></div>
+    
+    <h2>Recent Results</h2>
+    <div id="recentResults"></div>
+</div>
+
+<!-- LOG RESULT SCREEN -->
+<div id="logResult" class="screen">
+    <div class="header">
+        <button class="back-btn" onclick="showScreen('dashboard')">←</button>
+        <h2>Log Result</h2>
+        <div></div>
+    </div>
+    
+    <div id="drillInfo"></div>
+    
+    <h3 style="margin: 20px 0; color: #c9a962;">What zone did you hit?</h3>
+    
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button class="zone-btn zone-red" onclick="selectZone('red')">🔴 RED ZONE</button>
+        <button class="zone-btn zone-yellow" onclick="selectZone('yellow')">🟡 YELLOW ZONE</button>
+        <button class="zone-btn zone-green" onclick="selectZone('green')">🟢 GREEN ZONE</button>
+    </div>
+    
+    <textarea id="resultNotes" placeholder="Notes: How did it feel? What did you learn?" rows="4" style="margin-top: 20px;"></textarea>
+    
+    <button class="btn btn-primary" onclick="saveResult()">SAVE RESULT</button>
+    
+    <div id="resultConfirmation" class="result-logged" style="display: none;">
+        ✓ Result Saved! Move Forward.
+    </div>
+</div>
+
+<!-- COACH DASHBOARD -->
+<div id="coachDashboard" class="screen">
+    <div class="header">
+        <h2>Coach Dashboard</h2>
+        <button class="back-btn" onclick="logout()">🚪</button>
+    </div>
+    
+    <button class="btn btn-primary" onclick="showScreen('createDrill')">+ CREATE DRILL</button>
+    
+    <h2>My Athletes</h2>
+    <div id="athleteList"></div>
+    
+    <h2>All Drills</h2>
+    <div id="allDrills"></div>
+</div>
+
+<!-- CREATE DRILL SCREEN -->
+<div id="createDrill" class="screen">
+    <div class="header">
+        <button class="back-btn" onclick="showScreen('coachDashboard')">←</button>
+        <h2>Create Drill</h2>
+        <div></div>
+    </div>
+    
+    <input type="text" id="newDrillName" placeholder="Drill Name">
+    <textarea id="newDrillDesc" placeholder="Instructions / Description" rows="3"></textarea>
+    
+    <h3 style="color: #c9a962; margin: 20px 0;">Red Zone Definition</h3>
+    <textarea id="redZoneDef" placeholder="What counts as Red Zone? (e.g., Ball lands 10+ feet high, above pitcher)"></textarea>
+    
+    <h3 style="color: #ffaa00; margin: 20px 0;">Yellow Zone Definition</h3>
+    <textarea id="yellowZoneDef" placeholder="What counts as Yellow Zone?"></textarea>
+    
+    <h3 style="color: #44ff44; margin: 20px 0;">Green Zone Definition</h3>
+    <textarea id="greenZoneDef" placeholder="What counts as Green Zone?"></textarea>
+    
+    <button class="btn btn-primary" onclick="createDrill()">CREATE DRILL</button>
+</div>
+
+<!-- PROGRESS SCREEN -->
+<div id="progress" class="screen">
+    <div class="header">
+        <button class="back-btn" onclick="showScreen('dashboard')">←</button>
+        <h2>Your Progress</h2>
+        <div></div>
+    </div>
+    
+    <div class="chart-container">
+        <h3 style="color: #c9a962; margin-bottom: 15px;">Zone Distribution (Last 30 Days)</h3>
+        <div class="bar-chart" id="zoneChart">
+            <div class="bar" style="height: 60%;"><span class="bar-label">Red</span><span class="bar-value">60%</span></div>
+            <div class="bar" style="height: 25%;"><span class="bar-label">Yellow</span><span class="bar-value">25%</span></div>
+            <div class="bar" style="height: 15%;"><span class="bar-label">Green</span><span class="bar-value">15%</span></div>
+        </div>
+    </div>
+    
+    <div class="stat-grid">
+        <div class="stat-box">
+            <div class="stat-num">23</div>
+            <div class="stat-label">Total Workouts</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">+15%</div>
+            <div class="stat-label">Red Zone Improve</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Day Streak</div>
+        </div>
+    </div>
+    
+    <h3 style="color: #c9a962; margin: 20px 0;">Goal Progress</h3>
+    <div class="athlete-card">
+        <div class="athlete-name">Hit Red Zone 5+ times per session</div>
+        <div style="background: #1e3a5f; height: 10px; border-radius: 5px; margin-top: 10px;">
+            <div style="background: #c9a962; height: 100%; width: 65%; border-radius: 5px;"></div>
+        </div>
+        <div style="color: #8a9cb8; margin-top: 5px; font-size: 12px;">65% - Almost there!</div>
+    </div>
+</div>
+
+<script>
+// Simple local storage demo
+let currentUser = null;
+let selectedZone = '';
+
+// Demo data
+const demoAthlete = {
+    name: 'Emma',
+    sport: 'Softball',
+    age: 14,
+    streak: 5,
+    drillsDone: 23,
+    goalsProgress: 65
+};
+
+const demoDrills = [
+    { id: 1, name: 'T-Stand Batting', desc: '10 swings off tee, aim for red zone', red: '10+ feet, above pitcher', yellow: '5-10 feet', green: 'Contact made' },
+    { id: 2, name: 'Ground Balls', desc: '10 ground ball reps', red: 'Backhand, strong throw', yellow: 'Forehand, decent throw', green: 'Any contact' },
+];
+
+const demoResults = [
+    { drill: 'T-Stand Batting', zone: 'red', date: 'Today', notes: 'Felt great, hands inside' },
+    { drill: 'T-Stand Batting', zone: 'yellow', date: 'Yesterday', notes: 'Dropping shoulders' },
+];
+
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+function login() {
+    const email = document.getElementById('loginEmail').value;
+    if (email.includes('coach')) {
+        showScreen('coachDashboard');
+        loadCoachDashboard();
+    } else {
+        showScreen('dashboard');
+        loadDashboard();
+    }
+}
+
+function register() {
+    const name = document.getElementById('regName').value;
+    currentUser = { name, role: document.getElementById('regRole').value };
+    if (currentUser.role === 'coach') {
+        showScreen('coachDashboard');
+    } else {
+        showScreen('dashboard');
+    }
+    loadDashboard();
+}
+
+function logout() {
+    showScreen('login');
+}
+
+function loadDashboard() {
+    document.getElementById('athleteName').textContent = demoAthlete.name;
+    document.getElementById('streakCount').textContent = demoAthlete.streak;
+    document.getElementById('drillsCount').textContent = demoAthlete.drillsDone;
+    document.getElementById('goalsProgress').textContent = demoAthlete.goalsProgress + '%';
+    
+    // Load today's drills
+    let drillsHTML = '';
+    demoDrills.forEach(drill => {
+        drillsHTML += `
+            <div class="drill-card">
+                <div class="drill-name">${drill.name}</div>
+                <div class="drill-desc">${drill.desc}</div>
+                <button class="btn btn-primary" onclick="openLogResult(${drill.id})">LOG RESULT</button>
+            </div>
+        `;
+    });
+    document.getElementById('todayDrills').innerHTML = drillsHTML;
+    
+    // Load recent results
+    let resultsHTML = '';
+    demoResults.forEach(r => {
+        const emoji = r.zone === 'red' ? '🔴' : r.zone === 'yellow' ? '🟡' : '🟢';
+        resultsHTML += `
+            <div class="drill-card">
+                <div>${emoji} <strong>${r.drill}</strong> <span style="color: #8a9cb8;">(${r.date})</span></div>
+                <div style="color: #8a9cb8; margin-top: 5px; font-size: 14px;">"${r.notes}"</div>
+            </div>
+        `;
+    });
+    document.getElementById('recentResults').innerHTML = resultsHTML;
+}
+
+let currentDrillId = null;
+
+function openLogResult(id) {
+    currentDrillId = id;
+    const drill = demoDrills.find(d => d.id === id);
+    
+    let zonesHTML = `
+        <div class="drill-name">${drill.name}</div>
+        <div class="drill-desc">${drill.desc}</div>
+        <div style="margin-top: 15px; padding: 10px; background: #1e3a5f; border-radius: 10px;">
+            <div style="color: #ff4444;">🔴 RED: ${drill.red}</div>
+            <div style="color: #ffaa00; margin-top: 5px;">🟡 YELLOW: ${drill.yellow}</div>
+            <div style="color: #44ff44; margin-top: 5px;">🟢 GREEN: ${drill.green}</div>
+        </div>
+    `;
+    document.getElementById('drillInfo').innerHTML = zonesHTML;
+    selectedZone = '';
+    document.getElementById('resultConfirmation').style.display = 'none';
+    showScreen('logResult');
+}
+
+function selectZone(zone) {
+    selectedZone = zone;
+    document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('selected'));
+    event.target.classList.add('selected');
+}
+
+function saveResult() {
+    if (!selectedZone) {
+        alert('Please select a zone');
+        return;
+    }
+    document.getElementById('resultConfirmation').style.display = 'block';
+    setTimeout(() => {
+        showScreen('dashboard');
+        loadDashboard();
+    }, 2000);
+}
+
+function loadCoachDashboard() {
+    document.getElementById('athleteList').innerHTML = `
+        <div class="athlete-card">
+            <div class="athlete-name">Emma</div>
+            <div class="athlete-sport">Softball • Age 14</div>
+            <button class="btn btn-secondary" style="margin-top: 10px;">View Progress</button>
+        </div>
+        <div class="athlete-card">
+            <div class="athlete-name">Jack</div>
+            <div class="athlete-sport">Baseball • Age 16</div>
+            <button class="btn btn-secondary" style="margin-top: 10px;">View Progress</button>
+        </div>
+    `;
+    
+    let drillsHTML = '';
+    demoDrills.forEach(drill => {
+        drillsHTML += `<div class="drill-card">${drill.name}</div>`;
+    });
+    document.getElementById('allDrills').innerHTML = drillsHTML;
+}
+
+function createDrill() {
+    alert('Drill created! (Demo mode - would save to database)');
+    showScreen('coachDashboard');
+}
+</script>
+
+</body>
+</html>

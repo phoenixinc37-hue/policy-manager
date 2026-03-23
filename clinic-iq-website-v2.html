@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Clinic IQ</title>
+ <style>
+ :root{
+ --bg:#ffffff;
+ --text:#121212;
+ --muted:#5f6368;
+ --line:#e7e7e7;
+ --soft:#f6f6f6;
+ --soft-2:#fbfbfb;
+ --dark:#111111;
+ --green:#198754;
+ --green-soft:#e9f7ef;
+ --yellow:#d4a017;
+ --orange:#d97706;
+ --red:#dc3545;
+ --radius:18px;
+ --shadow:0 12px 30px rgba(0,0,0,.06);
+ --max:1120px;
+ }
+
+ *{box-sizing:border-box}
+ html{scroll-behavior:smooth}
+ body{
+ margin:0;
+ font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+ color:var(--text);
+ background:var(--bg);
+ line-height:1.5;
+ }
+ a{text-decoration:none;color:inherit}
+ .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+ .section{padding:88px 0}
+ .eyebrow{
+ display:inline-block;
+ font-size:12px;
+ letter-spacing:.12em;
+ text-transform:uppercase;
+ color:var(--muted);
+ margin-bottom:14px;
+ }
+ h1,h2,h3,p{margin:0}
+ h1{
+ font-size:clamp(40px, 7vw, 72px);
+ line-height:1.02;
+ letter-spacing:-.04em;
+ }
+ h2{
+ font-size:clamp(30px, 4.2vw, 48px);
+ line-height:1.08;
+ letter-spacing:-.03em;
+ }
+ h3{
+ font-size:20px;
+ line-height:1.2;
+ letter-spacing:-.02em;
+ }
+ .lead{
+ font-size:clamp(18px, 2.1vw, 23px);
+ color:var(--muted);
+ max-width:760px;
+ margin:18px auto 0;
+ }
+ .copy{
+ font-size:18px;
+ color:var(--muted);
+ }
+ .muted{color:var(--muted)}
+ .center{text-align:center}
+ .stack-12 > * + * {margin-top:12px}
+ .stack-16 > * + * {margin-top:16px}
+ .stack-20 > * + * {margin-top:20px}
+ .stack-24 > * + * {margin-top:24px}
+ .stack-32 > * + * {margin-top:32px}
+
+ .nav{
+ position:sticky;
+ top:0;
+ z-index:50;
+ background:rgba(255,255,255,.92);
+ backdrop-filter: blur(10px);
+ border-bottom:1px solid var(--line);
+ }
+ .nav-inner{
+ height:76px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:24px;
+ }
+ .brand{
+ font-weight:700;
+ font-size:22px;
+ letter-spacing:-.03em;
+ }
+ .nav-links{
+ display:flex;
+ align-items:center;
+ gap:28px;
+ color:var(--muted);
+ font-size:14px;
+ }
+ .btn{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:10px;
+ min-height:48px;
+ padding:0 20px;
+ border-radius:12px;
+ border:1px solid var(--line);
+ font-weight:600;
+ transition:.18s ease;
+ cursor:pointer;
+ }
+ .btn:hover{transform:translateY(-1px)}
+ .btn-primary{
+ background:var(--dark);
+ color:#fff;
+ border-color:var(--dark);
+ }
+ .btn-secondary{
+ background:#fff;
+ color:var(--text);
+ }
+ .btn-white{
+ background:#fff;
+ color:var(--dark);
+ border-color:#fff;
+ }
+
+ .hero{
+ padding:72px 0 88px;
+ background:linear-gradient(180deg, var(--soft-2) 0%, #ffffff 55%);
+ }
+ .hero-card{
+ padding:32px;
+ border:1px solid var(--line);
+ border-radius:28px;
+ background:#fff;
+ box-shadow:var(--shadow);
+ }
+ .hero-actions{
+ display:flex;
+ justify-content:center;
+ gap:14px;
+ flex-wrap:wrap;
+ margin-top:26px;
+ }
+ .subnote{
+ margin-top:14px;
+ font-size:14px;
+ color:var(--muted);
+ }
+
+ .band{
+ background:var(--soft);
+ border-top:1px solid var(--line);
+ border-bottom:1px solid var(--line);
+ }
+
+ .scan-card{
+ background:#fff;
+ border:1px solid var(--line);
+ border-radius:24px;
+ box-shadow:var(--shadow);
+ padding:28px;
+ text-align:left;
+ }
+ .scan-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ margin-bottom:24px;
+ }
+ .tag{
+ border:1px solid var(--line);
+ border-radius:999px;
+ padding:6px 10px;
+ font-size:12px;
+ color:var(--muted);
+ background:#fff;
+ }
+ .age-row{
+ display:grid;
+ grid-template-columns:140px 1fr;
+ align-items:center;
+ gap:14px;
+ margin:10px 0;
+ font-size:13px;
+ color:var(--muted);
+ }
+ .age-track{
+ height:12px;
+ background:#f0f0f0;
+ border-radius:999px;
+ overflow:hidden;
+ }
+ .age-bar{
+ height:100%;
+ border-radius:999px;
+ }
+ .grid-4{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:14px;
+ margin:26px 0;
+ }
+ .metric{
+ border:1px solid var(--line);
+ border-radius:16px;
+ padding:16px;
+ background:#fff;
+ }
+ .metric .label{
+ font-size:12px;
+ color:var(--muted);
+ margin-bottom:6px;
+ text-transform:uppercase;
+ letter-spacing:.06em;
+ }
+ .metric .value{
+ font-size:24px;
+ font-weight:700;
+ letter-spacing:-.03em;
+ }
+ .metric .value.green{color:var(--green)}
+
+ .table{
+ width:100%;
+ border:1px solid var(--line);
+ border-radius:18px;
+ overflow:hidden;
+ background:#fff;
+ }
+ .table-row{
+ display:grid;
+ grid-template-columns:2fr 1.1fr 1fr;
+ gap:14px;
+ padding:14px 16px;
+ border-top:1px solid var(--line);
+ align-items:center;
+ font-size:15px;
+ }
+ .table-row.header{
+ border-top:none;
+ background:var(--soft);
+ font-weight:700;
+ color:#333;
+ }
+ .red{color:var(--red);font-weight:700}
+ .green{color:var(--green);font-weight:700}
+
+ .cards{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:16px;
+ margin-top:28px;
+ }
+ .card{
+ border:1px solid var(--line);
+ border-radius:18px;
+ padding:20px;
+ background:#fff;
+ box-shadow:0 8px 20px rgba(0,0,0,.04);
+ }
+ .card p{
+ margin-top:8px;
+ color:var(--muted);
+ font-size:15px;
+ }
+
+ .practice-card{
+ max-width:860px;
+ margin:0 auto;
+ border:1px solid var(--line);
+ border-radius:22px;
+ overflow:hidden;
+ background:#fff;
+ box-shadow:var(--shadow);
+ }
+ .practice-header,
+ .practice-footer,
+ .practice-item{
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr 1fr 1fr;
+ gap:10px;
+ padding:14px 18px;
+ align-items:center;
+ font-size:14px;
+ }
+ .practice-header{
+ background:var(--soft);
+ font-weight:700;
+ }
+ .practice-item{
+ border-top:1px solid var(--line);
+ }
+ .approved{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-height:34px;
+ padding:0 12px;
+ border-radius:999px;
+ background:var(--green-soft);
+ color:var(--green);
+ font-weight:700;
+ font-size:13px;
+ width:max-content;
+ }
+ .practice-footer{
+ border-top:1px solid var(--line);
+ background:var(--soft);
+ font-weight:700;
+ }
+
+ .cta{
+ background:var(--dark);
+ color:#fff;
+ padding:96px 0;
+ }
+ .cta h2{
+ max-width:820px;
+ margin:0 auto;
+ }
+ .cta .btn{
+ margin-top:26px;
+ }
+
+ footer{
+ border-top:1px solid #222;
+ background:#0b0b0b;
+ color:#fff;
+ padding:28px 0;
+ font-size:14px;
+ text-align:center;
+ }
+
+ @media (max-width: 980px){
+ .grid-4{grid-template-columns:repeat(2,1fr)}
+ .cards{grid-template-columns:repeat(2,1fr)}
+ .practice-header,.practice-item,.practice-footer{
+ grid-template-columns:1.8fr 1fr 1fr 1fr 1fr;
+ }
+ }
+ @media (max-width: 760px){
+ .nav-links{display:none}
+ .hero-card{padding:24px}
+ .age-row{grid-template-columns:110px 1fr}
+ .table-row{grid-template-columns:1.6fr .9fr .8fr;font-size:14px}
+ .cards{grid-template-columns:1fr}
+ .grid-4{grid-template-columns:1fr 1fr}
+ .practice-header,.practice-item,.practice-footer{
+ grid-template-columns:1.6fr .9fr .9fr .9fr .9fr;
+ font-size:12px;
+ padding:12px;
+ }
+ .section{padding:72px 0}
+ .cta{padding:80px 0}
+ }
+ @media (max-width: 540px){
+ .grid-4{grid-template-columns:1fr}
+ .practice-header,.practice-item,.practice-footer{
+ grid-template-columns:1.8fr 1fr 1fr;
+ }
+ }
+ </style>
+</head>
+<body>
+ <header class="nav">
+ <div class="container nav-inner">
+ <a href="#top" class="brand">Clinic IQ</a>
+ <nav class="nav-links">
+ <a href="#how-it-works">How It Works</a>
+ <a href="#clinic-scan">Clinic Scan</a>
+ <a href="#pricing-decisions">Pricing Decisions</a>
+ <a href="#get-started" class="btn btn-primary">Get Started</a>
+ </nav>
+ </div>
+ </header>
+
+ <main id="top">
+ <section class="hero">
+ <div class="container">
+ <div class="hero-card center stack-24">
+ <span class="eyebrow">Pricing Intelligence for Veterinary Clinics</span>
+ <h1>This is likely happening in your clinic.</h1>
+ <p class="lead">Every year, your costs go up — in part due to inflation — but most of your services don't.</p>
+ <p class="lead">Not because you're not aware, but because updating pricing across hundreds of services is hard to stay on top of.</p>
+ <div class="hero-actions">
+ <a class="btn btn-primary" href="#clinic-scan">View Example Clinic Scan</a>
+ <a class="btn btn-secondary" href="#get-started">Request My Scan</a>
+ </div>
+ <p class="subnote">If you're curious, start by looking at a real example of what this shows.</p>
+ </div>
+ </div>
+ </section>
+
+ <section class="section band center">
+ <div class="container stack-20">
+ <h2>You probably already know your prices need to move</h2>
+ <p class="copy">Or you already know you haven't been able to keep up with inflation across everything.</p>
+ <p class="copy">The issue isn't awareness. It's being able to do it consistently.</p>
+ </div>
+ </section>
+
+ <section class="section center">
+ <div class="container stack-20">
+ <h2>Inflation is consistent. Pricing updates aren't… until now.</h2>
+ <p class="copy">Costs increase every year. Pricing updates happen when there's time, or when something stands out.</p>
+ <p class="copy"><strong>Small gaps across hundreds of services quietly add up.</strong></p>
+ </div>
+ </section>
+
+ <section id="clinic-scan" class="section band">
+ <div class="container center stack-32">
+ <div class="stack-16">
+ <h2>Take 2 minutes and look at this</h2>
+ <p class="copy" style="max-width:760px;margin:0 auto;">The Clinic Scan shows where your pricing hasn't kept up — and what that likely means financially.</p>
+ </div>
+
+ <div class="scan-card">
+ <div class="scan-head">
+ <h3>Example Clinic Scan</h3>
+ <span class="tag">Sample Data</span>
+ </div>
+
+ <div class="stack-12">
+ <div class="muted" style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;">Service Pricing Age</div>
+
+ <div class="age-row">
+ <div>0–12 months</div>
+ <div class="age-track"><div class="age-bar" style="width:20%;background:#34c759;"></div></div>
+ </div>
+ <div class="age-row">
+ <div>1–2 years</div>
+ <div class="age-track"><div class="age-bar" style="width:28%;background:#f4c430;"></div></div>
+ </div>
+ <div class="age-row">
+ <div>2–3 years</div>
+ <div class="age-track"><div class="age-bar" style="width:38%;background:#f59e0b;"></div></div>
+ </div>
+ <div class="age-row">
+ <div>3+ years</div>
+ <div class="age-track"><div class="age-bar" style="width:54%;background:#dc3545;"></div></div>
+ </div>
+ </div>
+
+ <div class="grid-4">
+ <div class="metric">
+ <div class="label">Services Reviewed</div>
+ <div class="value">312</div>
+ </div>
+ <div class="metric">
+ <div class="label">Behind Inflation</div>
+ <div class="value">68%</div>
+ </div>
+ <div class="metric">
+ <div class="label">Avg Gap</div>
+ <div class="value">5–12%</div>
+ </div>
+ <div class="metric">
+ <div class="label">Annual Opportunity</div>
+ <div class="value green">$84,200</div>
+ </div>
+ </div>
+
+ <div class="table">
+ <div class="table-row header">
+ <div>Service</div>
+ <div>Last Updated</div>
+ <div>Gap</div>
+ </div>
+ <div class="table-row">
+ <div>Exam Fee</div>
+ <div>3.2 years</div>
+ <div class="red">+11%</div>
+ </div>
+ <div class="table-row">
+ <div>Bloodwork Panel</div>
+ <div>2.6 years</div>
+ <div class="red">+9%</div>
+ </div>
+ <div class="table-row">
+ <div>Nail Trim</div>
+ <div>4.1 years</div>
+ <div class="red">+14%</div>
+ </div>
+ </div>
+ </div>
+
+ <div class="stack-20 center">
+ <p class="copy"><strong>Most clinic owners are surprised by what they see.</strong></p>
+ <div class="hero-actions" style="margin-top:0;">
+ <a class="btn btn-primary" href="#clinic-scan">View Example Clinic Scan</a>
+ <a class="btn btn-secondary" href="#get-started">Request My Scan</a>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <section id="how-it-works" class="section center">
+ <div class="container stack-32">
+ <div class="stack-16">
+ <h2>If you're worried this is happening in your clinic — here's how to protect your profit</h2>
+ <p class="copy" style="max-width:760px;margin:0 auto;">This isn't a long process. It's a simple system that closes the gap — and keeps it closed.</p>
+ </div>
+
+ <div class="cards">
+ <div class="card">
+ <h3>1. Full Review</h3>
+ <p>Every service is reviewed — nothing missed.</p>
+ </div>
+ <div class="card">
+ <h3>2. Align to Inflation</h3>
+ <p>Pricing is brought back in line based on how far behind it is.</p>
+ </div>
+ <div class="card">
+ <h3>3. See the Impact</h3>
+ <p>You see exactly what the changes mean financially.</p>
+ </div>
+ <div class="card">
+ <h3>4. Default Approved</h3>
+ <p>Everything is set to go — you only adjust what you want to control.</p>
+ </div>
+ <div class="card">
+ <h3>5. Stay Aligned</h3>
+ <p>The system keeps everything updated going forward.</p>
+ </div>
+ </div>
+
+ <p class="copy"><strong>Close the gap. Keep it closed. Protect your profit — without adding work.</strong></p>
+ </div>
+ </section>
+
+ <section id="pricing-decisions" class="section band center">
+ <div class="container stack-32">
+ <div class="stack-16">
+ <h2>What this looks like in practice</h2>
+ <p class="copy" style="max-width:760px;margin:0 auto;">Everything is default approved. You only step in on the items you care about.</p>
+ </div>
+
+ <div class="practice-card">
+ <div class="practice-header">
+ <div>Service</div>
+ <div>Current</div>
+ <div>Recommended</div>
+ <div>Impact</div>
+ <div>Action</div>
+ </div>
+ <div class="practice-item">
+ <div>Blood Pressure Test</div>
+ <div>$55.99</div>
+ <div>$59.35</div>
+ <div class="green">+$70</div>
+ <div><span class="approved">Approved</span></div>
+ </div>
+ <div class="practice-footer">
+ <div>Total Impact</div>
+ <div></div>
+ <div></div>
+ <div class="green">+$12,450</div>
+ <div></div>
+ </div>
+ </div>
+
+ <p class="copy" style="max-width:760px;margin:0 auto;">If you hold items, that total adjusts. Most clinics leave the majority as-is and only adjust specific services.</p>
+ </div>
+ </section>
+
+ <section class="cta center">
+ <div class="container stack-20">
+ <h2>We fix the gap.<br>We keep it fixed.<br>Clinic IQ brings profit back to your clinic.</h2>
+ <div>
+ <a id="get-started" class="btn btn-white" href="#top">Get Started</a>
+ </div>
+ </div>
+ </section>
+ </main>
+
+ <footer>
+ <div class="container">
+ Clinic IQ — Pricing intelligence for veterinary clinics
+ </div>
+ </footer>
+</body>
+</html>
