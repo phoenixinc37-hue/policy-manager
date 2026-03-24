@@ -534,3 +534,5 @@ Items Lesley needs to know before CL starts:
 **Staff email sent:** March 24, 1:51pm — to Joel Wright, Wayne, Dawn. CC: Tammy, Blaise. No prior Tammy input received on draft (she was given the opportunity).
 
 **Q17:** Did Deb or anyone respond to Scott's going concern question from March 18?
+
+**Note:** "Joel Wright" in email contacts = old label for accounting@clinicsolutions.ca — same inbox as Deb Richardson/Jess Perin. Contact name not updated.
