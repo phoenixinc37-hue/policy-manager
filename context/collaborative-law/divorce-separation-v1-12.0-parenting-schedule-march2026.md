@@ -450,3 +450,30 @@ Scott's financial information is being filtered through someone in Tammy's netwo
 **Blocker:** Tammy controls the sale decision (Class A shares, corporate president). Without her agreement, properties stay in rental pool.
 
 **CL implication:** Selling these properties is in both their financial interests. Blaise has said so in writing. If Tammy continues to block or delay the sale, that's a documented failure of fiduciary duty to the corporation.
+
+---
+
+## PROFESSIONAL ADVISOR NETWORK — Loyalty Concern
+
+**Blaise Foulston (Yates Whitaker — corporate lawyer/accountant):**
+- Also connected to the Lois circle (Tammy's network)
+- Q11 answer: Blaise is part of the same network as Deb — not independent
+
+**Deb Richardson (CGA/bookkeeper):**
+- Tammy's network via Lois
+- Client of Tammy's
+
+**Previous accountant — Colette Wilde (Scott's sister, FCA CA):**
+- Used to handle the books
+- Tammy fired her last year
+- Replaced with Deb (her own network contact)
+
+**The pattern:**
+Tammy replaced Scott's trusted, qualified family accountant (Colette — FCA CA) with her own network contact (Deb — CGA/bookkeeper). The corporate lawyer/accountant (Blaise) is also connected to Tammy's circle. Scott's financial information flows through advisors connected to Tammy.
+
+**Implications:**
+- Scott is effectively operating without independent financial counsel inside his own company
+- Major decisions ($400K allocation) happened without his knowledge
+- The "going concern" framing from Blaise may be accurate but the advice given may also serve Tammy's interests (e.g. push to sell properties on her timeline)
+- Lesley needs to know this
+- Colette should be re-engaged as Scott's independent financial resource
