@@ -480,3 +480,23 @@ Tammy replaced Scott's trusted, qualified family accountant (Colette — FCA CA)
 - The "going concern" framing from Blaise may be accurate but the advice given may also serve Tammy's interests (e.g. push to sell properties on her timeline)
 - Lesley needs to know this
 - Colette should be re-engaged as Scott's independent financial resource
+
+---
+
+## PRE-CL PREP LIST — For Lesley (before mid-April)
+
+Items Lesley needs to know before CL starts:
+
+1. **Advisor network conflict** — Deb (bookkeeper) and Blaise (corporate lawyer) are both connected to Tammy's network via Lois. Colette (Scott's sister, FCA CA) was fired by Tammy last year and replaced with Deb.
+
+2. **$400K allocation** — Condo sale proceeds went to supplier debt instead of CRA without Scott's knowledge. Needs to be traced and documented.
+
+3. **Property timing strategy** — Wildeland Holdings properties (Canmore x2, Kelowna) being held deliberately for CL negotiation. Scott is president, Tammy is secretary. Sale requires her agreement.
+
+4. **Response pattern** — Documented: Tammy engages only to block, not to collaborate. Table of communications available.
+
+5. **Financial controls** — Scott has asserted CEO authority and governance framework in writing (March 19). Tammy has not responded to collaborative proposals.
+
+6. **Personal CRA urgency** — Lien risk on St. Albert house if not addressed. This creates pressure that may affect Tammy's CL position.
+
+7. **Colette re-engaged** — Scott's independent financial advisor now active. BCC on key emails.
