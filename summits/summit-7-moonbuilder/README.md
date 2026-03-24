@@ -57,3 +57,11 @@ Moon coordinates 10°E, 37°N — a beachfront spot on the shores of the Sea of 
 - v2 HTML complete (55.06.01 ✓)
 - Cold email written (pending Scott review)
 - GitHub push: pending
+
+## .99 FACTOR ESTIMATES (pre-report)
+- **RV:** ~$7,000/year estimated uplift
+- **TG:** ~$20,000/year estimated uplift (from TG report analysis)
+- **Combined with Pricing IQ:**
+  - RV total: $7K + $26K = ~$33,000/year
+  - TG total: $20K + $73K = ~$93,000/year
+  - All 3 clinics combined: potentially $120K-$150K+/year
