@@ -116,3 +116,152 @@ Classic pattern documented in framework:
 - Tammy: objected to parenting time, no alternative proposed
 - Tammy: blocked sharing with kids without "mutual agreement"
 - Consistent with veto-without-alternative and status-quo-control patterns
+
+---
+
+## SECTION 8 — Master Decision Points Document (Project 2001)
+
+**Project Code:** 2001 — Master Decision Points (All Kids — March to July)
+**Status:** Draft — to be sent to Tammy
+**Strategic notes (private):** Win-win structure. If Tammy takes blocks = Scott gets remainder. If Tammy doesn't respond = Scott takes reasonable blocks, demonstrates good faith for CL (mid-April). Either outcome is defensible and favorable.
+
+---
+
+Hi Tammy,
+
+To keep things clear for the kids, I've outlined the upcoming key dates, schedule blocks, and commitments that require planning.
+
+For each item below, please let me know if you would like to take it or propose an alternative plan.
+
+If I don't hear back on a specific item, I will proceed with arrangements so things are clear.
+
+School nights will continue to be based out of St. Albert unless otherwise agreed.
+
+---
+
+**SPRING BREAK BLOCKS (ALL KIDS)**
+
+**1. March 27 – April 1 (5 nights)**
+- Spring break block
+- Eastynn: Calgary game March 28
+- Emmy: Red Deer game March 29 (day trip)
+- Option: Please confirm if you would like to take this block or propose an alternative
+
+---
+
+**2. April 2 – April 6 (Easter weekend block)**
+- Spring break block including Easter weekend
+- Eastynn: Red Deer game April 4
+- Pete returns from Langley tournament April 5
+- Option: Please confirm if you would like to take this block or propose an alternative
+
+---
+
+**3. April 6–7 (Post–spring break, no school)**
+- No school April 6
+- Transition block following return from tournaments
+- Option: Please confirm if you would like to take this block or propose an alternative
+
+---
+
+**APRIL WEEKEND BLOCKS (FRIDAY NIGHT → MONDAY MORNING)**
+
+**4. April 10–12**
+- Emmy & Eastynn: riding Thursday evening + fastball Saturday/Sunday
+- Pete: Calgary games (with team)
+- If attending Pete's games, one parent attends while the other remains with the other kids
+- Option: Please confirm if you would like to take this block or propose an alternative
+
+---
+
+**5. April 17–19**
+- Emmy & Eastynn: riding Thursday evening + fastball Saturday/Sunday
+- Pete: Okotoks games (with team)
+- Same structure: one parent attends, one remains with the other kids
+- Option: Please confirm if you would like to take this block or propose an alternative
+
+---
+
+*(More blocks to be added — May through July)*
+
+---
+
+**6. April 24–26 (Red Deer tournament – Emmy & Eastynn)**
+- Tournament in Red Deer
+- Includes responsibility for travel arrangements, accommodations, and logistics
+- Option: Please confirm if you would like to take this block (including travel coordination) or propose an alternative
+
+---
+
+**PETE — ADDITIONAL DECISION POINTS**
+
+**7. March 26–27 (Thursday night + Friday no school)**
+- Pre–spring break block
+- Option: Please confirm if you would like to take this block or propose an alternative
+
+---
+
+**8. March 28 (Pre-departure — must be in St. Albert)**
+- Pete to be in St. Albert ahead of departure to Langley March 29
+- Option: Please confirm if you would like to take this day or propose an alternative
+
+---
+
+**9. Ongoing weekday evenings (AHP practices)**
+- Late practices followed by school mornings
+- Transportation and overnight location need to align with this schedule
+- Option: Please confirm if you would like to take specific days or propose an alternative
+
+---
+
+**EMMY & EASTYNN — FORWARD TOURNAMENT / TRAVEL RESPONSIBILITY**
+
+For the following dates, the key item to determine is who will be responsible for travel arrangements and coordination:
+
+**10. May 1–3 (Edmonton – GEMSA tournament, Emmy)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+**11. May 16–18 (Red Deer – Tiering, Emmy)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+**12. May 22–24 (Calgary tournament, Eastynn)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+**13. May 29–31**
+- Emmy: Okotoks – Tiering
+- Eastynn: Stettler – Tiering
+- Option: Please confirm if you would like to take responsibility for one or both, or propose an alternative
+
+**14. June 5–7 (St. Albert tournaments – both)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+**15. June 12–14**
+- Emmy: Stettler – Tiering
+- Eastynn: Strathmore – Tiering
+- Option: Please confirm if you would like to take responsibility for one or both, or propose an alternative
+
+**16. June 19–21**
+- Emmy: Edmonton – GEMSA Finals
+- Eastynn: Calgary tournament
+- Option: Please confirm if you would like to take responsibility for one or both, or propose an alternative
+
+**17. June 26–28 (Lloydminster tournament – Eastynn)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+**18. July 3–5 (Provincials – Emmy)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+**19. July 10–12 (Provincials – Eastynn)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+**20. July 29 – August 2 (Nationals – Eastynn, if qualified)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+**21. August 13–15 (Nationals or Westerns – Eastynn, depending on qualification)**
+- Option: Please confirm if you would like to take responsibility or propose an alternative
+
+---
+
+As these are confirmed, I will organize logistics so the kids have clarity around their schedules.
+
+Scott
