@@ -28,9 +28,13 @@ Practice Management System: [Cornerstone / Avimark]
 - Implementation of approved price updates via [PMS] integration
 - Delivery: Comprehensive report + implementation
 
-### 2. [Second Software — TBD]
-- Description: [to be added]
-- Delivery method: [to be added]
+### 2. The .99 Factor
+- Full product price list scan
+- Rounds all cost-plus product prices up to nearest .99 (e.g. $8.24 → $8.99, $87.21 → $87.99)
+- Client perception: value pricing. Clinic result: revenue uplift across thousands of product lines
+- Cannot be done manually at scale — automated across entire product catalog
+- Performance tracked monthly: uplift report generated end of each month
+- Fee model: performance-based % of realized monthly uplift
 
 ---
 
