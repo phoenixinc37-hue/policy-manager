@@ -432,3 +432,21 @@ Scott explicitly proposed a collaborative model, acknowledged Tammy's strengths,
 
 **Implication:**
 Scott's financial information is being filtered through someone in Tammy's network. This explains why Scott isn't getting timely updates, and why major cash allocations ($400K) happened without his knowledge. Replacing or supplementing Deb with independent accounting oversight is a governance priority.
+
+---
+
+## WILDELAND PROPERTIES — Current Status
+
+**Remaining properties in rental pool:**
+- Canmore x2 (Copperstone Units 204 & 209) — combined value ~$550K
+- Kelowna (Playa del Sol Unit 609) — ~$550K, harder to sell
+
+**Recent sale:** One condo sold, ~$400K freed up. Went to supplier debt, not CRA (Scott not informed).
+
+**Sale timeline reference:** Last condo sold in ~2 weeks on market. Canmore should move similarly. Kelowna may take longer.
+
+**Potential cash injection if both Canmore units sold:** ~$550K+ into Clinic Solutions Inc. via capital dividends mechanism (tax-free extraction available on gains).
+
+**Blocker:** Tammy controls the sale decision (Class A shares, corporate president). Without her agreement, properties stay in rental pool.
+
+**CL implication:** Selling these properties is in both their financial interests. Blaise has said so in writing. If Tammy continues to block or delay the sale, that's a documented failure of fiduciary duty to the corporation.
