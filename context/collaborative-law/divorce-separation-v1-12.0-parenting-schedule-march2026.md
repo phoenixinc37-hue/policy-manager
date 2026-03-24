@@ -516,3 +516,21 @@ Items Lesley needs to know before CL starts:
 - Scott corrected the record directly with Brian
 
 **Action:** Lesley needs to know this. It's relevant to the separation and the corporate control dynamic.
+
+---
+
+## CLINIC IQ TECHNICAL OBJECTION PATTERN (March 18 → March 24)
+
+**March 18:** Deb raised Wayne's technical concerns about Clinic IQ to Scott. Scott responded by:
+- Asking Wayne to review and respond with any technical conflicts by EOD next day
+- Noting the core issue is financial, not technical
+- Asking directly: "Is there a defined plan in place to ensure CSI remains a going concern?"
+- No substantive response received
+
+**March 24:** Tammy raises four technical questions about Clinic IQ — same concerns, escalated to owner level.
+
+**Pattern:** Wayne → Deb → Tammy. Same objections, escalating channel. Coordinated or not, the effect is the same: technical concerns used to delay revenue improvement.
+
+**Staff email sent:** March 24, 1:51pm — to Joel Wright, Wayne, Dawn. CC: Tammy, Blaise. No prior Tammy input received on draft (she was given the opportunity).
+
+**Q17:** Did Deb or anyone respond to Scott's going concern question from March 18?
