@@ -305,3 +305,23 @@ Every week of pricing delay = measurable lost profit. In a going concern situati
 - Blaise Foulston — Yates Whitaker (corporate lawyer/accountant)
 - Deb Richardson / Jess Perin — Clinic Solutions Inc. accounting
 - Lesley — Scott's family lawyer (CL)
+
+---
+
+## FINANCIAL CONTEXT — CRA Payment Thread Detail (March 16-17, 2026)
+
+**Corporate CRA payment plan:** ~$18,000/month regular payments. Deb proposed doubling to $36K in March. Scott pushed back — prioritize by risk, not mechanically double.
+
+**GST filings:** CRA flagged 2 missing GST filings (Oct + Nov 2025). Scott asked Deb to confirm status and file if needed.
+
+**Personal CRA:** Collections calling. Needs regular monthly payments to avoid escalation to personal asset exposure. Funding problem — additional dividends trigger more tax (circular problem).
+
+**Personal lawyer fees:** Must come from personal after-tax funds, not corporate. Same circular dividend problem.
+
+**Deb's consistent position:** Liquidate Wildeland condos — it's the only clean solution.
+
+**Scott's position:** Agrees on condos but notes separation process will likely determine timing. In the meantime — reduce expenses, improve profitability, tighten financial coordination.
+
+**Shareholder loan approach:** Blaise outlined options to reduce shareholder loans and access funds more structurally for personal obligations. Scott wants to align on this before proceeding.
+
+**WDDC:** Mentioned as a supplier balance that may need attention alongside CRA.
