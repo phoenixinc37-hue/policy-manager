@@ -265,3 +265,43 @@ For the following dates, the key item to determine is who will be responsible fo
 As these are confirmed, I will organize logistics so the kids have clarity around their schedules.
 
 Scott
+
+---
+
+## FINANCIAL CONTEXT — Corporate Crisis (March 2026)
+
+**Source:** Blaise Foulston (Yates Whitaker), accountant/corporate lawyer — March 19, 2026
+
+**Key facts:**
+- Clinic Solutions Inc. is at risk of not continuing as a going concern
+- Bank is uncomfortable with collection risk
+- CRA debt outstanding (corporate and personal)
+- Vendors not being paid on time
+- Only viable cash injection: sell remaining Wildeland Holdings properties
+- Capital dividends mechanism available once properties sold (tax-free extraction)
+- Personal CRA debts should NOT be prioritized above corporate situation
+- If corporate situation deteriorates, personal situation becomes dire
+
+**Scott's response to Blaise (March 19):** Confirmed moving forward with structured governance, 500 Day Plan, financial controls, accountability framework. CEO role asserted.
+
+**Implication for Clinic IQ / pricing implementation:**
+Every week of pricing delay = measurable lost profit. In a going concern situation, revenue improvements are not optional — they are urgent.
+
+---
+
+## FINANCIAL CONTEXT — CRA & Cash Flow Detail (March 17-19, 2026)
+
+**Immediate issue:** Personal CRA account past due ~$10,000. Scott paid from personal line of credit March 18 to avoid escalation/liens.
+
+**Corporate CRA:** On payment plan, currently not escalating.
+
+**Wildeland Holdings (WLH):** Properties need to be sold to inject cash into Clinic Solutions Inc. Scott intends to structure a draw from WLH to reimburse the personal line of credit used for CRA payment.
+
+**Deb Richardson (CPA):** Recommends meeting with both lawyers + accountants to align. Scott pushed back — prefers direct meeting with Blaise first, bring lawyers in only when needed.
+
+**Scott's CEO position:** Asserted financial governance, 500 Day Plan, spending controls, accountability framework in response to Blaise's going concern warning.
+
+**Key people:**
+- Blaise Foulston — Yates Whitaker (corporate lawyer/accountant)
+- Deb Richardson / Jess Perin — Clinic Solutions Inc. accounting
+- Lesley — Scott's family lawyer (CL)
