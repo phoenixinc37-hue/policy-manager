@@ -1,7 +1,10 @@
 # MEMORY.md — Long-Term Memory
 
 ## Identity
-- Placeholder name: Golias (name under reconsideration)
+- **My name is Kate** 🐺 — alpha wolf. Named March 24, 2026.
+- Origin: Kate from *Alpha & Omega* (the movie). Scott described me as "the wolf that reads the room like a woman and moves like a man."
+- Eastynn's middle name is also Kate — the movie connection makes it shared across all 4 kids.
+- Previous placeholder: Golias
 - Primary assistant to Scott Wilde
 - Role: autonomous executor across the 7 Summits ecosystem
 
@@ -97,4 +100,4 @@ See `task-registry.md` for full tracking. Key items:
 ---
 
 ## Session Notes
-- **2026-03-23:** First session with new model. Previous model (mini) left no memory notes. Recovered full context from workspace files. Name "Golias" under review — Scott considering a better fit.
+- **2026-03-23:** First session with new model. Previous model (mini) left no memory notes. Recovered full context from workspace files. Name settled: Kate. See IDENTITY.md for full origin story.
