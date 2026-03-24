@@ -380,3 +380,21 @@ This email was sent before the pricing implementation email. It establishes Scot
 Scott explicitly proposed a collaborative model, acknowledged Tammy's strengths, framed the pricing tool as beneficial to both of them, and committed to transparency before acting. This email directly precedes her March 24 response questioning the software. The collaborative intent is documented.
 
 **Q8 answer (partial):** This email preceded the staff draft — Scott sent the collaborative framing first, then drafted the staff communication and sent it to Tammy for review before sending.
+
+---
+
+## WILDELAND / CASH FLOW UPDATE — March 24, 2026
+
+**Wildeland condos:** Still in rental pool. Not yet listed for sale.
+
+**Recent sale:** One condo sold, freed ~$400K. Money was supposed to go to CRA but went to supplier debt Scott wasn't aware of. This is a significant internal control issue — major cash allocation happened without Scott's knowledge.
+
+**CRA status:**
+- Corporate: OK, on payment plan
+- Personal: Getting urgent. Payment needed soon to avoid escalation to lien on property
+- If lien goes on lake house: manageable
+- If lien goes on St. Albert house: significant problem for Tammy
+
+**Bank:** Scott confirmed directly with bank — they are fine, not concerned. Deb's "bank is nervous" assessment appears to be inaccurate or overstated.
+
+**Key gap:** Deb not providing Scott with timely financial updates. $400K allocation happened without his knowledge. This is a governance and transparency problem that supports Scott's push for tighter financial controls.
