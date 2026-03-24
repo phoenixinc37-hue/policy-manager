@@ -398,3 +398,16 @@ Scott explicitly proposed a collaborative model, acknowledged Tammy's strengths,
 **Bank:** Scott confirmed directly with bank — they are fine, not concerned. Deb's "bank is nervous" assessment appears to be inaccurate or overstated.
 
 **Key gap:** Deb not providing Scott with timely financial updates. $400K allocation happened without his knowledge. This is a governance and transparency problem that supports Scott's push for tighter financial controls.
+
+---
+
+## RESPONSE PATTERN SUMMARY (March 2026)
+
+| Communication | Scott's Ask | Tammy's Response |
+|---|---|---|
+| Collaborative framing email | Work together, divide strengths | No response |
+| Staff communication draft | Review before sending | No response |
+| CEO governance framework to Blaise | Copied Tammy | No response |
+| Pricing Intelligence System email | Default to proceed Wednesday | Four technical questions, removed default-to-proceed |
+
+**Pattern:** Engages only when she can block. Silence on collaboration, action on obstruction.
