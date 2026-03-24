@@ -325,3 +325,21 @@ Every week of pricing delay = measurable lost profit. In a going concern situati
 **Shareholder loan approach:** Blaise outlined options to reduce shareholder loans and access funds more structurally for personal obligations. Scott wants to align on this before proceeding.
 
 **WDDC:** Mentioned as a supplier balance that may need attention alongside CRA.
+
+---
+
+## CEO GOVERNANCE EMAIL — Scott to Tammy (via Blaise thread, March 19, 2026)
+
+Scott formally asserted CEO authority to Tammy and Blaise in writing:
+
+- Advancing corporate structure as outlined
+- 500 Day Plan as operating framework
+- Financial controls: spending, approvals, cash allocation
+- Accountability at leadership level
+- Locum usage to be actively managed
+- Material financial decisions require owner approval
+- Lack of response = operational risk, will be addressed
+
+Key line: *"A lack of response or delayed engagement on key items creates operational risk and will be addressed within the leadership structure."*
+
+**Significance:** This was sent March 19 — 5 days before Tammy's response to the pricing email (March 24) where she removed the default-to-proceed. The CEO governance framework was already established in writing before the pricing conversation.
