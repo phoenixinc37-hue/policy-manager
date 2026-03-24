@@ -13,15 +13,22 @@ Moon coordinates 10°E, 37°N — a beachfront spot on the shores of the Sea of 
 
 ## Products
 
-### Pricing Intelligence System (ACTIVE)
+### Pricing Intelligence System (PENDING INSTALLATION)
 - Full service catalog analysis
 - Identifies pricing drift (services not updated in years)
 - Decision framework: Approve / Hold / Decline / Custom
 - Business model: % of approved uplift
-- Proven at Tudor Glen: 220 services, $72,492 annual uplift, $8/transaction increase
-- **Next deployment: RV clinic — Wednesday**
+- Analysis complete for RV: 200+ services, $26,401 annual uplift
+- Analysis complete for TG: 221 services, $73,211 annual uplift
+- **Target deployment: RV — pending Tammy's technical questions (Jack responding)**
 
-### .99 Price Enhancer (NEAR LAUNCH)
+### .99 Factor — Price Enhancer (LIVE AT RV)
+- Installed at River Valley, running
+- Rounds all cost-plus product prices up to nearest .99
+- End of month report pending — first real performance data
+- Fee model: % of realized monthly uplift
+
+### .99 Price Enhancer legacy note:
 - TBD details
 
 ### Inventory Tools & Systems (IN DEVELOPMENT)
