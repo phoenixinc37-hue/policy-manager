@@ -456,8 +456,11 @@ Scott's financial information is being filtered through someone in Tammy's netwo
 ## PROFESSIONAL ADVISOR NETWORK — Loyalty Concern
 
 **Blaise Foulston (Yates Whitaker — corporate lawyer/accountant):**
-- Also connected to the Lois circle (Tammy's network)
-- Q11 answer: Blaise is part of the same network as Deb — not independent
+- Connected to Lois circle but assessment updated: likely standing off rather than captured
+- His going concern letter was unusually direct, put in writing, copied to both parties — a fully captured advisor would soften this
+- Scott's read: warning shot directed at Scott to act. Blaise may intuit that Scott is the one actually running the business.
+- Worth re-reading his emails: is he warning Scott, or creating documentation that protects himself regardless of outcome?
+- Status: monitor, not confirmed threat
 
 **Deb Richardson (CGA/bookkeeper):**
 - Tammy's network via Lois
