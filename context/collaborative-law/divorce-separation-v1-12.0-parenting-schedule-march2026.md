@@ -411,3 +411,24 @@ Scott explicitly proposed a collaborative model, acknowledged Tammy's strengths,
 | Pricing Intelligence System email | Default to proceed Wednesday | Four technical questions, removed default-to-proceed |
 
 **Pattern:** Engages only when she can block. Silence on collaboration, action on obstruction.
+
+---
+
+## KEY PEOPLE UPDATE — Accounting/Financial Team
+
+**Deb Richardson (CGA):**
+- Relatively new to Clinic Solutions Inc.
+- Came through Tammy's network — friend of Tammy's friend Lois, also a client of Tammy's
+- Scott's assessment: "Team Tammy" — loyalty concern
+- CGA designation = bookkeeper/accounting technician level, not CA/CPA level
+- Scott's sister Colette (FCA, CA) helped Scott understand the distinction
+- Scott has unanswered messages to Deb — transparency and communication gap
+- The $400K going to supplier debt instead of CRA: Tammy likely had involvement, Deb may have executed without informing Scott
+
+**Colette Wilde (Scott's sister):**
+- FCA, CA — senior accounting designation
+- Has been helping Scott understand the financial situation and Deb's limitations
+- Part of Scott's reconnecting with family (support system rebuild)
+
+**Implication:**
+Scott's financial information is being filtered through someone in Tammy's network. This explains why Scott isn't getting timely updates, and why major cash allocations ($400K) happened without his knowledge. Replacing or supplementing Deb with independent accounting oversight is a governance priority.
