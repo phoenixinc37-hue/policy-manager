@@ -51,7 +51,58 @@ Scott
 
 ## SECTION 4 — Scott Response Email (to Tammy's texts)
 
-*(Verbatim response — full text to be added when provided)*
+Over the past few messages I suggested that we put together a March–April schedule and asked for your thoughts before preparing a draft. When I didn't hear back, I prepared an outline based on the kids' school, sports, and activity commitments and shared it for feedback.
+
+Since the kids' activities for the next couple of weeks are already scheduled, the outline through March 26 is what I'm proposing so their commitments and logistics are clear.
+
+If you would like to suggest different arrangements, please send the alternatives you would like me to consider. Otherwise I will rely on the outline through March 26.
+
+As things are confirmed or adjusted, I'll update the kids so they know what's coming up.
+
+With spring break starting March 26, that would be a good point for us to review the remainder of March and April and work toward an agreed schedule.
+
+---
+
+## SECTION 5 — Tammy Text (Coordination Message)
+
+> Regarding the group message about travel and holiday planning: to keep things simple for the kids, let's make it a standard practice moving forward to coordinate all scheduling and logistics directly between the two of us first.
+>
+> This ensures we are aligned and that the kids aren't responsible for managing the logistics. Once we have a finalized plan, we can update them together.
+>
+> Thanks
+
+---
+
+## SECTION 6 — Scott Response (Execution Model Message)
+
+Hi Tammy,
+
+I agree that coordinating plans between us is a good approach.
+
+For the next few days, based on Eastynn's work and fastball schedule, my plan is to pick her up after work today and take her to the lake for the night. Tomorrow I would take her to fastball, then head to Vegreville for the evening and bring her back for school Monday.
+
+If you would like to suggest a different plan, please send through what you would like to do so we can compare and align. Otherwise I will proceed with this plan.
+
+---
+
+## SECTION 7 — Decision Points Message (Prepared — not confirmed sent)
+
+Hi Tammy,
+
+With spring break and Easter coming up, there are a few key dates and events that we should coordinate so things are clear for the kids.
+
+Here are the main items:
+
+- Pre–Easter period (leading into the long weekend)
+- Easter weekend
+- Emmy's away games
+- Eastynn's away games / commitments
+
+If you would like to take specific dates or events, please let me know what you would like to do so we can align.
+
+Otherwise, I will make arrangements around these based on the kids' schedules so things are clear for them.
+
+Scott
 
 ---
 
