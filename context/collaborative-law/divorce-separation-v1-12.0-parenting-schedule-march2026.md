@@ -500,3 +500,19 @@ Items Lesley needs to know before CL starts:
 6. **Personal CRA urgency** — Lien risk on St. Albert house if not addressed. This creates pressure that may affect Tammy's CL position.
 
 7. **Colette re-engaged** — Scott's independent financial advisor now active. BCC on key emails.
+
+---
+
+## BANK INCIDENT — Tammy Attempted to Remove Scott from Online Banking
+
+**What happened:** Tammy went to the bank (Brian — bank manager) and attempted to remove Scott as online banking administrator and insert herself, telling Brian she was "now running the company."
+
+**Outcome:** Brian did not action the request. When Scott met with Brian separately, Brian mentioned it. Scott clarified he is still CEO and Tammy is not running the company.
+
+**Significance:**
+- Tammy represented to the bank that she had taken over company management — this is false
+- This is consistent with the narrative control pattern
+- Attempted to gain financial control without Scott's knowledge
+- Scott corrected the record directly with Brian
+
+**Action:** Lesley needs to know this. It's relevant to the separation and the corporate control dynamic.
