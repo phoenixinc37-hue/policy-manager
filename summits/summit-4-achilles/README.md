@@ -12,7 +12,8 @@
 
 ## Key People
 - **Coach Mike** — key ESA coach
-- **Izzy** — delivery lead for Advice to a Teammate
+- **Maeve Lavoy** — target presenter for Advice to a Teammate. Div 2 player at Delta State. Was assistant coach with Scott on Eastynn's fastball team. Returns to St. Albert early May. Target: partner with her to present the course to female athletes 13-17.
+- **Izzy** — previously noted as delivery lead (confirm if still involved)
 
 ## Logo Concept
 Human ankle with a scar over the Achilles tendon.
@@ -31,10 +32,13 @@ Scar = stronger than before.
 
 ### Advice to a Teammate
 - Files: `achilles-delivery-plans.md` (workspace root)
+- Target audience: female athletes 13-17
 - Virtual delivery plan (Zoom)
 - Phone/digital delivery plan
 - Pricing: $59/team (pilot), $99 community, $399 self-paced (later)
-- Status: Plans written, pilot pending
+- **Launch goal: June 1**
+- **Presenter: Maeve Lavoy** (pending confirmation — she returns St. Albert early May)
+- Status: Plans written, Maeve outreach pending
 
 ---
 
