@@ -343,3 +343,40 @@ Scott formally asserted CEO authority to Tammy and Blaise in writing:
 Key line: *"A lack of response or delayed engagement on key items creates operational risk and will be addressed within the leadership structure."*
 
 **Significance:** This was sent March 19 — 5 days before Tammy's response to the pricing email (March 24) where she removed the default-to-proceed. The CEO governance framework was already established in writing before the pricing conversation.
+
+---
+
+## STAFF COMMUNICATION DRAFT — Scott to Tammy for review (March 2026)
+
+Scott sent Tammy a draft staff communication (to Dawn, Wayne, Deb) for her input before sending. This shows Scott was attempting collaborative decision-making before acting unilaterally.
+
+**Draft message to staff (centered on Blaise's going concern warning):**
+- Acknowledged financial discussions with Blaise
+- Stated clinics at serious financial risk
+- Moving to structured approach: financial stability as top priority
+- Focus on production, efficiency, cost management
+- Clearer decision-making structure
+- Goal: clinics run well, make money, good place to work, exceed client/patient expectations
+
+**Significance for CL record:** Scott sought Tammy's input before sending to staff. This is the 1/2/3 model in action — propose, invite feedback. Her response to this draft (if any) would be relevant.
+
+**Q8** — Did Tammy respond to this draft, and if so what did she say?
+
+---
+
+## SCOTT TO TAMMY — Collaborative Framing Email (March 2026, before pricing email)
+
+This email was sent before the pricing implementation email. It establishes Scott's intent as collaborative, not unilateral.
+
+**Key points:**
+- Acknowledged Blaise's going concern warning
+- Framed as "work through together"
+- Proposed division of strengths: Tammy leads medical/patient care, Scott leads business structure/accountability
+- Explicitly mentioned Jack's pricing software as "simple adjustment, noticeable increase in profitability, no additional workload"
+- Said he would send draft staff communication to Tammy first before sending to team
+- Goal: stabilize clinics, protect value for both of them through CL process
+
+**Significance for CL:**
+Scott explicitly proposed a collaborative model, acknowledged Tammy's strengths, framed the pricing tool as beneficial to both of them, and committed to transparency before acting. This email directly precedes her March 24 response questioning the software. The collaborative intent is documented.
+
+**Q8 answer (partial):** This email preceded the staff draft — Scott sent the collaborative framing first, then drafted the staff communication and sent it to Tammy for review before sending.
