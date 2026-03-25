@@ -21,13 +21,17 @@ Summits are nodes, not silos. Capital, knowledge, and opportunities flow between
 - **Strategy:** Operational efficiency, high-margin services, client retention
 - **Exit:** Sell and convert to investment capital
 
-## Summit 2 — Real Estate Rentals
+## Summit 2 — Real Estate
 - **Status:** Active / Optimizing
 - **Assets:**
-  - Playa del Sol, Unit 609 — 2BR resort condo, Kelowna
-  - Copperstone, Unit 204 — 1BR, Dead Man's Flats
-  - Copperstone, Unit 209 — 1BR+den, Dead Man's Flats
+  - **Copperstone** — Dead Man's Flats, Canmore AB
+    - Unit 204: 1BR
+    - Unit 209: 1BR+den
+  - **Playa del Sol** — Kelowna, BC
+    - Unit 609: 2BR resort condo
+- **Ownership:** Wildeland Holdings (Scott 50% president, Tammy 50% secretary)
 - **Strategy:** Maximize cash flow, reduce vacancies, sell when timing is right
+- **Note:** Sale being held for CL process as negotiating leverage
 
 ## Summit 3 — Vacation Rentals (Lost Lake Resort)
 - **Status:** Building
