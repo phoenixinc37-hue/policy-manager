@@ -536,3 +536,28 @@ Items Lesley needs to know before CL starts:
 **Q17:** Did Deb or anyone respond to Scott's going concern question from March 18?
 
 **Note:** "Joel Wright" in email contacts = old label for accounting@clinicsolutions.ca — same inbox as Deb Richardson/Jess Perin. Contact name not updated.
+
+---
+
+## CFL SCHEDULE — CONFIRMED DATES
+
+**Lesley Kroeker** — Symmetry Family Law, St. Albert
+- Phone: (780) 459-5555 Direct: (780) 544-0434
+- Email: lesley@symmetrylaw.ca
+- Lesley away: March 27 — April 13
+
+**Tammy's lawyer:** Cathryn (firm unknown — confirm)
+
+**KEY DATES:**
+- **April 10 (Friday):** Disclosure documents due in shared drive
+- **April 13 (Monday) 1:00pm:** Prep call with Lesley
+- **April 14 (Tuesday) 9:30am:** First CFL Meeting — Lesley's office or Cathryn's
+
+**Scott confirmed:** Credit card provided, Lesley retained.
+
+**Action items before April 10:**
+- Gather and provide disclosure documents (see Lesley's recent email for full list)
+- Prepare written goals list (worksheet provided by Lesley)
+- Brief Lesley on advisor network issue (Deb/Blaise) — add to prep call April 13
+- Brief Lesley on bank incident (Tammy tried to remove Scott from online banking)
+- Brief Lesley on property timing strategy (Wildeland — holding for CL)
