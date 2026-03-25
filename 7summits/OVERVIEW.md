@@ -49,7 +49,7 @@ Summits are nodes, not silos. Capital, knowledge, and opportunities flow between
 - **Presenter:** Maeve Lavoy (Delta State Div 2) — back St. Albert early May, launch goal June 1
 - **Monetization:** Premium training + structured progression + programs
 
-## Summit 5 — [Name TBD] / Save Cash Now
+## Summit 5 — Online Booking Agent
 - **Status:** Concept / Researched
 - **Model:** Last-minute vacancy matching marketplace
 - **How it works:** Businesses with unused capacity offer confidential discounts; clients accept short notice for savings
