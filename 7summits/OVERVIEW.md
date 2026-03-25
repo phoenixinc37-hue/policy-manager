@@ -29,11 +29,14 @@ Summits are nodes, not silos. Capital, knowledge, and opportunities flow between
   - Copperstone, Unit 209 — 1BR+den, Dead Man's Flats
 - **Strategy:** Maximize cash flow, reduce vacancies, sell when timing is right
 
-## Summit 3 — Real Estate Flipping
-- **Status:** Active / Building
-- **Team:** Jack & Pete (sons)
-- **Strategy:** Off-market motivated sellers, quick cash offers, avoid realtor-listed properties
-- **Current:** Jack searching for foreclosures in St. Albert & North Edmonton
+## Summit 3 — Vacation Rentals (Lost Lake Resort)
+- **Status:** Building
+- **Asset:** Lake house — Jackfish Lake, Parkland County, AB (45 min from Edmonton)
+- **Brand:** Lost Lake Resort
+- **Model:** Short-term vacation rental when not in personal use
+- **Infrastructure:** Starlink ordered (replacing Xplornet) — enables viable rental
+- **Strategy:** Market as a premium lakefront escape, manage bookings, maximize occupancy
+- **Note:** Real estate flipping removed from summits — opportunistic only, not a defined income stream
 
 ## Summit 4 — Academies
 - **Status:** Building
