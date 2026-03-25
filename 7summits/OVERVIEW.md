@@ -49,12 +49,16 @@ Summits are nodes, not silos. Capital, knowledge, and opportunities flow between
 - **Presenter:** Maeve Lavoy (Delta State Div 2) — back St. Albert early May, launch goal June 1
 - **Monetization:** Premium training + structured progression + programs
 
-## Summit 5 — Save Sash Today
-- **Status:** Concept / Building
-- **Model:** Vacancy matching marketplace
-- **How it works:** Businesses confidentially offer last-minute discounts; clients accept short notice for savings
-- **Revenue:** $10–$25 per transaction
-- **Start:** Vet clinics → expand to medical and other service businesses
+## Summit 5 — [Name TBD] / Save Cash Now
+- **Status:** Concept / Researched
+- **Model:** Last-minute vacancy matching marketplace
+- **How it works:** Businesses with unused capacity offer confidential discounts; clients accept short notice for savings
+- **Sub-product:** Short notice surgeries — vet clinics with unfilled surgery slots offer them at a discount to flexible clients
+- **Revenue:** $10–$25 non-refundable deposit per transaction
+- **Pricing:** Confidential (Expedia model) — clinic names not disclosed until booking confirmed
+- **Start:** Vet clinics → medical, dental, physio, beauty, fitness, automotive, home services
+- **CAC flip:** Instead of paying ~$200 to acquire a new patient, clinic EARNS $25 deposit
+- **Note:** Previously called "Save Sash Today" — corrected to Save Cash Now
 
 ## Summit 6 — Like Father Like Son (Media/Brand)
 - **Status:** Concept / Early
