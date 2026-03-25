@@ -587,3 +587,15 @@ Items Lesley needs to know before CL starts:
 **Disclosure documents:** Standard list provided to Scott by Lesley. Due by April 10 in shared drive.
 
 **Note:** Both lawyers are in St. Albert. Both parties chose CFL process.
+
+---
+
+## LESLEY RETAINED — Confirmation
+
+Scott sent retainer email to Lesley confirming engagement:
+- Thanked her for the meeting
+- Confirmed wanting to move forward under collaborative process
+- Committed to organizing financial disclosure materials
+- Credit card provided separately (confirmed in Lesley's reply)
+
+**Status:** Lesley retained ✅
