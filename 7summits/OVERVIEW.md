@@ -38,13 +38,16 @@ Summits are nodes, not silos. Capital, knowledge, and opportunities flow between
 - **Strategy:** Market as a premium lakefront escape, manage bookings, maximize occupancy
 - **Note:** Real estate flipping removed from summits — opportunistic only, not a defined income stream
 
-## Summit 4 — Academies
+## Summit 4 — Sports Academy & Coaching
 - **Status:** Building
-- **Brands:**
-  - **Elite Softball Academy (ESA)** — broad athlete development
+- **Umbrella:** Sports Academy & Coaching
+- **Flagship Brand:** Achilles Athletics
+  - **Elite Softball Academy (ESA)** — broad athlete development (Oct–Mar season)
   - **Next Level Academy** — boutique, high-end, guaranteed progression
-- **Core concept:** Every athlete follows the same path; difference = speed + level reached
-- **Monetization:** Premium training + structured progression
+  - **Advice to a Teammate** — mental skills program, target 13-17yo female athletes
+- **Philosophy:** The scar is stronger. Failure processed correctly = growth. Move Forward.
+- **Presenter:** Maeve Lavoy (Delta State Div 2) — back St. Albert early May, launch goal June 1
+- **Monetization:** Premium training + structured progression + programs
 
 ## Summit 5 — Save Sash Today
 - **Status:** Concept / Building
