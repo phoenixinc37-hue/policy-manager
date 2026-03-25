@@ -561,3 +561,29 @@ Items Lesley needs to know before CL starts:
 - Brief Lesley on advisor network issue (Deb/Blaise) — add to prep call April 13
 - Brief Lesley on bank incident (Tammy tried to remove Scott from online banking)
 - Brief Lesley on property timing strategy (Wildeland — holding for CL)
+
+---
+
+## CFL LAWYER DETAILS — CONFIRMED
+
+**Scott's lawyer:** Lesley Kroeker, LLB, BScN
+- Symmetry Family Law
+- #512, 1 Tache Street, St. Albert AB T8N 1B4
+- Main: (780) 459-5555 | Direct: (780) 544-0434
+- Email: lesley@symmetrylaw.ca
+
+**Tammy's lawyer:** Cathryn Hildebrandt Person
+- CHP Law
+- 206-B, 200 Carnegie Drive, St. Albert AB T8N 5A8
+- Direct: (780) 347-0429
+- Email: cathryn@chplaw.ca
+- Admin: Cathy Condon — admin@chplaw.ca | (780) 347-0602
+
+**First CFL Meeting:** Tuesday April 14 — morning (must end by noon)
+**Location:** TBD — Lesley's office or Cathryn's
+
+**Lawyer-lawyer call:** To be scheduled — Lesley available March 23, March 25, or morning of April 13
+
+**Disclosure documents:** Standard list provided to Scott by Lesley. Due by April 10 in shared drive.
+
+**Note:** Both lawyers are in St. Albert. Both parties chose CFL process.
