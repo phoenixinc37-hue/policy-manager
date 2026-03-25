@@ -84,3 +84,15 @@
 - JSW Enterprises (Jack's — in process, gift)
 
 **Key challenge:** Deb/accounting in Tammy's network — may need Colette to help gather corporate documents independently.
+
+---
+
+## ADDITIONAL CONTEXT
+
+**Initial consultation:** March 16, 2026 — 9:30am, 2 hours, $400 + GST
+**Disclosure package sent by Lesley:** March 16 (financial list + monthly budget + Statement of Income/Assets/Liabilities)
+
+**Three forms to complete:**
+1. Monthly Budget of Expenses (Excel) — saved as monthly-budget-template.xlsx
+2. Statement of Income, Assets and Liabilities (Word) — saved as statement-income-assets-liabilities.docx
+3. Goals worksheet — saved as collaborative-process-goals.pdf
