@@ -1,7 +1,7 @@
-# FULL7S — V1.23 | March 30, 2026
+# FULL7S — V1.24 | March 31, 2026
 *Complete Phoenix Inc structure — 7 Summits + Base Camp with Issues + Tasks*
-*Code: FULL7S | Version: 1.23 | Confirmed working version*
-*Previous: V1.22*
+*Code: FULL7S | Version: 1.24 | Confirmed working version*
+*Previous: V1.23*
 
 ---
 
@@ -23,17 +23,17 @@ S1.4 — Urgent Pet Care (UPC-ROSS) — No active issues
 
 Tasks:
 S1.T1 — Canmore money trail
-— S1.T1.1 *** — Scott: find and send sale contract to Kate
-— S1.T1.2 *** — Kate: determine full amount of proceeds sent to WLH
+— S1.T1.1 *** — Scott: email sent to Kate with sale contract info ✅ Kate: file and process
+— S1.T1.2 *** — Scott: email sent to Kate with proceeds info ✅ Kate: determine full amount sent to WLH
 — S1.T1.3 — Kate: file sale contract in WLH folder
 
 S1.T2 — WhatsApp messages
 — S1.T2.2 — Kate: organize messages into timeline
 
 S1.T3 — Deb / Legal expenses
-— S1.T3.1 — Scott: create email to Blaise re: personal legal expense draws
+— S1.T3.1 — Scott: send Blaise email with questions on WHL / personal taxes / Deb
 
-S1.T4 — 500 Day Plan email filed: S1-comms/500-day-plan-intro-2026-03-31.md (pending Q8 confirmation of correct folder)
+S1.T4 **** — Kate: send 500 Day Plan email at 8:00 AM (Tue Mar 31)
 
 ---
 
@@ -53,12 +53,12 @@ S2.3.I1 — Rental income ~$4,000 sitting in PayPal — Tammy notified, no decis
 
 Tasks:
 S2.T1 — PayPal / DVC funds
-— S2.T1.1 — Scott: set up personal banking info in PayPal
-— S2.T1.2 — Scott: transfer money to personal account (ATB)
+— S2.T1.1 PENDING — Email sent to ATB confirming bank info. Once received: set up PayPal account.
+— S2.T1.2 PENDING — Waiting for bank info from ATB before transfer can proceed.
 
 S2.T2 — Grand Californian holding points
-— S2.T2.1 — Scott: make new reservation using holding points ***HIGH PRIORITY***
-— S2.T2.2 — Scott: confirm reservation details on all 3 active rentals
+— S2.T2.1 — COMPLETE — file ✅
+— S2.T2.2 — Scott: confirm if info is correct on all 3 reservations — at least 1 is wrong. Call to update. DRIVING TASK.
 
 ---
 
@@ -75,19 +75,19 @@ S3.1.I4 — Router admin credentials still with Wayne — needs to change.
 
 Tasks:
 S3.T1 — Railing
-— S3.T1.1 — Scott: add railing company Wednesday meeting to schedule
+— S3.T1.1 — COMPLETE ✅ — filed
 
 S3.T2 — Quote decision
 — S3.T2.1 — Kate: flag Scott when quote received
 — S3.T2.2 — Scott: decide insurance vs out of pocket once quote arrives
 
 S3.T3 — Starlink
-— S3.T3.1 — Scott: send Starlink tracking info to Kate
+— S3.T3.1 PENDING — Tracking info not yet established. Wait until info is updated.
 — S3.T3.2 — Kate: track delivery once tracking received
 
 S3.T4 — Router credentials
-— S3.T4.1 — Scott: get admin credentials from Wayne
-— S3.T4.2 — Scott: change router password once obtained
+— S3.T4.1 — Scott: get admin credentials from Wayne — wait for appropriate time
+— S3.T4.2 — Kate: write email to Wayne re router credentials and hold until Scott directs
 
 ---
 
@@ -138,15 +138,8 @@ S7.4.I7 — Golias email connection — reply pending.
 S7.4.I8 — Sophia (Luke's agent) — welcome sent, reply pending.
 
 Tasks:
-S7.T1 — AgentMail upgrade
-— S7.T1.1 — Jack: upgrade AgentMail to Developer plan ($20/mo)
-
 S7.T2 — gog auth
 — S7.T2.1 — Scott: complete gog auth at Mac Mini next visit
-
-S7.T3 — Daily codebase
-— S7.T3.1 — Kate: reply to Wayne with description of features needed
-— S7.T3.2 — Scott: decision on how to handle Wayne deflection
 
 S7.T4 — MiniMax fallback
 — S7.T4.1 — Kate: configure MiniMax as fallback model
