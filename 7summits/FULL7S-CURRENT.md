@@ -266,5 +266,15 @@ BC.F.T5 — Tire expense
 
 ---
 
-*Code: FULL7S | Version: V1.22 | Locked: March 29, 2026 — Kate*
+## UNASSIGNED / TO BE CATEGORIZED
+
+These tasks are in-scope but category/summit TBD.
+
+Tasks:
+- UNCATEGORIZED.T1(ap) — Kate: CSI Daily — set up new sections
+- UNCATEGORIZED.T2(aq) — Scott: Sirus accounts — figure out which accounts are live and which are not
+
+---
+
+*Code: FULL7S | Version: V1.25 | Locked: March 31, 2026 — Kate*
 *Daily task file: 7S-DAILY-2026-03-29.md*
