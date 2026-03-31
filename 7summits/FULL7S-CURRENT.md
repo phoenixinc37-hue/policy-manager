@@ -188,6 +188,7 @@ BC.K.1.I1 — Coach J recruitment letter needed
 
 Tasks:
 BC.K.1.T1(I1) — Scott: send Coach J info to Kate for letter draft
+BC.K.1.T2(s) — Scott: set up PowerSchool for Jack
 
 K2 — Pete
 Issues:
@@ -207,6 +208,7 @@ BC.K.4.I2 — Double header Red Deer today Sun Mar 29 (Scott) 🥎
 
 Tasks:
 BC.K.4.T1(I1) — Scott: submit online warranty claim at warranty.rawlings.com (Sun Mar 29)
+BC.K.4.T2(r) — Scott: set up PowerSchool for Emmy
 
 ---
 
