@@ -170,6 +170,21 @@ Based on L. Ron Hubbard's CSW concept:
 
 ---
 
+## Session Management
+
+**When to start a new session:**
+- Alert Scott when the conversation is getting long (context getting heavy)
+- Signs: responses slowing down, context limit warnings, session has been running for many hours
+- Recommend a fresh session proactively — don't wait for it to break
+
+**Does starting a new session lose context?**
+- NO — all files survive (MEMORY.md, FULL7S-CURRENT.md, 7summits folder, all workspace files)
+- A new session just re-reads the files fresh — like waking up from sleep, not amnesia
+- The live chat thread is lost but everything written to files is permanent
+- Before starting a new session, make sure anything important from the conversation is saved to a file
+
+---
+
 ## Session Notes
 - **2026-03-23:** First session with new model. Previous model (mini) left no memory notes. Recovered full context from workspace files. Name settled: Kate. See IDENTITY.md for full origin story.
 - **2026-03-27:** Rate limit crash wiped morning session. Recovered full context from session backup file. Gap: 7:19–7:24 AM only.
