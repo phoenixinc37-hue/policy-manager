@@ -1,4 +1,4 @@
-# FULL7S — V1.24 | March 31, 2026
+# FULL7S — V1.25 | March 31, 2026
 *Complete Phoenix Inc structure — 7 Summits + Base Camp with Issues + Tasks*
 *Code: FULL7S | Version: 1.24 | Confirmed working version*
 *Previous: V1.23*
@@ -23,17 +23,17 @@ S1.4 — Urgent Pet Care (UPC-ROSS) — No active issues
 
 Tasks:
 S1.T1 — Canmore money trail
-— S1.T1.1 *** — Scott: email sent to Kate with sale contract info ✅ Kate: file and process
-— S1.T1.2 *** — Scott: email sent to Kate with proceeds info ✅ Kate: determine full amount sent to WLH
-— S1.T1.3 — Kate: file sale contract in WLH folder
+— S1.T1.1(a) *** — Scott: email sent to Kate with sale contract info ✅ Kate: file and process
+— S1.T1.2(b) *** — Scott: email sent to Kate with proceeds info ✅ Kate: determine full amount sent to WLH
+— S1.T1.3(c) — Kate: file sale contract in WLH folder
 
 S1.T2 — WhatsApp messages
-— S1.T2.2 — Kate: organize messages into timeline
+— S1.T2.2(d) — Kate: organize messages into timeline
 
 S1.T3 — Deb / Legal expenses
-— S1.T3.1 — Scott: send Blaise email with questions on WHL / personal taxes / Deb
+— S1.T3.1(e) — Scott: send Blaise email with questions on WHL / personal taxes / Deb
 
-S1.T4 **** — Scott: send 500 Day Plan email at 8:00 AM (Tue Mar 31) — Scott sending manually
+S1.T4(f) **** — Scott: send 500 Day Plan email at 8:00 AM (Tue Mar 31) — Scott sending manually
 
 ---
 
@@ -53,12 +53,12 @@ S2.3.I1 — Rental income ~$4,000 sitting in PayPal — Tammy notified, no decis
 
 Tasks:
 S2.T1 — PayPal / DVC funds
-— S2.T1.1 PENDING — Email sent to ATB confirming bank info. Once received: set up PayPal account.
-— S2.T1.2 PENDING — Waiting for bank info from ATB before transfer can proceed.
+— S2.T1.1(g) PENDING — Email sent to ATB confirming bank info. Once received: set up PayPal account.
+— S2.T1.2(h) PENDING — Waiting for bank info from ATB before transfer can proceed.
 
 S2.T2 — Grand Californian holding points
-— S2.T2.1 — COMPLETE — file ✅
-— S2.T2.2 — Scott: confirm if info is correct on all 3 reservations — at least 1 is wrong. Call to update. DRIVING TASK.
+— S2.T2.1(i) — COMPLETE — file ✅
+— S2.T2.2(j) — Scott: confirm if info is correct on all 3 reservations — at least 1 is wrong. Call to update. DRIVING TASK.
 
 ---
 
@@ -75,19 +75,19 @@ S3.1.I4 — Router admin credentials still with Wayne — needs to change.
 
 Tasks:
 S3.T1 — Railing
-— S3.T1.1 — COMPLETE ✅ — filed
+— S3.T1.1(k) — COMPLETE ✅ — filed
 
 S3.T2 — Quote decision
-— S3.T2.1 — Kate: flag Scott when quote received
-— S3.T2.2 — Scott: decide insurance vs out of pocket once quote arrives
+— S3.T2.1(l) — Kate: flag Scott when quote received
+— S3.T2.2(m) — Scott: decide insurance vs out of pocket once quote arrives
 
 S3.T3 — Starlink
-— S3.T3.1 PENDING — Tracking info not yet established. Wait until info is updated.
-— S3.T3.2 — Kate: track delivery once tracking received
+— S3.T3.1(n) PENDING — Tracking info not yet established. Wait until info is updated.
+— S3.T3.2(o) — Kate: track delivery once tracking received
 
 S3.T4 — Router credentials
-— S3.T4.1 — Scott: get admin credentials from Wayne — wait for appropriate time
-— S3.T4.2 — Kate: write email to Wayne re router credentials and hold until Scott directs
+— S3.T4.1(p) — Scott: get admin credentials from Wayne — wait for appropriate time
+— S3.T4.2(q) — Kate: write email to Wayne re router credentials and hold until Scott directs
 
 ---
 
@@ -139,13 +139,13 @@ S7.4.I8 — Sophia (Luke's agent) — welcome sent, reply pending.
 
 Tasks:
 S7.T2 — gog auth
-— S7.T2.1 — Scott: complete gog auth at Mac Mini next visit
+— S7.T2.1(t) — Scott: complete gog auth at Mac Mini next visit
 
 S7.T4 — MiniMax fallback
-— S7.T4.1 — Kate: configure MiniMax as fallback model
+— S7.T4.1(u) — Kate: configure MiniMax as fallback model
 
 S7.T5 — Agent connections
-— S7.T5.1 — Kate: monitor for Golias and Sophia replies (3003)
+— S7.T5.1(v) — Kate: monitor for Golias and Sophia replies (3003)
 
 ---
 
@@ -161,10 +161,10 @@ BC.CFL.I3 — First CFL meeting: April 14
 
 Tasks:
 BC.CFL.T1(I1) — Disclosure package
-— BC.CFL.T1.1 — Scott: complete monthly budget template
-— BC.CFL.T1.2 — Scott: complete statement of income, assets & liabilities
-— BC.CFL.T1.3 — Scott: complete goals worksheet
-— BC.CFL.T1.4 — Kate: organize house photo documentation for submission
+— BC.CFL.T1.1(w) — Scott: complete monthly budget template
+— BC.CFL.T1.2(x) — Scott: complete statement of income, assets & liabilities
+— BC.CFL.T1.3(y) — Scott: complete goals worksheet
+— BC.CFL.T1.4(z) — Kate: organize house photo documentation for submission
 
 ---
 
@@ -175,8 +175,8 @@ BC.CP.I1 — Tournament assignments — all TBD
 BC.CP.I2 — Scott to reply to Tammy re: house visit text (Sun Mar 29)
 
 Tasks:
-BC.CP.T1(I1) — Scott: review tournament list and assign Scott or Tammy per event
-BC.CP.T2(I2) — Scott: reply to Tammy re house visit (Sun Mar 29) ***
+BC.CP.T1(aa) — Scott: review tournament list and assign Scott or Tammy per event
+BC.CP.T2(ab) — Scott: reply to Tammy re house visit (Sun Mar 29) ***
 
 ---
 
@@ -187,7 +187,7 @@ Issues:
 BC.K.1.I1 — Coach J recruitment letter needed
 
 Tasks:
-BC.K.1.T1(I1) — Scott: send Coach J info to Kate for letter draft
+BC.K.1.T1(ac) — Scott: send Coach J info to Kate for letter draft
 BC.K.1.T2(s) — Scott: set up PowerSchool for Jack
 
 K2 — Pete
@@ -207,7 +207,7 @@ BC.K.4.I1 — Easton warranty claim — Case #00370604. Online claim still neede
 BC.K.4.I2 — Double header Red Deer today Sun Mar 29 (Scott) 🥎
 
 Tasks:
-BC.K.4.T1(I1) — Scott: submit online warranty claim at warranty.rawlings.com (Sun Mar 29)
+BC.K.4.T1(ad) — Scott: submit online warranty claim at warranty.rawlings.com (Sun Mar 29)
 BC.K.4.T2(r) — Scott: set up PowerSchool for Emmy
 
 ---
@@ -229,7 +229,7 @@ Issues:
 BC.H.I1 — Gretel declining — Scott available if kids need him
 
 Tasks:
-BC.H.T1(I1) — Scott: email Tammy about feelings on Gretel (Sun Mar 29)
+BC.H.T1(ae) — Scott: email Tammy about feelings on Gretel (Sun Mar 29)
 
 ---
 
@@ -244,25 +244,25 @@ BC.F.I5 — CRA account not set up
 BC.F.I6 — St. Albert tire expense — receipt needed
 
 Tasks:
-BC.F.T1(I1) — TD Visa
-— BC.F.T1.1 — Scott: pay TD Visa Mon Mar 30 ⚠️
+BC.F.T1 — TD Visa
+— BC.F.T1.1(af) — Scott: pay TD Visa Mon Mar 30 ⚠️
 
-BC.F.T2(I2/I3) — PayPal → ATB → Mastercard ***
-— BC.F.T2.1 — Scott: set up banking in PayPal
-— BC.F.T2.2 — Scott: transfer DVC funds to ATB
-— BC.F.T2.3 — Scott: pay Mastercard from ATB
+BC.F.T2 — PayPal → ATB → Mastercard ***
+— BC.F.T2.1(ag) — Scott: set up banking in PayPal
+— BC.F.T2.2(ah) — Scott: transfer DVC funds to ATB
+— BC.F.T2.3(ai) — Scott: pay Mastercard from ATB
 
-BC.F.T3(I4) — Rogers
-— BC.F.T3.1 — Scott: call 1-877-742-9249 re $21.23
+BC.F.T3 — Rogers
+— BC.F.T3.1(aj) — Scott: call 1-877-742-9249 re $21.23
 
-BC.F.T4(I5) — CRA
-— BC.F.T4.1 — Scott: set up CRA My Account online
+BC.F.T4 — CRA
+— BC.F.T4.1(ak) — Scott: set up CRA My Account online
 
-BC.F.T5(I6) — Tire expense
-— BC.F.T5.1 — Kate: draft letter to City of St. Albert
-— BC.F.T5.2 — Scott: supply tire receipt to Kate
-— BC.F.T5.3 — Kate: send draft to scott-wilde@live.com for review
-— BC.F.T5.4 — Scott: review and send
+BC.F.T5 — Tire expense
+— BC.F.T5.1(al) — Kate: draft letter to City of St. Albert
+— BC.F.T5.2(am) — Scott: supply tire receipt to Kate
+— BC.F.T5.3(an) — Kate: send draft to scott-wilde@live.com for review
+— BC.F.T5.4(ao) — Scott: review and send
 
 ---
 
