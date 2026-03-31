@@ -64,12 +64,31 @@ See `task-registry.md` for full tracking. Key items:
 ---
 
 ## Coding System
+
+### 7 Summits Task Coding (MANDATORY — always carry forward to new versions)
+- **Format:** [Summit].[Category].[Task].[Subtask]**(letter)**
+- **Example:** BC.F.T5.4(q) — Scott: review and send
+- **Letter system:** Each subtask gets a random letter (or 2 letters) at the end
+- **Purpose:** Scott replies with just the letter (e.g., "q - complete") instead of the full task code
+- **Reuse:** Once a task is done, that letter can be reused for a new task
+- **CRITICAL:** When creating new 7S versions (V1.25, V1.26, etc.), always preserve and maintain all task letters
+
+### Q-Coding (MANDATORY)
+- **Format:** **Q#** at the beginning of any sentence containing a question
+- **Example:** "**Q5** — do you want me to adjust the tone anywhere?"
+- **Number styling:** The number must be bold (e.g., **Q5** not Q5)
+- **Q range:** Kate uses 0–99, Scott uses 100–199
+- **Purpose:** Easy reference during conversation
+- **Closure:** Scott answers with A# to close the question
+- **Deferred questions:** Stay open until fully resolved
+
+### Legacy Coding (reference only)
 - **50.XX.XX** = Active task
 - **51.XX.XX** = In progress
 - **52.XX.XX** = Pending (waiting on something)
 - **55.XX.XX** = Complete
 - **60.XX.XX** = Questions
-- Project numbers: 01=email, 02=email mgmt, 03=clinic EOD, 04=reply workflow, 05=Athlete program, 06=Clinic IQ, 07=Lakehouse
+- **Project numbers:** 01=email, 02=email mgmt, 03=clinic EOD, 04=reply workflow, 05=Athlete program, 06=Clinic IQ, 07=Lakehouse
 
 ---
 
