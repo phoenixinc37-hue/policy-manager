@@ -33,7 +33,7 @@ S1.T2 — WhatsApp messages
 S1.T3 — Deb / Legal expenses
 — S1.T3.1 — Scott: send Blaise email with questions on WHL / personal taxes / Deb
 
-S1.T4 **** — Kate: send 500 Day Plan email at 8:00 AM (Tue Mar 31)
+S1.T4 **** — Scott: send 500 Day Plan email at 8:00 AM (Tue Mar 31) — Scott sending manually
 
 ---
 
