@@ -129,7 +129,14 @@ Tasks: *No active tasks*
 **S7 — Moon Builder 1037 Inc**
 
 S7.0 — MB (Company Level) — No active issues
-S7.1 — Clinic IQ — No active issues
+S7.1 — Clinic IQ
+Issues:
+S7.1.I1 — Pricing Intelligence System implementation stalled at RV/TG due to Tammy/Dawn delay (see S1.0.I4)
+S7.1.I2 — Dr. Koshy (Rosslyn) — outreach in progress to introduce Pricing Intelligence System
+
+Tasks:
+S7.1.T1(as) — Scott: text Dr. Koshy re Pricing Intelligence System — sent, awaiting response
+S7.1.T2(at) — Scott: schedule visit to Rosslyn to walk Dr. Koshy through clinic report
 S7.2 — Price Intelligence System — No active issues
 S7.3 — 99 Cent Factor — No active issues
 
