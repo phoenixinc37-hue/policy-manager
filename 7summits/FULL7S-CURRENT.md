@@ -84,6 +84,11 @@ Tasks:
 S3.T1 — Railing
 — S3.T1.1(k) — COMPLETE ✅ — filed
 
+S3.T5 — Willie / Art Weekend
+— S3.T5.1(au) — Willie: sending Art Weekend ideas in next few days — awaiting
+— S3.T5.2(av) — Willie: send website address to Jack for revamp review (no charge offer extended)
+— S3.T5.3(aw) — Jack: website revamp option for Willie once URL received
+
 S3.T2 — Quote decision
 — S3.T2.1(l) — Kate: flag Scott when quote received
 — S3.T2.2(m) — Scott: decide insurance vs out of pocket once quote arrives
