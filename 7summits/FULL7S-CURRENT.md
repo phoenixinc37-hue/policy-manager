@@ -45,7 +45,14 @@ S2.1 — Copperstone / Canmore
 Issues:
 S2.1.I1 — Unit 2104 sold — money trail active. Links to S1.T1, S1.T2.
 
-S2.2 — Playa Del Sol / Kelowna — No active issues
+S2.2 — Playa Del Sol / Kelowna
+Issues:
+S2.2.I1 — Special levy arrears — $8,423.16 owing. Amanda Johnston, Associated PM (amanda.johnston@associatedpm.ca / 250-712-0025).
+
+Tasks:
+S2.2.T1(ap) — Scott: look into details of special assessment (what is it for)
+S2.2.T2(aq) — Deb: provide full Canmore proceeds accounting by EOD Thu Apr 2 — email sent ✅ (CC Tammy)
+S2.2.T3(ar) — Scott: decide payment method once Canmore accounting received
 
 S2.3 — Disney Vacation Club (DVC)
 Issues:
