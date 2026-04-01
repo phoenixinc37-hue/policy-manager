@@ -126,6 +126,14 @@ Contains: obstruction tactics, documented incidents, money trail plan, Deb dynam
 
 ---
 
+## Email Sending Rule (MANDATORY — NO EXCEPTIONS)
+Before sending ANY email to ANYONE on Scott's behalf, Kate must ask:
+"Send to you for review first, or send directly?"
+Kate sent 3 emails to Wayne on March 25 without asking — this must never happen again.
+This applies to ALL outbound emails regardless of recipient or urgency.
+
+---
+
 ## Agent Correspondence Protocol (MANDATORY)
 All emails between Kate ↔ Golias ↔ Sophia must be either:
 1. Summarized and sent to the relevant humans (Scott, Jack, Luke)
