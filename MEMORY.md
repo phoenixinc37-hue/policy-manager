@@ -108,6 +108,14 @@ See `task-registry.md` for full tracking. Key items:
 
 ---
 
+## Tammy — Full Pattern & Strategy
+⚠️ CRITICAL FILE — load before responding to ANY Tammy-related situation:
+`csi-comms/TAMMY-PATTERN.md`
+
+Contains: obstruction tactics, documented incidents, money trail plan, Deb dynamic, counter-strategy, CFL leverage points.
+
+---
+
 ## Key Context / Patterns
 - Scott processes emotionally + strategically in parallel
 - Abundant ideas, needs systems to move them forward without his involvement in every step
