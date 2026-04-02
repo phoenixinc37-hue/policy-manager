@@ -126,6 +126,17 @@ Contains: obstruction tactics, documented incidents, money trail plan, Deb dynam
 
 ---
 
+## Email Processing Rule (MANDATORY)
+When Scott forwards an email to goliasphoenix@agentmail.to:
+1. Read the FULL email including all forwarded content
+2. Extract ALL relevant info — names, amounts, dates, action items, links
+3. Fetch any links that contain useful data (pricing, schedules, details)
+4. File extracted info in the correct Summit/Base Camp section
+5. Report back with summary + recommended next steps
+Do not just acknowledge receipt — actively process and extract.
+
+---
+
 ## Email Sending Rule (MANDATORY — NO EXCEPTIONS)
 Before sending ANY email to ANYONE on Scott's behalf, Kate must ask:
 "Send to you for review first, or send directly?"
