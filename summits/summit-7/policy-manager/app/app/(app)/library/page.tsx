@@ -38,7 +38,7 @@ export default function LibraryPage() {
       <PageHeader
         eyebrow="Document library"
         title="Policy library"
-        description="Search the live Rosslyn demo content by type, category, and clinic visibility. Managers can also see drafts."
+        description="Search realistic CSI pilot content by type, category, and clinic visibility. Managers also see drafts and in-flight material."
         action={isManager ? <Link href="/policy/new" className="btn-primary">+ New policy</Link> : undefined}
       />
 

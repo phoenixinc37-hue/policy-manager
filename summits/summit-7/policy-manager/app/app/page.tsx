@@ -3,18 +3,18 @@ import { ArrowRight, Building2, CheckCircle2, FileText, Shield } from "lucide-re
 
 const highlights = [
   {
-    title: "A real source of truth",
-    description: "Policies, SOPs, and time-sensitive updates stay organized by clinic, owner, and effective date.",
+    title: "Operational source of truth",
+    description: "Policies, SOPs, and short-life updates stay organized by clinic, owner, version, and effective date.",
     icon: FileText,
   },
   {
-    title: "Compliance that is visible",
-    description: "Managers can immediately see overdue acknowledgments, policy rollout progress, and draft items waiting to ship.",
+    title: "Manager visibility in minutes",
+    description: "Show overdue acknowledgments, rollout progress, and draft items that still need review before publication.",
     icon: CheckCircle2,
   },
   {
-    title: "Built for veterinary operations",
-    description: "Seeded with realistic multi-clinic workflows so the demo feels like an actual product, not a wireframe.",
+    title: "Configured for CSI, repeatable for Vet Inc.",
+    description: "The demo feels custom enough for a CSI pilot while still reading like a spec product that can roll out to other clinics.",
     icon: Building2,
   },
 ];
@@ -31,7 +31,7 @@ export default function LandingPage() {
             </div>
             <div>
               <p className="text-sm font-semibold tracking-wide text-white">Policy Manager</p>
-              <p className="text-xs text-slate-300">Rosslyn Veterinary Group demo</p>
+              <p className="text-xs text-slate-300">CSI pilot demo · Vet Inc. multi-clinic ops</p>
             </div>
           </div>
           <Link href="/dashboard" className="btn-primary">
@@ -43,13 +43,13 @@ export default function LandingPage() {
           <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <section>
               <div className="mb-6 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1.5 text-sm text-cyan-100">
-                Multi-clinic policy control, acknowledgments, and manager visibility
+                Multi-clinic policy rollout, staff acknowledgments, and practice-manager control
               </div>
               <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-white md:text-6xl">
-                Internal policy software that actually looks ready for a clinic team.
+                Policy software that feels real in a CSI meeting, not like a mockup.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                Demo a polished staff experience, a believable manager console, and realistic Rosslyn clinic content — all in a static-hostable Next.js build.
+                Demo a believable clinic staff experience, a manager console with real rollout pressure, and seeded Rosslyn, Tudor Glen, and Riverside content that supports both custom-build and spec-product positioning.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/dashboard" className="btn-primary gap-2">
@@ -70,8 +70,8 @@ export default function LandingPage() {
                   <p>active clinics</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-semibold text-white">2</p>
-                  <p>core personas to demo</p>
+                  <p className="text-2xl font-semibold text-white">8</p>
+                  <p>demo personas</p>
                 </div>
               </div>
             </section>
@@ -80,10 +80,10 @@ export default function LandingPage() {
               <div className="rounded-[24px] border border-white/10 bg-slate-900/90 p-5">
                 <div className="mb-5 flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-slate-300">Tonight&apos;s rollout</p>
-                    <h2 className="mt-1 text-2xl font-semibold text-white">Controlled Substance Handling Protocol</h2>
+                    <p className="text-sm font-medium text-slate-300">Current rollout</p>
+                    <h2 className="mt-1 text-2xl font-semibold text-white">Controlled Drug Storage, Logging & Weekly Count</h2>
                   </div>
-                  <div className="rounded-2xl bg-emerald-400/15 px-3 py-1 text-sm font-medium text-emerald-200">92% complete</div>
+                  <div className="rounded-2xl bg-emerald-400/15 px-3 py-1 text-sm font-medium text-emerald-200">67% acknowledged</div>
                 </div>
                 <div className="space-y-4">
                   {highlights.map(({ title, description, icon: Icon }) => (

@@ -37,14 +37,14 @@ export default function Sidebar() {
             </div>
             <div>
               <p className="font-semibold text-slate-900">Policy Manager</p>
-              <p className="text-xs text-slate-500">Rosslyn Veterinary Group</p>
+              <p className="text-xs text-slate-500">CSI pilot · Vet Inc. operations</p>
             </div>
           </Link>
         </div>
 
         <div className="p-4">
           <div className="rounded-2xl border border-slate-200 bg-slate-950 p-4 text-white shadow-xl shadow-slate-200/70">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Live demo</p>
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Live pilot demo</p>
             <div className="mt-3 grid grid-cols-2 gap-3">
               <div>
                 <p className="text-2xl font-semibold">{published}</p>

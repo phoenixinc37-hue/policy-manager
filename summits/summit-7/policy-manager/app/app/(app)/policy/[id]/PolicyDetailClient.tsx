@@ -16,7 +16,7 @@ function renderBody(text: string) {
   const flushTable = () => {
     if (!tableRows.length) return;
     elements.push(
-      <div key={`table-${elements.length}`} className="my-4 overflow-x-auto rounded-2xl border border-slate-200">
+      <div key={`table-${elements.length}`} className="my-4 overflow-x-auto rounded-3xl border border-slate-200">
         <table className="w-full text-sm">
           <thead className="bg-slate-50">
             <tr>
@@ -83,33 +83,56 @@ export default function PolicyDetailClient() {
 
   const author = getUser(policy.createdBy);
   const userAck = acknowledgments.find((ack) => ack.policyId === policy.id && ack.userId === currentUser.id);
+  const policyAcks = acknowledgments.filter((ack) => ack.policyId === policy.id);
+  const ackDone = policyAcks.filter((ack) => !!ack.acknowledgedAt).length;
+  const ackTotal = policyAcks.length;
+  const ackPct = ackTotal > 0 ? Math.round((ackDone / ackTotal) * 100) : 0;
+  const estimatedMinutes = Math.max(2, Math.ceil(policy.body.split(/\s+/).length / 180));
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-6xl">
       <div className="mb-4 flex items-center gap-2 text-sm text-slate-400">
         <Link href="/library" className="hover:text-slate-600">Library</Link>
         <span>/</span>
         <span className="text-slate-600">{policy.title}</span>
       </div>
 
-      <div className="mb-6 grid gap-5 xl:grid-cols-[1fr_300px]">
+      <PageHeader
+        eyebrow="Document detail"
+        title={policy.title}
+        description="A versioned document view with clear trust cues: clinic targeting, effective dates, authorship, status, and acknowledgment actions."
+      />
+
+      <div className="mb-6 grid gap-5 xl:grid-cols-[1fr_320px]">
         <section className="card">
           <div className="flex flex-wrap items-center gap-2">
             <span className={TYPE_BADGE_CLASS[policy.type]}>{TYPE_LABELS[policy.type]}</span>
-            <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">{policy.status}</span>
+            <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold capitalize text-slate-600">{policy.status}</span>
             <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">Version {policy.version}</span>
+            <span className="rounded-full bg-cyan-50 px-2.5 py-1 text-xs font-semibold text-cyan-700">~{estimatedMinutes} min read</span>
           </div>
-          <h1 className="mt-4">{policy.title}</h1>
-          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-500">
-            <span>{clinicDisplay(policy.clinics)}</span>
-            <span>{policy.category}</span>
-            <span>Effective {policy.effectiveDate}</span>
-            {policy.reviewDate ? <span>Review by {policy.reviewDate}</span> : null}
+          <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <div className="rounded-2xl bg-slate-50 p-3">
+              <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Clinics</p>
+              <p className="mt-1 text-sm font-medium text-slate-900">{clinicDisplay(policy.clinics)}</p>
+            </div>
+            <div className="rounded-2xl bg-slate-50 p-3">
+              <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Category</p>
+              <p className="mt-1 text-sm font-medium text-slate-900">{policy.category}</p>
+            </div>
+            <div className="rounded-2xl bg-slate-50 p-3">
+              <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Effective date</p>
+              <p className="mt-1 text-sm font-medium text-slate-900">{policy.effectiveDate}</p>
+            </div>
+            <div className="rounded-2xl bg-slate-50 p-3">
+              <p className="text-xs uppercase tracking-[0.16em] text-slate-400">Review date</p>
+              <p className="mt-1 text-sm font-medium text-slate-900">{policy.reviewDate ?? "Not set"}</p>
+            </div>
           </div>
-          <p className="mt-3 text-xs text-slate-400">Created by {author?.name ?? "Unknown"} · Updated {policy.updatedAt}</p>
+          <p className="mt-4 text-xs text-slate-400">Created by {author?.name ?? "Unknown"} · Updated {policy.updatedAt}</p>
         </section>
 
-        <aside className="card bg-slate-950 text-white">
+        <aside className="surface-dark p-5">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Action panel</p>
           {userAck ? (
             <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
@@ -119,6 +142,15 @@ export default function PolicyDetailClient() {
           ) : (
             <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300">No acknowledgment tracked for this persona.</div>
           )}
+          {ackTotal > 0 ? (
+            <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p className="text-sm font-medium text-white">Rollout progress</p>
+              <p className="mt-1 text-sm text-slate-300">{ackDone}/{ackTotal} acknowledged · {ackPct}% complete</p>
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/10">
+                <div className="h-full rounded-full bg-cyan-400" style={{ width: `${ackPct}%` }} />
+              </div>
+            </div>
+          ) : null}
           <div className="mt-4 flex flex-col gap-2">
             {!userAck?.acknowledgedAt && userAck ? <button onClick={() => acknowledgePolicy(policy.id)} className="btn-primary">I have read this</button> : null}
             {isManager ? <button onClick={() => router.push(`/policy/${policy.id}/edit`)} className="btn-secondary border-white/10 bg-white/5 text-white hover:bg-white/10">Edit policy</button> : null}
