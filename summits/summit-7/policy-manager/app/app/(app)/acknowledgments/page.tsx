@@ -3,115 +3,79 @@
 import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
 import { useApp } from "@/lib/app-context";
-import { getPolicy } from "@/lib/mock-data";
-import { TYPE_LABELS, TYPE_BADGE_CLASS } from "@/types";
+import { clinicDisplay } from "@/lib/mock-data";
 
 export default function AcknowledgmentsPage() {
-  const { currentUser, acknowledgments, acknowledgePolicy } = useApp();
+  const { currentUser, acknowledgments, policies, acknowledgePolicy } = useApp();
 
-  const userAcks = acknowledgments.filter((a) => a.userId === currentUser.id);
-  const pending = userAcks.filter((a) => !a.acknowledgedAt);
-  const completed = userAcks
-    .filter((a) => !!a.acknowledgedAt)
-    .sort((a, b) => (b.acknowledgedAt ?? "").localeCompare(a.acknowledgedAt ?? ""));
+  const userAcks = acknowledgments.filter((ack) => ack.userId === currentUser.id);
+  const pending = userAcks.filter((ack) => !ack.acknowledgedAt).sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+  const completed = userAcks.filter((ack) => !!ack.acknowledgedAt).sort((a, b) => (b.acknowledgedAt ?? "").localeCompare(a.acknowledgedAt ?? ""));
 
   return (
-    <div className="max-w-5xl">
+    <div className="mx-auto max-w-6xl">
       <PageHeader
-        title="My Acknowledgments"
-        description="Track your required reads and completed acknowledgments."
+        eyebrow="Acknowledgments"
+        title="My acknowledgments"
+        description="A practical staff queue: what still needs review, what has been acknowledged, and which clinic each item belongs to."
       />
 
-      {/* Pending */}
       <section className="mb-8">
-        <h2 className="mb-3 flex items-center gap-2">
-          Pending
-          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 text-xs font-semibold">
-            {pending.length}
-          </span>
-        </h2>
-        {pending.length === 0 ? (
-          <div className="card text-center py-6">
-            <p className="text-gray-400">You&apos;re all caught up. No pending acknowledgments.</p>
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {pending.map((ack) => {
-              const pol = getPolicy(ack.policyId);
-              if (!pol) return null;
-              return (
-                <div
-                  key={ack.id}
-                  className="card border-l-4 border-l-amber-400 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
-                >
+        <div className="mb-3 flex items-center justify-between">
+          <h2>Pending</h2>
+          <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">{pending.length}</span>
+        </div>
+        <div className="space-y-3">
+          {pending.length === 0 ? <div className="card text-sm text-slate-500">Nothing pending for this persona.</div> : null}
+          {pending.map((ack) => {
+            const policy = policies.find((item) => item.id === ack.policyId);
+            if (!policy) return null;
+            const overdue = ack.dueDate < "2026-04-09";
+            return (
+              <div key={ack.id} className={`card ${overdue ? "border-rose-200 bg-rose-50/70" : "border-amber-200 bg-amber-50/70"}`}>
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                   <div>
-                    <span className={TYPE_BADGE_CLASS[pol.type]}>{TYPE_LABELS[pol.type]}</span>
-                    <Link href={`/policy/${pol.id}`}>
-                      <p className="font-medium text-gray-900 mt-1 hover:text-brand-600">
-                        {pol.title}
-                      </p>
-                    </Link>
-                    <p className="text-xs text-gray-400 mt-0.5">
-                      {pol.category} · Due {ack.dueDate}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="badge-policy capitalize">{policy.type}</span>
+                      {overdue ? <span className="rounded-full bg-rose-100 px-2.5 py-1 text-xs font-semibold text-rose-700">Overdue</span> : null}
+                    </div>
+                    <p className="mt-2 font-semibold text-slate-900">{policy.title}</p>
+                    <p className="mt-1 text-sm text-slate-500">Due {ack.dueDate} · {clinicDisplay(policy.clinics)} · {policy.category}</p>
                   </div>
                   <div className="flex gap-2">
-                    <Link href={`/policy/${pol.id}`} className="btn-secondary text-xs whitespace-nowrap">
-                      Read Policy
-                    </Link>
-                    <button
-                      onClick={() => acknowledgePolicy(pol.id)}
-                      className="btn-primary text-xs whitespace-nowrap"
-                    >
-                      Acknowledge
-                    </button>
+                    <Link href={`/policy/${policy.id}`} className="btn-secondary">Read</Link>
+                    <button onClick={() => acknowledgePolicy(policy.id)} className="btn-primary">Acknowledge</button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        )}
+              </div>
+            );
+          })}
+        </div>
       </section>
 
-      {/* Completed */}
       <section>
-        <h2 className="mb-3">Completed</h2>
-        {completed.length === 0 ? (
-          <div className="card text-center py-6">
-            <p className="text-gray-400">No completed acknowledgments yet.</p>
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {completed.map((ack) => {
-              const pol = getPolicy(ack.policyId);
-              if (!pol) return null;
-              return (
-                <div
-                  key={ack.id}
-                  className="card border-l-4 border-l-green-400 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
-                >
+        <div className="mb-3 flex items-center justify-between">
+          <h2>Completed</h2>
+          <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">{completed.length}</span>
+        </div>
+        <div className="space-y-3">
+          {completed.length === 0 ? <div className="card text-sm text-slate-500">No completed acknowledgments yet.</div> : null}
+          {completed.map((ack) => {
+            const policy = policies.find((item) => item.id === ack.policyId);
+            if (!policy) return null;
+            return (
+              <div key={ack.id} className="card border-emerald-200 bg-emerald-50/60">
+                <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
                   <div>
-                    <span className={TYPE_BADGE_CLASS[pol.type]}>{TYPE_LABELS[pol.type]}</span>
-                    <Link href={`/policy/${pol.id}`}>
-                      <p className="font-medium text-gray-900 mt-1 hover:text-brand-600">
-                        {pol.title}
-                      </p>
-                    </Link>
-                    <p className="text-xs text-gray-400 mt-0.5">
-                      {pol.category} · Acknowledged {ack.acknowledgedAt}
-                    </p>
+                    <p className="font-semibold text-slate-900">{policy.title}</p>
+                    <p className="mt-1 text-sm text-slate-500">Acknowledged {ack.acknowledgedAt} · {clinicDisplay(policy.clinics)}</p>
                   </div>
-                  <span className="text-xs text-green-600 font-medium flex items-center gap-1">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Done
-                  </span>
+                  <Link href={`/policy/${policy.id}`} className="text-sm font-medium text-emerald-700">View document</Link>
                 </div>
-              );
-            })}
-          </div>
-        )}
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );

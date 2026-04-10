@@ -1,110 +1,77 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
 import PolicyCard from "@/components/ui/PolicyCard";
 import { useApp } from "@/lib/app-context";
-import { policies, clinicDisplay } from "@/lib/mock-data";
+import { clinicDisplay, categories } from "@/lib/mock-data";
 import type { CommunicationType } from "@/types";
 
 export default function LibraryPage() {
-  const { currentUser, isManager } = useApp();
+  const { currentUser, isManager, policies } = useApp();
   const [typeFilter, setTypeFilter] = useState<CommunicationType | "all">("all");
+  const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [search, setSearch] = useState("");
 
-  // Filter to policies visible to this user's clinics
-  const visiblePolicies = policies.filter((p) => {
-    // Staff only see published; managers see drafts too
-    if (!isManager && p.status !== "published") return false;
-    return p.clinics.some((c) => currentUser.clinics.includes(c));
-  });
+  const visiblePolicies = useMemo(
+    () =>
+      policies.filter((policy) => {
+        if (!isManager && policy.status !== "published") return false;
+        return policy.clinics.some((clinicId) => currentUser.clinics.includes(clinicId));
+      }),
+    [currentUser.clinics, isManager, policies]
+  );
 
-  const filtered = visiblePolicies.filter((p) => {
-    if (typeFilter !== "all" && p.type !== typeFilter) return false;
-    if (search) {
+  const filtered = visiblePolicies
+    .filter((policy) => (typeFilter === "all" ? true : policy.type === typeFilter))
+    .filter((policy) => (categoryFilter === "all" ? true : policy.category === categoryFilter))
+    .filter((policy) => {
+      if (!search.trim()) return true;
       const q = search.toLowerCase();
-      return (
-        p.title.toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q) ||
-        p.body.toLowerCase().includes(q)
-      );
-    }
-    return true;
-  });
-
-  const sorted = [...filtered].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+      return [policy.title, policy.category, policy.body].some((value) => value.toLowerCase().includes(q));
+    })
+    .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 
   return (
-    <div className="max-w-5xl">
+    <div className="mx-auto max-w-6xl">
       <PageHeader
-        title="Policy Library"
-        description={`Browse all policies, guidelines, and communications. ${sorted.length} items.`}
-        action={
-          isManager ? (
-            <Link href="/policy/new" className="btn-primary">+ New Policy</Link>
-          ) : undefined
-        }
+        eyebrow="Document library"
+        title="Policy library"
+        description="Search the live Rosslyn demo content by type, category, and clinic visibility. Managers can also see drafts."
+        action={isManager ? <Link href="/policy/new" className="btn-primary">+ New policy</Link> : undefined}
       />
 
-      {/* Filters */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        <button
-          onClick={() => setTypeFilter("all")}
-          className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
-            typeFilter === "all"
-              ? "bg-brand-600 text-white"
-              : "bg-white border border-surface-border text-gray-600 hover:bg-gray-50"
-          }`}
-        >
-          All Types ({visiblePolicies.length})
-        </button>
-        <button
-          onClick={() => setTypeFilter("policy")}
-          className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
-            typeFilter === "policy"
-              ? "bg-purple-600 text-white"
-              : "badge-policy cursor-pointer hover:opacity-80"
-          }`}
-        >
-          Administrative Policy ({visiblePolicies.filter((p) => p.type === "policy").length})
-        </button>
-        <button
-          onClick={() => setTypeFilter("sog")}
-          className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
-            typeFilter === "sog"
-              ? "bg-cyan-600 text-white"
-              : "badge-sog cursor-pointer hover:opacity-80"
-          }`}
-        >
-          SOG ({visiblePolicies.filter((p) => p.type === "sog").length})
-        </button>
-        <button
-          onClick={() => setTypeFilter("info")}
-          className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
-            typeFilter === "info"
-              ? "bg-lime-600 text-white"
-              : "badge-info cursor-pointer hover:opacity-80"
-          }`}
-        >
-          Communication Info ({visiblePolicies.filter((p) => p.type === "info").length})
-        </button>
+      <div className="card mb-6">
+        <div className="grid gap-4 lg:grid-cols-[1.2fr_0.45fr_0.45fr]">
+          <input
+            type="text"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Search titles, categories, or body text..."
+            className="input"
+          />
+          <select value={typeFilter} onChange={(event) => setTypeFilter(event.target.value as CommunicationType | "all")} className="input">
+            <option value="all">All document types</option>
+            <option value="policy">Administrative policy</option>
+            <option value="sog">Standard operating guideline</option>
+            <option value="info">Communication info</option>
+          </select>
+          <select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)} className="input">
+            <option value="all">All categories</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>{category}</option>
+            ))}
+          </select>
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-500">
+          <span className="rounded-full bg-slate-100 px-3 py-1">{filtered.length} matching items</span>
+          <span className="rounded-full bg-slate-100 px-3 py-1">{visiblePolicies.filter((item) => item.status === "draft").length} drafts visible to manager roles</span>
+        </div>
       </div>
 
-      {/* Search */}
-      <div className="mb-6">
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search policies, guidelines, and communications..."
-          className="w-full px-4 py-2.5 border border-surface-border rounded-lg text-sm bg-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-500"
-        />
-      </div>
-
-      {/* Policy list */}
-      <div className="grid gap-3">
-        {sorted.map((item) => (
+      <div className="grid gap-4 lg:grid-cols-2">
+        {filtered.map((item) => (
           <PolicyCard
             key={item.id}
             id={item.id}
@@ -113,14 +80,14 @@ export default function LibraryPage() {
             category={item.category}
             clinic={clinicDisplay(item.clinics)}
             date={item.updatedAt}
+            status={item.status}
           />
         ))}
-        {sorted.length === 0 && (
-          <div className="card text-center py-8">
-            <p className="text-gray-400">No policies match your search or filters.</p>
-          </div>
-        )}
       </div>
+
+      {filtered.length === 0 ? (
+        <div className="card mt-4 text-center text-sm text-slate-500">No items match the current filters.</div>
+      ) : null}
     </div>
   );
 }
