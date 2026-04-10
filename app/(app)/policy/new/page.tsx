@@ -1,224 +1,181 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
 import { clinics, categories } from "@/lib/mock-data";
+import { useApp } from "@/lib/app-context";
 import type { CommunicationType, PolicyStatus } from "@/types";
+
+const starterTemplates: Record<CommunicationType, string> = {
+  policy: `## Purpose\nExplain the non-negotiable standard.\n\n## Scope\nList who this applies to.\n\n## Policy\n1. Clear rule one\n2. Clear rule two\n\n## Compliance\n- Who owns follow-up\n- What happens if missed`,
+  sog: `## Purpose\nDescribe the operational outcome.\n\n## Workflow\n1. First step\n2. Second step\n3. Escalation if needed\n\n## Notes\n- Exceptions\n- Documentation requirements`,
+  info: `## Update\nSummarize the communication.\n\n## What staff need to know\n- Key point\n- Timeline\n- Contact person`,
+};
 
 export default function CreatePolicyPage() {
   const router = useRouter();
-  const [saved, setSaved] = useState(false);
+  const { savePolicy } = useApp();
+  const [savedId, setSavedId] = useState<string | null>(null);
   const [form, setForm] = useState({
     title: "",
     type: "policy" as CommunicationType,
     category: categories[0],
-    clinicIds: [] as string[],
+    clinicIds: clinics.map((clinic) => clinic.id),
     status: "draft" as PolicyStatus,
-    effectiveDate: "",
-    reviewDate: "",
-    body: "",
+    effectiveDate: "2026-04-10",
+    reviewDate: "2026-10-10",
+    body: starterTemplates.policy,
   });
+
+  const clinicSummary = useMemo(() => {
+    if (form.clinicIds.length === clinics.length) return "All clinics selected";
+    if (form.clinicIds.length === 0) return "No clinics selected";
+    return `${form.clinicIds.length} clinic(s) targeted`;
+  }, [form.clinicIds]);
 
   const toggleClinic = (id: string) => {
     setForm((prev) => ({
       ...prev,
-      clinicIds: prev.clinicIds.includes(id)
-        ? prev.clinicIds.filter((c) => c !== id)
-        : [...prev.clinicIds, id],
-    }));
-  };
-
-  const allClinicsSelected = form.clinicIds.length === clinics.length;
-  const toggleAll = () => {
-    setForm((prev) => ({
-      ...prev,
-      clinicIds: allClinicsSelected ? [] : clinics.map((c) => c.id),
+      clinicIds: prev.clinicIds.includes(id) ? prev.clinicIds.filter((clinicId) => clinicId !== id) : [...prev.clinicIds, id],
     }));
   };
 
   const handleSave = (status: PolicyStatus) => {
-    setForm((prev) => ({ ...prev, status }));
-    setSaved(true);
-    setTimeout(() => {
-      router.push("/library");
-    }, 1500);
+    const id = savePolicy({ ...form, status });
+    setSavedId(id);
+    window.setTimeout(() => router.push(`/policy/${id}`), 900);
   };
 
-  if (saved) {
+  if (savedId) {
     return (
-      <div className="max-w-3xl">
-        <div className="card text-center py-12">
-          <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {form.status === "published" ? "Policy Published" : "Draft Saved"}
-          </h2>
-          <p className="text-gray-500">
-            {form.status === "published"
-              ? "Your policy is now live and visible to assigned staff."
-              : "Your draft has been saved. You can publish it later."}
-          </p>
-          <p className="text-sm text-gray-400 mt-2">Redirecting to library...</p>
+      <div className="mx-auto max-w-3xl">
+        <div className="card py-16 text-center">
+          <h2>Saved successfully</h2>
+          <p className="mt-2 text-sm text-slate-500">Your demo document is ready and you&apos;re being redirected to the detail view.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-3xl">
-      <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
-        <Link href="/library" className="hover:text-gray-600">Library</Link>
+    <div className="mx-auto max-w-6xl">
+      <div className="mb-4 flex items-center gap-2 text-sm text-slate-400">
+        <Link href="/library" className="hover:text-slate-600">Library</Link>
         <span>/</span>
-        <span className="text-gray-600">New Policy</span>
+        <span className="text-slate-600">New policy</span>
       </div>
 
       <PageHeader
-        title="Create New Policy"
-        description="Fill in the details below to create a new policy, guideline, or communication."
+        eyebrow="Authoring"
+        title="Create a new document"
+        description="Choose clinics, define the document type, and publish with a flow that looks credible in front of clinic operators."
       />
 
-      <div className="space-y-6">
-        {/* Title */}
-        <div className="card">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-          <input
-            type="text"
-            value={form.title}
-            onChange={(e) => setForm({ ...form, title: e.target.value })}
-            placeholder="e.g., After-Hours Emergency Contact Procedure"
-            className="w-full px-3 py-2 border border-surface-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-500"
-          />
-        </div>
-
-        {/* Type & Category */}
-        <div className="card">
-          <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid gap-5 xl:grid-cols-[1fr_330px]">
+        <section className="space-y-5">
+          <div className="card space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Communication Type
-              </label>
-              <select
-                value={form.type}
-                onChange={(e) => setForm({ ...form, type: e.target.value as CommunicationType })}
-                className="w-full px-3 py-2 border border-surface-border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-500"
-              >
-                <option value="policy">Administrative Policy</option>
-                <option value="sog">Standard Operating Guideline</option>
-                <option value="info">Communication Info</option>
-              </select>
+              <label className="mb-1 block text-sm font-medium text-slate-700">Title</label>
+              <input value={form.title} onChange={(event) => setForm({ ...form, title: event.target.value })} className="input" placeholder="e.g., Controlled Drug Count Escalation Workflow" />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-              <select
-                value={form.category}
-                onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="w-full px-3 py-2 border border-surface-border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-500"
-              >
-                {categories.map((c) => (
-                  <option key={c} value={c}>{c}</option>
-                ))}
-              </select>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700">Type</label>
+                <select
+                  value={form.type}
+                  onChange={(event) => {
+                    const nextType = event.target.value as CommunicationType;
+                    setForm({ ...form, type: nextType, body: starterTemplates[nextType] });
+                  }}
+                  className="input"
+                >
+                  <option value="policy">Administrative policy</option>
+                  <option value="sog">Standard operating guideline</option>
+                  <option value="info">Communication info</option>
+                </select>
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700">Category</label>
+                <select value={form.category} onChange={(event) => setForm({ ...form, category: event.target.value })} className="input">
+                  {categories.map((category) => <option key={category} value={category}>{category}</option>)}
+                </select>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Clinics */}
-        <div className="card">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Assign to Clinics
-          </label>
-          <div className="space-y-2">
-            <label className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={allClinicsSelected}
-                onChange={toggleAll}
-                className="rounded border-gray-300 text-brand-600 focus:ring-brand-500"
-              />
-              <span className="font-medium">All Clinics</span>
-            </label>
-            {clinics.map((clinic) => (
-              <label key={clinic.id} className="flex items-center gap-2 text-sm ml-4">
-                <input
-                  type="checkbox"
-                  checked={form.clinicIds.includes(clinic.id)}
-                  onChange={() => toggleClinic(clinic.id)}
-                  className="rounded border-gray-300 text-brand-600 focus:ring-brand-500"
-                />
-                {clinic.name}
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Dates */}
-        <div className="card">
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Effective Date
-              </label>
-              <input
-                type="date"
-                value={form.effectiveDate}
-                onChange={(e) => setForm({ ...form, effectiveDate: e.target.value })}
-                className="w-full px-3 py-2 border border-surface-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-500"
-              />
+          <div className="card">
+            <div className="mb-3 flex items-center justify-between">
+              <label className="block text-sm font-medium text-slate-700">Clinic targeting</label>
+              <button type="button" onClick={() => setForm({ ...form, clinicIds: clinics.map((clinic) => clinic.id) })} className="text-sm font-medium text-cyan-700">Select all</button>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Review Date
-              </label>
-              <input
-                type="date"
-                value={form.reviewDate}
-                onChange={(e) => setForm({ ...form, reviewDate: e.target.value })}
-                className="w-full px-3 py-2 border border-surface-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-500"
-              />
+            <div className="grid gap-3 md:grid-cols-3">
+              {clinics.map((clinic) => {
+                const active = form.clinicIds.includes(clinic.id);
+                return (
+                  <button key={clinic.id} type="button" onClick={() => toggleClinic(clinic.id)} className={`rounded-3xl border p-4 text-left transition ${active ? "border-cyan-300 bg-cyan-50" : "border-slate-200 bg-white hover:bg-slate-50"}`}>
+                    <p className="font-medium text-slate-900">{clinic.name}</p>
+                    <p className="mt-1 text-sm text-slate-500">{active ? "Included in rollout" : "Not selected"}</p>
+                  </button>
+                );
+              })}
             </div>
           </div>
-        </div>
 
-        {/* Body */}
-        <div className="card">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Policy Content
-          </label>
-          <textarea
-            value={form.body}
-            onChange={(e) => setForm({ ...form, body: e.target.value })}
-            rows={12}
-            placeholder="Write the policy content here. You can use ## for headings, - for bullet points, and **bold** for emphasis."
-            className="w-full px-3 py-2 border border-surface-border rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-500 resize-y"
-          />
-          <p className="text-xs text-gray-400 mt-1">
-            Supports basic formatting: ## Heading, - bullet, **bold**, numbered lists
-          </p>
-        </div>
-
-        {/* Actions */}
-        <div className="flex items-center justify-between gap-3 pb-8">
-          <Link href="/library" className="btn-secondary">
-            Cancel
-          </Link>
-          <div className="flex gap-3">
-            <button onClick={() => handleSave("draft")} className="btn-secondary">
-              Save as Draft
-            </button>
-            <button
-              onClick={() => handleSave("published")}
-              className="btn-primary"
-              disabled={!form.title.trim()}
-            >
-              Publish
-            </button>
+          <div className="card grid gap-4 md:grid-cols-2">
+            <div>
+              <label className="mb-1 block text-sm font-medium text-slate-700">Effective date</label>
+              <input type="date" value={form.effectiveDate} onChange={(event) => setForm({ ...form, effectiveDate: event.target.value })} className="input" />
+            </div>
+            <div>
+              <label className="mb-1 block text-sm font-medium text-slate-700">Review date</label>
+              <input type="date" value={form.reviewDate} onChange={(event) => setForm({ ...form, reviewDate: event.target.value })} className="input" />
+            </div>
           </div>
-        </div>
+
+          <div className="card">
+            <label className="mb-1 block text-sm font-medium text-slate-700">Document body</label>
+            <textarea value={form.body} onChange={(event) => setForm({ ...form, body: event.target.value })} className="textarea min-h-[360px]" />
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-10">
+            <Link href="/library" className="btn-secondary">Cancel</Link>
+            <div className="flex gap-3">
+              <button onClick={() => handleSave("draft")} className="btn-secondary">Save draft</button>
+              <button onClick={() => handleSave("published")} className="btn-primary" disabled={!form.title.trim() || !form.body.trim()}>
+                Publish document
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <aside className="space-y-4">
+          <div className="surface-dark p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Preview checklist</p>
+            <div className="mt-4 space-y-3 text-sm">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="font-medium text-white">Audience</p>
+                <p className="mt-1 text-slate-300">{clinicSummary}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="font-medium text-white">Type</p>
+                <p className="mt-1 text-slate-300 capitalize">{form.type}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="font-medium text-white">Publishing behavior</p>
+                <p className="mt-1 text-slate-300">New published items create fresh acknowledgments for staff in affected clinics.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="card-muted">
+            <p className="section-label">Authoring guidance</p>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              Strong demo documents usually include a clear purpose, who it applies to, the workflow or rule itself, and what accountability looks like after publication.
+            </p>
+          </div>
+        </aside>
       </div>
     </div>
   );

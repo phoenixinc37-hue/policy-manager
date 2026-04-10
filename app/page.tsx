@@ -1,79 +1,110 @@
 import Link from "next/link";
+import { ArrowRight, Building2, CheckCircle2, FileText, Shield } from "lucide-react";
+
+const highlights = [
+  {
+    title: "Operational source of truth",
+    description: "Policies, SOPs, and short-life updates stay organized by clinic, owner, version, and effective date.",
+    icon: FileText,
+  },
+  {
+    title: "Manager visibility in minutes",
+    description: "Show overdue acknowledgments, rollout progress, and draft items that still need review before publication.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Configured for CSI, repeatable for Vet Inc.",
+    description: "The demo feels custom enough for a CSI pilot while still reading like a spec product that can roll out to other clinics.",
+    icon: Building2,
+  },
+];
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="border-b border-surface-border bg-white">
-        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">PM</span>
+    <div className="min-h-screen bg-slate-950 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.18),_transparent_32%),radial-gradient(circle_at_top_right,_rgba(59,130,246,0.16),_transparent_28%)]" />
+      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 lg:px-10">
+        <header className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-5 py-4 backdrop-blur">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400/20 text-cyan-200 ring-1 ring-cyan-300/20">
+              <Shield className="h-5 w-5" />
             </div>
-            <span className="font-semibold text-gray-900">Policy Manager</span>
+            <div>
+              <p className="text-sm font-semibold tracking-wide text-white">Policy Manager</p>
+              <p className="text-xs text-slate-300">CSI pilot demo · Vet Inc. multi-clinic ops</p>
+            </div>
           </div>
           <Link href="/dashboard" className="btn-primary">
-            Sign In
+            Open demo
           </Link>
-        </div>
-      </header>
+        </header>
 
-      {/* Hero */}
-      <main className="flex-1 flex items-center">
-        <div className="max-w-5xl mx-auto px-4 py-16 md:py-24">
-          <div className="max-w-2xl">
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">
-              The operating system for clinic policy, guidance, and internal
-              communication.
-            </h1>
-            <p className="text-lg text-gray-500 mb-8 leading-relaxed">
-              Create, organize, issue, and track policy across one clinic or
-              many — with clear acknowledgment, better consistency, and one
-              place your team can trust for the current answer.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 mb-12">
-              <Link href="/dashboard" className="btn-primary text-base px-6 py-3">
-                Get Started
-              </Link>
-              <button className="btn-secondary text-base px-6 py-3">
-                Learn More
-              </button>
-            </div>
+        <main className="flex flex-1 items-center py-16 lg:py-24">
+          <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <section>
+              <div className="mb-6 inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1.5 text-sm text-cyan-100">
+                Multi-clinic policy rollout, staff acknowledgments, and practice-manager control
+              </div>
+              <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-white md:text-6xl">
+                Policy software that feels real in a CSI meeting, not like a mockup.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+                Demo a believable clinic staff experience, a manager console with real rollout pressure, and seeded Rosslyn, Tudor Glen, and Riverside content that supports both custom-build and spec-product positioning.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/dashboard" className="btn-primary gap-2">
+                  Enter app
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="/manager" className="btn-secondary border-white/15 bg-white/5 text-white hover:bg-white/10">
+                  View manager dashboard
+                </Link>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-6 text-sm text-slate-300">
+                <div>
+                  <p className="text-2xl font-semibold text-white">12</p>
+                  <p>seeded documents</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-semibold text-white">3</p>
+                  <p>active clinics</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-semibold text-white">8</p>
+                  <p>demo personas</p>
+                </div>
+              </div>
+            </section>
 
-            {/* Communication types */}
-            <div className="grid sm:grid-cols-3 gap-4">
-              <div className="card">
-                <span className="badge-policy mb-3">Administrative Policy</span>
-                <p className="text-sm text-gray-600 mt-2">
-                  Black-and-white direction. Mandatory standards and rules
-                  issued top-down with no variance.
-                </p>
+            <section className="rounded-[28px] border border-white/10 bg-white/6 p-5 shadow-2xl shadow-cyan-950/30 backdrop-blur-xl">
+              <div className="rounded-[24px] border border-white/10 bg-slate-900/90 p-5">
+                <div className="mb-5 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-slate-300">Current rollout</p>
+                    <h2 className="mt-1 text-2xl font-semibold text-white">Controlled Drug Storage, Logging & Weekly Count</h2>
+                  </div>
+                  <div className="rounded-2xl bg-emerald-400/15 px-3 py-1 text-sm font-medium text-emerald-200">67% acknowledged</div>
+                </div>
+                <div className="space-y-4">
+                  {highlights.map(({ title, description, icon: Icon }) => (
+                    <div key={title} className="rounded-2xl border border-white/8 bg-white/5 p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="mt-0.5 rounded-xl bg-cyan-400/15 p-2 text-cyan-200">
+                          <Icon className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-white">{title}</p>
+                          <p className="mt-1 text-sm leading-6 text-slate-300">{description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="card">
-                <span className="badge-sog mb-3">Standard Operating Guideline</span>
-                <p className="text-sm text-gray-600 mt-2">
-                  Principle-based operational guidance that helps team members
-                  make the right decision.
-                </p>
-              </div>
-              <div className="card">
-                <span className="badge-info mb-3">Communication Info</span>
-                <p className="text-sm text-gray-600 mt-2">
-                  FYI or temporary information. Reference material, awareness
-                  items, and expiring notices.
-                </p>
-              </div>
-            </div>
+            </section>
           </div>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-surface-border bg-white py-6">
-        <div className="max-w-5xl mx-auto px-4 text-sm text-gray-400">
-          Policy Manager — Built for veterinary clinic operations
-        </div>
-      </footer>
+        </main>
+      </div>
     </div>
   );
 }
