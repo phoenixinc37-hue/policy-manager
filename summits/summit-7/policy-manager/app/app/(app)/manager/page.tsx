@@ -38,7 +38,7 @@ export default function ManagerDashboardPage() {
       <PageHeader
         eyebrow="Manager console"
         title="Rollout and compliance dashboard"
-        description="A polished control room for a practice manager: drafts in flight, rollout health, and which staff still need follow-up."
+        description="The sales-ready view for a practice manager: what is live, what is stalled, and which clinic teams still need follow-up before rollout is truly complete."
         action={<Link href="/policy/new" className="btn-primary">+ Create policy</Link>}
       />
 
@@ -55,7 +55,7 @@ export default function ManagerDashboardPage() {
           <div className="mb-4 flex items-center justify-between">
             <div>
               <h2>Draft queue</h2>
-              <p className="mt-1 text-sm text-slate-500">Items a manager would likely review before publishing.</p>
+              <p className="mt-1 text-sm text-slate-500">Exactly the kind of items a clinic operator would review before a controlled publish.</p>
             </div>
             <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">{drafts.length} open</span>
           </div>
@@ -79,7 +79,7 @@ export default function ManagerDashboardPage() {
           <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
               <h2>Rollout status by policy</h2>
-              <p className="mt-1 text-sm text-slate-500">See what is stuck, nearly complete, or fully acknowledged.</p>
+              <p className="mt-1 text-sm text-slate-500">Useful in a manager meeting because it tells a concrete follow-up story, not just a content story.</p>
             </div>
             <select value={selectedClinic} onChange={(event) => setSelectedClinic(event.target.value)} className="input max-w-xs">
               <option value="all">All clinics</option>
@@ -116,7 +116,7 @@ export default function ManagerDashboardPage() {
       <section className="card overflow-x-auto">
         <div className="mb-4">
           <h2>Staff compliance snapshot</h2>
-          <p className="mt-1 text-sm text-slate-500">Simple but useful for a demo walkthrough and manager story.</p>
+          <p className="mt-1 text-sm text-slate-500">Strong enough for sales because it shows who a manager would actually chase and where the operational friction sits.</p>
         </div>
         <table className="w-full min-w-[640px] text-sm">
           <thead>

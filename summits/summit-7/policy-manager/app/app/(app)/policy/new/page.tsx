@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
@@ -29,6 +29,12 @@ export default function CreatePolicyPage() {
     body: starterTemplates.policy,
   });
 
+  const clinicSummary = useMemo(() => {
+    if (form.clinicIds.length === clinics.length) return "All clinics selected";
+    if (form.clinicIds.length === 0) return "No clinics selected";
+    return `${form.clinicIds.length} clinic(s) targeted`;
+  }, [form.clinicIds]);
+
   const toggleClinic = (id: string) => {
     setForm((prev) => ({
       ...prev,
@@ -54,7 +60,7 @@ export default function CreatePolicyPage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-6xl">
       <div className="mb-4 flex items-center gap-2 text-sm text-slate-400">
         <Link href="/library" className="hover:text-slate-600">Library</Link>
         <span>/</span>
@@ -64,10 +70,10 @@ export default function CreatePolicyPage() {
       <PageHeader
         eyebrow="Authoring"
         title="Create a new document"
-        description="This flow is intentionally demo-friendly: choose clinics, adjust type, write content, and publish or keep as draft."
+        description="Choose clinics, define the document type, and publish with a flow that looks credible in front of clinic operators."
       />
 
-      <div className="grid gap-5 xl:grid-cols-[1fr_320px]">
+      <div className="grid gap-5 xl:grid-cols-[1fr_330px]">
         <section className="space-y-5">
           <div className="card space-y-4">
             <div>
@@ -108,7 +114,7 @@ export default function CreatePolicyPage() {
               {clinics.map((clinic) => {
                 const active = form.clinicIds.includes(clinic.id);
                 return (
-                  <button key={clinic.id} type="button" onClick={() => toggleClinic(clinic.id)} className={`rounded-2xl border p-4 text-left transition ${active ? "border-cyan-300 bg-cyan-50" : "border-slate-200 bg-white hover:bg-slate-50"}`}>
+                  <button key={clinic.id} type="button" onClick={() => toggleClinic(clinic.id)} className={`rounded-3xl border p-4 text-left transition ${active ? "border-cyan-300 bg-cyan-50" : "border-slate-200 bg-white hover:bg-slate-50"}`}>
                     <p className="font-medium text-slate-900">{clinic.name}</p>
                     <p className="mt-1 text-sm text-slate-500">{active ? "Included in rollout" : "Not selected"}</p>
                   </button>
@@ -144,21 +150,30 @@ export default function CreatePolicyPage() {
           </div>
         </section>
 
-        <aside className="card h-fit bg-slate-950 text-white">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Preview checklist</p>
-          <div className="mt-4 space-y-3 text-sm">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="font-medium text-white">Audience</p>
-              <p className="mt-1 text-slate-300">{form.clinicIds.length === clinics.length ? "All clinics selected" : `${form.clinicIds.length} clinic(s) targeted`}</p>
+        <aside className="space-y-4">
+          <div className="surface-dark p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Preview checklist</p>
+            <div className="mt-4 space-y-3 text-sm">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="font-medium text-white">Audience</p>
+                <p className="mt-1 text-slate-300">{clinicSummary}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="font-medium text-white">Type</p>
+                <p className="mt-1 text-slate-300 capitalize">{form.type}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="font-medium text-white">Publishing behavior</p>
+                <p className="mt-1 text-slate-300">New published items create fresh acknowledgments for staff in affected clinics.</p>
+              </div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="font-medium text-white">Type</p>
-              <p className="mt-1 text-slate-300 capitalize">{form.type}</p>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="font-medium text-white">Publishing behavior</p>
-              <p className="mt-1 text-slate-300">New published items create fresh acknowledgments for staff in affected clinics.</p>
-            </div>
+          </div>
+
+          <div className="card-muted">
+            <p className="section-label">Authoring guidance</p>
+            <p className="mt-3 text-sm leading-6 text-slate-600">
+              Strong demo documents usually include a clear purpose, who it applies to, the workflow or rule itself, and what accountability looks like after publication.
+            </p>
           </div>
         </aside>
       </div>

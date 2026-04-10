@@ -17,7 +17,7 @@ export default function AcknowledgmentsPage() {
       <PageHeader
         eyebrow="Acknowledgments"
         title="My acknowledgments"
-        description="A practical staff queue: what still needs review, what has been acknowledged, and which clinic each item belongs to."
+        description="A believable staff queue: what still needs review, what has already been acknowledged, and which clinic each item belongs to."
       />
 
       <section className="mb-8">

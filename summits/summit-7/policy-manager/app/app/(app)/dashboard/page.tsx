@@ -24,7 +24,7 @@ export default function DashboardPage() {
       <PageHeader
         eyebrow={isManager ? "Manager workspace" : "Staff workspace"}
         title={`Good evening, ${currentUser.name.split(" ")[0]}.`}
-        description="This demo is tuned to show what matters fast: what changed, what needs acknowledgment, and where managers still need to act."
+        description="Built to answer the first real clinic questions fast: what changed, who still needs to read it, and where a manager needs to intervene today."
         action={
           isManager ? (
             <Link href="/policy/new" className="btn-primary">+ Create policy</Link>
@@ -33,9 +33,9 @@ export default function DashboardPage() {
       />
 
       <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Pending reads" value={pendingAcks.length} sublabel="Items assigned to you" tone={pendingAcks.length ? "warning" : "default"} />
-        <StatCard label="Visible documents" value={visiblePolicies.length} sublabel="Policies, SOGs, and info updates" />
-        <StatCard label="Completed acknowledgments" value={completedAcks.length} sublabel="Confirmed by this persona" tone="success" />
+        <StatCard label="Pending reads" value={pendingAcks.length} sublabel="Assigned to this persona" tone={pendingAcks.length ? "warning" : "default"} />
+        <StatCard label="Visible documents" value={visiblePolicies.length} sublabel="Policies, SOGs, and ops updates" />
+        <StatCard label="Completed acknowledgments" value={completedAcks.length} sublabel="Already confirmed in demo" tone="success" />
         <StatCard label="Assigned clinics" value={currentUser.clinics.length} sublabel={clinicDisplay(currentUser.clinics)} tone="dark" />
       </div>
 
@@ -44,7 +44,7 @@ export default function DashboardPage() {
           <div className="mb-4 flex items-start justify-between gap-3">
             <div>
               <h2>Required reads</h2>
-              <p className="mt-1 text-sm text-slate-500">A clear acknowledgement queue for the current user persona.</p>
+              <p className="mt-1 text-sm text-slate-500">A clean acknowledgment queue that feels like a real staff home screen.</p>
             </div>
             {overdue.length > 0 ? <span className="rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">{overdue.length} overdue</span> : null}
           </div>
@@ -78,19 +78,23 @@ export default function DashboardPage() {
         </section>
 
         <section className="card bg-slate-950 text-white">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Demo notes</p>
-          <h2 className="mt-3 text-white">Role switcher is live</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Sales framing</p>
+          <h2 className="mt-3 text-white">CSI-first, product-second</h2>
           <p className="mt-2 text-sm leading-6 text-slate-300">
-            Use the sidebar to flip between Scott as practice manager and front-line staff personas. Acknowledgment state updates in-session.
+            This version is seeded to feel specific to CSI operations today while still proving the product can roll out across other Vet Inc. clinics with light retargeting.
           </p>
           <div className="mt-6 space-y-4 text-sm">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
               <p className="font-medium text-white">Best demo path</p>
-              <p className="mt-1 text-slate-300">Homepage → Dashboard → Library → Policy detail → Acknowledge → Manager → Edit/Create.</p>
+              <p className="mt-1 text-slate-300">Landing → Dashboard → Library → Policy detail → Acknowledge → Manager console → Edit/Create.</p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="font-medium text-white">Seeded organization</p>
-              <p className="mt-1 text-slate-300">Rosslyn Veterinary Clinic, Tudor Glen Veterinary Hospital, and Rosslyn Park Animal Hospital.</p>
+              <p className="font-medium text-white">Seeded clinic set</p>
+              <p className="mt-1 text-slate-300">Rosslyn Veterinary Clinic, Tudor Glen Veterinary Hospital, and Riverside Veterinary Clinic.</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p className="font-medium text-white">What feels credible</p>
+              <p className="mt-1 text-slate-300">Real roles, due dates, operational language, and clinic-specific updates instead of generic lorem-ipsum policies.</p>
             </div>
           </div>
         </section>
@@ -100,7 +104,7 @@ export default function DashboardPage() {
         <div className="mb-4 flex items-end justify-between">
           <div>
             <h2>Recent updates</h2>
-            <p className="mt-1 text-sm text-slate-500">Latest clinic-wide changes visible to this user.</p>
+            <p className="mt-1 text-sm text-slate-500">Latest live content visible to this persona.</p>
           </div>
           <Link href="/library" className="text-sm font-medium text-cyan-700">View full library</Link>
         </div>
