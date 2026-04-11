@@ -6,25 +6,26 @@ import StatCard from "@/components/ui/StatCard";
 import PolicyCard from "@/components/ui/PolicyCard";
 import { useApp } from "@/lib/app-context";
 import { clinicDisplay } from "@/lib/mock-data";
+import { DEMO_TODAY, dueLabel, formatDate, greetingForRole, isOverdue } from "@/lib/date-utils";
+import { getVisiblePolicies, getUserCompletedAcks, getUserPendingAcks } from "@/lib/metrics";
 
 export default function DashboardPage() {
-  const { currentUser, acknowledgments, acknowledgePolicy, isManager, policies } = useApp();
+  const { currentUser, acknowledgments, acknowledgePolicy, isManager, policies, workspaceMode } = useApp();
 
-  const visiblePolicies = policies.filter((policy) =>
-    policy.clinics.some((clinicId) => currentUser.clinics.includes(clinicId)) &&
-    (isManager || policy.status === "published")
-  );
-  const pendingAcks = acknowledgments.filter((ack) => ack.userId === currentUser.id && !ack.acknowledgedAt);
-  const completedAcks = acknowledgments.filter((ack) => ack.userId === currentUser.id && !!ack.acknowledgedAt);
+  const visiblePolicies = getVisiblePolicies(policies, currentUser, isManager);
+  const pendingAcks = getUserPendingAcks(acknowledgments, currentUser.id).sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+  const completedAcks = getUserCompletedAcks(acknowledgments, currentUser.id);
   const recentItems = [...visiblePolicies].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)).slice(0, 4);
-  const overdue = pendingAcks.filter((ack) => ack.dueDate < "2026-04-09");
+  const overdue = pendingAcks.filter((ack) => isOverdue(ack.dueDate));
+  const dueToday = pendingAcks.filter((ack) => ack.dueDate === DEMO_TODAY).length;
+  const nextRequired = pendingAcks[0] ? policies.find((item) => item.id === pendingAcks[0].policyId) : null;
 
   return (
     <div className="mx-auto max-w-6xl">
       <PageHeader
         eyebrow={isManager ? "Manager workspace" : "Staff workspace"}
-        title={`Good evening, ${currentUser.name.split(" ")[0]}.`}
-        description="Built to answer the first real clinic questions fast: what changed, who still needs to read it, and where a manager needs to intervene today."
+        title={`${greetingForRole()}, ${currentUser.name.split(" ")[0]}.`}
+        description={workspaceMode === "blank" ? "Blank workspace is active. This is the clean-start experience a brand-new clinic would see before any seeded demo content exists." : "A sharper beta home screen: what changed, what is urgent today, and what a clinic user should do next without hunting around."}
         action={
           isManager ? (
             <Link href="/policy/new" className="btn-primary">+ Create policy</Link>
@@ -33,37 +34,56 @@ export default function DashboardPage() {
       />
 
       <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Pending reads" value={pendingAcks.length} sublabel="Assigned to this persona" tone={pendingAcks.length ? "warning" : "default"} />
+        <StatCard label="Pending reads" value={pendingAcks.length} sublabel={pendingAcks.length ? `${dueToday} due today · ${overdue.length} overdue` : "Nothing assigned right now"} tone={pendingAcks.length ? "warning" : "default"} />
         <StatCard label="Visible documents" value={visiblePolicies.length} sublabel="Policies, SOGs, and ops updates" />
-        <StatCard label="Completed acknowledgments" value={completedAcks.length} sublabel="Already confirmed in demo" tone="success" />
+        <StatCard label="Completed acknowledgments" value={completedAcks.length} sublabel="Already confirmed in this demo session" tone="success" />
         <StatCard label="Assigned clinics" value={currentUser.clinics.length} sublabel={clinicDisplay(currentUser.clinics)} tone="dark" />
       </div>
+
+      {workspaceMode === "blank" && policies.length === 0 ? (
+        <div className="card mb-8 border-emerald-200 bg-emerald-50/70">
+          <h2>Blank workspace is ready</h2>
+          <p className="mt-2 text-sm leading-6 text-emerald-900/80">
+            This clean-start mode removes seeded demo data so a new clinic can see the real onboarding posture. The next best step is to create the first policy from the AI-assisted authoring flow.
+          </p>
+          <div className="mt-4 flex gap-3">
+            <Link href="/policy/new" className="btn-primary">Create first policy</Link>
+            <Link href="/library" className="btn-secondary">Open empty library</Link>
+          </div>
+        </div>
+      ) : null}
 
       <div className="mb-8 grid gap-5 xl:grid-cols-[1.3fr_0.7fr]">
         <section className="card">
           <div className="mb-4 flex items-start justify-between gap-3">
             <div>
               <h2>Required reads</h2>
-              <p className="mt-1 text-sm text-slate-500">A clean acknowledgment queue that feels like a real staff home screen.</p>
+              <p className="mt-1 text-sm text-slate-500">Acknowledge what matters first. The queue now surfaces urgency and next action clearly.</p>
             </div>
             {overdue.length > 0 ? <span className="rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">{overdue.length} overdue</span> : null}
           </div>
 
           {pendingAcks.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-emerald-200 bg-emerald-50 px-4 py-6 text-sm text-emerald-700">
-              Everything assigned to this persona has been acknowledged.
+              Everything assigned to this persona has been acknowledged. If you are demoing the staff flow, switch personas from the left rail to see an active queue.
             </div>
           ) : (
             <div className="space-y-3">
               {pendingAcks.map((ack) => {
                 const policy = policies.find((item) => item.id === ack.policyId);
                 if (!policy) return null;
+                const overdueItem = isOverdue(ack.dueDate);
                 return (
-                  <div key={ack.id} className="rounded-2xl border border-amber-200 bg-amber-50/70 p-4">
+                  <div key={ack.id} className={`rounded-2xl border p-4 ${overdueItem ? "border-rose-200 bg-rose-50/70" : ack.dueDate === DEMO_TODAY ? "border-amber-200 bg-amber-50/70" : "border-slate-200 bg-slate-50/80"}`}>
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                       <div>
-                        <p className="text-sm font-semibold text-slate-900">{policy.title}</p>
-                        <p className="mt-1 text-sm text-slate-500">{policy.category} · Due {ack.dueDate} · {clinicDisplay(policy.clinics)}</p>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <p className="text-sm font-semibold text-slate-900">{policy.title}</p>
+                          {overdueItem ? <span className="rounded-full bg-rose-100 px-2.5 py-1 text-xs font-semibold text-rose-700">Overdue</span> : null}
+                          {!overdueItem && ack.dueDate === DEMO_TODAY ? <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-700">Due today</span> : null}
+                        </div>
+                        <p className="mt-1 text-sm text-slate-500">{policy.category} · {clinicDisplay(policy.clinics)}</p>
+                        <p className="mt-1 text-sm text-slate-600">Due {formatDate(ack.dueDate)} · {dueLabel(ack.dueDate)}</p>
                       </div>
                       <div className="flex gap-2">
                         <Link href={`/policy/${policy.id}`} className="btn-secondary">Open</Link>
@@ -78,23 +98,20 @@ export default function DashboardPage() {
         </section>
 
         <section className="card bg-slate-950 text-white">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Sales framing</p>
-          <h2 className="mt-3 text-white">CSI-first, product-second</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-300">
-            This version is seeded to feel specific to CSI operations today while still proving the product can roll out across other Vet Inc. clinics with light retargeting.
-          </p>
-          <div className="mt-6 space-y-4 text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Next best demo step</p>
+          <h2 className="mt-3 text-white">Show a believable clinic operator story</h2>
+          <div className="mt-4 space-y-4 text-sm">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="font-medium text-white">Best demo path</p>
-              <p className="mt-1 text-slate-300">Landing → Dashboard → Library → Policy detail → Acknowledge → Manager console → Edit/Create.</p>
+              <p className="font-medium text-white">If demoing staff</p>
+              <p className="mt-1 text-slate-300">Open an assigned read, show effective dates and rollout context, then acknowledge it live.</p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="font-medium text-white">Seeded clinic set</p>
-              <p className="mt-1 text-slate-300">Rosslyn Veterinary Clinic, Tudor Glen Veterinary Hospital, and Riverside Veterinary Clinic.</p>
+              <p className="font-medium text-white">If demoing managers</p>
+              <p className="mt-1 text-slate-300">Jump from this screen to the manager console to show overdue staff, clinic bottlenecks, and draft readiness.</p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="font-medium text-white">What feels credible</p>
-              <p className="mt-1 text-slate-300">Real roles, due dates, operational language, and clinic-specific updates instead of generic lorem-ipsum policies.</p>
+              <p className="font-medium text-white">Right now</p>
+              <p className="mt-1 text-slate-300">{nextRequired ? `${nextRequired.title} is the next required read for this persona.` : "This persona is fully caught up."}</p>
             </div>
           </div>
         </section>
@@ -108,20 +125,24 @@ export default function DashboardPage() {
           </div>
           <Link href="/library" className="text-sm font-medium text-cyan-700">View full library</Link>
         </div>
-        <div className="grid gap-4 lg:grid-cols-2">
-          {recentItems.map((item) => (
-            <PolicyCard
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              type={item.type}
-              category={item.category}
-              clinic={clinicDisplay(item.clinics)}
-              date={item.updatedAt}
-              status={item.status}
-            />
-          ))}
-        </div>
+        {recentItems.length > 0 ? (
+          <div className="grid gap-4 lg:grid-cols-2">
+            {recentItems.map((item) => (
+              <PolicyCard
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                type={item.type}
+                category={item.category}
+                clinic={clinicDisplay(item.clinics)}
+                date={item.updatedAt}
+                status={item.status}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="card text-sm text-slate-500">No visible documents yet for this persona. That is usually a targeting problem, not a content problem.</div>
+        )}
       </section>
     </div>
   );

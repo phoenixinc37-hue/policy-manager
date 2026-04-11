@@ -75,7 +75,7 @@ function normalizeBulletLines(text: string, fallbackLines: string[]) {
 
 function selectedClinicLabel(selectedClinicIds: string[]) {
   if (selectedClinicIds.length === 0 || selectedClinicIds.length === clinics.length) {
-    return "All Rosslyn Veterinary Group clinics";
+    return "All CSI beta clinics (ROSS, TG, and RV)";
   }
 
   return selectedClinicIds

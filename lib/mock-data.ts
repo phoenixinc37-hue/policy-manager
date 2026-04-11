@@ -14,9 +14,9 @@ export const org: Organization = {
 
 // ── Clinics ─────────────────────────────────────────────────────
 export const clinics: Clinic[] = [
-  { id: "clinic-rv", name: "Rosslyn Veterinary Clinic", orgId: "org-1" },
-  { id: "clinic-tg", name: "Tudor Glen Veterinary Hospital", orgId: "org-1" },
-  { id: "clinic-riv", name: "Riverside Veterinary Clinic", orgId: "org-1" },
+  { id: "clinic-rv", name: "ROSS — Rosslyn Veterinary Clinic", orgId: "org-1" },
+  { id: "clinic-tg", name: "TG — Tudor Glen Veterinary Hospital", orgId: "org-1" },
+  { id: "clinic-riv", name: "RV — River Valley Veterinary Hospital", orgId: "org-1" },
 ];
 
 export const ALL_CLINICS = "All Clinics";
@@ -349,7 +349,7 @@ Ensure lab results are reviewed, communicated, and documented quickly enough tha
   },
   {
     id: "pol-7",
-    title: "Spring Hours Expansion — Riverside & Tudor Glen",
+    title: "Spring Hours Expansion — River Valley & Tudor Glen",
     type: "info",
     category: "Operations",
     clinics: ["clinic-tg", "clinic-riv"],
@@ -358,12 +358,12 @@ Ensure lab results are reviewed, communicated, and documented quickly enough tha
     expiryDate: "2026-05-15",
     version: 1,
     body: `## Update
-Effective **Monday, April 14, 2026**, Riverside Veterinary Clinic and Tudor Glen Veterinary Hospital will run expanded spring hours to improve same-day access.
+Effective **Monday, April 14, 2026**, River Valley Veterinary Hospital and Tudor Glen Veterinary Hospital will run expanded spring hours to improve same-day access.
 
 | Clinic | Current Weekday Hours | New Weekday Hours |
 |-----|--------------|-----------|
 | Tudor Glen Veterinary Hospital | 8:00 AM – 6:00 PM | 7:30 AM – 7:00 PM |
-| Riverside Veterinary Clinic | 8:00 AM – 5:30 PM | 7:30 AM – 6:30 PM |
+| River Valley Veterinary Hospital | 8:00 AM – 5:30 PM | 7:30 AM – 6:30 PM |
 
 ## What Staff Need To Know
 - Opening team arrives 15 minutes before doors open.
@@ -418,9 +418,9 @@ Questions go to Emma Larson or the front desk lead.`,
 Reduce stock-outs, short-dated losses, and receiving errors by setting one receiving routine across the CSI pilot clinics.
 
 ## Ordering Cadence
-- Rosslyn: Tuesday and Friday by 10:00 AM
+- ROSS: Tuesday and Friday by 10:00 AM
 - Tudor Glen: Monday, Wednesday, Friday by 10:00 AM
-- Riverside: Tuesday and Thursday by 10:00 AM
+- RV: Tuesday and Thursday by 10:00 AM
 - Emergency orders require manager approval
 
 ## Receiving Standard
@@ -531,6 +531,43 @@ DRAFT — prepared for CSI pilot review and Vet Inc. rollout discussion.`,
     createdBy: "user-scott",
     createdAt: "2026-04-05",
     updatedAt: "2026-04-08",
+  },
+  {
+    id: "pol-13",
+    title: "Legacy Controlled Drugs Sign-Out Binder — ROSS Import Draft",
+    type: "sog",
+    category: "Pharmacy",
+    clinics: ["clinic-rv"],
+    status: "draft",
+    effectiveDate: "2026-04-10",
+    reviewDate: "2026-07-10",
+    version: 1,
+    body: `## Imported source
+ROSS-controlled-drugs-binder.docx
+
+## Intake status
+This legacy clinic document has been staged into Policy Manager for beta review.
+
+## What still needs cleanup
+1. Confirm the final approved wording from the existing Rosslyn binder.
+2. Split role-specific tasks between DVM, RVT, and manager where needed.
+3. Publish only after formatting, dates, and clinic targeting are confirmed.
+
+## Manager notes
+Existing binder appears current enough to migrate, but the wording still reads like a paper SOP and needs cleanup before staff acknowledgment.`,
+    createdBy: "user-emma",
+    createdAt: "2026-04-10",
+    updatedAt: "2026-04-10",
+    source: {
+      mode: "imported",
+      fileName: "ROSS-controlled-drugs-binder.docx",
+      fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      parseStatus: "staged",
+      sourceLabel: "ROSS legacy binder · Pharmacy",
+      importedAt: "2026-04-10",
+      notes: "Needs wording cleanup before publish.",
+      originalExcerpt: "ROSS-controlled-drugs-binder.docx uploaded for staged import",
+    },
   },
 ];
 

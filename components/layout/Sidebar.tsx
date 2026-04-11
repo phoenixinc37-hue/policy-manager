@@ -22,10 +22,20 @@ const managerNav = [
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { currentUser, setCurrentUser, isManager, policies, acknowledgments } = useApp();
+  const {
+    currentUser,
+    setCurrentUser,
+    isManager,
+    policies,
+    acknowledgments,
+    resetDemoState,
+    workspaceMode,
+    setWorkspaceMode,
+  } = useApp();
   const navItems = isManager ? managerNav : staffNav;
   const pendingAcks = acknowledgments.filter((ack) => ack.userId === currentUser.id && !ack.acknowledgedAt).length;
   const published = policies.filter((policy) => policy.status === "published").length;
+  const draftCount = policies.filter((policy) => policy.status === "draft").length;
 
   return (
     <>
@@ -37,24 +47,70 @@ export default function Sidebar() {
             </div>
             <div>
               <p className="font-semibold text-slate-900">Policy Manager</p>
-              <p className="text-xs text-slate-500">CSI pilot · Vet Inc. operations</p>
+              <p className="text-xs text-slate-500">
+                {workspaceMode === "blank" ? "Blank workspace · clean clinic setup" : "CSI pilot demo · Vet Inc. operations"}
+              </p>
             </div>
           </Link>
         </div>
 
-        <div className="p-4">
+        <div className="p-4 space-y-3">
           <div className="rounded-2xl border border-slate-200 bg-slate-950 p-4 text-white shadow-xl shadow-slate-200/70">
-            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Live pilot demo</p>
-            <div className="mt-3 grid grid-cols-2 gap-3">
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                {workspaceMode === "blank" ? "Blank mode" : "Live pilot demo"}
+              </p>
+              <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${workspaceMode === "blank" ? "bg-emerald-400/15 text-emerald-200" : "bg-cyan-400/15 text-cyan-200"}`}>
+                {workspaceMode === "blank" ? "No seeded data" : "Seeded content"}
+              </span>
+            </div>
+            <div className="mt-3 grid grid-cols-3 gap-3">
               <div>
                 <p className="text-2xl font-semibold">{published}</p>
-                <p className="text-xs text-slate-400">published docs</p>
+                <p className="text-xs text-slate-400">published</p>
+              </div>
+              <div>
+                <p className="text-2xl font-semibold">{draftCount}</p>
+                <p className="text-xs text-slate-400">drafts</p>
               </div>
               <div>
                 <p className="text-2xl font-semibold">{pendingAcks}</p>
-                <p className="text-xs text-slate-400">pending reads</p>
+                <p className="text-xs text-slate-400">pending</p>
               </div>
             </div>
+          </div>
+
+          <div className={`rounded-2xl border p-3 ${workspaceMode === "blank" ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-slate-50"}`}>
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Workspace mode</p>
+                <p className="mt-1 text-sm font-medium text-slate-900">
+                  {workspaceMode === "blank" ? "Blank mode is live" : "Switch to blank mode for owner review"}
+                </p>
+              </div>
+              <span className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${workspaceMode === "blank" ? "bg-emerald-100 text-emerald-700" : "bg-slate-200 text-slate-600"}`}>
+                {workspaceMode === "blank" ? "Verified blank" : "Demo active"}
+              </span>
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => setWorkspaceMode("demo")}
+                className={`rounded-xl px-3 py-2 text-sm font-medium transition ${workspaceMode === "demo" ? "bg-slate-950 text-white" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-100"}`}
+              >
+                Demo mode
+              </button>
+              <button
+                type="button"
+                onClick={() => setWorkspaceMode("blank")}
+                className={`rounded-xl px-3 py-2 text-sm font-medium transition ${workspaceMode === "blank" ? "bg-emerald-600 text-white" : "bg-white text-emerald-700 ring-1 ring-emerald-200 hover:bg-emerald-50"}`}
+              >
+                Blank mode
+              </button>
+            </div>
+            <p className="mt-2 text-xs leading-5 text-slate-500">
+              Blank mode clears seeded documents and acknowledgments so a brand-new clinic can see a clean setup path.
+            </p>
           </div>
         </div>
 
@@ -88,7 +144,16 @@ export default function Sidebar() {
         </nav>
 
         <div className="border-t border-slate-200 p-4">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Demo persona</p>
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Demo persona</p>
+            <button
+              type="button"
+              onClick={resetDemoState}
+              className="text-xs font-medium text-cyan-700 hover:text-cyan-800"
+            >
+              Reset demo
+            </button>
+          </div>
           <select
             value={currentUser.id}
             onChange={(e) => {

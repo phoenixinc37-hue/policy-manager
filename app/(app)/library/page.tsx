@@ -9,7 +9,7 @@ import { clinicDisplay, categories } from "@/lib/mock-data";
 import type { CommunicationType } from "@/types";
 
 export default function LibraryPage() {
-  const { currentUser, isManager, policies } = useApp();
+  const { currentUser, isManager, policies, workspaceMode } = useApp();
   const [typeFilter, setTypeFilter] = useState<CommunicationType | "all">("all");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [search, setSearch] = useState("");
@@ -38,7 +38,7 @@ export default function LibraryPage() {
       <PageHeader
         eyebrow="Document library"
         title="Policy library"
-        description="Search realistic CSI pilot content by type, category, and clinic visibility. Managers also see drafts and in-flight material."
+        description={workspaceMode === "blank" ? "Blank workspace is active. This library starts empty so a new clinic can see the clean-state product before any migrated or authored content exists." : "Search realistic CSI pilot content by type, category, and clinic visibility. Managers also see drafts and in-flight material."}
         action={isManager ? <Link href="/policy/new" className="btn-primary">+ New policy</Link> : undefined}
       />
 
@@ -66,28 +66,36 @@ export default function LibraryPage() {
         </div>
         <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-500">
           <span className="rounded-full bg-slate-100 px-3 py-1">{filtered.length} matching items</span>
-          <span className="rounded-full bg-slate-100 px-3 py-1">{visiblePolicies.filter((item) => item.status === "draft").length} drafts visible to manager roles</span>
+          {isManager ? <span className="rounded-full bg-slate-100 px-3 py-1">{visiblePolicies.filter((item) => item.status === "draft").length} drafts visible to manager roles</span> : null}
+          <span className="rounded-full bg-slate-100 px-3 py-1">{clinicDisplay(currentUser.clinics)}</span>
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        {filtered.map((item) => (
-          <PolicyCard
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            type={item.type}
-            category={item.category}
-            clinic={clinicDisplay(item.clinics)}
-            date={item.updatedAt}
-            status={item.status}
-          />
-        ))}
-      </div>
-
-      {filtered.length === 0 ? (
-        <div className="card mt-4 text-center text-sm text-slate-500">No items match the current filters.</div>
-      ) : null}
+      {filtered.length > 0 ? (
+        <div className="grid gap-4 lg:grid-cols-2">
+          {filtered.map((item) => (
+            <PolicyCard
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              type={item.type}
+              category={item.category}
+              clinic={clinicDisplay(item.clinics)}
+              date={item.updatedAt}
+              status={item.status}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="card mt-4 text-center">
+          <h3>No items match the current filters</h3>
+          <p className="mt-2 text-sm text-slate-500">{workspaceMode === "blank" ? "This is expected in blank mode. Create the first policy to show how a brand-new clinic starts without demo seed data." : "Try clearing one filter, broadening the search, or switching personas to a manager role that can see drafts."}</p>
+          <div className="mt-4 flex justify-center gap-3">
+            <button onClick={() => { setSearch(""); setTypeFilter("all"); setCategoryFilter("all"); }} className="btn-secondary">Clear filters</button>
+            {isManager ? <Link href="/policy/new" className="btn-primary">Create a document</Link> : null}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
