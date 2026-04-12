@@ -31,6 +31,12 @@ Things like:
 - Default speaker: Kitchen HomePod
 ```
 
+### Mac Mini
+- **Owner:** Scott and Jack (shared)
+- **Location:** St. Albert house (Scott's home office)
+- **This is the machine Kate runs on**
+- **Pending setup:** gog auth (Gmail/Calendar), Telegram app install
+
 ### AgentMail
 
 - **Inbox**: goliasphoenix@agentmail.to (display name: Golias)
