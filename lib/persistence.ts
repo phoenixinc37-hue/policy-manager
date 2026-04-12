@@ -1,9 +1,11 @@
 import type { Acknowledgment, ImportSourceMeta, PolicyItem, User } from "@/types";
+import { DEFAULT_VERTICAL_PRESET, type VerticalPresetId } from "./mock-data";
 
-export const STORAGE_KEY = "policy-manager/v1/state";
+export const STORAGE_KEY = "policy-manager/v2/state";
 export type WorkspaceMode = "demo" | "blank";
 
 export interface PersistedAppState {
+  presetId: VerticalPresetId;
   currentUserId: string;
   policies: PolicyItem[];
   acknowledgments: Acknowledgment[];
@@ -11,6 +13,7 @@ export interface PersistedAppState {
 }
 
 interface SeedState {
+  presetId: VerticalPresetId;
   currentUser: User;
   policies: PolicyItem[];
   acknowledgments: Acknowledgment[];
@@ -33,10 +36,7 @@ function sanitizeImportSourceMeta(value: unknown): ImportSourceMeta | undefined 
   const candidate = value as Record<string, unknown>;
   if (candidate.mode !== "authored" && candidate.mode !== "imported") return undefined;
 
-  const parsed: ImportSourceMeta = {
-    mode: candidate.mode,
-  };
-
+  const parsed: ImportSourceMeta = { mode: candidate.mode };
   if (typeof candidate.fileName === "string") parsed.fileName = candidate.fileName;
   if (typeof candidate.fileType === "string") parsed.fileType = candidate.fileType;
   if (candidate.parseStatus === "parsed" || candidate.parseStatus === "staged") parsed.parseStatus = candidate.parseStatus;
@@ -44,7 +44,6 @@ function sanitizeImportSourceMeta(value: unknown): ImportSourceMeta | undefined 
   if (typeof candidate.importedAt === "string") parsed.importedAt = candidate.importedAt;
   if (typeof candidate.notes === "string") parsed.notes = candidate.notes;
   if (typeof candidate.originalExcerpt === "string") parsed.originalExcerpt = candidate.originalExcerpt;
-
   return parsed;
 }
 
@@ -112,51 +111,37 @@ function sanitizeAcknowledgment(item: unknown): Acknowledgment | null {
 }
 
 export function loadPersistedState(seed: SeedState): PersistedAppState {
-  if (typeof window === "undefined") {
-    return {
-      currentUserId: seed.currentUser.id,
-      policies: seed.policies,
-      acknowledgments: seed.acknowledgments,
-      workspaceMode: "demo",
-    };
-  }
+  const fallback: PersistedAppState = {
+    presetId: seed.presetId,
+    currentUserId: seed.currentUser.id,
+    policies: seed.policies,
+    acknowledgments: seed.acknowledgments,
+    workspaceMode: "demo",
+  };
+
+  if (typeof window === "undefined") return fallback;
 
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      return {
-        currentUserId: seed.currentUser.id,
-        policies: seed.policies,
-        acknowledgments: seed.acknowledgments,
-        workspaceMode: "demo",
-      };
-    }
+    if (!raw) return fallback;
 
     const parsed = JSON.parse(raw) as Partial<PersistedAppState>;
     const policies = Array.isArray(parsed.policies)
       ? parsed.policies.map(sanitizePolicyItem).filter((item): item is PolicyItem => !!item)
       : seed.policies;
     const acknowledgments = Array.isArray(parsed.acknowledgments)
-      ? parsed.acknowledgments
-          .map(sanitizeAcknowledgment)
-          .filter((item): item is Acknowledgment => !!item)
+      ? parsed.acknowledgments.map(sanitizeAcknowledgment).filter((item): item is Acknowledgment => !!item)
       : seed.acknowledgments;
-    const currentUserId = typeof parsed.currentUserId === "string" ? parsed.currentUserId : seed.currentUser.id;
-    const workspaceMode = parsed.workspaceMode === "blank" ? "blank" : "demo";
 
     return {
-      currentUserId,
-      policies: policies.length > 0 || workspaceMode === "blank" ? policies : seed.policies,
+      presetId: parsed.presetId === "law" ? "law" : parsed.presetId === "accounting" ? "accounting" : DEFAULT_VERTICAL_PRESET,
+      currentUserId: typeof parsed.currentUserId === "string" ? parsed.currentUserId : seed.currentUser.id,
+      policies,
       acknowledgments,
-      workspaceMode,
+      workspaceMode: parsed.workspaceMode === "blank" ? "blank" : "demo",
     };
   } catch {
-    return {
-      currentUserId: seed.currentUser.id,
-      policies: seed.policies,
-      acknowledgments: seed.acknowledgments,
-      workspaceMode: "demo",
-    };
+    return fallback;
   }
 }
 

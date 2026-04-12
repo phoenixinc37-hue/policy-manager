@@ -1,5 +1,4 @@
-import type { Acknowledgment, PolicyItem, User } from "@/types";
-import { clinics, getClinic, getUser } from "./mock-data";
+import type { Acknowledgment, Clinic, PolicyItem, User } from "@/types";
 import { DEMO_TODAY, isOverdue } from "./date-utils";
 
 export function getVisiblePolicies(policies: PolicyItem[], user: User, isManager: boolean) {
@@ -17,30 +16,37 @@ export function getUserCompletedAcks(acks: Acknowledgment[], userId: string) {
   return acks.filter((ack) => ack.userId === userId && !!ack.acknowledgedAt);
 }
 
-export function getManagerSnapshot(policies: PolicyItem[], acknowledgments: Acknowledgment[]) {
+export function getManagerSnapshot(
+  policies: PolicyItem[],
+  acknowledgments: Acknowledgment[],
+  clinics: Clinic[], locationLabel: string,
+  users: User[]
+) {
   const published = policies.filter((policy) => policy.status === "published");
   const drafts = policies.filter((policy) => policy.status === "draft");
   const pending = acknowledgments.filter((ack) => !ack.acknowledgedAt);
   const overdue = pending.filter((ack) => isOverdue(ack.dueDate));
   const completionRate = acknowledgments.length ? Math.round(((acknowledgments.length - pending.length) / acknowledgments.length) * 100) : 0;
 
-  const clinicStats = clinics.map((clinic) => {
-    const clinicPolicies = published.filter((policy) => policy.clinics.includes(clinic.id));
-    const clinicAcks = acknowledgments.filter((ack) => {
-      const policy = policies.find((item) => item.id === ack.policyId);
-      return policy?.clinics.includes(clinic.id);
-    });
-    const clinicPending = clinicAcks.filter((ack) => !ack.acknowledgedAt).length;
-    const clinicOverdue = clinicAcks.filter((ack) => !ack.acknowledgedAt && isOverdue(ack.dueDate)).length;
-    const clinicDone = clinicAcks.filter((ack) => !!ack.acknowledgedAt).length;
-    const rate = clinicAcks.length ? Math.round((clinicDone / clinicAcks.length) * 100) : 0;
-    return { clinic, clinicPolicies: clinicPolicies.length, clinicPending, clinicOverdue, rate };
-  }).sort((a, b) => b.clinicOverdue - a.clinicOverdue || a.rate - b.rate);
+  const clinicStats = clinics
+    .map((clinic) => {
+      const clinicPolicies = published.filter((policy) => policy.clinics.includes(clinic.id));
+      const clinicAcks = acknowledgments.filter((ack) => {
+        const policy = policies.find((item) => item.id === ack.policyId);
+        return policy?.clinics.includes(clinic.id);
+      });
+      const clinicPending = clinicAcks.filter((ack) => !ack.acknowledgedAt).length;
+      const clinicOverdue = clinicAcks.filter((ack) => !ack.acknowledgedAt && isOverdue(ack.dueDate)).length;
+      const clinicDone = clinicAcks.filter((ack) => !!ack.acknowledgedAt).length;
+      const rate = clinicAcks.length ? Math.round((clinicDone / clinicAcks.length) * 100) : 0;
+      return { clinic, clinicPolicies: clinicPolicies.length, clinicPending, clinicOverdue, rate };
+    })
+    .sort((a, b) => b.clinicOverdue - a.clinicOverdue || a.rate - b.rate);
 
   const topFollowUps = overdue.slice(0, 5).map((ack) => {
     const policy = policies.find((item) => item.id === ack.policyId);
-    const user = getUser(ack.userId);
-    const clinicName = policy?.clinics[0] ? getClinic(policy.clinics[0])?.name ?? policy.clinics[0] : "Unknown clinic";
+    const user = users.find((item) => item.id === ack.userId);
+    const clinicName = policy?.clinics[0] ? clinics.find((clinic) => clinic.id === policy.clinics[0])?.name ?? policy.clinics[0] : "Unknown ${locationLabel.toLowerCase()}";
     return {
       id: ack.id,
       userName: user?.name ?? ack.userId,

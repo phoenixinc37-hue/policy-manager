@@ -1,46 +1,448 @@
-import type {
-  Organization,
-  Clinic,
-  User,
-  PolicyItem,
-  Acknowledgment,
-} from "@/types";
+import type { Acknowledgment, Clinic, Organization, PolicyItem, User } from "@/types";
 
-// ── Organization ────────────────────────────────────────────────
-export const org: Organization = {
-  id: "org-1",
-  name: "Vet Inc. — CSI Pilot",
-};
+export type VerticalPresetId = "veterinary" | "accounting" | "law";
 
-// ── Clinics ─────────────────────────────────────────────────────
-export const clinics: Clinic[] = [
-  { id: "clinic-rv", name: "ROSS — Rosslyn Veterinary Clinic", orgId: "org-1" },
-  { id: "clinic-tg", name: "TG — Tudor Glen Veterinary Hospital", orgId: "org-1" },
-  { id: "clinic-riv", name: "RV — River Valley Veterinary Hospital", orgId: "org-1" },
-];
-
-export const ALL_CLINICS = "All Clinics";
-
-function clinicLabel(ids: string[]): string {
-  if (ids.length === clinics.length) return ALL_CLINICS;
-  return ids
-    .map((id) => clinics.find((c) => c.id === id)?.name ?? id)
-    .join(", ");
+export interface VerticalPreset {
+  roleLabels: Record<string, string>;
+  locationLabel: string;
+  locationLabelPlural: string;
+  id: VerticalPresetId;
+  label: string;
+  shortLabel: string;
+  industry: string;
+  organization: Organization;
+  clinics: Clinic[];
+  users: User[];
+  categories: string[];
+  policies: PolicyItem[];
+  acknowledgments: Acknowledgment[];
+  landingLabel: string;
+  landingDescription: string;
+  moduleHighlights: string[];
 }
 
-// ── Users ───────────────────────────────────────────────────────
-export const users: User[] = [
+const accountingClinics: Clinic[] = [
+  { id: "acct-downtown", name: "Downtown Advisory Office", orgId: "org-accounting" },
+  { id: "acct-west", name: "West End Tax & Payroll Hub", orgId: "org-accounting" },
+  { id: "acct-north", name: "North Corporate Services", orgId: "org-accounting" },
+];
+
+const accountingUsers: User[] = [
+  { id: "acct-owner", name: "Scott Wilde", email: "scott@business.inc", role: "practice_manager", clinics: accountingClinics.map((c) => c.id), initials: "SW" },
+  { id: "acct-olivia", name: "Olivia Grant, CPA", email: "olivia@business.inc", role: "manager", clinics: ["acct-downtown"], initials: "OG" },
+  { id: "acct-noah", name: "Noah Patel, CPA", email: "noah@business.inc", role: "manager", clinics: ["acct-west"], initials: "NP" },
+  { id: "acct-emma", name: "Emma Chen, Controller", email: "emma@business.inc", role: "manager", clinics: ["acct-north"], initials: "EC" },
+  { id: "acct-julia", name: "Julia Park, Senior Bookkeeper", email: "julia@business.inc", role: "staff", clinics: ["acct-downtown"], initials: "JP" },
+  { id: "acct-ethan", name: "Ethan Ross, Payroll Specialist", email: "ethan@business.inc", role: "staff", clinics: ["acct-west"], initials: "ER" },
+  { id: "acct-priya", name: "Priya Singh, Staff Accountant", email: "priya@business.inc", role: "staff", clinics: ["acct-north"], initials: "PS" },
+  { id: "acct-liam", name: "Liam Brooks, Client Success", email: "liam@business.inc", role: "staff", clinics: ["acct-downtown"], initials: "LB" },
+];
+
+const accountingCategories = [
+  "Tax & Compliance",
+  "Client Intake",
+  "Payroll",
+  "Month-End Close",
+  "Data Security",
+  "Advisory",
+  "Billing",
+  "Document Retention",
+  "Operations",
+  "HR & Conduct",
+];
+
+const accountingPolicies: PolicyItem[] = [
+  {
+    id: "acct-pol-1",
+    title: "Client Document Intake & Missing-Item Escalation",
+    type: "policy",
+    category: "Client Intake",
+    clinics: accountingClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-04-03",
+    reviewDate: "2026-10-03",
+    version: 2,
+    body: `## Purpose
+Create one intake standard so bookkeeping, tax, and advisory teams know exactly when a client file is complete enough to begin work.
+
+## Scope
+Applies to client success, bookkeepers, staff accountants, payroll specialists, and office managers.
+
+## Intake Standard
+1. Log every incoming document set the same day it is received.
+2. Mark the file as Complete, Partial, or Critical Missing.
+3. If payroll source data, government notices, or bank records are missing, the file may not move to ready-for-work status.
+
+## Escalation
+- Send the missing-items request to the client within 2 business hours.
+- If critical items remain missing after 24 hours, escalate to the office manager.
+- If a filing deadline is within 5 business days, manager outreach is same-day.
+
+## Accountability
+Managers review all Critical Missing files in the daily production check-in.`,
+    createdBy: "acct-owner",
+    createdAt: "2026-03-20",
+    updatedAt: "2026-04-08",
+  },
+  {
+    id: "acct-pol-2",
+    title: "Payroll Change Approval & Four-Eyes Review",
+    type: "policy",
+    category: "Payroll",
+    clinics: ["acct-west", "acct-north"],
+    status: "published",
+    effectiveDate: "2026-04-01",
+    reviewDate: "2026-10-01",
+    version: 1,
+    body: `## Purpose
+Reduce payroll risk by requiring clear approval, audit trail, and secondary review for pay-impacting changes.
+
+## Policy
+1. Any new salary, wage, bonus, or deduction change must have written client approval.
+2. The preparer enters the change and attaches the approval note.
+3. A second team member reviews the change before payroll is finalized.
+4. Same-day verbal approvals must be summarized in writing before processing.
+
+## Exceptions
+Emergency off-cycle payments require manager approval and same-day documentation cleanup.
+
+## Compliance
+Missing approval or missing reviewer signoff is treated as a payroll incident.`,
+    createdBy: "acct-noah",
+    createdAt: "2026-03-28",
+    updatedAt: "2026-04-05",
+  },
+  {
+    id: "acct-pol-3",
+    title: "Month-End Close Ownership & Cutoff Checklist",
+    type: "sog",
+    category: "Month-End Close",
+    clinics: accountingClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-03-25",
+    reviewDate: "2026-09-25",
+    version: 2,
+    body: `## Purpose
+Make month-end close predictable across offices and stop files from stalling between bookkeeping and review.
+
+## Workflow
+1. Bookkeeper posts all recurring entries and clears the bank-feed exception queue.
+2. Staff accountant completes reconciliation checklist.
+3. Manager reviews unusual variances and signs off the close packet.
+4. Client-ready package goes out within the agreed service window.
+
+## Cutoff Rules
+- Revenue and payroll cutoff assumptions must be documented in the file.
+- Any unresolved balance over the office threshold requires manager review before release.
+
+## Notes
+Use the standard close checklist for every recurring client, even if the month was quiet.`,
+    createdBy: "acct-emma",
+    createdAt: "2026-03-18",
+    updatedAt: "2026-04-06",
+  },
+  {
+    id: "acct-pol-4",
+    title: "CRA / Tax Notice Triage Standard",
+    type: "sog",
+    category: "Tax & Compliance",
+    clinics: accountingClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-04-02",
+    reviewDate: "2026-10-02",
+    version: 1,
+    body: `## Purpose
+Ensure government notices are triaged fast enough that the firm never loses time on avoidable penalties or missed responses.
+
+## Workflow
+1. Log every notice the same business day.
+2. Tag severity as Informational, Action Required, or Urgent Deadline.
+3. Assign an owner before close of business.
+4. For urgent deadlines, confirm client contact and response plan the same day.
+
+## Service Standard
+Urgent Deadline notices must be reviewed by a manager within 2 hours of receipt.`,
+    createdBy: "acct-owner",
+    createdAt: "2026-04-02",
+    updatedAt: "2026-04-07",
+  },
+  {
+    id: "acct-pol-5",
+    title: "Secure Portal Upload & Client Identity Verification",
+    type: "policy",
+    category: "Data Security",
+    clinics: accountingClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-03-15",
+    reviewDate: "2026-09-15",
+    version: 2,
+    body: `## Purpose
+Protect client financial data during document exchange and call-back requests.
+
+## Core Standard
+- Sensitive records move through the secure portal only.
+- Email attachments with SINs, payroll files, or tax slips are not the default channel.
+- Caller identity must be verified before discussing balances, filings, or payroll.
+
+## Verification Steps
+1. Confirm business name and primary contact.
+2. Confirm one approved file detail already on record.
+3. If uncertain, end the call and call back using the CRM contact number.
+
+## Compliance
+Potential privacy breaches must be escalated to the office manager immediately.`,
+    createdBy: "acct-olivia",
+    createdAt: "2026-03-15",
+    updatedAt: "2026-04-01",
+  },
+  {
+    id: "acct-pol-6",
+    title: "T4 / T5 Deadline Week Coverage Plan",
+    type: "info",
+    category: "Operations",
+    clinics: ["acct-west", "acct-north"],
+    status: "draft",
+    effectiveDate: "2026-04-15",
+    expiryDate: "2026-04-30",
+    version: 1,
+    body: `## Update
+Business Inc. will run extended processing coverage during deadline week to protect filing turnaround and callback speed.
+
+## What staff need to know
+- West End payroll team starts 30 minutes earlier.
+- North Corporate Services keeps one floating reviewer unbooked each afternoon.
+- Managers review queue pressure at 11:00 AM and 3:30 PM.
+
+## Status
+Draft for manager approval before publish.`,
+    createdBy: "acct-noah",
+    createdAt: "2026-04-09",
+    updatedAt: "2026-04-10",
+  },
+];
+
+const accountingAcknowledgments: Acknowledgment[] = [
+  { id: "acct-ack-1", policyId: "acct-pol-1", userId: "acct-julia", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "acct-ack-2", policyId: "acct-pol-4", userId: "acct-julia", acknowledgedAt: "2026-04-05", dueDate: "2026-04-06" },
+  { id: "acct-ack-3", policyId: "acct-pol-5", userId: "acct-julia", acknowledgedAt: null, dueDate: "2026-04-11" },
+  { id: "acct-ack-4", policyId: "acct-pol-2", userId: "acct-ethan", acknowledgedAt: null, dueDate: "2026-04-09" },
+  { id: "acct-ack-5", policyId: "acct-pol-4", userId: "acct-ethan", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "acct-ack-6", policyId: "acct-pol-3", userId: "acct-priya", acknowledgedAt: "2026-04-03", dueDate: "2026-04-04" },
+  { id: "acct-ack-7", policyId: "acct-pol-5", userId: "acct-priya", acknowledgedAt: "2026-04-02", dueDate: "2026-04-03" },
+  { id: "acct-ack-8", policyId: "acct-pol-1", userId: "acct-liam", acknowledgedAt: null, dueDate: "2026-04-10" },
+];
+
+const lawClinics: Clinic[] = [
+  { id: "law-downtown", name: "Downtown Family Law Group", orgId: "org-law" },
+  { id: "law-corporate", name: "Corporate & Commercial Practice", orgId: "org-law" },
+  { id: "law-litigation", name: "Litigation Support Office", orgId: "org-law" },
+];
+
+const lawUsers: User[] = [
+  { id: "law-owner", name: "Scott Wilde", email: "scott@business.inc", role: "practice_manager", clinics: lawClinics.map((c) => c.id), initials: "SW" },
+  { id: "law-rachel", name: "Rachel Kim, Partner", email: "rachel@business.inc", role: "manager", clinics: ["law-downtown"], initials: "RK" },
+  { id: "law-daniel", name: "Daniel Price, Partner", email: "daniel@business.inc", role: "manager", clinics: ["law-corporate"], initials: "DP" },
+  { id: "law-maya", name: "Maya Lopez, Practice Manager", email: "maya@business.inc", role: "manager", clinics: ["law-litigation"], initials: "ML" },
+  { id: "law-sophie", name: "Sophie Tran, Law Clerk", email: "sophie@business.inc", role: "staff", clinics: ["law-downtown"], initials: "ST" },
+  { id: "law-jacob", name: "Jacob Wells, Legal Assistant", email: "jacob@business.inc", role: "staff", clinics: ["law-corporate"], initials: "JW" },
+  { id: "law-aisha", name: "Aisha Noor, Litigation Clerk", email: "aisha@business.inc", role: "staff", clinics: ["law-litigation"], initials: "AN" },
+  { id: "law-emily", name: "Emily Hart, Intake Coordinator", email: "emily@business.inc", role: "staff", clinics: ["law-downtown"], initials: "EH" },
+];
+
+const lawCategories = [
+  "Conflicts & Intake",
+  "Client Trust",
+  "File Management",
+  "Court Deadlines",
+  "Confidentiality",
+  "Billing",
+  "Retainers",
+  "Operations",
+  "HR & Conduct",
+  "Practice Standards",
+];
+
+const lawPolicies: PolicyItem[] = [
+  {
+    id: "law-pol-1",
+    title: "New Matter Intake & Conflict Check Gate",
+    type: "policy",
+    category: "Conflicts & Intake",
+    clinics: lawClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-04-03",
+    reviewDate: "2026-10-03",
+    version: 2,
+    body: `## Purpose
+Prevent avoidable conflicts and incomplete client openings by making intake and conflict clearance one controlled gate.
+
+## Scope
+Applies to intake coordinators, assistants, clerks, and lawyers opening or reactivating a matter.
+
+## Policy
+1. No matter may be opened before a conflict check is run.
+2. Intake notes must capture all known parties, related companies, and opposing counsel if known.
+3. If the conflict result is unclear, the file remains on hold until lawyer review.
+
+## Escalation
+Potential conflict matches are reviewed by the responsible lawyer the same day.`,
+    createdBy: "law-owner",
+    createdAt: "2026-03-21",
+    updatedAt: "2026-04-08",
+  },
+  {
+    id: "law-pol-2",
+    title: "Trust Retainer Receipt & Deposit Verification",
+    type: "policy",
+    category: "Client Trust",
+    clinics: ["law-downtown", "law-corporate"],
+    status: "published",
+    effectiveDate: "2026-03-28",
+    reviewDate: "2026-09-28",
+    version: 1,
+    body: `## Purpose
+Protect trust handling by standardizing who records retainer receipts, who verifies deposits, and when the file may proceed.
+
+## Policy
+1. Retainer funds are logged the same day received.
+2. Deposit confirmation must match the receipt record before trust status is marked ready.
+3. No substantive work begins on a trust-required file until the retainer status is clear or lawyer direction is documented.
+
+## Compliance
+Any mismatch between receipt, ledger entry, and deposit confirmation is escalated to the practice manager immediately.`,
+    createdBy: "law-daniel",
+    createdAt: "2026-03-28",
+    updatedAt: "2026-04-04",
+  },
+  {
+    id: "law-pol-3",
+    title: "Court Deadline Diary & Two-Step Verification",
+    type: "sog",
+    category: "Court Deadlines",
+    clinics: lawClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-03-30",
+    reviewDate: "2026-09-30",
+    version: 2,
+    body: `## Purpose
+Reduce missed dates by requiring every litigation and family-law deadline to be diarized and verified twice.
+
+## Workflow
+1. Enter the deadline into the matter file and central calendar.
+2. A second team member confirms the date source and lead time.
+3. Responsible lawyer reviews high-risk deadlines within one business day.
+4. Weekly deadline meeting resolves gaps, ownership, and upcoming pinch points.
+
+## Notes
+Same-day service deadlines and limitation dates are priority review items.`,
+    createdBy: "law-maya",
+    createdAt: "2026-03-22",
+    updatedAt: "2026-04-05",
+  },
+  {
+    id: "law-pol-4",
+    title: "Client Confidentiality, Redaction & External Sharing",
+    type: "policy",
+    category: "Confidentiality",
+    clinics: lawClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-03-18",
+    reviewDate: "2026-09-18",
+    version: 2,
+    body: `## Purpose
+Keep privileged and sensitive information controlled during email, portal delivery, and document production.
+
+## Core Standard
+- Share only the minimum necessary material.
+- Redact personal identifiers before external distribution unless disclosure is required.
+- Use the secure client portal for sensitive production whenever possible.
+
+## Verification
+If you are unsure whether a document is safe to share, stop and escalate to the lawyer responsible for the matter.`,
+    createdBy: "law-rachel",
+    createdAt: "2026-03-18",
+    updatedAt: "2026-04-02",
+  },
+  {
+    id: "law-pol-5",
+    title: "File Closing, Return of Originals & Retention Checklist",
+    type: "sog",
+    category: "File Management",
+    clinics: ["law-corporate", "law-litigation"],
+    status: "published",
+    effectiveDate: "2026-04-01",
+    reviewDate: "2026-10-01",
+    version: 1,
+    body: `## Purpose
+Close matters cleanly so the firm can prove what was returned, what was retained, and what the client was told.
+
+## Workflow
+1. Confirm final billing status.
+2. Confirm return or storage of originals.
+3. Save final closing memo and retention date.
+4. Mark the matter closed only after checklist completion.
+
+## Notes
+Files with appeal windows or ongoing undertakings require lawyer signoff before closure.`,
+    createdBy: "law-daniel",
+    createdAt: "2026-04-01",
+    updatedAt: "2026-04-06",
+  },
+  {
+    id: "law-pol-6",
+    title: "Urgent Motion Week Staffing & Coverage Plan",
+    type: "info",
+    category: "Operations",
+    clinics: ["law-litigation"],
+    status: "draft",
+    effectiveDate: "2026-04-16",
+    expiryDate: "2026-04-23",
+    version: 1,
+    body: `## Update
+Business Inc. will run an adjusted support rotation during urgent motion week to keep filing, service, and client updates moving.
+
+## What staff need to know
+- One litigation clerk remains unbooked each afternoon for court-facing work.
+- Practice manager reviews next-day court list at 4:00 PM.
+- Client updates go out before end of day on active urgent files.
+
+## Status
+Draft for final partner approval.`,
+    createdBy: "law-maya",
+    createdAt: "2026-04-10",
+    updatedAt: "2026-04-10",
+  },
+];
+
+const lawAcknowledgments: Acknowledgment[] = [
+  { id: "law-ack-1", policyId: "law-pol-1", userId: "law-sophie", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "law-ack-2", policyId: "law-pol-4", userId: "law-sophie", acknowledgedAt: "2026-04-04", dueDate: "2026-04-05" },
+  { id: "law-ack-3", policyId: "law-pol-2", userId: "law-jacob", acknowledgedAt: null, dueDate: "2026-04-09" },
+  { id: "law-ack-4", policyId: "law-pol-5", userId: "law-jacob", acknowledgedAt: null, dueDate: "2026-04-11" },
+  { id: "law-ack-5", policyId: "law-pol-3", userId: "law-aisha", acknowledgedAt: "2026-04-03", dueDate: "2026-04-04" },
+  { id: "law-ack-6", policyId: "law-pol-4", userId: "law-aisha", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "law-ack-7", policyId: "law-pol-1", userId: "law-emily", acknowledgedAt: null, dueDate: "2026-04-10" },
+];
+
+
+
+const vetClinics: Clinic[] = [
+  { id: "clinic-rv", name: "Rosslyn Veterinary Clinic", orgId: "org-1" },
+  { id: "clinic-tg", name: "Tudor Glen Veterinary Hospital", orgId: "org-1" },
+  { id: "clinic-rp", name: "Rosslyn Park Animal Hospital", orgId: "org-1" },
+];
+const vetUsers: User[] = [
   {
     id: "user-scott",
-    name: "Scott Wilde",
-    email: "scott@vet.inc",
+    name: "Scott W.",
+    email: "scott@rosslynvet.ca",
     role: "practice_manager",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     initials: "SW",
   },
   {
     id: "user-emma",
-    name: "Emma Larson",
+    name: "Emma L.",
     email: "emma@rosslynvet.ca",
     role: "manager",
     clinics: ["clinic-rv"],
@@ -48,56 +450,38 @@ export const users: User[] = [
   },
   {
     id: "user-tyler",
-    name: "Tyler Kinsella",
-    email: "tyler@tudorglenvet.ca",
+    name: "Tyler K.",
+    email: "tyler@tudorglen.ca",
     role: "manager",
     clinics: ["clinic-tg"],
     initials: "TK",
   },
   {
-    id: "user-sarah",
-    name: "Sarah Villeneuve",
-    email: "sarah@riversidevet.ca",
-    role: "manager",
-    clinics: ["clinic-riv"],
-    initials: "SV",
-  },
-  {
     id: "user-jess",
-    name: "Jess McLeod, RVT",
+    name: "Jess M.",
     email: "jess@rosslynvet.ca",
     role: "staff",
-    clinics: ["clinic-rv"],
+    clinics: ["clinic-rv", "clinic-rp"],
     initials: "JM",
   },
   {
     id: "user-alex",
-    name: "Alex Renaud, CSR",
-    email: "alex@tudorglenvet.ca",
+    name: "Alex R.",
+    email: "alex@tudorglen.ca",
     role: "staff",
     clinics: ["clinic-tg"],
     initials: "AR",
   },
   {
     id: "user-carmen",
-    name: "Carmen Dsouza, RVT",
-    email: "carmen@riversidevet.ca",
+    name: "Carmen D.",
+    email: "carmen@rosslynvet.ca",
     role: "staff",
-    clinics: ["clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     initials: "CD",
   },
-  {
-    id: "user-noah",
-    name: "Noah Chen, VA",
-    email: "noah@rosslynvet.ca",
-    role: "staff",
-    clinics: ["clinic-rv"],
-    initials: "NC",
-  },
 ];
-
-// ── Categories ──────────────────────────────────────────────────
-export const categories = [
+const vetCategories = [
   "Pharmacy",
   "Clinical",
   "Front Desk",
@@ -109,515 +493,591 @@ export const categories = [
   "Inventory",
   "Safety",
 ];
-
-// ── Policies ────────────────────────────────────────────────────
-export const policies: PolicyItem[] = [
+const vetPolicies: PolicyItem[] = [
   {
     id: "pol-1",
-    title: "Controlled Drug Storage, Logging & Weekly Count",
+    title: "Controlled Substance Handling Protocol",
     type: "policy",
     category: "Pharmacy",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     status: "published",
     effectiveDate: "2026-04-03",
     reviewDate: "2026-10-03",
-    version: 3,
+    version: 2,
     body: `## Purpose
-Set a single standard for storage, access, dispensing, waste, and discrepancy handling for controlled drugs across CSI pilot clinics.
+This policy governs the handling, storage, dispensing, and documentation of all controlled substances across Rosslyn Veterinary Group clinics, in compliance with Health Canada and Alberta provincial regulations.
 
 ## Scope
-Applies to veterinarians, RVTs, managers, and any team member with authorized access to the controlled drug safe, treatment cart, or logbook.
+Applies to all veterinarians, registered veterinary technologists, and any staff member who accesses the controlled substance safe or log.
 
-## Storage Standard
-- All controlled drugs must be stored in a double-locked safe that is secured to a permanent structure.
-- Safe access is limited to the approved key-holder list posted in each manager office.
-- Keys or keypad codes may not be shared between team members, even during shift change.
+## Storage Requirements
+- All Schedule I–IV drugs must be stored in a double-locked cabinet or safe.
+- The safe must be bolted to a permanent structure in a restricted-access area.
+- Only designated key-holders may access the safe. Current key-holders are listed in each clinic's key-holder register.
 
-## Withdrawal & Dispensing
-1. Two authorized team members must be present for any withdrawal from the safe.
-2. Record the withdrawal immediately in the controlled drug log.
-3. Every log entry must include:
+## Dispensing Procedure
+1. Two authorized individuals must be present for any controlled substance withdrawal.
+2. Record the following in the controlled substance log immediately upon withdrawal:
    - Date and time
-   - Drug, strength, and amount removed
-   - Patient name and chart number
-   - Treating veterinarian
-   - Remaining balance
-   - Initials of both witnesses
-4. Any partially used vial must be witnessed, wasted, and logged before the end of the shift.
+   - Drug name, concentration, and quantity
+   - Patient name and file number
+   - Attending veterinarian
+   - Both witnesses' initials
+3. Any discrepancy between expected and actual inventory must be reported to the Practice Manager within 1 hour.
 
-## Count & Reconciliation
-- Closing shift completes a running visual balance check for high-use items.
-- Lead RVT completes a formal weekly count every Monday before 11:00 AM.
-- Practice manager and attending veterinarian sign the month-end reconciliation.
-- Any unexplained discrepancy requires same-day escalation to the practice manager and owner group.
+## Inventory Reconciliation
+- Weekly physical count every Monday by the lead RVT.
+- Monthly full reconciliation signed off by the attending veterinarian and Practice Manager.
+- Discrepancies exceeding 5% trigger a mandatory incident review.
 
-## Escalation Threshold
-- Missing volume, incomplete log entries, or mismatched balances are treated as a priority incident.
-- Do not wait for the next weekly count if a discrepancy is noticed during patient care.
+## Waste & Disposal
+- Partial vials must be witnessed-wasted and logged.
+- Expired controlled substances must be returned through the approved reverse-distribution program. Do not dispose of in general waste under any circumstances.
 
-## Compliance
-Failure to follow this policy may result in disciplinary action and mandatory reporting where required by law or professional regulation.`,
+## Violations
+Non-compliance is treated as a serious disciplinary matter. Intentional diversion will be reported to the appropriate regulatory body.`,
     createdBy: "user-scott",
     createdAt: "2026-03-15",
-    updatedAt: "2026-04-08",
+    updatedAt: "2026-04-03",
   },
   {
     id: "pol-2",
-    title: "Walk-In Triage & Emergency Intake Standard",
+    title: "Emergency Triage Procedure",
     type: "policy",
     category: "Clinical",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     status: "published",
     effectiveDate: "2026-03-25",
     reviewDate: "2026-09-25",
-    version: 2,
+    version: 1,
     body: `## Purpose
-Create a consistent first-five-minute response for urgent and emergency presentations so front desk, assistants, RVTs, and doctors act the same way at every clinic.
+Defines the triage process for emergency cases presenting at any Rosslyn Veterinary Group clinic, ensuring rapid assessment and appropriate escalation.
 
-## Red — Immediate Transfer To Treatment
-Patients with any of the following bypass standard check-in and move straight to treatment:
-- Respiratory distress or open-mouth breathing
-- Collapse or unresponsive state
+## Triage Categories
+**Red — Immediate (seen within 5 minutes)**
+- Unresponsive / collapse
 - Active seizure
-- Hit by car / major trauma
-- Ongoing hemorrhage
-- Suspected GDV
+- Respiratory distress / open-mouth breathing
+- Uncontrolled hemorrhage
 - Known toxin ingestion within 2 hours
+- GDV presentation (non-productive retching, distended abdomen)
 
-## Orange — Seen Within 15 Minutes
-- Fracture with deformity
-- Severe vomiting/diarrhea with lethargy
-- Penetrating wound
-- Acute paralysis
-- Ocular injury with pain or swelling
+**Orange — Urgent (seen within 15 minutes)**
+- Fractures with visible deformity or open wounds
+- Moderate dyspnea
+- Acute onset paralysis
+- Penetrating wounds
+- Persistent vomiting with lethargy
 
-## Front Desk Script
-1. Stand up, acknowledge the client, and direct the patient to treatment immediately.
-2. Use the clinic call-out: "Triage Red to treatment" or "Triage Orange to treatment."
-3. Delay payment, deposit discussion, and non-essential paperwork until the patient is stabilized.
+**Yellow — Semi-urgent (seen within 30 minutes)**
+- Stable lacerations requiring suturing
+- Eye injuries without perforation
+- Moderate dehydration
 
-## RVT / Assistant Responsibilities
-- Obtain weight, temperature if safe, and brief presenting complaint.
-- Start oxygen, catheter prep, or crash setup based on doctor instruction.
-- Document the arrival time and first assessment time in the chart.
+**Green — Non-urgent (standard queue)**
+- Minor wounds, mild lameness, stable chronic conditions
 
-## Access Targets
-- Red cases: clinician hands on patient within 5 minutes.
-- Orange cases: clinician assessment within 15 minutes.
-- Manager reviews any red-case miss at end of day huddle.`,
+## Front Desk Protocol
+1. Any client who mentions collapse, breathing difficulty, seizure, bleeding, or toxin ingestion should be directed immediately to the treatment area — do not take payment or complete intake forms first.
+2. Notify the on-duty veterinarian via intercom code "Triage Red" or "Triage Orange."
+3. Begin triage assessment documentation once the patient is stabilized.
+
+## Escalation
+If no veterinarian is on-site (Tudor Glen after-hours), contact the on-call doctor immediately and begin basic stabilization per the posted emergency protocol card.`,
     createdBy: "user-scott",
     createdAt: "2026-03-25",
-    updatedAt: "2026-04-02",
+    updatedAt: "2026-03-25",
   },
   {
     id: "pol-3",
-    title: "Surgery Turnover & End-of-Day Cleaning Standard",
+    title: "Surgical Suite Cleaning Standards",
     type: "policy",
     category: "Clinical",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     status: "published",
     effectiveDate: "2026-03-20",
     reviewDate: "2026-09-20",
-    version: 2,
+    version: 1,
     body: `## Purpose
-Protect patient safety and surgical efficiency by standardizing between-case cleaning, equipment reset, and closing-room responsibilities.
+Maintain surgical suite sterility standards that meet or exceed AAHA accreditation requirements and protect patient safety.
 
-## Between-Case Turnover
-1. Remove drapes, sharps, waste, and used instrument packs immediately after transfer.
-2. Wipe the surgery table, monitoring surfaces, IV poles, and touched equipment using approved disinfectant.
-3. Maintain manufacturer contact time before resetting the room.
-4. Replace suction tubing, table tie-downs, and any single-use consumables as required.
-5. Confirm the next pack, ET tubes, and monitoring leads are ready before the next patient enters.
+## Between-Case Cleaning
+1. Remove all used drapes, instruments, and waste.
+2. Wipe down the surgery table, IV poles, and anesthesia equipment with clinic-approved disinfectant (Accel or Rescue).
+3. Allow a minimum 10-minute contact time before the next case.
+4. Mop the floor around the table area.
+5. Restock supplies and confirm instrument pack readiness.
 
-## End-of-Day Close
-- Mop the full surgical area.
-- Disinfect light handles, shelves, machine surfaces, and door-touch points.
-- Run and unload the final instrument washer load.
-- Repackage packs for next day where applicable.
-- Sign the closing checklist posted in surgery.
+## End-of-Day Deep Clean
+1. Full floor mopping with enzymatic cleaner.
+2. Wipe all horizontal surfaces, shelving, and light handles.
+3. Empty sharps container if more than ¾ full.
+4. Run instrument washer cycle and repackage autoclave loads.
+5. Log completion on the daily surgery cleaning checklist (posted in each suite).
 
-## Weekly Audit
-Lead RVT checks cleaning log completion, anesthesia machine readiness, and sharps/sharps-container status every Friday.`,
+## Weekly
+- Ceiling vent covers wiped.
+- Equipment calibration check (anesthesia machine, monitoring).
+- Surgery log review by lead RVT.
+
+## Responsibility
+The surgical RVT on duty is accountable for between-case and end-of-day cleaning. The clinic manager audits the cleaning log weekly.`,
     createdBy: "user-scott",
     createdAt: "2026-03-20",
-    updatedAt: "2026-03-29",
+    updatedAt: "2026-03-20",
   },
   {
     id: "pol-4",
-    title: "Client Experience & Call Handling Standard",
+    title: "Client Communication Standards",
     type: "sog",
     category: "Front Desk",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     status: "published",
     effectiveDate: "2026-04-01",
     reviewDate: "2026-10-01",
-    version: 2,
+    version: 1,
     body: `## Purpose
-Set a repeatable service standard for phones, reception flow, wait-time updates, and cost conversations so the client experience feels consistent across the group.
+Guide consistent, professional, and empathetic communication with clients across all Rosslyn Veterinary Group clinics.
 
-## Phones
-- Answer within 3 rings whenever staffing allows.
-- Use: "Thank you for calling [Clinic Name], this is [Your Name]. How can I help you today?"
-- If placing a caller on hold, ask first and return within 60 seconds.
+## Phone Calls
+- Answer within 3 rings.
+- Greet with: "Thank you for calling [Clinic Name], this is [Your Name]. How can I help you?"
+- If placing a caller on hold, ask permission first and check back within 60 seconds.
+- For after-hours calls that reach voicemail, ensure the recorded message directs emergency cases to the Guardian Veterinary Centre emergency line.
 
-## Lobby Experience
-- Greet every client within 30 seconds of entry, even if already helping someone else.
-- If the wait exceeds 10 minutes, give an update with a realistic next step.
-- If the pet is stressed or reactive, move the client to an exam room or quieter space when possible.
+## In-Person Interactions
+- Greet every client within 30 seconds of entering the clinic.
+- Use the client's name and the pet's name whenever possible.
+- If wait time exceeds 10 minutes, provide an update and offer water or a magazine.
 
-## Financial Conversations
-- Written estimate required before procedures over $300.
-- Use clear, non-minimizing language.
-- If a client hesitates, offer to review priorities and doctor recommendations rather than repeating the total.
+## Estimates & Financial Conversations
+- Always provide a written estimate before any procedure over $300.
+- Walk through the estimate line by line.
+- Never use the phrase "it's just" when discussing costs — acknowledge that veterinary care is an investment.
 
-## Follow-Through
-- Surgery discharge calls by next-day noon.
-- Abnormal lab callbacks same business day whenever results are reviewed before 4:00 PM.
-- Escalate unresolved service issues to the clinic manager before end of shift.`,
+## Difficult Conversations
+- If a client becomes upset, listen without interrupting, then summarize their concern.
+- Use "I understand" rather than "I'm sorry" when the issue is not a clinic error.
+- Escalate to the clinic manager if the conversation is not resolving.
+
+## Follow-Up
+- Post-surgical discharge calls within 24 hours.
+- Lab result callbacks within the same business day whenever possible.
+- Overdue recall reminders per the recall schedule in the practice management system.`,
     createdBy: "user-emma",
     createdAt: "2026-04-01",
-    updatedAt: "2026-04-07",
+    updatedAt: "2026-04-01",
   },
   {
     id: "pol-5",
-    title: "Doctor Schedule Template & Same-Day Access Rules",
+    title: "Appointment Scheduling Guidelines",
     type: "sog",
     category: "Front Desk",
-    clinics: ["clinic-tg", "clinic-riv"],
+    clinics: ["clinic-tg"],
     status: "published",
     effectiveDate: "2026-03-15",
     reviewDate: "2026-09-15",
-    version: 2,
+    version: 1,
     body: `## Purpose
-Balance doctor utilization, technician support, and same-day access without creating chronic delays.
+Ensure efficient scheduling at Tudor Glen Veterinary Hospital that balances patient access, veterinarian workload, and client satisfaction.
 
-## Standard Slots
+## Standard Appointment Slots
 - Wellness exams: 20 minutes
-- Medical progress exams: 20 minutes
-- New client or complex sick exams: 30 minutes
-- Technician appointments: 10 to 15 minutes
-- End-of-day catch-up buffer: minimum 1 slot per doctor
+- Sick patient exams: 30 minutes
+- Recheck / suture removal: 15 minutes
+- New client exam: 30 minutes
+- Dental assessment: 20 minutes
 
-## Same-Day Capacity
-- Reserve 2 urgent access slots per doctor per day.
-- Fill urgent slots before adding overbooked appointments.
-- Double-booking requires doctor approval and a note in the schedule.
+## Surgery Booking
+- Schedule surgeries for morning blocks (8:00–12:00).
+- Maximum 4 surgical cases per day unless approved by the lead vet.
+- Pre-surgical blood work must be booked or confirmed before the surgery date.
 
-## Surgery Protection
-- Do not book elective drop-offs after 10:00 AM unless approved by the surgery doctor.
-- Pre-op bloodwork confirmation must be complete before the surgery day.
+## Same-Day / Urgent Add-Ons
+- Reserve 2 slots per veterinarian per day for same-day urgent appointments.
+- If urgent slots are full, offer the next available or triage to emergency.
 
-## KPI To Watch
-Target doctor delay under 20 minutes for the midday block. If a doctor is routinely over 30 minutes behind, the clinic manager should adjust template or support staffing within the week.`,
+## Double-Booking
+- Do not double-book without explicit veterinarian approval.
+- Exception: technician-only appointments (nail trims, weight checks) may overlap with exam slots.
+
+## Reminders
+- Automated reminders go out 48 hours and 2 hours before appointments.
+- If a client no-shows twice in 6 months, flag the account for manager review.`,
     createdBy: "user-tyler",
     createdAt: "2026-03-15",
-    updatedAt: "2026-04-04",
+    updatedAt: "2026-03-15",
   },
   {
     id: "pol-6",
-    title: "Lab Results, Critical Values & Client Follow-Up",
+    title: "Lab Result Follow-Up Process",
     type: "sog",
     category: "Lab & Diagnostics",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     status: "published",
     effectiveDate: "2026-03-10",
     reviewDate: "2026-09-10",
-    version: 2,
+    version: 1,
     body: `## Purpose
-Ensure lab results are reviewed, communicated, and documented quickly enough that the clinic is never guessing who owns follow-up.
+Ensure timely, accurate communication of lab results to clients and appropriate follow-up action for abnormal findings.
 
-## Turnaround Standard
-- In-house bloodwork: same-day doctor review.
-- Reference lab panels: reviewed within 1 business day of receipt.
-- Histopathology: reviewed within 2 business days.
+## Standard Turnaround
+- In-house bloodwork: results reviewed by veterinarian same day.
+- External lab (IDEXX / Antech): results reviewed within 1 business day of receipt.
+- Histopathology: reviewed within 2 business days of receipt.
 
-## Critical Values Requiring Same-Day Doctor Contact
-- PCV less than 20%
-- Potassium over 6.5 or under 3.0
-- Glucose under 60 or over 400
-- Positive cytology suspicious for malignancy
-- Any result the attending doctor identifies as unstable or time-sensitive
+## Communication Flow
+1. Veterinarian reviews results and adds chart notes with interpretation.
+2. If results are **normal**: reception calls client with the good news or sends a portal message. Use the standard "Normal Results" template.
+3. If results are **abnormal**: veterinarian calls the client directly or schedules a phone consult. Do not leave abnormal results on voicemail — ask the client to call back.
+4. If the client is unreachable after 2 attempts, send a letter and flag the chart for follow-up.
 
-## Workflow
-1. Doctor reviews and interprets result.
-2. Team member assigned to callback documents date, time, method, and outcome.
-3. Abnormal results are not left on voicemail.
-4. If the client cannot be reached after 2 attempts, escalate to doctor and flag chart for follow-up action.`,
+## Critical Values
+The following always require same-day veterinarian-to-client contact:
+- PCV < 20% or > 60%
+- BUN > 80 or creatinine > 5.0
+- Glucose < 60 or > 400
+- Potassium > 6.5 or < 3.0
+- Positive cytology for malignancy
+
+## Documentation
+All client communications regarding lab results must be logged in the patient chart with date, time, method (phone/portal/letter), and outcome.`,
     createdBy: "user-scott",
     createdAt: "2026-03-10",
-    updatedAt: "2026-03-31",
+    updatedAt: "2026-03-10",
   },
   {
     id: "pol-7",
-    title: "Spring Hours Expansion — River Valley & Tudor Glen",
+    title: "Spring Hours Update — Effective April 14",
     type: "info",
     category: "Operations",
-    clinics: ["clinic-tg", "clinic-riv"],
+    clinics: ["clinic-tg"],
     status: "published",
     effectiveDate: "2026-03-28",
-    expiryDate: "2026-05-15",
+    expiryDate: "2026-05-01",
     version: 1,
-    body: `## Update
-Effective **Monday, April 14, 2026**, River Valley Veterinary Hospital and Tudor Glen Veterinary Hospital will run expanded spring hours to improve same-day access.
+    body: `## Spring Hours Change
 
-| Clinic | Current Weekday Hours | New Weekday Hours |
+Effective **Monday, April 14, 2026**, Tudor Glen Veterinary Hospital will shift to spring/summer hours:
+
+| Day | Current Hours | New Hours |
 |-----|--------------|-----------|
-| Tudor Glen Veterinary Hospital | 8:00 AM – 6:00 PM | 7:30 AM – 7:00 PM |
-| River Valley Veterinary Hospital | 8:00 AM – 5:30 PM | 7:30 AM – 6:30 PM |
+| Monday–Friday | 8:00 AM – 6:00 PM | 7:30 AM – 7:00 PM |
+| Saturday | 9:00 AM – 3:00 PM | 8:00 AM – 4:00 PM |
+| Sunday | Closed | Closed |
 
-## What Staff Need To Know
-- Opening team arrives 15 minutes before doors open.
-- Closing team remains 15 minutes after final checkout for room reset and controlled close.
-- Website, voicemail, and Google Business profiles must match by April 11.
+## What This Means for Staff
+- Morning shift starts at 7:15 AM (15 min before opening).
+- Evening shift ends at 7:15 PM (15 min after closing for cleanup).
+- Updated shift schedules will be posted in the break room and on the scheduling app by April 10.
 
-## Owner Intent
-This change is part of the CSI pilot to test whether longer weekday access improves same-day capture without adding weekend fatigue.`,
-    createdBy: "user-sarah",
+## Client Communication
+- Website hours will be updated by April 11.
+- Voicemail greeting will be re-recorded April 13.
+- Social media post scheduled for April 12.
+
+Contact Tyler K. with scheduling questions.`,
+    createdBy: "user-tyler",
     createdAt: "2026-03-28",
     updatedAt: "2026-03-28",
   },
   {
     id: "pol-8",
-    title: "Rosslyn Parking Lot Closure & Team Parking Plan",
+    title: "Staff Parking Lot Closure — April 5–7",
     type: "info",
     category: "Facilities",
     clinics: ["clinic-rv"],
     status: "published",
     effectiveDate: "2026-03-26",
-    expiryDate: "2026-04-12",
+    expiryDate: "2026-04-08",
     version: 1,
-    body: `## Update
-The Rosslyn staff parking lot on the west side will be closed **April 5–7** for resurfacing and line painting.
+    body: `## Parking Lot Closure Notice
 
-## Temporary Parking Plan
-- Team members use the 104 Street municipal lot.
-- Parking receipts are reimbursable through petty cash.
-- Front client lot remains reserved for clients and scheduled drop-offs.
+The Rosslyn Veterinary Clinic staff parking lot (west side) will be closed **Saturday, April 5 through Monday, April 7** for resurfacing.
 
-## Timing
-- Clear the lot by Friday at 6:00 PM.
-- Reopening expected Monday by noon, weather dependent.
+## Alternate Parking
+- Use the municipal lot on 104 Street (2-minute walk). The clinic will reimburse parking fees — keep your receipts.
+- Client parking (front lot) remains open and is not affected.
 
-## Contact
-Questions go to Emma Larson or the front desk lead.`,
+## Timeline
+- Friday, April 4: lot must be cleared by 6:00 PM.
+- Saturday–Sunday: resurfacing and line painting.
+- Monday, April 7: lot reopens by noon (weather permitting).
+
+## Questions
+Contact the front desk or Emma L.`,
     createdBy: "user-emma",
     createdAt: "2026-03-26",
     updatedAt: "2026-03-26",
   },
   {
     id: "pol-9",
-    title: "Inventory Ordering, Receiving & Cold-Chain Check",
+    title: "Inventory Ordering & Receiving Process",
     type: "sog",
     category: "Inventory",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg"],
     status: "published",
     effectiveDate: "2026-02-15",
     reviewDate: "2026-08-15",
-    version: 2,
+    version: 1,
     body: `## Purpose
-Reduce stock-outs, short-dated losses, and receiving errors by setting one receiving routine across the CSI pilot clinics.
+Standardize inventory ordering and receiving to reduce stock-outs, control costs, and maintain accurate records.
 
-## Ordering Cadence
-- ROSS: Tuesday and Friday by 10:00 AM
-- Tudor Glen: Monday, Wednesday, Friday by 10:00 AM
-- RV: Tuesday and Thursday by 10:00 AM
-- Emergency orders require manager approval
+## Ordering Schedule
+- **Rosslyn Vet Clinic:** Orders placed Tuesday and Friday by 10:00 AM.
+- **Tudor Glen:** Orders placed Monday, Wednesday, and Friday by 10:00 AM.
+- Emergency orders may be placed anytime with manager approval.
 
-## Receiving Standard
-1. Match shipment to PO or order sheet.
-2. Check vaccine and temperature-sensitive items first.
-3. Note shortages, damage, or short dating on the packing slip same day.
-4. Enter received quantities into the system before end of shift.
-5. Rotate stock so earliest expiry stays in front.
+## Par Levels
+- Each item has a posted par level on the shelf label.
+- When stock reaches the reorder point (marked in yellow on the label), add the item to the order sheet.
+- The lead RVT or designated inventory person reviews the sheet before submission.
 
-## Cold-Chain Rule
-If a refrigerated shipment arrives warm, do not shelve it until the manager or lead RVT confirms supplier instructions.`,
+## Receiving
+1. Check the packing slip against the order.
+2. Inspect for damage, temperature excursions (cold-chain items), and short-dated product.
+3. Sign and date the packing slip.
+4. Enter received quantities into the inventory system same day.
+5. Rotate stock: new product goes behind existing product.
+
+## Discrepancies
+- Short shipments: note on the packing slip and notify the supplier within 24 hours.
+- Damaged goods: photograph, set aside, and file a claim within 48 hours.
+
+## Controlled Substances
+Controlled substance orders follow the separate Controlled Substance Handling Protocol (pol-1). They must be received by an authorized key-holder.`,
     createdBy: "user-scott",
     createdAt: "2026-02-15",
-    updatedAt: "2026-04-01",
+    updatedAt: "2026-02-15",
   },
   {
     id: "pol-10",
-    title: "Professional Conduct, Confidentiality & Device Use",
+    title: "Workplace Conduct & Professionalism Standards",
     type: "policy",
     category: "HR & Conduct",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     status: "published",
     effectiveDate: "2026-01-15",
     reviewDate: "2027-01-15",
     version: 1,
     body: `## Purpose
-Clarify basic professionalism expectations that apply across all Vet Inc. clinics regardless of role or shift.
+Establish clear expectations for professional conduct across all Rosslyn Veterinary Group clinics.
 
-## Core Standard
-- Treat clients, patients, and coworkers respectfully.
-- Raise concerns through the manager channel rather than in front of clients or in common areas.
-- Protect patient, client, and business confidentiality at all times.
+## Core Expectations
+- Treat colleagues, clients, and patients with respect and professionalism at all times.
+- Maintain a positive, team-oriented attitude in all interactions.
+- Communicate concerns through appropriate channels — speak to your manager or the Practice Manager directly rather than airing grievances in common areas.
 
-## Attendance
-- Be work-ready at your scheduled start time.
-- Report illness or absence as early as possible and no later than 2 hours before shift start unless emergent.
+## Attendance & Punctuality
+- Be ready to work (not just on-site) at your scheduled start time.
+- Notify your manager as early as possible if you will be late or absent — minimum 2 hours before shift start for illness.
+- Chronic lateness (3+ instances in 30 days) will trigger a performance conversation.
 
-## Devices
-- Personal phone use stays to break times unless required for work.
-- Photos of patients or charts on personal devices are prohibited unless approved for clinical use and charted appropriately.
+## Personal Device Use
+- Personal phone use is limited to break times and the break room.
+- Exception: using your phone for work-related communication (e.g., checking the schedule app) is acceptable at the discretion of the on-duty manager.
 
-## Social & Confidentiality
-Do not post patient information, internal incidents, financial information, or coworker matters to personal social channels.`,
+## Dress Code
+- Clean scrubs or clinic-issued uniform.
+- Closed-toe, non-slip shoes.
+- Minimal jewelry that does not pose a safety risk.
+- Name badge visible at all times.
+
+## Confidentiality
+- Client information, patient records, and internal business matters are confidential.
+- Do not discuss cases, clients, or coworkers on personal social media.
+- Violations of confidentiality may result in immediate termination.`,
     createdBy: "user-scott",
     createdAt: "2026-01-15",
     updatedAt: "2026-01-15",
   },
   {
     id: "pol-11",
-    title: "New Client Welcome & First-Visit Checklist",
+    title: "New Client Onboarding Checklist",
     type: "sog",
     category: "Client Services",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     status: "published",
     effectiveDate: "2026-03-01",
     reviewDate: "2026-09-01",
-    version: 2,
+    version: 1,
     body: `## Purpose
-Give new clients a consistent first impression and reduce avoidable errors in registration, records transfer, and follow-up booking.
+Ensure every new client receives a consistent, welcoming experience and that their records are set up correctly from the first visit.
 
-## Before Arrival
-1. Send registration link at least 24 hours before the appointment when possible.
-2. Request prior records before the appointment if transferring care.
-3. Confirm the welcome note, emergency contact, and consent fields are complete.
+## Before the Appointment
+1. Send the new-client registration form via email or portal link at least 24 hours before the visit.
+2. Confirm the form is completed and imported into the practice management system before arrival.
+3. If records are transferring from another clinic, request them at least 3 business days ahead.
 
-## At Check-In
-1. Confirm pet name, species, sex, and emergency contact.
-2. Note behavioural flags early (fearful, fractious, reactive in lobby).
-3. Provide payment policy and after-hours emergency guidance.
+## At Arrival
+1. Greet the client by name: "Welcome to [Clinic Name], you must be [Client Name]!"
+2. Confirm contact information, emergency contact, and pet details.
+3. Provide a welcome packet (clinic brochure, after-hours emergency info, payment policy summary).
+4. Give a brief tour if time allows: "The exam rooms are right through here, and here's where you'll check out."
 
-## Before Check-Out
-- Book next visit or recheck before the client leaves.
-- Ensure portal or email details are correct.
-- Add any important handling or communication notes to the chart.`,
+## During the Visit
+- The veterinarian introduces themselves and asks about the pet's history, lifestyle, and any concerns.
+- Offer a complimentary wellness screen for new patients (per clinic discretion).
+
+## After the Visit
+1. Schedule follow-up or next wellness visit before the client leaves.
+2. Send a "Welcome to [Clinic Name]" email within 24 hours with portal login instructions.
+3. Add the client to the recall/reminder system.
+4. Note any special circumstances in the chart (e.g., anxious pet, financial concerns, preferred vet).`,
     createdBy: "user-emma",
     createdAt: "2026-03-01",
-    updatedAt: "2026-04-06",
+    updatedAt: "2026-03-01",
   },
   {
     id: "pol-12",
-    title: "Bite, Scratch & Staff Exposure Response",
+    title: "Workplace Safety — Bite & Scratch Protocol",
     type: "policy",
     category: "Safety",
-    clinics: ["clinic-rv", "clinic-tg", "clinic-riv"],
+    clinics: ["clinic-rv", "clinic-tg", "clinic-rp"],
     status: "draft",
     effectiveDate: "2026-04-15",
     reviewDate: "2026-10-15",
     version: 1,
     body: `## Purpose
-Create a fast and legally clean response whenever a team member receives a bite, scratch, needlestick, or other exposure during patient handling.
+Establish response procedure for animal bite and scratch injuries to staff, ensuring proper medical attention, documentation, and incident review.
 
 ## Immediate Response
-1. Stop the task safely.
-2. Wash or flush the affected area immediately.
-3. Notify the on-duty manager.
-4. Seek medical assessment when skin is broken, exposure is significant, or manager/doctor advises escalation.
+1. Stop work and attend to the injury immediately.
+2. Wash the wound thoroughly with soap and running water for at least 5 minutes.
+3. Apply first aid (antiseptic, bandaging as needed).
+4. Notify the on-duty manager.
+
+## Medical Attention
+- All bites that break the skin require medical assessment — either walk-in clinic or emergency, depending on severity.
+- The clinic covers the cost of medical treatment via WCB.
 
 ## Documentation
-- Complete an incident report before the end of shift.
-- Add a patient handling alert where appropriate.
-- Manager submits required workplace documentation within 24 hours.
+1. Complete an Incident Report form (found in the staff break room binder and on the shared drive).
+2. Photograph the injury if appropriate and the employee consents.
+3. Manager submits the WCB report within 24 hours.
+4. Add a behavioral note to the patient's chart (e.g., "caution: history of biting during nail trims").
 
 ## Review
-Every incident should be reviewed for restraint method, staffing level, and equipment factors within 48 hours.
+- The manager reviews the incident within 48 hours to identify preventable factors.
+- If restraint technique, equipment, or handling approach contributed, update the handling protocol for that patient.
 
-## Status
-DRAFT — prepared for CSI pilot review and Vet Inc. rollout discussion.`,
+## Status: DRAFT — pending final review before publishing org-wide.`,
     createdBy: "user-scott",
     createdAt: "2026-04-05",
-    updatedAt: "2026-04-08",
-  },
-  {
-    id: "pol-13",
-    title: "Legacy Controlled Drugs Sign-Out Binder — ROSS Import Draft",
-    type: "sog",
-    category: "Pharmacy",
-    clinics: ["clinic-rv"],
-    status: "draft",
-    effectiveDate: "2026-04-10",
-    reviewDate: "2026-07-10",
-    version: 1,
-    body: `## Imported source
-ROSS-controlled-drugs-binder.docx
-
-## Intake status
-This legacy clinic document has been staged into Policy Manager for beta review.
-
-## What still needs cleanup
-1. Confirm the final approved wording from the existing Rosslyn binder.
-2. Split role-specific tasks between DVM, RVT, and manager where needed.
-3. Publish only after formatting, dates, and clinic targeting are confirmed.
-
-## Manager notes
-Existing binder appears current enough to migrate, but the wording still reads like a paper SOP and needs cleanup before staff acknowledgment.`,
-    createdBy: "user-emma",
-    createdAt: "2026-04-10",
-    updatedAt: "2026-04-10",
-    source: {
-      mode: "imported",
-      fileName: "ROSS-controlled-drugs-binder.docx",
-      fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      parseStatus: "staged",
-      sourceLabel: "ROSS legacy binder · Pharmacy",
-      importedAt: "2026-04-10",
-      notes: "Needs wording cleanup before publish.",
-      originalExcerpt: "ROSS-controlled-drugs-binder.docx uploaded for staged import",
-    },
+    updatedAt: "2026-04-05",
   },
 ];
-
-// ── Acknowledgments ─────────────────────────────────────────────
-export const acknowledgments: Acknowledgment[] = [
+const vetAcknowledgments: Acknowledgment[] = [
+  // Pending for Jess (staff)
   { id: "ack-1", policyId: "pol-1", userId: "user-jess", acknowledgedAt: null, dueDate: "2026-04-10" },
   { id: "ack-2", policyId: "pol-2", userId: "user-jess", acknowledgedAt: null, dueDate: "2026-04-12" },
-  { id: "ack-3", policyId: "pol-4", userId: "user-jess", acknowledgedAt: "2026-04-05", dueDate: "2026-04-06" },
-  { id: "ack-4", policyId: "pol-9", userId: "user-jess", acknowledgedAt: "2026-04-02", dueDate: "2026-04-04" },
-
-  { id: "ack-5", policyId: "pol-1", userId: "user-alex", acknowledgedAt: null, dueDate: "2026-04-10" },
-  { id: "ack-6", policyId: "pol-5", userId: "user-alex", acknowledgedAt: null, dueDate: "2026-04-09" },
-  { id: "ack-7", policyId: "pol-7", userId: "user-alex", acknowledgedAt: "2026-04-01", dueDate: "2026-04-03" },
+  // Completed for Jess
+  { id: "ack-3", policyId: "pol-4", userId: "user-jess", acknowledgedAt: "2026-03-30", dueDate: "2026-04-05" },
+  { id: "ack-4", policyId: "pol-5", userId: "user-jess", acknowledgedAt: "2026-03-18", dueDate: "2026-03-25" },
+  { id: "ack-5", policyId: "pol-3", userId: "user-jess", acknowledgedAt: "2026-03-15", dueDate: "2026-03-22" },
+  // Pending for Alex (staff)
+  { id: "ack-6", policyId: "pol-1", userId: "user-alex", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "ack-7", policyId: "pol-2", userId: "user-alex", acknowledgedAt: null, dueDate: "2026-04-12" },
   { id: "ack-8", policyId: "pol-4", userId: "user-alex", acknowledgedAt: null, dueDate: "2026-04-08" },
-
-  { id: "ack-9", policyId: "pol-1", userId: "user-carmen", acknowledgedAt: null, dueDate: "2026-04-10" },
-  { id: "ack-10", policyId: "pol-7", userId: "user-carmen", acknowledgedAt: "2026-04-02", dueDate: "2026-04-03" },
-  { id: "ack-11", policyId: "pol-6", userId: "user-carmen", acknowledgedAt: "2026-03-31", dueDate: "2026-04-02" },
-  { id: "ack-12", policyId: "pol-10", userId: "user-carmen", acknowledgedAt: "2026-02-02", dueDate: "2026-02-15" },
-
-  { id: "ack-13", policyId: "pol-2", userId: "user-noah", acknowledgedAt: null, dueDate: "2026-04-11" },
-  { id: "ack-14", policyId: "pol-8", userId: "user-noah", acknowledgedAt: "2026-04-04", dueDate: "2026-04-05" },
-  { id: "ack-15", policyId: "pol-4", userId: "user-noah", acknowledgedAt: "2026-04-03", dueDate: "2026-04-05" },
+  // Completed for Alex
+  { id: "ack-9", policyId: "pol-3", userId: "user-alex", acknowledgedAt: "2026-03-22", dueDate: "2026-03-28" },
+  // Pending for Carmen (staff)
+  { id: "ack-10", policyId: "pol-1", userId: "user-carmen", acknowledgedAt: null, dueDate: "2026-04-10" },
+  // Completed for Carmen
+  { id: "ack-11", policyId: "pol-2", userId: "user-carmen", acknowledgedAt: "2026-03-28", dueDate: "2026-04-05" },
+  { id: "ack-12", policyId: "pol-4", userId: "user-carmen", acknowledgedAt: "2026-04-02", dueDate: "2026-04-05" },
+  { id: "ack-13", policyId: "pol-3", userId: "user-carmen", acknowledgedAt: "2026-03-21", dueDate: "2026-03-28" },
+  { id: "ack-14", policyId: "pol-10", userId: "user-carmen", acknowledgedAt: "2026-02-01", dueDate: "2026-02-15" },
 ];
 
-// ── Helpers ─────────────────────────────────────────────────────
-export function getPolicy(id: string): PolicyItem | undefined {
-  return policies.find((p) => p.id === id);
+
+export const verticalPresets: Record<VerticalPresetId, VerticalPreset> = {
+  veterinary: {
+    id: "veterinary",
+    label: "Veterinary Clinic",
+    shortLabel: "Vet",
+    industry: "Veterinary",
+    organization: { id: "org-1", name: "Rosslyn Veterinary Group" },
+    clinics: vetClinics,
+    users: vetUsers,
+    categories: vetCategories,
+    policies: vetPolicies,
+    acknowledgments: vetAcknowledgments,
+    landingLabel: "Veterinary clinic preset",
+    landingDescription: "Shows patient care, controlled drugs, and facility workflows with seeded clinic-specific content.",
+    moduleHighlights: ["Pharmacy", "Clinical", "Front Desk", "Safety"],
+    locationLabel: "Clinic",
+    locationLabelPlural: "Clinics",
+    roleLabels: {
+      owner: "Owner",
+      admin: "Admin",
+      practice_manager: "Practice Manager",
+      manager: "Manager",
+      staff: "Staff",
+      read_only: "Read Only",
+    },
+  },
+  accounting: {
+    locationLabel: "Office",
+    locationLabelPlural: "Offices",
+    roleLabels: {
+      owner: "Managing Partner",
+      admin: "Admin",
+      practice_manager: "Operations Manager",
+      manager: "Manager",
+      staff: "Senior Accountant / Staff",
+      read_only: "Read Only",
+    },
+    id: "accounting",
+    label: "Accounting Firm",
+    shortLabel: "Accounting",
+    industry: "Accounting",
+    organization: { id: "org-accounting", name: "Business Inc. — Accounting Firm Demo" },
+    clinics: accountingClinics,
+    users: accountingUsers,
+    categories: accountingCategories,
+    policies: accountingPolicies,
+    acknowledgments: accountingAcknowledgments,
+    landingLabel: "Accounting firm preset",
+    landingDescription: "Shows tax, payroll, close, compliance, and client document workflows with seeded office-specific content.",
+    moduleHighlights: ["Tax & Compliance", "Payroll Controls", "Month-End Close", "Secure Client Portal"],
+  },
+  law: {
+    locationLabel: "Branch",
+    locationLabelPlural: "Branches",
+    roleLabels: {
+      owner: "Managing Partner",
+      admin: "Admin",
+      practice_manager: "Practice Manager",
+      manager: "Partner",
+      staff: "Associate / Clerk",
+      read_only: "Read Only",
+    },
+    id: "law",
+    label: "Law Firm",
+    shortLabel: "Law",
+    industry: "Legal",
+    organization: { id: "org-law", name: "Business Inc. — Law Firm Demo" },
+    clinics: lawClinics,
+    users: lawUsers,
+    categories: lawCategories,
+    policies: lawPolicies,
+    acknowledgments: lawAcknowledgments,
+    landingLabel: "Law firm preset",
+    landingDescription: "Shows conflicts, trust, confidentiality, court deadlines, and file-closing workflows with partner/staff personas.",
+    moduleHighlights: ["Conflict Checks", "Trust Handling", "Court Diary", "File Closing"],
+  },
+};
+
+export const DEFAULT_VERTICAL_PRESET: VerticalPresetId = "accounting";
+export const allPolicies = Object.values(verticalPresets).flatMap((preset) => preset.policies);
+
+export function getVerticalPreset(id: VerticalPresetId | string | undefined): VerticalPreset {
+  if (id && id in verticalPresets) return verticalPresets[id as VerticalPresetId];
+  return verticalPresets[DEFAULT_VERTICAL_PRESET];
 }
 
-export function getUser(id: string): User | undefined {
-  return users.find((u) => u.id === id);
-}
-
-export function getClinic(id: string): Clinic | undefined {
-  return clinics.find((c) => c.id === id);
-}
-
-export function clinicDisplay(ids: string[]): string {
-  return clinicLabel(ids);
-}
-
-export function getUserAcknowledgments(userId: string) {
-  return acknowledgments.filter((a) => a.userId === userId);
-}
-
-export function getPolicyAcknowledgments(policyId: string) {
-  return acknowledgments.filter((a) => a.policyId === policyId);
-}
-
-export function getPublishedPolicies() {
-  return policies.filter((p) => p.status === "published");
+export function clinicDisplayFromPreset(ids: string[], clinics: Clinic[]): string {
+  if (ids.length === clinics.length) return "All offices";
+  return ids.map((id) => clinics.find((clinic) => clinic.id === id)?.name ?? id).join(", ");
 }
