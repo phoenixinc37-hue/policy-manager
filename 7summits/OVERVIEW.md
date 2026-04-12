@@ -13,13 +13,17 @@ Summits are nodes, not silos. Capital, knowledge, and opportunities flow between
 
 ---
 
-## Summit 1 — Earned Income (Veterinary Clinics)
-- **Status:** Active / Foundation
-- **Assets:** 3 clinics (1 St. Albert, 2 Edmonton)
+## Summit 1 — Operations Management (Veterinary Clinics)
+- **Status:** Active / Foundation — going concern risk, turnaround underway
+- **Assets:**
+  - **Tudor Glen Veterinary Hospital** (TG) — St. Albert
+  - **River Valley Veterinary Wellness Clinic** (RV) — Edmonton
+  - **Rosslyn Veterinary Clinic** (ROSS) + Urgent Pet Care (UPC) — Edmonton
 - **Revenue:** ~$7M
-- **Current margin:** 13% → Target: 20%
-- **Strategy:** Operational efficiency, high-margin services, client retention
-- **Exit:** Sell and convert to investment capital
+- **Current margin:** ~10% → Target: 20%
+- **Strategy:** Operational efficiency, pricing governance (Clinic IQ), financial controls, accountability
+- **500 Day Plan:** Active — pricing tool, rebate optimization, HR Hub, daily reporting
+- **Exit:** Sell and convert to investment capital (long-term)
 
 ## Summit 2 — Real Estate
 - **Status:** Active / Optimizing

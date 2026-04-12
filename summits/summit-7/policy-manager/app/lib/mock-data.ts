@@ -1,35 +1,437 @@
-import type {
-  Organization,
-  Clinic,
-  User,
-  PolicyItem,
-  Acknowledgment,
-} from "@/types";
+import type { Acknowledgment, Clinic, Organization, PolicyItem, User } from "@/types";
 
-// ── Organization ────────────────────────────────────────────────
-export const org: Organization = {
-  id: "org-1",
-  name: "Rosslyn Veterinary Group",
-};
+export type VerticalPresetId = "veterinary" | "accounting" | "law";
 
-// ── Clinics ─────────────────────────────────────────────────────
-export const clinics: Clinic[] = [
+export interface VerticalPreset {
+  roleLabels: Record<string, string>;
+  locationLabel: string;
+  locationLabelPlural: string;
+  id: VerticalPresetId;
+  label: string;
+  shortLabel: string;
+  industry: string;
+  organization: Organization;
+  clinics: Clinic[];
+  users: User[];
+  categories: string[];
+  policies: PolicyItem[];
+  acknowledgments: Acknowledgment[];
+  landingLabel: string;
+  landingDescription: string;
+  moduleHighlights: string[];
+}
+
+const accountingClinics: Clinic[] = [
+  { id: "acct-downtown", name: "Downtown Advisory Office", orgId: "org-accounting" },
+  { id: "acct-west", name: "West End Tax & Payroll Hub", orgId: "org-accounting" },
+  { id: "acct-north", name: "North Corporate Services", orgId: "org-accounting" },
+];
+
+const accountingUsers: User[] = [
+  { id: "acct-owner", name: "Scott Wilde", email: "scott@business.inc", role: "practice_manager", clinics: accountingClinics.map((c) => c.id), initials: "SW" },
+  { id: "acct-olivia", name: "Olivia Grant, CPA", email: "olivia@business.inc", role: "manager", clinics: ["acct-downtown"], initials: "OG" },
+  { id: "acct-noah", name: "Noah Patel, CPA", email: "noah@business.inc", role: "manager", clinics: ["acct-west"], initials: "NP" },
+  { id: "acct-emma", name: "Emma Chen, Controller", email: "emma@business.inc", role: "manager", clinics: ["acct-north"], initials: "EC" },
+  { id: "acct-julia", name: "Julia Park, Senior Bookkeeper", email: "julia@business.inc", role: "staff", clinics: ["acct-downtown"], initials: "JP" },
+  { id: "acct-ethan", name: "Ethan Ross, Payroll Specialist", email: "ethan@business.inc", role: "staff", clinics: ["acct-west"], initials: "ER" },
+  { id: "acct-priya", name: "Priya Singh, Staff Accountant", email: "priya@business.inc", role: "staff", clinics: ["acct-north"], initials: "PS" },
+  { id: "acct-liam", name: "Liam Brooks, Client Success", email: "liam@business.inc", role: "staff", clinics: ["acct-downtown"], initials: "LB" },
+];
+
+const accountingCategories = [
+  "Tax & Compliance",
+  "Client Intake",
+  "Payroll",
+  "Month-End Close",
+  "Data Security",
+  "Advisory",
+  "Billing",
+  "Document Retention",
+  "Operations",
+  "HR & Conduct",
+];
+
+const accountingPolicies: PolicyItem[] = [
+  {
+    id: "acct-pol-1",
+    title: "Client Document Intake & Missing-Item Escalation",
+    type: "policy",
+    category: "Client Intake",
+    clinics: accountingClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-04-03",
+    reviewDate: "2026-10-03",
+    version: 2,
+    body: `## Purpose
+Create one intake standard so bookkeeping, tax, and advisory teams know exactly when a client file is complete enough to begin work.
+
+## Scope
+Applies to client success, bookkeepers, staff accountants, payroll specialists, and office managers.
+
+## Intake Standard
+1. Log every incoming document set the same day it is received.
+2. Mark the file as Complete, Partial, or Critical Missing.
+3. If payroll source data, government notices, or bank records are missing, the file may not move to ready-for-work status.
+
+## Escalation
+- Send the missing-items request to the client within 2 business hours.
+- If critical items remain missing after 24 hours, escalate to the office manager.
+- If a filing deadline is within 5 business days, manager outreach is same-day.
+
+## Accountability
+Managers review all Critical Missing files in the daily production check-in.`,
+    createdBy: "acct-owner",
+    createdAt: "2026-03-20",
+    updatedAt: "2026-04-08",
+  },
+  {
+    id: "acct-pol-2",
+    title: "Payroll Change Approval & Four-Eyes Review",
+    type: "policy",
+    category: "Payroll",
+    clinics: ["acct-west", "acct-north"],
+    status: "published",
+    effectiveDate: "2026-04-01",
+    reviewDate: "2026-10-01",
+    version: 1,
+    body: `## Purpose
+Reduce payroll risk by requiring clear approval, audit trail, and secondary review for pay-impacting changes.
+
+## Policy
+1. Any new salary, wage, bonus, or deduction change must have written client approval.
+2. The preparer enters the change and attaches the approval note.
+3. A second team member reviews the change before payroll is finalized.
+4. Same-day verbal approvals must be summarized in writing before processing.
+
+## Exceptions
+Emergency off-cycle payments require manager approval and same-day documentation cleanup.
+
+## Compliance
+Missing approval or missing reviewer signoff is treated as a payroll incident.`,
+    createdBy: "acct-noah",
+    createdAt: "2026-03-28",
+    updatedAt: "2026-04-05",
+  },
+  {
+    id: "acct-pol-3",
+    title: "Month-End Close Ownership & Cutoff Checklist",
+    type: "sog",
+    category: "Month-End Close",
+    clinics: accountingClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-03-25",
+    reviewDate: "2026-09-25",
+    version: 2,
+    body: `## Purpose
+Make month-end close predictable across offices and stop files from stalling between bookkeeping and review.
+
+## Workflow
+1. Bookkeeper posts all recurring entries and clears the bank-feed exception queue.
+2. Staff accountant completes reconciliation checklist.
+3. Manager reviews unusual variances and signs off the close packet.
+4. Client-ready package goes out within the agreed service window.
+
+## Cutoff Rules
+- Revenue and payroll cutoff assumptions must be documented in the file.
+- Any unresolved balance over the office threshold requires manager review before release.
+
+## Notes
+Use the standard close checklist for every recurring client, even if the month was quiet.`,
+    createdBy: "acct-emma",
+    createdAt: "2026-03-18",
+    updatedAt: "2026-04-06",
+  },
+  {
+    id: "acct-pol-4",
+    title: "CRA / Tax Notice Triage Standard",
+    type: "sog",
+    category: "Tax & Compliance",
+    clinics: accountingClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-04-02",
+    reviewDate: "2026-10-02",
+    version: 1,
+    body: `## Purpose
+Ensure government notices are triaged fast enough that the firm never loses time on avoidable penalties or missed responses.
+
+## Workflow
+1. Log every notice the same business day.
+2. Tag severity as Informational, Action Required, or Urgent Deadline.
+3. Assign an owner before close of business.
+4. For urgent deadlines, confirm client contact and response plan the same day.
+
+## Service Standard
+Urgent Deadline notices must be reviewed by a manager within 2 hours of receipt.`,
+    createdBy: "acct-owner",
+    createdAt: "2026-04-02",
+    updatedAt: "2026-04-07",
+  },
+  {
+    id: "acct-pol-5",
+    title: "Secure Portal Upload & Client Identity Verification",
+    type: "policy",
+    category: "Data Security",
+    clinics: accountingClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-03-15",
+    reviewDate: "2026-09-15",
+    version: 2,
+    body: `## Purpose
+Protect client financial data during document exchange and call-back requests.
+
+## Core Standard
+- Sensitive records move through the secure portal only.
+- Email attachments with SINs, payroll files, or tax slips are not the default channel.
+- Caller identity must be verified before discussing balances, filings, or payroll.
+
+## Verification Steps
+1. Confirm business name and primary contact.
+2. Confirm one approved file detail already on record.
+3. If uncertain, end the call and call back using the CRM contact number.
+
+## Compliance
+Potential privacy breaches must be escalated to the office manager immediately.`,
+    createdBy: "acct-olivia",
+    createdAt: "2026-03-15",
+    updatedAt: "2026-04-01",
+  },
+  {
+    id: "acct-pol-6",
+    title: "T4 / T5 Deadline Week Coverage Plan",
+    type: "info",
+    category: "Operations",
+    clinics: ["acct-west", "acct-north"],
+    status: "draft",
+    effectiveDate: "2026-04-15",
+    expiryDate: "2026-04-30",
+    version: 1,
+    body: `## Update
+Business Inc. will run extended processing coverage during deadline week to protect filing turnaround and callback speed.
+
+## What staff need to know
+- West End payroll team starts 30 minutes earlier.
+- North Corporate Services keeps one floating reviewer unbooked each afternoon.
+- Managers review queue pressure at 11:00 AM and 3:30 PM.
+
+## Status
+Draft for manager approval before publish.`,
+    createdBy: "acct-noah",
+    createdAt: "2026-04-09",
+    updatedAt: "2026-04-10",
+  },
+];
+
+const accountingAcknowledgments: Acknowledgment[] = [
+  { id: "acct-ack-1", policyId: "acct-pol-1", userId: "acct-julia", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "acct-ack-2", policyId: "acct-pol-4", userId: "acct-julia", acknowledgedAt: "2026-04-05", dueDate: "2026-04-06" },
+  { id: "acct-ack-3", policyId: "acct-pol-5", userId: "acct-julia", acknowledgedAt: null, dueDate: "2026-04-11" },
+  { id: "acct-ack-4", policyId: "acct-pol-2", userId: "acct-ethan", acknowledgedAt: null, dueDate: "2026-04-09" },
+  { id: "acct-ack-5", policyId: "acct-pol-4", userId: "acct-ethan", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "acct-ack-6", policyId: "acct-pol-3", userId: "acct-priya", acknowledgedAt: "2026-04-03", dueDate: "2026-04-04" },
+  { id: "acct-ack-7", policyId: "acct-pol-5", userId: "acct-priya", acknowledgedAt: "2026-04-02", dueDate: "2026-04-03" },
+  { id: "acct-ack-8", policyId: "acct-pol-1", userId: "acct-liam", acknowledgedAt: null, dueDate: "2026-04-10" },
+];
+
+const lawClinics: Clinic[] = [
+  { id: "law-downtown", name: "Downtown Family Law Group", orgId: "org-law" },
+  { id: "law-corporate", name: "Corporate & Commercial Practice", orgId: "org-law" },
+  { id: "law-litigation", name: "Litigation Support Office", orgId: "org-law" },
+];
+
+const lawUsers: User[] = [
+  { id: "law-owner", name: "Scott Wilde", email: "scott@business.inc", role: "practice_manager", clinics: lawClinics.map((c) => c.id), initials: "SW" },
+  { id: "law-rachel", name: "Rachel Kim, Partner", email: "rachel@business.inc", role: "manager", clinics: ["law-downtown"], initials: "RK" },
+  { id: "law-daniel", name: "Daniel Price, Partner", email: "daniel@business.inc", role: "manager", clinics: ["law-corporate"], initials: "DP" },
+  { id: "law-maya", name: "Maya Lopez, Practice Manager", email: "maya@business.inc", role: "manager", clinics: ["law-litigation"], initials: "ML" },
+  { id: "law-sophie", name: "Sophie Tran, Law Clerk", email: "sophie@business.inc", role: "staff", clinics: ["law-downtown"], initials: "ST" },
+  { id: "law-jacob", name: "Jacob Wells, Legal Assistant", email: "jacob@business.inc", role: "staff", clinics: ["law-corporate"], initials: "JW" },
+  { id: "law-aisha", name: "Aisha Noor, Litigation Clerk", email: "aisha@business.inc", role: "staff", clinics: ["law-litigation"], initials: "AN" },
+  { id: "law-emily", name: "Emily Hart, Intake Coordinator", email: "emily@business.inc", role: "staff", clinics: ["law-downtown"], initials: "EH" },
+];
+
+const lawCategories = [
+  "Conflicts & Intake",
+  "Client Trust",
+  "File Management",
+  "Court Deadlines",
+  "Confidentiality",
+  "Billing",
+  "Retainers",
+  "Operations",
+  "HR & Conduct",
+  "Practice Standards",
+];
+
+const lawPolicies: PolicyItem[] = [
+  {
+    id: "law-pol-1",
+    title: "New Matter Intake & Conflict Check Gate",
+    type: "policy",
+    category: "Conflicts & Intake",
+    clinics: lawClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-04-03",
+    reviewDate: "2026-10-03",
+    version: 2,
+    body: `## Purpose
+Prevent avoidable conflicts and incomplete client openings by making intake and conflict clearance one controlled gate.
+
+## Scope
+Applies to intake coordinators, assistants, clerks, and lawyers opening or reactivating a matter.
+
+## Policy
+1. No matter may be opened before a conflict check is run.
+2. Intake notes must capture all known parties, related companies, and opposing counsel if known.
+3. If the conflict result is unclear, the file remains on hold until lawyer review.
+
+## Escalation
+Potential conflict matches are reviewed by the responsible lawyer the same day.`,
+    createdBy: "law-owner",
+    createdAt: "2026-03-21",
+    updatedAt: "2026-04-08",
+  },
+  {
+    id: "law-pol-2",
+    title: "Trust Retainer Receipt & Deposit Verification",
+    type: "policy",
+    category: "Client Trust",
+    clinics: ["law-downtown", "law-corporate"],
+    status: "published",
+    effectiveDate: "2026-03-28",
+    reviewDate: "2026-09-28",
+    version: 1,
+    body: `## Purpose
+Protect trust handling by standardizing who records retainer receipts, who verifies deposits, and when the file may proceed.
+
+## Policy
+1. Retainer funds are logged the same day received.
+2. Deposit confirmation must match the receipt record before trust status is marked ready.
+3. No substantive work begins on a trust-required file until the retainer status is clear or lawyer direction is documented.
+
+## Compliance
+Any mismatch between receipt, ledger entry, and deposit confirmation is escalated to the practice manager immediately.`,
+    createdBy: "law-daniel",
+    createdAt: "2026-03-28",
+    updatedAt: "2026-04-04",
+  },
+  {
+    id: "law-pol-3",
+    title: "Court Deadline Diary & Two-Step Verification",
+    type: "sog",
+    category: "Court Deadlines",
+    clinics: lawClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-03-30",
+    reviewDate: "2026-09-30",
+    version: 2,
+    body: `## Purpose
+Reduce missed dates by requiring every litigation and family-law deadline to be diarized and verified twice.
+
+## Workflow
+1. Enter the deadline into the matter file and central calendar.
+2. A second team member confirms the date source and lead time.
+3. Responsible lawyer reviews high-risk deadlines within one business day.
+4. Weekly deadline meeting resolves gaps, ownership, and upcoming pinch points.
+
+## Notes
+Same-day service deadlines and limitation dates are priority review items.`,
+    createdBy: "law-maya",
+    createdAt: "2026-03-22",
+    updatedAt: "2026-04-05",
+  },
+  {
+    id: "law-pol-4",
+    title: "Client Confidentiality, Redaction & External Sharing",
+    type: "policy",
+    category: "Confidentiality",
+    clinics: lawClinics.map((c) => c.id),
+    status: "published",
+    effectiveDate: "2026-03-18",
+    reviewDate: "2026-09-18",
+    version: 2,
+    body: `## Purpose
+Keep privileged and sensitive information controlled during email, portal delivery, and document production.
+
+## Core Standard
+- Share only the minimum necessary material.
+- Redact personal identifiers before external distribution unless disclosure is required.
+- Use the secure client portal for sensitive production whenever possible.
+
+## Verification
+If you are unsure whether a document is safe to share, stop and escalate to the lawyer responsible for the matter.`,
+    createdBy: "law-rachel",
+    createdAt: "2026-03-18",
+    updatedAt: "2026-04-02",
+  },
+  {
+    id: "law-pol-5",
+    title: "File Closing, Return of Originals & Retention Checklist",
+    type: "sog",
+    category: "File Management",
+    clinics: ["law-corporate", "law-litigation"],
+    status: "published",
+    effectiveDate: "2026-04-01",
+    reviewDate: "2026-10-01",
+    version: 1,
+    body: `## Purpose
+Close matters cleanly so the firm can prove what was returned, what was retained, and what the client was told.
+
+## Workflow
+1. Confirm final billing status.
+2. Confirm return or storage of originals.
+3. Save final closing memo and retention date.
+4. Mark the matter closed only after checklist completion.
+
+## Notes
+Files with appeal windows or ongoing undertakings require lawyer signoff before closure.`,
+    createdBy: "law-daniel",
+    createdAt: "2026-04-01",
+    updatedAt: "2026-04-06",
+  },
+  {
+    id: "law-pol-6",
+    title: "Urgent Motion Week Staffing & Coverage Plan",
+    type: "info",
+    category: "Operations",
+    clinics: ["law-litigation"],
+    status: "draft",
+    effectiveDate: "2026-04-16",
+    expiryDate: "2026-04-23",
+    version: 1,
+    body: `## Update
+Business Inc. will run an adjusted support rotation during urgent motion week to keep filing, service, and client updates moving.
+
+## What staff need to know
+- One litigation clerk remains unbooked each afternoon for court-facing work.
+- Practice manager reviews next-day court list at 4:00 PM.
+- Client updates go out before end of day on active urgent files.
+
+## Status
+Draft for final partner approval.`,
+    createdBy: "law-maya",
+    createdAt: "2026-04-10",
+    updatedAt: "2026-04-10",
+  },
+];
+
+const lawAcknowledgments: Acknowledgment[] = [
+  { id: "law-ack-1", policyId: "law-pol-1", userId: "law-sophie", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "law-ack-2", policyId: "law-pol-4", userId: "law-sophie", acknowledgedAt: "2026-04-04", dueDate: "2026-04-05" },
+  { id: "law-ack-3", policyId: "law-pol-2", userId: "law-jacob", acknowledgedAt: null, dueDate: "2026-04-09" },
+  { id: "law-ack-4", policyId: "law-pol-5", userId: "law-jacob", acknowledgedAt: null, dueDate: "2026-04-11" },
+  { id: "law-ack-5", policyId: "law-pol-3", userId: "law-aisha", acknowledgedAt: "2026-04-03", dueDate: "2026-04-04" },
+  { id: "law-ack-6", policyId: "law-pol-4", userId: "law-aisha", acknowledgedAt: null, dueDate: "2026-04-10" },
+  { id: "law-ack-7", policyId: "law-pol-1", userId: "law-emily", acknowledgedAt: null, dueDate: "2026-04-10" },
+];
+
+
+
+const vetClinics: Clinic[] = [
   { id: "clinic-rv", name: "Rosslyn Veterinary Clinic", orgId: "org-1" },
   { id: "clinic-tg", name: "Tudor Glen Veterinary Hospital", orgId: "org-1" },
   { id: "clinic-rp", name: "Rosslyn Park Animal Hospital", orgId: "org-1" },
 ];
-
-export const ALL_CLINICS = "All Clinics";
-
-function clinicLabel(ids: string[]): string {
-  if (ids.length === clinics.length) return ALL_CLINICS;
-  return ids
-    .map((id) => clinics.find((c) => c.id === id)?.name ?? id)
-    .join(", ");
-}
-
-// ── Users ───────────────────────────────────────────────────────
-export const users: User[] = [
+const vetUsers: User[] = [
   {
     id: "user-scott",
     name: "Scott W.",
@@ -79,9 +481,7 @@ export const users: User[] = [
     initials: "CD",
   },
 ];
-
-// ── Categories ──────────────────────────────────────────────────
-export const categories = [
+const vetCategories = [
   "Pharmacy",
   "Clinical",
   "Front Desk",
@@ -93,9 +493,7 @@ export const categories = [
   "Inventory",
   "Safety",
 ];
-
-// ── Policies ────────────────────────────────────────────────────
-export const policies: PolicyItem[] = [
+const vetPolicies: PolicyItem[] = [
   {
     id: "pol-1",
     title: "Controlled Substance Handling Protocol",
@@ -569,9 +967,7 @@ Establish response procedure for animal bite and scratch injuries to staff, ensu
     updatedAt: "2026-04-05",
   },
 ];
-
-// ── Acknowledgments ─────────────────────────────────────────────
-export const acknowledgments: Acknowledgment[] = [
+const vetAcknowledgments: Acknowledgment[] = [
   // Pending for Jess (staff)
   { id: "ack-1", policyId: "pol-1", userId: "user-jess", acknowledgedAt: null, dueDate: "2026-04-10" },
   { id: "ack-2", policyId: "pol-2", userId: "user-jess", acknowledgedAt: null, dueDate: "2026-04-12" },
@@ -594,31 +990,94 @@ export const acknowledgments: Acknowledgment[] = [
   { id: "ack-14", policyId: "pol-10", userId: "user-carmen", acknowledgedAt: "2026-02-01", dueDate: "2026-02-15" },
 ];
 
-// ── Helpers ─────────────────────────────────────────────────────
-export function getPolicy(id: string): PolicyItem | undefined {
-  return policies.find((p) => p.id === id);
+
+export const verticalPresets: Record<VerticalPresetId, VerticalPreset> = {
+  veterinary: {
+    id: "veterinary",
+    label: "Veterinary Clinic",
+    shortLabel: "Vet",
+    industry: "Veterinary",
+    organization: { id: "org-1", name: "Rosslyn Veterinary Group" },
+    clinics: vetClinics,
+    users: vetUsers,
+    categories: vetCategories,
+    policies: vetPolicies,
+    acknowledgments: vetAcknowledgments,
+    landingLabel: "Veterinary clinic preset",
+    landingDescription: "Shows patient care, controlled drugs, and facility workflows with seeded clinic-specific content.",
+    moduleHighlights: ["Pharmacy", "Clinical", "Front Desk", "Safety"],
+    locationLabel: "Clinic",
+    locationLabelPlural: "Clinics",
+    roleLabels: {
+      owner: "Owner",
+      admin: "Admin",
+      practice_manager: "Practice Manager",
+      manager: "Manager",
+      staff: "Staff",
+      read_only: "Read Only",
+    },
+  },
+  accounting: {
+    locationLabel: "Office",
+    locationLabelPlural: "Offices",
+    roleLabels: {
+      owner: "Managing Partner",
+      admin: "Admin",
+      practice_manager: "Operations Manager",
+      manager: "Manager",
+      staff: "Senior Accountant / Staff",
+      read_only: "Read Only",
+    },
+    id: "accounting",
+    label: "Accounting Firm",
+    shortLabel: "Accounting",
+    industry: "Accounting",
+    organization: { id: "org-accounting", name: "Business Inc. — Accounting Firm Demo" },
+    clinics: accountingClinics,
+    users: accountingUsers,
+    categories: accountingCategories,
+    policies: accountingPolicies,
+    acknowledgments: accountingAcknowledgments,
+    landingLabel: "Accounting firm preset",
+    landingDescription: "Shows tax, payroll, close, compliance, and client document workflows with seeded office-specific content.",
+    moduleHighlights: ["Tax & Compliance", "Payroll Controls", "Month-End Close", "Secure Client Portal"],
+  },
+  law: {
+    locationLabel: "Branch",
+    locationLabelPlural: "Branches",
+    roleLabels: {
+      owner: "Managing Partner",
+      admin: "Admin",
+      practice_manager: "Practice Manager",
+      manager: "Partner",
+      staff: "Associate / Clerk",
+      read_only: "Read Only",
+    },
+    id: "law",
+    label: "Law Firm",
+    shortLabel: "Law",
+    industry: "Legal",
+    organization: { id: "org-law", name: "Business Inc. — Law Firm Demo" },
+    clinics: lawClinics,
+    users: lawUsers,
+    categories: lawCategories,
+    policies: lawPolicies,
+    acknowledgments: lawAcknowledgments,
+    landingLabel: "Law firm preset",
+    landingDescription: "Shows conflicts, trust, confidentiality, court deadlines, and file-closing workflows with partner/staff personas.",
+    moduleHighlights: ["Conflict Checks", "Trust Handling", "Court Diary", "File Closing"],
+  },
+};
+
+export const DEFAULT_VERTICAL_PRESET: VerticalPresetId = "accounting";
+export const allPolicies = Object.values(verticalPresets).flatMap((preset) => preset.policies);
+
+export function getVerticalPreset(id: VerticalPresetId | string | undefined): VerticalPreset {
+  if (id && id in verticalPresets) return verticalPresets[id as VerticalPresetId];
+  return verticalPresets[DEFAULT_VERTICAL_PRESET];
 }
 
-export function getUser(id: string): User | undefined {
-  return users.find((u) => u.id === id);
-}
-
-export function getClinic(id: string): Clinic | undefined {
-  return clinics.find((c) => c.id === id);
-}
-
-export function clinicDisplay(ids: string[]): string {
-  return clinicLabel(ids);
-}
-
-export function getUserAcknowledgments(userId: string) {
-  return acknowledgments.filter((a) => a.userId === userId);
-}
-
-export function getPolicyAcknowledgments(policyId: string) {
-  return acknowledgments.filter((a) => a.policyId === policyId);
-}
-
-export function getPublishedPolicies() {
-  return policies.filter((p) => p.status === "published");
+export function clinicDisplayFromPreset(ids: string[], clinics: Clinic[]): string {
+  if (ids.length === clinics.length) return "All offices";
+  return ids.map((id) => clinics.find((clinic) => clinic.id === id)?.name ?? id).join(", ");
 }

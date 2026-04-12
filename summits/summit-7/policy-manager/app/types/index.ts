@@ -30,6 +30,17 @@ export interface User {
   initials: string;
 }
 
+export interface ImportSourceMeta {
+  mode: "authored" | "imported";
+  fileName?: string;
+  fileType?: string;
+  parseStatus?: "parsed" | "staged";
+  sourceLabel?: string;
+  importedAt?: string;
+  notes?: string;
+  originalExcerpt?: string;
+}
+
 export interface PolicyItem {
   id: string;
   title: string;
@@ -45,6 +56,7 @@ export interface PolicyItem {
   createdBy: string;
   createdAt: string;
   updatedAt: string;
+  source?: ImportSourceMeta;
 }
 
 export interface Acknowledgment {

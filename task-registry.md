@@ -28,6 +28,7 @@
 | 50.01.01 | Create Golias Gmail account | 2026-03-21 | TBD | HIGH |
 | 51.02.01 | Map email management process | 2026-03-22 | DONE | HIGH |
 | 52.02.01 | Connect golias1037@gmail.com (OAuth at Mac) | 2026-03-22 | Later date | HIGH |
+| 50.08.01 | Set up remote access to Mac mini (when in front of machine) | 2026-03-28 | TBD | MEDIUM |
 | 50.02.03 | Test incoming email analysis flow | 2026-03-22 | TBD | HIGH |
 | 50.02.04 | Test response approval workflow | 2026-03-22 | TBD | HIGH |
 | 50.03.01 | Define daily clinic info format | 2026-03-21 | TBD | MEDIUM |
