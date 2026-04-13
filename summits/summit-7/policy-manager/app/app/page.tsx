@@ -1,3 +1,4 @@
+// This is a minor comment to force a new Vercel deployment
 export default function Page() {
  return (
  <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#0f172a', fontFamily: 'Arial, sans-serif' }}>
