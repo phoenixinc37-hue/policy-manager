@@ -50,9 +50,9 @@ export default function LandingPage() {
               Policies, SOPs, and internal communication are the <span style={{ fontWeight: 700 }}>FOUNDATION</span> of that <span style={{ fontWeight: 700 }}>STRUCTURE</span> — policies that are read, understood, and followed will make your firm <span style={{ fontWeight: 700 }}>SUCCESSFUL</span>.
             </p>
             <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
-              <a href="#" style={{ textDecoration: 'none', background: '#166534', color: '#ffffff', padding: '10px 16px', borderRadius: 6 }}>Policy</a>
-              <a href="#" style={{ textDecoration: 'none', background: '#166534', color: '#ffffff', padding: '10px 16px', borderRadius: 6 }}>SOG</a>
-              <a href="#" style={{ textDecoration: 'none', background: '#166534', color: '#ffffff', padding: '10px 16px', borderRadius: 6 }}>Memo</a>
+              <Link href="/policy-index" style={{ textDecoration: 'none', background: '#166534', color: '#ffffff', padding: '10px 16px', borderRadius: 6 }}>Policy</Link>
+              <Link href="/policy-index" style={{ textDecoration: 'none', background: '#166534', color: '#ffffff', padding: '10px 16px', borderRadius: 6 }}>SOG</Link>
+              <Link href="/policy-index" style={{ textDecoration: 'none', background: '#166534', color: '#ffffff', padding: '10px 16px', borderRadius: 6 }}>Memo</Link>
             </div>
           </div>
 
