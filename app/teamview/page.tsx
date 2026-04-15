@@ -37,7 +37,7 @@ export default function TeamView() {
             </div>
             <div>
               <div style={{ fontWeight: 600 }}>
-                Policy Manager <span style={{ fontSize: 12, fontWeight: 700, color: '#475569', marginLeft: 6 }}>for accounting firms</span>
+                Policy Manager <span style={{ fontSize: 12, fontWeight: 700, color: '#475569', marginLeft: 6 }}>for accounting firms</span><span style={{ fontSize: 14, fontWeight: 600, color: '#166534', marginLeft: 12 }}>u00b7 Team View</span>
               </div>
               <div style={{ fontSize: 12, fontWeight: 700, color: '#64748b' }}>Business Inc</div>
             </div>
