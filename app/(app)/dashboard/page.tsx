@@ -26,7 +26,6 @@ export default function DashboardPage() {
         eyebrow={`${presetLabel} · ${isManager ? "Manager workspace" : "Staff workspace"}`}
         title={`${greetingForRole()}, ${currentUser.name.split(" ")[0]}.`}
         description={workspaceMode === "blank" ? "Blank workspace is active. This is the clean-start experience a brand-new business would see before any seeded demo content exists." : `The ${presetLabel.toLowerCase()} dashboard shows what policy are still in circulation for you - please take a moment to read over the circulating policies and confirm that you have read them.`}
-        action={isManager ? <Link href="/policy/new" className="btn-primary">+ Create policy</Link> : undefined}
       />
 
       <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
