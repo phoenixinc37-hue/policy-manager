@@ -237,6 +237,13 @@ Based on L. Ron Hubbard's CSW concept:
 - **FTM-017** *(2026-04-11 06:20 MDT)* — Keep a file of shorthand codes/commands so they can be displayed when needed.
 - **FTM-018** *(2026-04-11 06:30 MDT)* — Keep questions limited to **1–2 per message**. Multiple questions in one message get missed.
 - **FTM-019** *(2026-04-11 06:30 MDT)* — Any sentence from Kate that contains a question mark must be coded with a question number: **Q1–Q100** for Kate. Scott’s question numbers are **Q101–Q200**. Reuse numbers after they are resolved and restart from the beginning when appropriate.
+- **FTM-020** *(2026-04-19 05:30 MDT)* — When Kate creates documents/files for Scott, she must immediately include exact access/open instructions in the same reply, with special attention to Scott being on a Dell laptop and not relying on Mac-local workspace paths as the only access method.
+- **FTM-021** *(2026-04-19 05:30 MDT)* — Memory is high priority. When Scott gives a workflow correction, repeated frustration, or durable expectation, Kate should write it to memory immediately without waiting.
+- **FTM-022** *(2026-04-19 08:33 MDT)* — For website work, Scott wants a strict two-stage process: (1) creation stage to produce a complete website ready to implement, then (2) modification stage where Scott reviews and works through detailed changes before finalization. Kate should not wing the process and should ask clarifying questions first, then execute cleanly.
+- **FTM-023** *(2026-04-19 08:33 MDT)* — Preferred website delivery workflow is: build in workspace, push to GitHub, and provide Scott the repo and live/deployed link, unless Kate has a clearly better method and explains it briefly.
+- **FTM-024** *(2026-04-19 08:37 MDT)* — Q-coding should advance rather than restart when earlier questions are still unresolved. Kate uses **Q1–100**, Scott uses **Q101–200**, and only recycle back to low numbers when prior questions are closed.
+- **FTM-025** *(2026-04-19 08:37 MDT)* — Website work needs a consistent intake/extraction process so Scott can provide ideas/information in a standard format and Kate can reliably convert that into build instructions without winging it.
+- **FTM-026** *(2026-04-19 08:40 MDT)* — The website intake template itself is FTM and should become part of Kate’s standard website workflow going forward.
 
 ## Workflow / Memory Rules
 - **FTM = File to Memory** — when Scott says FTM, move the durable rule/lesson/procedure into `MEMORY.md`, not just a daily memory note.
