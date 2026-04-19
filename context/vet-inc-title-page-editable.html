@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vet Inc Title Page Editable</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #5f6978;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      position: relative;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .brand {
+      position: absolute;
+      top: 58mm;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .shield {
+      width: 34px;
+      height: 40px;
+      background: #3a78b8;
+      clip-path: polygon(50% 0%, 92% 14%, 92% 59%, 50% 100%, 8% 59%, 8% 14%);
+      position: relative;
+      flex: 0 0 auto;
+    }
+    .shield::after {
+      content: "+";
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .brand-text {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      color: #2d67a5;
+    }
+    .brand-text .inc {
+      color: #5d92c7;
+    }
+    .title-block {
+      position: absolute;
+      top: 105mm;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 0 24mm;
+      box-sizing: border-box;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: #667182;
+      margin: 0 0 12px 0;
+    }
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #7a8391;
+      margin: 0;
+    }
+    .description {
+      position: absolute;
+      top: 188mm;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 126mm;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #7a8391;
+    }
+    .footer {
+      position: absolute;
+      bottom: 26mm;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 128mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #8a92a0;
+      letter-spacing: 0.2px;
+    }
+    [contenteditable="true"]:focus {
+      outline: 1px dashed #9bb7d3;
+      outline-offset: 4px;
+    }
+    @media print {
+      [contenteditable="true"]:focus { outline: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="brand">
+      <div class="shield"></div>
+      <div class="brand-text">VET <span class="inc">INC.</span></div>
+    </div>
+
+    <div class="title-block">
+      <div class="title" contenteditable="true">Core Thinking Notes</div>
+      <p class="subtitle" contenteditable="true">Pricing discipline framework for sustainable revenue capture and margin protection.</p>
+    </div>
+
+    <div class="description" contenteditable="true">A visual walkthrough of every feature in the Vet INC Business Dashboard. From real-time revenue tracking to AI-powered pricing recommendations.</div>
+
+    <div class="footer">
+      <span contenteditable="true">April 2026</span>
+      <span contenteditable="true">Vet INC</span>
+    </div>
+  </div>
+</body>
+</html>
