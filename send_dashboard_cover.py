@@ -9,6 +9,7 @@ client = AgentMail(api_key=os.getenv('AGENTMAIL_API_KEY'))
 files = [
     ('/Users/scottwilde/.openclaw/workspace/context/vet-inc-dashboard-cover-editable.html', 'vet-inc-dashboard-cover-editable.html', 'text/html'),
     ('/Users/scottwilde/.openclaw/workspace/context/vet-inc-dashboard-cover-editable.docx', 'vet-inc-dashboard-cover-editable.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
+    ('/Users/scottwilde/.openclaw/workspace/context/vet-inc-logo-exact.png', 'vet-inc-logo-exact.png', 'image/png'),
 ]
 
 attachments = []
@@ -24,10 +25,11 @@ for path, filename, content_type in files:
 
 body = """Hi Scott,
 
-Attached is the exact dashboard title page version rebuilt as an editable file:
+Attached is the corrected dashboard title page version rebuilt as an editable file using the exact embedded logo image from the PDF:
 
 - vet-inc-dashboard-cover-editable.html
 - vet-inc-dashboard-cover-editable.docx
+- vet-inc-logo-exact.png
 
 Best,
 Kate
