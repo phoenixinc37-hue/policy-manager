@@ -55,3 +55,9 @@ Preserve incoming order for later retrieval on the Mac mini.
 27. Clinic_Analyses_-_Website_STONEBRIDGE_1---80dbb5c8-45de-4dff-86b0-bfe54130f128.docx
 28. Clinic_Analyses_-_Website---1a9bab41-6f82-445b-af91-7e58bf370b1f.docx
 29. Clinic_Analyses_-_Website_8th_STREET_VETS_and_PETS_2---670d2f51-f80b-4884-80ce-e53e0354ae98.docx
+30. Operational_Plan_CSI_2024---cb4b73e0-ee54-4ca5-9ffc-5364c4e648ff.docx
+31. Per_Average_Transaction---649ebe6d-205d-412a-87fd-534602e18615.docx
+32. Turning_Green---e6d96b06-6baf-4dc7-8f73-b5cf3e6d6a74.docx
+33. UPC_ROSS---34a1c6f2-c389-40e8-b961-d858321f4641.docx
+34. 2024_Summary_of_Targets---f9dccbfa-715c-4024-9477-a01e1d291ec6.docx
+35. EXPENSE_REDUCTION---6879192b-0246-4183-b684-b89ec6dc6a88.docx
