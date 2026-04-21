@@ -107,3 +107,5 @@ Preserve incoming order for later retrieval on the Mac mini.
 79. Corp_Structure_Feb_2023_V4---44b29ae8-e956-4b6b-89a3-b1c246794be8.docx
 80. Corp_Structure_Jan_2023_V3.1---0aa6cdcd-214f-4929-bac4-1df164f54587.docx
 81. Corp_Structure_Jan_2023_V3---e89d4635-fd3f-40dd-8d23-9ae705e5d7e5.docx
+82. Corp_Structre_V2_with_definition_and_expectation_fort_Busine---c8575b84-f621-4a97-b19e-6c8ce2bbe4e1.docx
+83. Corp_Structure_April_2023_in_progress---e214abcb-e4cc-4ba5-b6ab-d67b7825e198.docx
