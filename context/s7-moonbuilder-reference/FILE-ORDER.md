@@ -109,3 +109,14 @@ Preserve incoming order for later retrieval on the Mac mini.
 81. Corp_Structure_Jan_2023_V3---e89d4635-fd3f-40dd-8d23-9ae705e5d7e5.docx
 82. Corp_Structre_V2_with_definition_and_expectation_fort_Busine---c8575b84-f621-4a97-b19e-6c8ce2bbe4e1.docx
 83. Corp_Structure_April_2023_in_progress---e214abcb-e4cc-4ba5-b6ab-d67b7825e198.docx
+84. directors_registry---2fac1101-bf69-45c8-ad23-a85aa1b9b2ce.docx
+85. Resolution_of_Directors---5af5698a-05d0-4417-8773-7a309319781e.docx
+86. Resolution_of_Directors_2021---ee7de55b-6411-4007-98d3-664c1076af29.docx
+87. Resolution_of_Directors_2024---5372a91b-0f9a-48fa-905b-4437f93aece5.docx
+88. resolutions_1---539894df-1399-4f44-9c63-3031ef8bcb76.docx
+89. securities_register---232c021b-c80c-430d-953e-469cab52da67.docx
+90. share_certificate---d70e13d8-d629-471a-8380-817c89bfebcf.docx
+91. CSW_-_Kate_ROSS_and_GCC_dental_night---b8fdbcb1-d8ec-44e2-8d4f-2d135f0d8c8b.docx
+92. CSW_-_Wayne_Pictures_for_windows---94bb4d94-c11a-48c1-a1f4-9e0d4282d44a.docx
+93. CSW_TEMPLATE---c31474df-26c1-43eb-9266-24a886c1b33d.docx
+94. CSW_-_Dawn_TG_dental_night---bf0b7fbb-b595-4f7b-b8e7-aed5c73c385b.docx
