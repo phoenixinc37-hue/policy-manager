@@ -32,6 +32,12 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### agreement-reference
 - Historical letters of intent and agreement-style documents for future deal/reference structure
 
+### offer-structures
+- Historical offer math, purchase option structures, and acquisition pricing concepts
+
+### due-diligence
+- Historical diligence materials that may help frame future clinic review workflows
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples

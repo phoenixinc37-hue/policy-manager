@@ -43,3 +43,8 @@ Preserve incoming order for later retrieval on the Mac mini.
 15. Recruitment_Ideas_-_Vets_R_Us---cab9b6c9-ea56-4690-adbc-416d34b4140d.docx
 16. Rosslyn_Projections_2015-8_1---bb2f97db-af8d-4754-904e-69eb51bd10b4.xlsx
 17. Rosslynn_letter_of_intent---65e2e8ae-103a-49af-bfcb-b39c85df3915.docx
+18. Sifton_Park_Vet_Options_Offer_Calculation_March_11_2024---3c1ad52f-c7e2-4df7-a91b-e2714b23649d.docx
+19. Sifton_Part_Vet_Clinic_Offer_March_7_2024---33ee4d6f-6c17-4324-9273-df16e566f62f.docx
+20. Sifton_Vet_-_Purchase_Options_V1---78d91840-adac-45f3-8c3d-c8b60c8890f2.docx
+21. Sifton_cost---61ac2029-e290-4667-81a5-1853a6c0d3d5.docx
+22. Sifton_Park_Due_Diligence_May_1_2024---705bbdaf-35c2-48ab-9221-5c0a69ede509.docx
