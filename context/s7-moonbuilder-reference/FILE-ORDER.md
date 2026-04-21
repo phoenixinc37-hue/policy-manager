@@ -42,3 +42,4 @@ Preserve incoming order for later retrieval on the Mac mini.
 14. NDA_template---541de526-0d29-48c0-8131-9fd571fffefc.docx
 15. Recruitment_Ideas_-_Vets_R_Us---cab9b6c9-ea56-4690-adbc-416d34b4140d.docx
 16. Rosslyn_Projections_2015-8_1---bb2f97db-af8d-4754-904e-69eb51bd10b4.xlsx
+17. Rosslynn_letter_of_intent---65e2e8ae-103a-49af-bfcb-b39c85df3915.docx
