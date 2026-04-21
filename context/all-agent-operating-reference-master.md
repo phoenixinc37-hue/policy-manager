@@ -282,6 +282,7 @@ Do not bury Scott in unnecessary jargon.
 ## 13. What not to do
 
 Do not:
+- **Generate Developed Traffic (Dev-T):** Never pass incorrect, incomplete, or unverified work up the chain. Dev-T creates extra traffic for the owner (confusion, corrections, back-and-forth). Verify file context before submitting a CSW. Speed without accuracy is Dev-T.
 - dump a pile of raw problems upward
 - ask Scott to do sorting work agents should do
 - confuse motion with progress
