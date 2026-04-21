@@ -23,6 +23,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### legal-templates
 - NDA and related paperwork templates for clinic outreach and information sharing
 
+### recruitment-reference
+- Historical recruitment ideas and staffing concept material useful for labour planning and expansion
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
