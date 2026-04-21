@@ -47,6 +47,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### operating-system-templates
 - Battle plan and operating-condition templates that may inform repeatable clinic execution systems
 
+### hr-policy-tools
+- Historical policy, training, accountability, and onboarding tool concepts that may inform Policy Manager and related HR tools
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
