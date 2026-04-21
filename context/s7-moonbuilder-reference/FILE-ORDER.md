@@ -34,3 +34,5 @@ Preserve incoming order for later retrieval on the Mac mini.
 6. Business_Plan_-_Rosslyn_1---159aae97-53fd-4bfb-99d9-ef5a3b676c18.docx
 7. Corp_and_Operational_Summary---fa180855-d492-4ad7-8f1b-7b3217567f33.docx
 8. GCC_Business_Plan_-edit_Nov_21_Scott_Wilde---35e40d0f-91b2-4e02-b3f4-ef52ae53923c.docx
+9. Intro_letter_Version_1---b4aeb75b-5997-487e-8ee9-bc3721d6486b.docx
+10. Intro_letter_Version_2---c30c4de7-48cf-4f49-83a2-808f314eff36.docx
