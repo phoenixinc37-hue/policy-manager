@@ -57,6 +57,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### org-structure-reference
 - Historical org charts, corp structures, and org board references for role design and workflow structure
 
+### management-memos
+- Historical downward communication, project dispatch, and "From the desk of Scott" examples
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
