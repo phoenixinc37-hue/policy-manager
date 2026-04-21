@@ -49,3 +49,9 @@ Preserve incoming order for later retrieval on the Mac mini.
 21. Sifton_cost---61ac2029-e290-4667-81a5-1853a6c0d3d5.docx
 22. Sifton_Park_Due_Diligence_May_1_2024---705bbdaf-35c2-48ab-9221-5c0a69ede509.docx
 23. Recruitment_Ideas_-_Vets_R_Us---6652a586-1d04-4945-97c8-a7a0d615c4d5.docx
+24. Clinic_Analyses_-_Website_CUMBERLAND---8bd138cb-789d-439b-9ea9-2f8bdbcc8bad.docx
+25. Clinic_Analyses_-_Website_ERINDALE---b31091e3-c0d9-4600-acc8-6f8c4f139b89.docx
+26. Clinic_Analyses_-_Website_Fairlight_1---7a65b72f-f081-471e-b6d1-5db600b9d8dc.docx
+27. Clinic_Analyses_-_Website_STONEBRIDGE_1---80dbb5c8-45de-4dff-86b0-bfe54130f128.docx
+28. Clinic_Analyses_-_Website---1a9bab41-6f82-445b-af91-7e58bf370b1f.docx
+29. Clinic_Analyses_-_Website_8th_STREET_VETS_and_PETS_2---670d2f51-f80b-4884-80ce-e53e0354ae98.docx
