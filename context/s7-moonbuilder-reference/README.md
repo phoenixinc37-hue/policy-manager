@@ -26,6 +26,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### recruitment-reference
 - Historical recruitment ideas and staffing concept material useful for labour planning and expansion
 
+### growth-projections
+- Historical projections and numeric growth models that may help frame expansion or financial planning scenarios
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
