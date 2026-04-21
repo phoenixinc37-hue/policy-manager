@@ -49,6 +49,10 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 
 ### hr-policy-tools
 - Historical policy, training, accountability, and onboarding tool concepts that may inform Policy Manager and related HR tools
+- Includes historical employment agreements, development reviews, and compensation frameworks
+
+### marketing-seo-reference
+- Notes and analysis from marketing/SEO strategy meetings (e.g. iMatrix)
 
 ### legal-templates
 - NDA and related paperwork templates for clinic outreach and information sharing
