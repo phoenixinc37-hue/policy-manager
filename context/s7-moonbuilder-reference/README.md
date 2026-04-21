@@ -50,6 +50,10 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### hr-policy-tools
 - Historical policy, training, accountability, and onboarding tool concepts that may inform Policy Manager and related HR tools
 
+### legal-templates
+- NDA and related paperwork templates for clinic outreach and information sharing
+- Includes sample corporate resolutions and governance templates
+
 ### org-structure-reference
 - Historical org charts, corp structures, and org board references for role design and workflow structure
 
