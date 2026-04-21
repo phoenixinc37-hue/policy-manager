@@ -101,3 +101,9 @@ Preserve incoming order for later retrieval on the Mac mini.
 73. Org_Board_2.0_REFERENCE---84f1167b-5a0b-41d9-adf8-8d2c6912c952.docx
 74. Org_Board_3.0_REFERENCE---b674f17b-94f5-499e-9299-04b252ddcf24.docx
 75. Org_Board_4.0_REFERENCE---0a78cb9a-9715-4b16-b9a2-b438671a6c50.docx
+76. ORG_BOARD_DEFINE_-_Bob_REFERENCE---5ad7588d-0564-4693-b856-3907459048ce.docx
+77. Org_Board_Expectation_REFERENCE---c1959f17-a13d-4367-b05e-049424f58b79.docx
+78. Corp_Structure_April_2023---268b3bea-5f9f-484f-81c7-f757c817a785.docx
+79. Corp_Structure_Feb_2023_V4---44b29ae8-e956-4b6b-89a3-b1c246794be8.docx
+80. Corp_Structure_Jan_2023_V3.1---0aa6cdcd-214f-4929-bac4-1df164f54587.docx
+81. Corp_Structure_Jan_2023_V3---e89d4635-fd3f-40dd-8d23-9ae705e5d7e5.docx
