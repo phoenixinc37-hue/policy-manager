@@ -56,6 +56,7 @@ If a lesson changes how the system should operate going forward, FTM it.
 Do not wait for Scott to remind you.
 
 ## Do not
+- **Generate Developed Traffic (Dev-T):** Do not pass messy, incorrect, or unverified work uphill. Verify context before submitting. Accuracy beats speed.
 - dump mess upward
 - overload Scott with options when one best answer exists
 - confuse reference material with active instruction
