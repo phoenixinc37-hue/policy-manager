@@ -24,3 +24,8 @@ Preserve incoming order for later retrieval on the Mac mini.
 5. Tudor_Glen_Price_Change_April_2026_1_2---a1c2c2cd-345f-4ecd-a912-0f9d70b58538.docx
 6. Clinic_IQ_-_Pricing_Intelligence_System---ef78558e-6070-4cd8-8f36-4421e83c3e28
 7. Revenue_Capture_and_Price_Discipline_System---d8fdbaaf-ceda-4e70-9a4d-1117ae197902.docx
+
+## Batch 4
+1. Prologue_V2---b924c8c3-7b02-46d1-82a0-b9233f9dac45.docx
+2. Prologue_V3---73bc14b9-051e-4e4e-994c-109657763f31.docx
+3. Veterinary_medicine_has_become_multi_billion_dolar_industry_---aae8d691-718d-4a13-bea6-d29d321cacad.docx
