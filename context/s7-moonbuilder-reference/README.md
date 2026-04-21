@@ -41,6 +41,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### market-website-analyses
 - Competitor and market website reviews that may help with expansion scanning, positioning, and web/marketing ideas
 
+### operational-plans
+- Historical clinic operating plans and target frameworks that may inform later product or advisory structure
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
