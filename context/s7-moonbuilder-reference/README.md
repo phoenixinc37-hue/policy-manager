@@ -20,6 +20,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### one-pagers
 - Short-form external or summary product documents
 
+### legal-templates
+- NDA and related paperwork templates for clinic outreach and information sharing
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
