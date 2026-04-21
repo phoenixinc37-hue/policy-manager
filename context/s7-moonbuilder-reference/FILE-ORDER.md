@@ -33,3 +33,4 @@ Preserve incoming order for later retrieval on the Mac mini.
 5. PSI_CONCEPT---b3297014-d995-477d-b809-7a8bdc8fa240.docx
 6. Business_Plan_-_Rosslyn_1---159aae97-53fd-4bfb-99d9-ef5a3b676c18.docx
 7. Corp_and_Operational_Summary---fa180855-d492-4ad7-8f1b-7b3217567f33.docx
+8. GCC_Business_Plan_-edit_Nov_21_Scott_Wilde---35e40d0f-91b2-4e02-b3f4-ef52ae53923c.docx
