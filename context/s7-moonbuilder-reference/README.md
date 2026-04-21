@@ -44,6 +44,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### operational-plans
 - Historical clinic operating plans and target frameworks that may inform later product or advisory structure
 
+### operating-system-templates
+- Battle plan and operating-condition templates that may inform repeatable clinic execution systems
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
