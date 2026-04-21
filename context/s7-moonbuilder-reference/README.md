@@ -38,6 +38,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### due-diligence
 - Historical diligence materials that may help frame future clinic review workflows
 
+### market-website-analyses
+- Competitor and market website reviews that may help with expansion scanning, positioning, and web/marketing ideas
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
