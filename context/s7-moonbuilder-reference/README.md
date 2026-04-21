@@ -29,6 +29,9 @@ This folder stores Moon Builder / Vet INC product materials that support S7 dire
 ### growth-projections
 - Historical projections and numeric growth models that may help frame expansion or financial planning scenarios
 
+### agreement-reference
+- Historical letters of intent and agreement-style documents for future deal/reference structure
+
 ### reference-reports
 - Example clinic pricing reports and scan outputs
 - Includes detailed price report examples
