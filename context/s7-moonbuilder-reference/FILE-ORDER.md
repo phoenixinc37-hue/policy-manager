@@ -69,3 +69,10 @@ Preserve incoming order for later retrieval on the Mac mini.
 41. 3_MARCH_26_email_thread_on_Ross_staffing_on_March_27_no_RVT_---4c476a70-66e7-4967-8bc6-8bb7992c0bf8.docx
 42. email_reply_to_Nate---6a109f29-0d83-4b8b-ae93-71731ec7a1ed.docx
 43. LL_MARCH_24_26_email_thread_introducing_Price_Intelligences_---c60e02c8-b9c7-4916-9e2e-158c92d41958.docx
+44. BP_Weekly_-_Emergency_-_Template---92e2ad06-a8e3-4061-9c0b-0984aa708b5d.docx
+45. BP_Weekly_-_Normal_-_Template---d6dc6680-05bc-4f23-8341-acf3256db3b9.docx
+46. Info_for_Plan---96ee4de6-685d-4b0d-a9d9-e2ed3348150d.docx
+47. Monthly_BP_-_Emergency_-_Template---f4602eb0-360a-49e8-bd69-a5ea9baae282.docx
+48. Monthly_BP_-_Normal_Template---328d1556-4019-4598-bba5-008a79b56287.docx
+49. BP_Weekly_-_Affluence_1.0_-_Template---620fb501-db6e-42ea-ace1-ca2731f4feaf.docx
+50. BP_Weekly_-_Danger_1.0_-_Template---a0976f9f-8eb2-427c-bc9e-b5edbc7e5d34.docx
