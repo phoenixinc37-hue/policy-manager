@@ -89,3 +89,4 @@ Preserve incoming order for later retrieval on the Mac mini.
 61. GCC_Plan_EM_Feb_2018---de13ae76-491d-4e4f-9769-03eff6583bbc.docx
 62. ROSS_Plan_EM_Feb_2018---10cc8754-7e7c-4bc0-a373-476f0dffcf95.docx
 63. Per_Average_Transaction---01854477-94d4-4949-9b73-2f3b4d6784c3.docx
+64. TG_Plan_-_draft---5f5dee68-1c3b-449e-96b4-97aee307436f.docx
