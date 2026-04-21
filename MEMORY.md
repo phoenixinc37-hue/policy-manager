@@ -244,6 +244,9 @@ Based on L. Ron Hubbard's CSW concept:
 - **FTM-024** *(2026-04-19 08:37 MDT)* — Q-coding should advance rather than restart when earlier questions are still unresolved. Kate uses **Q1–100**, Scott uses **Q101–200**, and only recycle back to low numbers when prior questions are closed.
 - **FTM-025** *(2026-04-19 08:37 MDT)* — Website work needs a consistent intake/extraction process so Scott can provide ideas/information in a standard format and Kate can reliably convert that into build instructions without winging it.
 - **FTM-026** *(2026-04-19 08:40 MDT)* — The website intake template itself is FTM and should become part of Kate’s standard website workflow going forward.
+- **FTM-027** *(2026-04-21 05:34 MDT)* — For S1 (Clinic Solutions Inc), the **500 Day Plan** is the blueprint/master copy for the summit build. Kate should use that document as the starting plan, assign a sub-agent responsible for every financial section, and proactively lead the build by identifying what information/actions are needed instead of waiting passively for Scott’s ideas.
+- **FTM-028** *(2026-04-21 05:38 MDT)* — The active S1 blueprint/master copy is `500_day_plan_scene1_scene2_2001_-_V3---0dd18509-d04e-4948-9d87-de51ba3e21f2.docx`. The earlier March 2024 500 Day Plan file is reference only and should not be used as the live implementation plan.
+- **FTM-029** *(2026-04-21 05:52 MDT)* — If Kate repeats or re-asks the same unresolved question, it must keep the same Q number. Do not assign a new Q number to the same unresolved question; stable numbering is required so Scott can request the list of still-open questions without confusion.
 
 ## Workflow / Memory Rules
 - **FTM = File to Memory** — when Scott says FTM, move the durable rule/lesson/procedure into `MEMORY.md`, not just a daily memory note.
