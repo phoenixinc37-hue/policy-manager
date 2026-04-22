@@ -1,10 +1,10 @@
 # Q-Code Tracker
 
 ## CSW Code Tracker
-**Next Available:** CSW2
+**Next Available:** CSW5
 
 ### Open CSW Approvals
-*(None)*
+- **CSW4:** Tracking systems — create the 2-layer outbound communications control system, with a simple Scott-facing master log and a deeper Kate operating tracker underneath it. (Open)
 **Next Available:** Q21
 
 ### Open Questions (Kate)
