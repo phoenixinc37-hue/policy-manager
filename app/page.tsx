@@ -33,33 +33,55 @@ export default function LandingPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div
               style={{
-                width: 46,
-                height: 46,
-                borderRadius: 12,
-                background: "linear-gradient(180deg, #2e7d32 0%, #1f5d24 100%)",
-                padding: 8,
+                width: 52,
+                height: 60,
+                borderRadius: 8,
+                background: "linear-gradient(180deg, #3b5d7a 0%, #2a455d 100%)",
+                border: "1px solid #22394d",
+                padding: 5,
                 boxSizing: "border-box",
                 display: "grid",
+                gridTemplateRows: "1fr 1fr",
                 gap: 4,
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
               }}
             >
-              {[0, 1, 2].map((row) => (
-                <div key={row} style={{ background: "#9ae6a0", borderRadius: 4, position: "relative" }}>
-                  <div style={{ position: "absolute", right: 5, top: "50%", width: 7, height: 2, marginTop: -1, borderRadius: 2, background: "#1f5d24" }} />
-                </div>
-              ))}
+              <div
+                style={{
+                  borderRadius: 4,
+                  border: "1px solid #3e556b",
+                  background: "linear-gradient(180deg, #6f8aa6 0%, #4f6b86 100%)",
+                  position: "relative",
+                }}
+              >
+                <div style={{ position: "absolute", left: 8, right: 8, top: 10, height: 1, background: "#dbe5ec", opacity: 0.9 }} />
+                <div style={{ position: "absolute", left: 8, right: 8, top: 14, height: 1, background: "#dbe5ec", opacity: 0.65 }} />
+                <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: 12, height: 4, borderRadius: 999, background: "#2a455d" }} />
+              </div>
+              <div
+                style={{
+                  borderRadius: 4,
+                  border: "1px solid #334c63",
+                  background: "linear-gradient(180deg, #5c7894 0%, #3e5a73 100%)",
+                  position: "relative",
+                }}
+              >
+                <div style={{ position: "absolute", left: 8, right: 8, top: 10, height: 1, background: "#dbe5ec", opacity: 0.9 }} />
+                <div style={{ position: "absolute", left: 8, right: 8, top: 14, height: 1, background: "#dbe5ec", opacity: 0.65 }} />
+                <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: 12, height: 4, borderRadius: 999, background: "#2a455d" }} />
+              </div>
             </div>
             <div>
               <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager</div>
-              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Demo for accounting firms</div>
+              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
             </div>
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/manager" style={navButton(false)}>
+            <Link href="/manager" style={headerButton("#1f5d24")}>
               Manager View
             </Link>
-            <Link href="/teamview" style={navButton(true)}>
+            <Link href="/teamview" style={headerButton("#66a97a")}>
               Team View
             </Link>
           </div>
@@ -95,7 +117,7 @@ export default function LandingPage() {
               <Link href="/manager" style={primaryButton}>
                 Open Manager Demo
               </Link>
-              <Link href="/teamview" style={secondaryButton}>
+              <Link href="/teamview" style={teamDemoButton}>
                 Open Team Demo
               </Link>
             </div>
@@ -118,10 +140,10 @@ export default function LandingPage() {
             <div style={panelCard}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 20 }}>Manager snapshot</div>
+                  <div style={{ fontWeight: 700, fontSize: 20 }}>Leadership Dashboard</div>
                   <div style={{ color: "#647b71", fontSize: 14, marginTop: 4 }}>What leadership sees at a glance.</div>
                 </div>
-                <Link href="/manager" style={textLink}>
+                <Link href="/manager" style={{ ...textLink, color: "#1f5d24" }}>
                   View full screen
                 </Link>
               </div>
@@ -136,13 +158,22 @@ export default function LandingPage() {
               </div>
 
               <div style={{ borderTop: "1px solid #e6eee8", paddingTop: 14 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "#4c6358", marginBottom: 8 }}>
-                  <span>Year-end workflow</span>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "#4c6358", marginBottom: 8, gap: 12 }}>
+                  <span>Policy - Client File Document Standards</span>
                   <span>12 / 15 confirmed</span>
                 </div>
-                <div style={{ height: 10, background: "#e7efe9", borderRadius: 999, overflow: "hidden" }}>
+                <div style={{ height: 10, background: "#e7efe9", borderRadius: 999, overflow: "hidden", marginBottom: 14 }}>
                   <div style={{ width: "80%", height: "100%", background: "#2e7d32" }} />
                 </div>
+
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "#4c6358", marginBottom: 8, gap: 12 }}>
+                  <span>SOG - Month End Closing Procedure</span>
+                  <span>9 / 15 confirmed</span>
+                </div>
+                <div style={{ height: 10, background: "#e7efe9", borderRadius: 999, overflow: "hidden" }}>
+                  <div style={{ width: "60%", height: "100%", background: "#2e7d32" }} />
+                </div>
+
                 <p style={{ fontSize: 12, color: "#70857b", marginTop: 10, marginBottom: 0 }}>
                   Circulating means deployed to the team but not yet fully acknowledged.
                 </p>
@@ -179,16 +210,16 @@ export default function LandingPage() {
   );
 }
 
-function navButton(primary: boolean) {
+function headerButton(color: string) {
   return {
     textDecoration: "none",
     padding: "10px 14px",
     borderRadius: 10,
     fontWeight: 700,
     fontSize: 14,
-    color: primary ? "#ffffff" : "#1f5d24",
-    background: primary ? "#2e7d32" : "#eff6f0",
-    border: primary ? "1px solid #2e7d32" : "1px solid #cfe1d2",
+    color: "#ffffff",
+    background: color,
+    border: `1px solid ${color}`,
   } as const;
 }
 
@@ -210,6 +241,16 @@ const secondaryButton = {
   borderRadius: 12,
   fontWeight: 700,
   border: "1px solid #cfe1d2",
+};
+
+const teamDemoButton = {
+  textDecoration: "none",
+  background: "#66a97a",
+  color: "#ffffff",
+  padding: "13px 18px",
+  borderRadius: 12,
+  fontWeight: 700,
+  border: "1px solid #66a97a",
 };
 
 const infoCard = {
