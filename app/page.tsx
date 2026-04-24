@@ -2,14 +2,14 @@ import Link from "next/link";
 
 const managerHighlights = [
   { label: "Documents circulating", value: "10" },
-  { label: "Still awaiting confirmation", value: "14" },
+  { label: "Awaiting acknowledgement", value: "14" },
   { label: "Tax team completion", value: "84%" },
 ];
 
 const teamHighlights = [
-  { type: "Policy", title: "Year-end workflow", status: "Needs review" },
-  { type: "SOG", title: "Client intake process", status: "Due tomorrow" },
-  { type: "Memo", title: "Holiday office hours", status: "Read" },
+  { label: "Awaiting acknowledgement", value: "2" },
+  { label: "Due this week", value: "1" },
+  { label: "Acknowledged", value: "1" },
 ];
 
 export default function LandingPage() {
@@ -79,7 +79,7 @@ export default function LandingPage() {
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link href="/manager" style={headerButton("#1f5d24")}>
-              Manager View
+              Leadership View
             </Link>
             <Link href="/teamview" style={headerButton("#66a97a")}>
               Team View
@@ -109,24 +109,24 @@ export default function LandingPage() {
             </h1>
 
             <p style={{ fontSize: 18, lineHeight: 1.65, color: "#496156", maxWidth: 620, margin: 0 }}>
-              This demo shows how an accounting firm can publish internal documents, track who has confirmed them,
-              and give both managers and team members a clear view of what is still circulating.
+              Nothing leaves circulation until it’s acknowledged by every assigned team member.
             </p>
 
             <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
               <Link href="/manager" style={primaryButton}>
-                Open Manager Demo
+                Open Leadership Demo
               </Link>
               <Link href="/teamview" style={teamDemoButton}>
                 Open Team Demo
               </Link>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 14, marginTop: 30 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 14, marginTop: 30 }}>
               {[
-                { title: "Publish", copy: "Push policies, SOGs, and memos to the right people." },
-                { title: "Track", copy: "See what is still circulating and what is overdue." },
-                { title: "Confirm", copy: "Move documents out of circulation once they are read." },
+                { title: "Create", copy: "Create and assign policies, SOGs, and memos." },
+                { title: "Track", copy: "Track what is still circulating across the firm." },
+                { title: "Confirm", copy: "Ensure documents are acknowledged before completion." },
+                { title: "Library", copy: "Access all firm policies and historical documents." },
               ].map((item) => (
                 <div key={item.title} style={infoCard}>
                   <div style={{ fontWeight: 700, marginBottom: 8 }}>{item.title}</div>
@@ -183,22 +183,19 @@ export default function LandingPage() {
             <div style={panelCard}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 20 }}>Team snapshot</div>
-                  <div style={{ color: "#647b71", fontSize: 14, marginTop: 4 }}>What an employee sees when they log in.</div>
+                  <div style={{ fontWeight: 700, fontSize: 20 }}>Team Dashboard</div>
+                  <div style={{ color: "#647b71", fontSize: 14, marginTop: 4 }}>Individual team members current status</div>
                 </div>
-                <Link href="/teamview" style={textLink}>
+                <Link href="/teamview" style={{ ...textLink, color: "#1f5d24" }}>
                   View full screen
                 </Link>
               </div>
 
-              <div style={{ display: "grid", gap: 10 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12 }}>
                 {teamHighlights.map((item) => (
-                  <div key={item.title} style={teamRow}>
-                    <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                      <span style={typeBadge(item.type)}>{item.type}</span>
-                      <span style={{ fontWeight: 600 }}>{item.title}</span>
-                    </div>
-                    <span style={{ fontSize: 12, color: item.status === "Read" ? "#1f7a37" : "#9a6700", fontWeight: 700 }}>{item.status}</span>
+                  <div key={item.label} style={miniStatCard}>
+                    <div style={{ fontSize: 24, fontWeight: 800, color: "#1f5d24" }}>{item.value}</div>
+                    <div style={{ fontSize: 12, color: "#5c7368", marginTop: 4 }}>{item.label}</div>
                   </div>
                 ))}
               </div>
