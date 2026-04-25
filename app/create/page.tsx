@@ -37,7 +37,6 @@ export default function CreatePage() {
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
                   <button style={primaryButton}>Upload file</button>
-                  <button style={ghostButton}>Import from library</button>
                 </div>
               </div>
             </div>
