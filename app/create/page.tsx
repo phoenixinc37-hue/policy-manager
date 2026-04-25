@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
 export default function CreatePage() {
   return (
@@ -93,29 +94,6 @@ const panelCard = {
   border: "1px solid #dbe7de",
   boxShadow: "0 12px 30px rgba(15, 23, 42, 0.06)",
 };
-
-const cabinetIcon = {
-  width: 52,
-  height: 60,
-  borderRadius: 8,
-  background: "linear-gradient(180deg, #3b5d7a 0%, #2a455d 100%)",
-  border: "1px solid #22394d",
-  padding: 5,
-  boxSizing: "border-box" as const,
-  display: "grid",
-  gridTemplateRows: "1fr 1fr",
-  gap: 4,
-  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
-};
-
-const drawerRow = {
-  borderRadius: 4,
-  border: "1px solid #3e556b",
-  background: "linear-gradient(180deg, #6f8aa6 0%, #4f6b86 100%)",
-  position: "relative" as const,
-};
-
-const drawerHandle = { position: "absolute" as const, left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: 12, height: 4, borderRadius: 999, background: "#2a455d" };
 
 const inputStyle = {
   width: "100%",
