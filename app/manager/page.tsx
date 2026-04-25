@@ -72,7 +72,7 @@ export default function ManagerPage() {
                 <div key={card.title} style={statusCard}>
                   <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10 }}>{card.title}</div>
                   <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 16 }}>{card.text}</div>
-                  <Link href={card.button === "View circulation" || card.button === "View approvals" || card.button === "View report" ? "/status" : "/policy-index"} style={secondaryGreenButtonLink}>{card.button}</Link>
+                  <Link href={card.button === "View circulation" ? "/status" : card.button === "View approvals" ? "/status" : card.button === "View report" ? "/completion" : "/policy-index"} style={secondaryGreenButtonLink}>{card.button}</Link>
                 </div>
               ))}
             </div>
