@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { documents, getLeadershipStats } from "../data";
 
 const statusCards = [
   {
@@ -24,6 +25,11 @@ const statusCards = [
 ];
 
 export default function ManagerPage() {
+  const stats = getLeadershipStats();
+  const circulatingDocs = documents.filter((doc) => doc.status === "circulating");
+  const pendingApprovalDoc = documents.find((doc) => doc.status === "pending-approval");
+  const latestLibraryDoc = documents.find((doc) => doc.latestPublished);
+
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
       <div style={{ maxWidth: 1120, margin: "0 auto", padding: "24px 16px 48px" }}>
@@ -48,7 +54,7 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Create new policy, SOG, or memo</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Start a new document and assign it to your team.</p>
               </div>
-              <button style={primaryButton}>Create New</button>
+              <Link href="/policy-index" style={primaryButtonLink}>Create New</Link>
             </div>
           </section>
 
@@ -58,7 +64,7 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Check document status</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Review circulation, approvals, and items requiring attention.</p>
               </div>
-              <button style={primaryButton}>Open Status</button>
+              <Link href="/policy-index" style={primaryButtonLink}>Open Status</Link>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 14 }}>
@@ -66,7 +72,7 @@ export default function ManagerPage() {
                 <div key={card.title} style={statusCard}>
                   <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10 }}>{card.title}</div>
                   <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 16 }}>{card.text}</div>
-                  <button style={secondaryGreenButton}>{card.button}</button>
+                  <Link href="/policy-index" style={secondaryGreenButtonLink}>{card.button}</Link>
                 </div>
               ))}
             </div>
@@ -78,7 +84,7 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Quick View</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>A preview of the selected status area. Full details live on their own pages.</p>
               </div>
-              <button style={primaryButton}>Open full view</button>
+              <Link href="/policy-index" style={primaryButtonLink}>Open full view</Link>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 22 }}>
@@ -88,33 +94,27 @@ export default function ManagerPage() {
                     <div style={{ fontWeight: 800, fontSize: 20 }}>Circulating documents</div>
                     <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Current active items and acknowledgement progress.</div>
                   </div>
-                  <span style={alertBadge}>2 need attention</span>
+                  <span style={alertBadge}>{stats.needsAttention} need attention</span>
                 </div>
 
                 <div style={{ display: "grid", gap: 16 }}>
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 6, fontSize: 14 }}>
-                      <span><strong>Policy - Client File Document Standards</strong></span>
-                      <span>12 / 15 acknowledged</span>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 8, fontSize: 13, color: "#60766b" }}>
-                      <span>Tax team</span>
-                      <span style={{ color: "#9a6700", fontWeight: 700 }}>2 overdue</span>
-                    </div>
-                    <div style={progressTrack}><div style={{ ...progressFill, width: "80%" }} /></div>
-                  </div>
-
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 6, fontSize: 14 }}>
-                      <span><strong>SOG - Month End Closing Procedure</strong></span>
-                      <span>9 / 15 acknowledged</span>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 8, fontSize: 13, color: "#60766b" }}>
-                      <span>Admin team</span>
-                      <span>Awaiting 6</span>
-                    </div>
-                    <div style={progressTrack}><div style={{ ...progressFill, width: "60%" }} /></div>
-                  </div>
+                  {circulatingDocs.slice(0, 2).map((doc) => {
+                    const progress = Math.round((doc.acknowledgedBy.length / doc.assignedTo.length) * 100);
+                    const remaining = doc.assignedTo.length - doc.acknowledgedBy.length;
+                    return (
+                      <div key={doc.id}>
+                        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 6, fontSize: 14 }}>
+                          <span><strong>{doc.type} - {doc.title}</strong></span>
+                          <span>{doc.acknowledgedBy.length} / {doc.assignedTo.length} acknowledged</span>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 8, fontSize: 13, color: "#60766b" }}>
+                          <span>{doc.team}</span>
+                          <span style={doc.needsAttention ? { color: "#9a6700", fontWeight: 700 } : undefined}>{doc.needsAttention ? `${remaining - 1} overdue` : `Awaiting ${remaining}`}</span>
+                        </div>
+                        <div style={progressTrack}><div style={{ ...progressFill, width: `${progress}%` }} /></div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -122,18 +122,18 @@ export default function ManagerPage() {
                 <div style={quickSideCard}>
                   <div style={{ fontWeight: 800, fontSize: 18 }}>Pending approval</div>
                   <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Documents waiting for leadership review.</div>
-                  <div style={{ fontSize: 30, fontWeight: 800, color: "#1f5d24", marginTop: 14 }}>4</div>
+                  <div style={{ fontSize: 30, fontWeight: 800, color: "#1f5d24", marginTop: 14 }}>{stats.pendingApproval}</div>
                   <div style={{ marginTop: 14, fontSize: 14 }}>
-                    <div style={{ fontWeight: 700 }}>Client Billing Standards</div>
-                    <div style={{ color: "#60766b", marginTop: 4 }}>Awaiting partner approval</div>
+                    <div style={{ fontWeight: 700 }}>{pendingApprovalDoc?.title ?? "No pending documents"}</div>
+                    <div style={{ color: "#60766b", marginTop: 4 }}>{pendingApprovalDoc ? "Awaiting partner approval" : "All approvals up to date"}</div>
                   </div>
                 </div>
 
                 <div style={quickSideCard}>
                   <div style={{ fontWeight: 800, fontSize: 18 }}>Firm completion</div>
                   <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Overall acknowledgement status.</div>
-                  <div style={{ fontSize: 30, fontWeight: 800, color: "#1f5d24", marginTop: 14 }}>84%</div>
-                  <div style={{ ...progressTrack, marginTop: 14 }}><div style={{ ...progressFill, width: "84%" }} /></div>
+                  <div style={{ fontSize: 30, fontWeight: 800, color: "#1f5d24", marginTop: 14 }}>{stats.overallCompletion}%</div>
+                  <div style={{ ...progressTrack, marginTop: 14 }}><div style={{ ...progressFill, width: `${stats.overallCompletion}%` }} /></div>
                 </div>
 
                 <div style={quickSideCard}>
@@ -142,7 +142,7 @@ export default function ManagerPage() {
                     <span style={{ color: "#2e7d32", fontWeight: 700, fontSize: 14 }}>View library</span>
                   </div>
                   <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Recently published documents.</div>
-                  <div style={{ marginTop: 14, fontSize: 14, color: "#10221a" }}>Latest: Remote Work Expectations</div>
+                  <div style={{ marginTop: 14, fontSize: 14, color: "#10221a" }}>Latest: {latestLibraryDoc?.title ?? "No published documents yet"}</div>
                 </div>
               </div>
             </div>
@@ -218,6 +218,12 @@ const primaryButton = {
   fontSize: 14,
 };
 
+const primaryButtonLink = {
+  ...primaryButton,
+  textDecoration: "none",
+  display: "inline-block",
+};
+
 const secondaryGreenButton = {
   background: "#2e7d32",
   color: "#ffffff",
@@ -227,6 +233,14 @@ const secondaryGreenButton = {
   fontWeight: 700,
   fontSize: 14,
   width: "100%",
+};
+
+const secondaryGreenButtonLink = {
+  ...secondaryGreenButton,
+  textDecoration: "none",
+  display: "block",
+  boxSizing: "border-box" as const,
+  textAlign: "center" as const,
 };
 
 const statusCard = {

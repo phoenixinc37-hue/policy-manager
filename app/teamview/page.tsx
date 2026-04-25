@@ -1,26 +1,11 @@
 import Link from "next/link";
 import { ChevronDown, Search } from "lucide-react";
-
-const employees = [
-  "Jack Wilde",
-  "Sarah Jenkins",
-  "Michael Chang",
-  "Emily Rodriguez",
-  "David Thompson",
-  "Amanda Cole",
-  "Robert Chen",
-  "Jessica Patel",
-  "Thomas Wright",
-  "Olivia Bennett",
-];
-
-const assignedItems = [
-  { type: "Policy", title: "Year-end workflow", due: "Due Oct 31", status: "Action required" },
-  { type: "SOG", title: "Client intake process v2", due: "Due Nov 2", status: "Action required" },
-  { type: "Memo", title: "Holiday office hours 2026", due: "Read Oct 28", status: "Completed" },
-];
+import { employees, getTeamItems } from "../data";
 
 export default function TeamView() {
+  const selectedEmployee = employees[0];
+  const assignedItems = getTeamItems(selectedEmployee);
+
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
       <div style={{ maxWidth: 1080, margin: "0 auto", padding: "24px 16px 48px" }}>
@@ -43,7 +28,7 @@ export default function TeamView() {
             <div style={{ borderBottom: "1px solid #e4ece6", paddingBottom: 18, marginBottom: 18 }}>
               <div style={{ fontSize: 24, fontWeight: 800 }}>Employee selector</div>
               <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>
-                Demo the staff experience by switching between employees and showing what is still circulating for them.
+                Live demo of what the selected team member still needs to acknowledge.
               </p>
             </div>
 
@@ -51,7 +36,7 @@ export default function TeamView() {
               SELECT EMPLOYEE
             </label>
             <div style={{ position: "relative" }}>
-              <select defaultValue="Jack Wilde" style={selectStyle}>
+              <select defaultValue={selectedEmployee} style={selectStyle}>
                 {employees.map((employee) => (
                   <option key={employee} value={employee}>{employee}</option>
                 ))}
@@ -62,9 +47,9 @@ export default function TeamView() {
             <div style={{ marginTop: 18, padding: 16, background: "#f8fbf9", border: "1px solid #e4ece6", borderRadius: 14 }}>
               <div style={{ fontWeight: 700, marginBottom: 8 }}>What the team member sees</div>
               <ul style={{ margin: 0, paddingLeft: 18, color: "#60766b", lineHeight: 1.8, fontSize: 14 }}>
-                <li>Assigned items that still need to be read</li>
-                <li>Document type and due date</li>
-                <li>Clear status between action required and complete</li>
+                <li>Only items assigned to them</li>
+                <li>Clear action required vs completed status</li>
+                <li>Direct visibility into team and document type</li>
               </ul>
             </div>
           </section>
@@ -73,7 +58,7 @@ export default function TeamView() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, marginBottom: 18, flexWrap: "wrap" }}>
               <div>
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Active circulating items</div>
-                <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Demo queue for the selected team member.</div>
+                <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Live queue for the selected team member.</div>
               </div>
               <div style={searchWrap}>
                 <Search size={16} color="#5c7368" />
@@ -83,30 +68,34 @@ export default function TeamView() {
 
             <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap" }}>
               {[
-                { label: "All (3)", active: true },
-                { label: "Policy (1)" },
-                { label: "SOG (1)" },
-                { label: "Memo (1)" },
+                { label: `All (${assignedItems.length})`, active: true },
+                { label: `Policy (${assignedItems.filter((item) => item.type === "Policy").length})` },
+                { label: `SOG (${assignedItems.filter((item) => item.type === "SOG").length})` },
+                { label: `Memo (${assignedItems.filter((item) => item.type === "Memo").length})` },
               ].map((pill) => (
                 <span key={pill.label} style={pillStyle(Boolean(pill.active))}>{pill.label}</span>
               ))}
             </div>
 
             <div style={{ display: "grid", gap: 12 }}>
-              {assignedItems.map((item) => (
-                <div key={item.title} style={rowCard(item.status === "Completed")}>
-                  <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "start", flexWrap: "wrap" }}>
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                        <span style={typeBadge(item.type)}>{item.type}</span>
-                        <span style={{ fontWeight: 700, fontSize: 17, color: item.status === "Completed" ? "#667c71" : "#10221a", textDecoration: item.status === "Completed" ? "line-through" : "none" }}>{item.title}</span>
+              {assignedItems.map((item) => {
+                const status = item.acknowledged ? "Completed" : "Action required";
+                const subtext = item.acknowledged ? "Acknowledged" : "Awaiting acknowledgement";
+                return (
+                  <div key={item.id} style={rowCard(item.acknowledged)}>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "start", flexWrap: "wrap" }}>
+                      <div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                          <span style={typeBadge(item.type)}>{item.type}</span>
+                          <span style={{ fontWeight: 700, fontSize: 17, color: item.acknowledged ? "#667c71" : "#10221a", textDecoration: item.acknowledged ? "line-through" : "none" }}>{item.title}</span>
+                        </div>
+                        <div style={{ fontSize: 13, color: "#6a8075", marginTop: 12 }}>{item.team} · {subtext}</div>
                       </div>
-                      <div style={{ fontSize: 13, color: "#6a8075", marginTop: 12 }}>{item.due}</div>
+                      <span style={statusBadge(status)}>{status}</span>
                     </div>
-                    <span style={statusBadge(item.status)}>{item.status}</span>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         </main>
