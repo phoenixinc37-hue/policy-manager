@@ -71,8 +71,13 @@ export default function StatusPage() {
             <div style={{ display: "grid", gap: 12 }}>
               {pending.map((doc) => (
                 <div key={doc.id} style={rowCard}>
-                  <div style={{ fontWeight: 700 }}>{doc.title}</div>
-                  <div style={{ fontSize: 13, color: "#60766b", marginTop: 4 }}>{doc.team} · Awaiting partner approval</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "start" }}>
+                    <div>
+                      <div style={{ fontWeight: 700 }}>{doc.title}</div>
+                      <div style={{ fontSize: 13, color: "#60766b", marginTop: 4 }}>{doc.team} · Awaiting partner approval</div>
+                    </div>
+                    <Link href={`/status/${doc.id}`} style={detailButtonLink}>Status</Link>
+                  </div>
                 </div>
               ))}
             </div>
