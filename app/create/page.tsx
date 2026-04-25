@@ -15,7 +15,32 @@ export default function CreatePage() {
         <main style={{ marginTop: 24 }}>
           <section style={panelCard}>
             <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>Create a new document</div>
-            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 20 }}>Start a Policy, SOG, or Memo and assign it to a team.</div>
+            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 20 }}>Create with AI or upload an existing policy, SOG, or memo.</div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 18, marginBottom: 20 }}>
+              <div style={featureCard}>
+                <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Generate with AI</div>
+                <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 14 }}>Describe the policy you want, choose the document type, and generate a first draft to review before circulation.</div>
+                <textarea placeholder="Example: Draft a client file documentation policy for the tax team with acknowledgement required from all staff." style={{ ...inputStyle, minHeight: 120, resize: "vertical" as const }} />
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
+                  <button style={primaryButton}>Generate draft</button>
+                  <button style={ghostButton}>Use template</button>
+                </div>
+              </div>
+
+              <div style={featureCard}>
+                <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Upload previous document</div>
+                <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 14 }}>Bring in an existing policy, SOG, or memo so it can be indexed, updated, and redistributed through Policy Manager.</div>
+                <div style={uploadBox}>
+                  <div style={{ fontWeight: 700, marginBottom: 6 }}>Drop file here or browse</div>
+                  <div style={{ fontSize: 13, color: "#60766b" }}>Supports previous policies, memos, PDFs, and Word files.</div>
+                </div>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
+                  <button style={primaryButton}>Upload file</button>
+                  <button style={ghostButton}>Import from library</button>
+                </div>
+              </div>
+            </div>
 
             <div style={{ display: "grid", gap: 16 }}>
               <input placeholder="Document title" style={inputStyle} />
@@ -75,6 +100,21 @@ const inputStyle = {
   boxSizing: "border-box" as const,
 };
 
+const featureCard = {
+  border: "1px solid #dbe7de",
+  borderRadius: 16,
+  padding: 18,
+  background: "#f9fbf9",
+};
+
+const uploadBox = {
+  border: "2px dashed #cfe1d2",
+  borderRadius: 14,
+  padding: 18,
+  background: "#ffffff",
+  textAlign: "center" as const,
+};
+
 const secondaryButton = {
   textDecoration: "none",
   background: "#ffffff",
@@ -92,4 +132,13 @@ const primaryButton = {
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #1f5d24",
+};
+
+const ghostButton = {
+  background: "#ffffff",
+  color: "#1f5d24",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #cfe1d2",
 };
