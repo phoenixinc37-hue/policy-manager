@@ -65,7 +65,6 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Check document status</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Review circulation, approvals, and items requiring attention.</p>
               </div>
-              <Link href="/status" style={primaryButtonLink}>Open Status</Link>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 14 }}>
