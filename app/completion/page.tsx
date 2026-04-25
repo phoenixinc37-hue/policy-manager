@@ -6,7 +6,7 @@ export default function CompletionPage() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
-      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "24px 16px 48px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 16px 48px" }}>
         <header style={headerCard}>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={cabinetIcon}>{[0, 1].map((row) => <div key={row} style={drawerRow}><div style={drawerHandle} /></div>)}</div>
@@ -21,43 +21,38 @@ export default function CompletionPage() {
           </div>
         </header>
 
-        <main style={{ marginTop: 24 }}>
+        <main style={{ marginTop: 32 }}>
+          <h1 style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>Firm Completion</h1>
+          <p style={{ color: "#64748b", fontSize: 14, marginBottom: 24 }}>All fully circulated documents across the firm.</p>
+
           <section style={panelCard}>
-            <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>Fully circulated documents</div>
-            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 18 }}>Each fully acknowledged document appears in its own panel with follow-up actions.</div>
+            <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, overflow: "hidden" }}>
+              <div style={tableHeader}>
+                <div>Type</div>
+                <div>Title</div>
+                <div>Team</div>
+                <div>Status</div>
+                <div>Actions</div>
+              </div>
 
-            <div style={{ display: "grid", gap: 14 }}>
-              {completed.map((doc) => (
-                <div key={doc.id} style={rowCard}>
-                  <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "start", flexWrap: "wrap" }}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {completed.map((doc, idx) => (
+                  <div key={doc.id} style={{ ...tableRow, borderBottom: idx === completed.length - 1 ? "none" : "1px solid #e2e8f0" }}>
                     <div>
-                      <div style={{ fontWeight: 700, fontSize: 18 }}>{doc.type} - {doc.title}</div>
-                      <div style={{ fontSize: 13, color: "#60766b", marginTop: 4 }}>{doc.team}</div>
+                      {doc.type === "Policy" && <span style={{ ...typeBadge, background: "#dcfce7", color: "#166534" }}>POLICY</span>}
+                      {doc.type === "SOG" && <span style={{ ...typeBadge, background: "#e0f2fe", color: "#0369a1" }}>SOG</span>}
+                      {doc.type === "Memo" && <span style={{ ...typeBadge, background: "#f3f4f6", color: "#475569" }}>MEMO</span>}
                     </div>
+                    <div style={{ fontSize: 15, fontWeight: 600 }}>{doc.title}</div>
+                    <div style={{ fontSize: 13, color: "#64748b" }}>{doc.team}</div>
                     <div style={{ fontSize: 13, color: "#1f7a37", fontWeight: 700 }}>Fully circulated</div>
-                  </div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12, marginTop: 16 }}>
-                    <div style={miniCard}>
-                      <div style={miniValue}>{doc.assignedTo.length}</div>
-                      <div style={miniLabel}>Assigned</div>
-                    </div>
-                    <div style={miniCard}>
-                      <div style={miniValue}>{doc.acknowledgedBy.length}</div>
-                      <div style={miniLabel}>Acknowledged</div>
-                    </div>
-                    <div style={miniCard}>
-                      <div style={miniValue}>100%</div>
-                      <div style={miniLabel}>Completion</div>
+                    <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+                      <button style={actionButton}>Version history</button>
+                      <button style={actionButton}>Review</button>
                     </div>
                   </div>
-
-                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 16 }}>
-                    <button style={actionButton}>Version history</button>
-                    <button style={actionButton}>Review</button>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </section>
         </main>
@@ -110,30 +105,35 @@ const drawerRow = {
 
 const drawerHandle = { position: "absolute" as const, left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: 12, height: 4, borderRadius: 999, background: "#2a455d" };
 
-const rowCard = {
-  borderRadius: 16,
-  border: "1px solid #dbe7de",
-  background: "#f9fbf9",
-  padding: 18,
-};
-
-const miniCard = {
-  borderRadius: 12,
-  border: "1px solid #dbe7de",
-  background: "#ffffff",
-  padding: 14,
-};
-
-const miniValue = {
-  fontSize: 22,
-  fontWeight: 800,
-  color: "#1f5d24",
-};
-
-const miniLabel = {
+const tableHeader = {
+  display: "grid",
+  gridTemplateColumns: "120px 1.4fr 160px 140px 220px",
+  gap: 16,
+  padding: "12px 20px",
+  background: "#f8fafc",
+  borderBottom: "1px solid #e2e8f0",
   fontSize: 12,
-  color: "#60766b",
-  marginTop: 4,
+  fontWeight: 700,
+  color: "#475569",
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.05em",
+};
+
+const tableRow = {
+  display: "grid",
+  gridTemplateColumns: "120px 1.4fr 160px 140px 220px",
+  gap: 16,
+  padding: "16px 20px",
+  alignItems: "center",
+  background: "#ffffff",
+};
+
+const typeBadge = {
+  padding: "4px 8px",
+  borderRadius: 6,
+  fontSize: 11,
+  fontWeight: 700,
+  letterSpacing: "0.05em",
 };
 
 const secondaryButton = {
