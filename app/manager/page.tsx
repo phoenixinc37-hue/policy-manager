@@ -1,15 +1,26 @@
 import Link from "next/link";
 
-const rolloutRows = [
-  { title: "Year-end workflow", team: "Tax team", complete: "12 / 15 confirmed", overdue: "2 overdue", width: "80%" },
-  { title: "Client intake process v2", team: "Admin team", complete: "6 / 8 confirmed", overdue: "1 overdue", width: "75%" },
-  { title: "Remote work memo", team: "Partner team", complete: "4 / 4 confirmed", overdue: "Fully read", width: "100%" },
-];
-
-const followUps = [
-  { person: "Jack Wilde", item: "Year-end workflow", due: "Due Oct 31" },
-  { person: "Sarah Jenkins", item: "Client intake process v2", due: "Due Nov 2" },
-  { person: "Amanda Cole", item: "Year-end workflow", due: "Due Oct 31" },
+const statusCards = [
+  {
+    title: "Circulating documents",
+    text: "Active items, awaiting acknowledgement, and overdue.",
+    button: "View circulation",
+  },
+  {
+    title: "Pending approval",
+    text: "Documents waiting for leadership review or comments.",
+    button: "View approvals",
+  },
+  {
+    title: "Firm completion",
+    text: "Overall acknowledgement across teams and documents.",
+    button: "View report",
+  },
+  {
+    title: "Library",
+    text: "Access all published policies, SOGs, and memos.",
+    button: "View library",
+  },
 ];
 
 export default function ManagerPage() {
@@ -20,77 +31,119 @@ export default function ManagerPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={cabinetIcon}>{[0, 1, 2].map((row) => <div key={row} style={drawerRow}><div style={drawerHandle} /></div>)}</div>
             <div>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager <span style={{ fontSize: 14, color: "#2e7d32", marginLeft: 10 }}>· Manager View</span></div>
-              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting firm demo</div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager <span style={{ fontSize: 14, color: "#2e7d32", marginLeft: 10 }}>· Leadership View</span></div>
+              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link href="/" style={secondaryButton}>Home</Link>
-            <Link href="/teamview" style={secondaryButton}>Team View</Link>
+            <Link href="/teamview" style={teamButton}>Team View</Link>
           </div>
         </header>
 
         <main style={{ marginTop: 24, display: "grid", gap: 22 }}>
-          <section style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 14 }}>
-            {[
-              { value: "10", label: "Documents circulating" },
-              { value: "14", label: "Pending confirmations" },
-              { value: "3", label: "Overdue acknowledgments" },
-              { value: "84%", label: "Firm completion" },
-            ].map((item) => (
-              <div key={item.label} style={statCard}>
-                <div style={{ fontSize: 28, fontWeight: 800, color: "#1f5d24" }}>{item.value}</div>
-                <div style={{ color: "#5c7368", fontSize: 13, marginTop: 6 }}>{item.label}</div>
+          <section style={panelCard}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+              <div>
+                <div style={{ fontSize: 24, fontWeight: 800 }}>Create new policy, SOG, or memo</div>
+                <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Start a new document and assign it to your team.</p>
               </div>
-            ))}
+              <button style={primaryButton}>Create New</button>
+            </div>
           </section>
 
-          <section style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 22 }}>
-            <div style={panelCard}>
-              <div style={{ marginBottom: 18 }}>
-                <div style={{ fontSize: 24, fontWeight: 800 }}>Rollout status by document</div>
-                <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>
-                  This is the management view, which shows what is still circulating, which team is stuck, and where follow-up is needed.
-                </p>
+          <section style={panelCard}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, flexWrap: "wrap", marginBottom: 18 }}>
+              <div>
+                <div style={{ fontSize: 24, fontWeight: 800 }}>Check document status</div>
+                <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Review circulation, approvals, and items requiring attention.</p>
+              </div>
+              <button style={primaryButton}>Open Status</button>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 14 }}>
+              {statusCards.map((card) => (
+                <div key={card.title} style={statusCard}>
+                  <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10 }}>{card.title}</div>
+                  <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 16 }}>{card.text}</div>
+                  <button style={secondaryGreenButton}>{card.button}</button>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section style={panelCard}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, flexWrap: "wrap", marginBottom: 18 }}>
+              <div>
+                <div style={{ fontSize: 24, fontWeight: 800 }}>Quick View</div>
+                <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>A preview of the selected status area. Full details live on their own pages.</p>
+              </div>
+              <button style={primaryButton}>Open full view</button>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 22 }}>
+              <div style={quickViewMainCard}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", gap: 12, marginBottom: 18 }}>
+                  <div>
+                    <div style={{ fontWeight: 800, fontSize: 20 }}>Circulating documents</div>
+                    <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Current active items and acknowledgement progress.</div>
+                  </div>
+                  <span style={alertBadge}>2 need attention</span>
+                </div>
+
+                <div style={{ display: "grid", gap: 16 }}>
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 6, fontSize: 14 }}>
+                      <span><strong>Policy - Client File Document Standards</strong></span>
+                      <span>12 / 15 acknowledged</span>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 8, fontSize: 13, color: "#60766b" }}>
+                      <span>Tax team</span>
+                      <span style={{ color: "#9a6700", fontWeight: 700 }}>2 overdue</span>
+                    </div>
+                    <div style={progressTrack}><div style={{ ...progressFill, width: "80%" }} /></div>
+                  </div>
+
+                  <div>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 6, fontSize: 14 }}>
+                      <span><strong>SOG - Month End Closing Procedure</strong></span>
+                      <span>9 / 15 acknowledged</span>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 8, fontSize: 13, color: "#60766b" }}>
+                      <span>Admin team</span>
+                      <span>Awaiting 6</span>
+                    </div>
+                    <div style={progressTrack}><div style={{ ...progressFill, width: "60%" }} /></div>
+                  </div>
+                </div>
               </div>
 
               <div style={{ display: "grid", gap: 14 }}>
-                {rolloutRows.map((row) => (
-                  <div key={row.title} style={rolloutCard}>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", marginBottom: 10 }}>
-                      <div>
-                        <div style={{ fontWeight: 700, fontSize: 17 }}>{row.title}</div>
-                        <div style={{ fontSize: 13, color: "#60766b", marginTop: 4 }}>{row.team}</div>
-                      </div>
-                      <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-                        <span style={neutralBadge}>{row.complete}</span>
-                        <span style={row.overdue === "Fully read" ? goodBadge : warningBadge}>{row.overdue}</span>
-                      </div>
-                    </div>
-                    <div style={{ height: 10, background: "#e7efe9", borderRadius: 999, overflow: "hidden" }}>
-                      <div style={{ width: row.width, height: "100%", background: row.width === "100%" ? "#2f9a48" : "#2e7d32" }} />
-                    </div>
+                <div style={quickSideCard}>
+                  <div style={{ fontWeight: 800, fontSize: 18 }}>Pending approval</div>
+                  <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Documents waiting for leadership review.</div>
+                  <div style={{ fontSize: 30, fontWeight: 800, color: "#1f5d24", marginTop: 14 }}>4</div>
+                  <div style={{ marginTop: 14, fontSize: 14 }}>
+                    <div style={{ fontWeight: 700 }}>Client Billing Standards</div>
+                    <div style={{ color: "#60766b", marginTop: 4 }}>Awaiting partner approval</div>
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
 
-            <div style={panelCard}>
-              <div style={{ marginBottom: 18 }}>
-                <div style={{ fontSize: 24, fontWeight: 800 }}>Top follow-up list</div>
-                <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>
-                  Quick visibility into who still needs a nudge.
-                </p>
-              </div>
+                <div style={quickSideCard}>
+                  <div style={{ fontWeight: 800, fontSize: 18 }}>Firm completion</div>
+                  <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Overall acknowledgement status.</div>
+                  <div style={{ fontSize: 30, fontWeight: 800, color: "#1f5d24", marginTop: 14 }}>84%</div>
+                  <div style={{ ...progressTrack, marginTop: 14 }}><div style={{ ...progressFill, width: "84%" }} /></div>
+                </div>
 
-              <div style={{ display: "grid", gap: 12 }}>
-                {followUps.map((item) => (
-                  <div key={`${item.person}-${item.item}`} style={followUpCard}>
-                    <div style={{ fontWeight: 700 }}>{item.person}</div>
-                    <div style={{ fontSize: 14, color: "#51665b", marginTop: 6 }}>{item.item}</div>
-                    <div style={{ fontSize: 12, color: "#9a6700", fontWeight: 800, marginTop: 10 }}>{item.due}</div>
+                <div style={quickSideCard}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+                    <div style={{ fontWeight: 800, fontSize: 18 }}>Library</div>
+                    <span style={{ color: "#2e7d32", fontWeight: 700, fontSize: 14 }}>View library</span>
                   </div>
-                ))}
+                  <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Recently published documents.</div>
+                  <div style={{ marginTop: 14, fontSize: 14, color: "#10221a" }}>Latest: Remote Work Expectations</div>
+                </div>
               </div>
             </div>
           </section>
@@ -121,14 +174,6 @@ const panelCard = {
   boxShadow: "0 12px 30px rgba(15, 23, 42, 0.06)",
 };
 
-const statCard = {
-  background: "#ffffff",
-  borderRadius: 16,
-  padding: 18,
-  border: "1px solid #dbe7de",
-  boxShadow: "0 10px 20px rgba(15, 23, 42, 0.05)",
-};
-
 const cabinetIcon = {
   width: 46,
   height: 46,
@@ -153,31 +198,60 @@ const secondaryButton = {
   border: "1px solid #cfe1d2",
 };
 
-const rolloutCard = {
+const teamButton = {
+  textDecoration: "none",
+  background: "#66a97a",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #66a97a",
+};
+
+const primaryButton = {
+  background: "#1f5d24",
+  color: "#ffffff",
+  border: "1px solid #1f5d24",
+  borderRadius: 12,
+  padding: "12px 18px",
+  fontWeight: 700,
+  fontSize: 14,
+};
+
+const secondaryGreenButton = {
+  background: "#2e7d32",
+  color: "#ffffff",
+  border: "1px solid #2e7d32",
+  borderRadius: 10,
+  padding: "12px 14px",
+  fontWeight: 700,
+  fontSize: 14,
+  width: "100%",
+};
+
+const statusCard = {
   borderRadius: 16,
   border: "1px solid #dbe7de",
   background: "#f9fbf9",
-  padding: 16,
+  padding: 18,
 };
 
-const followUpCard = {
-  borderRadius: 14,
-  border: "1px solid #f1ddb3",
-  background: "#fff8e8",
-  padding: 16,
+const quickViewMainCard = {
+  borderRadius: 16,
+  border: "1px solid #dbe7de",
+  background: "#f9fbf9",
+  padding: 18,
 };
 
-const neutralBadge = {
-  padding: "6px 9px",
-  borderRadius: 999,
-  background: "#eef3ef",
-  color: "#4c6358",
-  fontSize: 12,
-  fontWeight: 800,
+const quickSideCard = {
+  borderRadius: 16,
+  border: "1px solid #dbe7de",
+  background: "#f9fbf9",
+  padding: 18,
 };
 
-const warningBadge = {
-  padding: "6px 9px",
+const alertBadge = {
+  padding: "6px 10px",
   borderRadius: 999,
   background: "#fff3d9",
   color: "#9a6700",
@@ -185,11 +259,14 @@ const warningBadge = {
   fontWeight: 800,
 };
 
-const goodBadge = {
-  padding: "6px 9px",
+const progressTrack = {
+  height: 10,
+  background: "#e7efe9",
   borderRadius: 999,
-  background: "#e5f6e9",
-  color: "#1f7a37",
-  fontSize: 12,
-  fontWeight: 800,
+  overflow: "hidden",
+};
+
+const progressFill = {
+  height: "100%",
+  background: "#2e7d32",
 };
