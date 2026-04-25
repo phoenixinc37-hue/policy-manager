@@ -15,7 +15,7 @@ export default function CreatePage() {
         <main style={{ marginTop: 24 }}>
           <section style={panelCard}>
             <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>Create a new document</div>
-            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 20 }}>Create with AI or upload an existing policy, SOG, or memo.</div>
+            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 20 }}>Create or build a policy, SOG, or memo with AI, or upload an existing document.</div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 18, marginBottom: 20 }}>
               <div style={featureCard}>
@@ -56,9 +56,12 @@ export default function CreatePage() {
                 <option>Firm-wide</option>
               </select>
               <textarea placeholder="Summary or rollout note" style={{ ...inputStyle, minHeight: 140, resize: "vertical" as const }} />
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "space-between" }}>
                 <button style={primaryButton}>Save draft</button>
-                <Link href="/policy-index" style={secondaryButton}>View library</Link>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <button style={ghostButton}>Import</button>
+                  <Link href="/policy-index" style={secondaryButton}>View library</Link>
+                </div>
               </div>
             </div>
           </section>
