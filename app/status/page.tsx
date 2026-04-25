@@ -38,6 +38,27 @@ export default function StatusPage() {
                         <div style={{ fontSize: 13, color: doc.needsAttention ? "#9a6700" : "#60766b", marginTop: 4 }}>{doc.needsAttention ? `${remaining - 1} overdue` : `Awaiting ${remaining}`}</div>
                       </div>
                     </div>
+                    <div style={{ marginTop: 14 }}>
+                      <button style={detailButton}>See complete / incomplete team members</button>
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginTop: 14 }}>
+                      <div style={detailCard}>
+                        <div style={{ fontWeight: 700, marginBottom: 8, color: "#1f7a37" }}>Complete</div>
+                        <div style={{ display: "grid", gap: 6 }}>
+                          {doc.acknowledgedBy.map((name) => (
+                            <div key={name} style={personRow}>{name}</div>
+                          ))}
+                        </div>
+                      </div>
+                      <div style={detailCard}>
+                        <div style={{ fontWeight: 700, marginBottom: 8, color: "#9a6700" }}>Incomplete</div>
+                        <div style={{ display: "grid", gap: 6 }}>
+                          {doc.assignedTo.filter((name) => !doc.acknowledgedBy.includes(name)).map((name) => (
+                            <div key={name} style={personRow}>{name}</div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 );
               })}
@@ -88,6 +109,30 @@ const rowCard = {
   border: "1px solid #dbe7de",
   background: "#f9fbf9",
   padding: 18,
+};
+
+const detailCard = {
+  borderRadius: 14,
+  border: "1px solid #dbe7de",
+  background: "#ffffff",
+  padding: 14,
+};
+
+const personRow = {
+  fontSize: 13,
+  color: "#4c6358",
+  padding: "6px 8px",
+  borderRadius: 8,
+  background: "#f6faf7",
+};
+
+const detailButton = {
+  background: "#ffffff",
+  color: "#1f5d24",
+  border: "1px solid #cfe1d2",
+  borderRadius: 10,
+  padding: "10px 14px",
+  fontWeight: 700,
 };
 
 const secondaryButton = {
