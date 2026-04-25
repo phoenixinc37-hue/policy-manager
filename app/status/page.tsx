@@ -22,42 +22,42 @@ export default function StatusPage() {
         <main style={{ display: "grid", gap: 20, marginTop: 24 }}>
           <section style={panelCard}>
             <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>Circulating documents</div>
-            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 18 }}>Active items still moving through the firm.</div>
-            <div style={{ display: "grid", gap: 12 }}>
+            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 18 }}>Each circulating document has its own status panel and detailed member view.</div>
+            <div style={{ display: "grid", gap: 14 }}>
               {circulating.map((doc) => {
                 const remaining = doc.assignedTo.length - doc.acknowledgedBy.length;
+                const progress = Math.round((doc.acknowledgedBy.length / doc.assignedTo.length) * 100);
                 return (
                   <div key={doc.id} style={rowCard}>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "start" }}>
                       <div>
-                        <div style={{ fontWeight: 700 }}>{doc.type} - {doc.title}</div>
+                        <div style={{ fontWeight: 700, fontSize: 18 }}>{doc.type} - {doc.title}</div>
                         <div style={{ fontSize: 13, color: "#60766b", marginTop: 4 }}>{doc.team}</div>
                       </div>
-                      <div style={{ textAlign: "right" }}>
-                        <div style={{ fontWeight: 700 }}>{doc.acknowledgedBy.length} / {doc.assignedTo.length} acknowledged</div>
-                        <div style={{ fontSize: 13, color: doc.needsAttention ? "#9a6700" : "#60766b", marginTop: 4 }}>{doc.needsAttention ? `${remaining - 1} overdue` : `Awaiting ${remaining}`}</div>
+                      <Link href={`/status/${doc.id}`} style={detailButtonLink}>Status</Link>
+                    </div>
+
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12, marginTop: 16 }}>
+                      <div style={miniCard}>
+                        <div style={miniValue}>{doc.acknowledgedBy.length} / {doc.assignedTo.length}</div>
+                        <div style={miniLabel}>Acknowledged</div>
+                      </div>
+                      <div style={miniCard}>
+                        <div style={miniValue}>{remaining}</div>
+                        <div style={miniLabel}>Still outstanding</div>
+                      </div>
+                      <div style={miniCard}>
+                        <div style={miniValue}>{progress}%</div>
+                        <div style={miniLabel}>Completion</div>
                       </div>
                     </div>
-                    <div style={{ marginTop: 14 }}>
-                      <button style={detailButton}>See complete / incomplete team members</button>
+
+                    <div style={{ ...progressTrack, marginTop: 14 }}>
+                      <div style={{ ...progressFill, width: `${progress}%` }} />
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginTop: 14 }}>
-                      <div style={detailCard}>
-                        <div style={{ fontWeight: 700, marginBottom: 8, color: "#1f7a37" }}>Complete</div>
-                        <div style={{ display: "grid", gap: 6 }}>
-                          {doc.acknowledgedBy.map((name) => (
-                            <div key={name} style={personRow}>{name}</div>
-                          ))}
-                        </div>
-                      </div>
-                      <div style={detailCard}>
-                        <div style={{ fontWeight: 700, marginBottom: 8, color: "#9a6700" }}>Incomplete</div>
-                        <div style={{ display: "grid", gap: 6 }}>
-                          {doc.assignedTo.filter((name) => !doc.acknowledgedBy.includes(name)).map((name) => (
-                            <div key={name} style={personRow}>{name}</div>
-                          ))}
-                        </div>
-                      </div>
+
+                    <div style={{ fontSize: 13, color: doc.needsAttention ? "#9a6700" : "#60766b", marginTop: 10 }}>
+                      {doc.needsAttention ? `${Math.max(remaining - 1, 0)} overdue, ${remaining} still outstanding` : `${remaining} awaiting acknowledgement`}
                     </div>
                   </div>
                 );
@@ -111,28 +111,45 @@ const rowCard = {
   padding: 18,
 };
 
-const detailCard = {
-  borderRadius: 14,
+const miniCard = {
+  borderRadius: 12,
   border: "1px solid #dbe7de",
   background: "#ffffff",
   padding: 14,
 };
 
-const personRow = {
-  fontSize: 13,
-  color: "#4c6358",
-  padding: "6px 8px",
-  borderRadius: 8,
-  background: "#f6faf7",
+const miniValue = {
+  fontSize: 22,
+  fontWeight: 800,
+  color: "#1f5d24",
 };
 
-const detailButton = {
-  background: "#ffffff",
-  color: "#1f5d24",
-  border: "1px solid #cfe1d2",
-  borderRadius: 10,
+const miniLabel = {
+  fontSize: 12,
+  color: "#60766b",
+  marginTop: 4,
+};
+
+const progressTrack = {
+  height: 10,
+  background: "#e7efe9",
+  borderRadius: 999,
+  overflow: "hidden",
+};
+
+const progressFill = {
+  height: "100%",
+  background: "#2e7d32",
+};
+
+const detailButtonLink = {
+  textDecoration: "none",
+  background: "#1f5d24",
+  color: "#ffffff",
   padding: "10px 14px",
+  borderRadius: 10,
   fontWeight: 700,
+  border: "1px solid #1f5d24",
 };
 
 const secondaryButton = {
