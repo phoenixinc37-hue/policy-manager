@@ -1,115 +1,182 @@
 import Link from "next/link";
-import { ChevronDown, Search, FileText } from "lucide-react";
+import { documents } from "../data";
 
 export default function PolicyIndex() {
-  const policies = [
-    { code: "POL-001", type: "Policy", title: "Year-end workflow", date: "Oct 15, 2026", status: "Active" },
-    { code: "POL-002", type: "Policy", title: "Client Onboarding", date: "Sep 12, 2026", status: "Active" },
-    { code: "SOG-014", type: "SOG", title: "Client Intake Process V2", date: "Oct 20, 2026", status: "Active" },
-    { code: "SOG-015", type: "SOG", title: "Tax Preparation Guidelines", date: "Aug 05, 2026", status: "Active" },
-    { code: "MEM-089", type: "Memo", title: "Holiday Office Hours 2026", date: "Oct 28, 2026", status: "Active" },
-    { code: "POL-003", type: "Policy", title: "Data Security & Privacy", date: "Jul 10, 2026", status: "Active" },
-    { code: "MEM-090", type: "Memo", title: "Q3 All-Hands Meeting Notes", date: "Oct 01, 2026", status: "Archived" },
-    { code: "SOG-016", type: "SOG", title: "Payroll Processing Schedule", date: "Jun 22, 2026", status: "Active" },
-    { code: "POL-004", type: "Policy", title: "Remote Work Guidelines", date: "May 15, 2026", status: "Active" },
-    { code: "MEM-091", type: "Memo", title: "New Expense Reporting Tool", date: "Apr 04, 2026", status: "Active" }
-  ];
+  const policies = documents.filter((doc) => doc.status === "library" || doc.status === "circulating" || doc.status === "pending-approval");
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f1f5f9', color: '#0f172a', fontFamily: 'Arial, sans-serif' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: 12 }}>
-        
-        {/* HEADER */}
-        <div style={{ display: 'flex', alignItems: 'start', justifyContent: 'space-between', background: '#ffffff', padding: 12, borderRadius: 12, border: '1px solid #e2e8f0', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'start', gap: 12 }}>
-            <div style={{ background: '#dcfce7', padding: 6, borderRadius: 8, display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 3 }}>
-              <div style={{ width: 24, height: 24, background: '#166534', borderRadius: 4, padding: 2, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', borderTop: '3px solid #14532d' }}>
-                <div style={{ height: 5, background: '#22c55e', borderRadius: 2, position: 'relative' }}>
-                  <div style={{ width: 4, height: 2, background: '#14532d', borderRadius: 1, position: 'absolute', right: 2, top: 1 }} />
-                </div>
-                <div style={{ height: 5, background: '#22c55e', borderRadius: 2, position: 'relative' }}>
-                  <div style={{ width: 4, height: 2, background: '#14532d', borderRadius: 1, position: 'absolute', right: 2, top: 1 }} />
-                </div>
-                <div style={{ height: 5, background: '#22c55e', borderRadius: 2, position: 'relative' }}>
-                  <div style={{ width: 4, height: 2, background: '#14532d', borderRadius: 1, position: 'absolute', right: 2, top: 1 }} />
-                </div>
-              </div>
-            </div>
-            <div>
-              <div style={{ fontWeight: 600 }}>
-                Policy Manager <span style={{ fontSize: 12, fontWeight: 700, color: '#475569', marginLeft: 6 }}>for accounting firms</span><span style={{ fontSize: 14, fontWeight: 600, color: '#166534', marginLeft: 12 }}>· Policy Index</span>
-              </div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: '#64748b' }}>Business Inc</div>
-            </div>
+    <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 16px 48px" }}>
+        <header style={headerCard}>
+          <div>
+            <div style={{ fontSize: 20, fontWeight: 700 }}>Skystone Library</div>
+            <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
           </div>
-          <div style={{ display: 'flex', gap: 8 }}>
-            <Link href="/" style={{ textDecoration: 'none', padding: '6px 12px', borderRadius: 6, color: '#166534', background: '#f1f5f9', border: '1px solid #cbd5e1', fontSize: 14, fontWeight: 500 }}>Back to Home</Link>
-            <Link href="/teamview" style={{ textDecoration: 'none', padding: '6px 12px', borderRadius: 6, color: '#ffffff', background: '#166534', fontSize: 14, fontWeight: 500 }}>Team View</Link>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Link href="/" style={secondaryButton}>Back to Home</Link>
+            <Link href="/teamview" style={primaryButton}>Team View</Link>
           </div>
-        </div>
+        </header>
 
-        {/* INDEX CONTENT */}
-        <div style={{ marginTop: 40 }}>
-          <h1 style={{ fontSize: 24, fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>Implemented Policy Index</h1>
-          <p style={{ color: '#64748b', fontSize: 14, marginBottom: 24 }}>Browse and search all finalized policies, SOGs, and memos currently active across the firm.</p>
-          
-          <div style={{ background: '#ffffff', borderRadius: 12, padding: 32, border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
-            
-            {/* SEARCH AND FILTERS */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, gap: 16 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 16px', background: '#f8fafc', border: '2px solid #e2e8f0', borderRadius: 8, color: '#64748b', flex: 1 }}>
-                <Search style={{ height: 20, width: 20 }} />
-                <input type="text" placeholder="Search by keyword, code, or title..." style={{ background: 'transparent', border: 'none', outline: 'none', width: '100%', fontSize: 16, color: '#0f172a' }} />
+        <main style={{ marginTop: 32 }}>
+          <h1 style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>Skystone Library</h1>
+          <p style={{ color: "#64748b", fontSize: 14, marginBottom: 24 }}>Browse and separate policies, SOGs, and memos across the firm library.</p>
+
+          <section style={panelCard}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, gap: 16, flexWrap: "wrap" }}>
+              <div style={searchWrap}>
+                <input type="text" placeholder="Search by keyword, code, or title..." style={searchInput} />
               </div>
-              
-              <div style={{ display: 'flex', gap: 8 }}>
-                <button style={{ padding: '10px 16px', borderRadius: 8, background: '#166534', color: '#ffffff', fontSize: 14, fontWeight: 600, border: 'none', cursor: 'pointer' }}>All Types</button>
-                <button style={{ padding: '10px 16px', borderRadius: 8, background: '#f1f5f9', color: '#475569', fontSize: 14, fontWeight: 500, border: '1px solid #cbd5e1', cursor: 'pointer' }}>Policies</button>
-                <button style={{ padding: '10px 16px', borderRadius: 8, background: '#f1f5f9', color: '#475569', fontSize: 14, fontWeight: 500, border: '1px solid #cbd5e1', cursor: 'pointer' }}>SOGs</button>
-                <button style={{ padding: '10px 16px', borderRadius: 8, background: '#f1f5f9', color: '#475569', fontSize: 14, fontWeight: 500, border: '1px solid #cbd5e1', cursor: 'pointer' }}>Memos</button>
+
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button style={activeFilterButton}>All</button>
+                <button style={filterButton}>Policy</button>
+                <button style={filterButton}>SOG</button>
+                <button style={filterButton}>Memo</button>
               </div>
             </div>
 
-            {/* INDEX TABLE / LIST */}
-            <div style={{ border: '1px solid #e2e8f0', borderRadius: 12, overflow: 'hidden' }}>
-              
-              {/* TABLE HEADER */}
-              <div style={{ display: 'grid', gridTemplateColumns: '100px 80px 1fr 120px 100px', gap: 16, padding: '12px 20px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0', fontSize: 12, fontWeight: 600, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <div>Code</div>
+            <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, overflow: "hidden" }}>
+              <div style={tableHeader}>
                 <div>Type</div>
                 <div>Title</div>
-                <div>Implemented</div>
+                <div>Team</div>
                 <div>Status</div>
               </div>
 
-              {/* TABLE ROWS */}
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
                 {policies.map((policy, idx) => (
-                  <div key={policy.code} style={{ display: 'grid', gridTemplateColumns: '100px 80px 1fr 120px 100px', gap: 16, padding: '16px 20px', borderBottom: idx === policies.length - 1 ? 'none' : '1px solid #e2e8f0', alignItems: 'center', transition: 'background 0.15s', cursor: 'pointer', background: '#ffffff' }}>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: '#1e293b', fontFamily: 'monospace' }}>{policy.code}</div>
+                  <div key={policy.id} style={{ ...tableRow, borderBottom: idx === policies.length - 1 ? "none" : "1px solid #e2e8f0" }}>
                     <div>
-                      {policy.type === "Policy" && <span style={{ padding: '2px 8px', borderRadius: 4, background: '#dcfce7', color: '#166534', fontSize: 11, fontWeight: 700, letterSpacing: '0.05em' }}>POLICY</span>}
-                      {policy.type === "SOG" && <span style={{ padding: '2px 8px', borderRadius: 4, background: '#e0f2fe', color: '#0369a1', fontSize: 11, fontWeight: 700, letterSpacing: '0.05em' }}>SOG</span>}
-                      {policy.type === "Memo" && <span style={{ padding: '2px 8px', borderRadius: 4, background: '#f3f4f6', color: '#475569', fontSize: 11, fontWeight: 700, letterSpacing: '0.05em', border: '1px solid #e2e8f0' }}>MEMO</span>}
+                      {policy.type === "Policy" && <span style={{ ...typeBadge, background: "#dcfce7", color: "#166534" }}>POLICY</span>}
+                      {policy.type === "SOG" && <span style={{ ...typeBadge, background: "#e0f2fe", color: "#0369a1" }}>SOG</span>}
+                      {policy.type === "Memo" && <span style={{ ...typeBadge, background: "#f3f4f6", color: "#475569" }}>MEMO</span>}
                     </div>
-                    <div style={{ fontSize: 15, fontWeight: 500, color: '#0f172a' }}>{policy.title}</div>
-                    <div style={{ fontSize: 13, color: '#64748b' }}>{policy.date}</div>
-                    <div>
-                      {policy.status === "Active" ? (
-                         <span style={{ fontSize: 12, color: '#16a34a', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}><span style={{ width: 6, height: 6, borderRadius: '50%', background: '#16a34a' }}></span> Active</span>
-                      ) : (
-                         <span style={{ fontSize: 12, color: '#94a3b8', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}><span style={{ width: 6, height: 6, borderRadius: '50%', background: '#94a3b8' }}></span> Archived</span>
-                      )}
+                    <div style={{ fontSize: 15, fontWeight: 600 }}>{policy.title}</div>
+                    <div style={{ fontSize: 13, color: "#64748b" }}>{policy.team}</div>
+                    <div style={{ fontSize: 13, color: policy.status === "library" ? "#1f7a37" : policy.status === "pending-approval" ? "#9a6700" : "#475569", fontWeight: 700 }}>
+                      {policy.status === "library" ? "Published" : policy.status === "pending-approval" ? "Pending approval" : "Circulating"}
                     </div>
                   </div>
                 ))}
               </div>
-
             </div>
-
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
     </div>
   );
 }
+
+const headerCard = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  background: "#ffffff",
+  border: "1px solid #dbe7de",
+  borderRadius: 18,
+  padding: "18px 22px",
+  boxShadow: "0 12px 30px rgba(15, 23, 42, 0.06)",
+  gap: 16,
+  flexWrap: "wrap" as const,
+};
+
+const panelCard = {
+  background: "#ffffff",
+  borderRadius: 18,
+  padding: 22,
+  border: "1px solid #dbe7de",
+  boxShadow: "0 12px 30px rgba(15, 23, 42, 0.06)",
+};
+
+const searchWrap = {
+  display: "flex",
+  alignItems: "center",
+  gap: 8,
+  padding: "12px 16px",
+  background: "#f8fafc",
+  border: "2px solid #e2e8f0",
+  borderRadius: 8,
+  flex: 1,
+  minWidth: 280,
+};
+
+const searchInput = {
+  background: "transparent",
+  border: "none",
+  outline: "none",
+  width: "100%",
+  fontSize: 16,
+  color: "#0f172a",
+};
+
+const tableHeader = {
+  display: "grid",
+  gridTemplateColumns: "120px 1.4fr 160px 140px",
+  gap: 16,
+  padding: "12px 20px",
+  background: "#f8fafc",
+  borderBottom: "1px solid #e2e8f0",
+  fontSize: 12,
+  fontWeight: 700,
+  color: "#475569",
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.05em",
+};
+
+const tableRow = {
+  display: "grid",
+  gridTemplateColumns: "120px 1.4fr 160px 140px",
+  gap: 16,
+  padding: "16px 20px",
+  alignItems: "center",
+  background: "#ffffff",
+};
+
+const typeBadge = {
+  padding: "4px 8px",
+  borderRadius: 6,
+  fontSize: 11,
+  fontWeight: 700,
+  letterSpacing: "0.05em",
+};
+
+const secondaryButton = {
+  textDecoration: "none",
+  background: "#ffffff",
+  color: "#1f5d24",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #cfe1d2",
+};
+
+const primaryButton = {
+  textDecoration: "none",
+  background: "#1f5d24",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #1f5d24",
+};
+
+const activeFilterButton = {
+  padding: "10px 16px",
+  borderRadius: 8,
+  background: "#166534",
+  color: "#ffffff",
+  fontSize: 14,
+  fontWeight: 600,
+  border: "none",
+};
+
+const filterButton = {
+  padding: "10px 16px",
+  borderRadius: 8,
+  background: "#f1f5f9",
+  color: "#475569",
+  fontSize: 14,
+  fontWeight: 500,
+  border: "1px solid #cbd5e1",
+};
