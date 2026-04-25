@@ -54,7 +54,7 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Create new policy, SOG, or memo</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Start a new document and assign it to your team.</p>
               </div>
-              <Link href="/policy-index" style={primaryButtonLink}>Create New</Link>
+              <Link href="/create" style={primaryButtonLink}>Create New</Link>
             </div>
           </section>
 
@@ -64,7 +64,7 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Check document status</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Review circulation, approvals, and items requiring attention.</p>
               </div>
-              <Link href="/policy-index" style={primaryButtonLink}>Open Status</Link>
+              <Link href="/status" style={primaryButtonLink}>Open Status</Link>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 14 }}>
@@ -72,7 +72,7 @@ export default function ManagerPage() {
                 <div key={card.title} style={statusCard}>
                   <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10 }}>{card.title}</div>
                   <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 16 }}>{card.text}</div>
-                  <Link href="/policy-index" style={secondaryGreenButtonLink}>{card.button}</Link>
+                  <Link href={card.button === "View circulation" || card.button === "View approvals" || card.button === "View report" ? "/status" : "/policy-index"} style={secondaryGreenButtonLink}>{card.button}</Link>
                 </div>
               ))}
             </div>
@@ -84,7 +84,7 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Quick View</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>A preview of the selected status area. Full details live on their own pages.</p>
               </div>
-              <Link href="/policy-index" style={primaryButtonLink}>Open full view</Link>
+              <Link href="/status" style={primaryButtonLink}>Open full view</Link>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 22 }}>
