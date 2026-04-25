@@ -42,7 +42,10 @@ export default function DocumentStatusDetail({ params }: { params: { docId: stri
           </section>
 
           <section style={panelCard}>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "#9a6700", marginBottom: 12 }}>Incomplete</div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, marginBottom: 12, flexWrap: "wrap" }}>
+              <div style={{ fontSize: 22, fontWeight: 800, color: "#9a6700" }}>Incomplete</div>
+              <button style={reminderButton}>Send reminder</button>
+            </div>
             <div style={{ display: "grid", gap: 8 }}>
               {incomplete.map((name) => (
                 <div key={name} style={personRow}>{name}</div>
@@ -82,6 +85,15 @@ const personRow = {
   padding: "10px 12px",
   borderRadius: 10,
   background: "#f6faf7",
+};
+
+const reminderButton = {
+  background: "#1f5d24",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #1f5d24",
 };
 
 const secondaryButton = {
