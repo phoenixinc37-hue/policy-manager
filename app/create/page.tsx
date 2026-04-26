@@ -46,7 +46,7 @@ export default function CreatePage() {
                   <div style={{ fontSize: 13, color: "#60766b" }}>Supports previous policies, memos, PDFs, and Word files.</div>
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
-                  <button style={primaryButton}>Upload file</button>
+                  <Link href="/import-existing" style={primaryLinkButton}>Upload file</Link>
                 </div>
               </div>
             </div>
