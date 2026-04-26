@@ -94,7 +94,7 @@ export default function ManagerPage() {
                     <div style={{ fontWeight: 800, fontSize: 20 }}>Circulating documents</div>
                     <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Current active items and acknowledgement progress.</div>
                   </div>
-                  <span style={alertBadge}>{stats.needsAttention} need attention</span>
+                  <span style={{ fontWeight: 800, color: "#1f5d24", fontSize: 14 }}>View circulating</span>
                 </div>
 
                 <div style={{ display: "grid", gap: 16 }}>
@@ -120,7 +120,10 @@ export default function ManagerPage() {
 
               <div style={{ display: "grid", gap: 14 }}>
                 <div style={quickSideCard}>
-                  <div style={{ fontWeight: 800, fontSize: 18 }}>Pending approval</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+                    <div style={{ fontWeight: 800, fontSize: 18 }}>Pending approval</div>
+                    <span style={{ color: "#2e7d32", fontWeight: 700, fontSize: 14 }}>View pending</span>
+                  </div>
                   <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Documents waiting for leadership review.</div>
                   <div style={{ fontSize: 30, fontWeight: 800, color: "#1f5d24", marginTop: 14 }}>{stats.pendingApproval}</div>
                   <div style={{ marginTop: 14, fontSize: 14 }}>
@@ -130,7 +133,10 @@ export default function ManagerPage() {
                 </div>
 
                 <div style={quickSideCard}>
-                  <div style={{ fontWeight: 800, fontSize: 18 }}>Firm completion</div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+                    <div style={{ fontWeight: 800, fontSize: 18 }}>Firm completion</div>
+                    <span style={{ color: "#2e7d32", fontWeight: 700, fontSize: 14 }}>View firm complete</span>
+                  </div>
                   <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Overall acknowledgement status.</div>
                   <div style={{ fontSize: 30, fontWeight: 800, color: "#1f5d24", marginTop: 14 }}>{stats.overallCompletion}%</div>
                   <div style={{ ...progressTrack, marginTop: 14 }}><div style={{ ...progressFill, width: `${stats.overallCompletion}%` }} /></div>
