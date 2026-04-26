@@ -30,7 +30,7 @@ export default function DocumentStatusDetail({ params }: { params: { docId: stri
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/status" style={secondaryButton}>Back to Status</Link>
+            <Link href="/status" style={secondaryButton}>Back to Circulating</Link>
             <Link href="/manager" style={primaryButton}>Leadership View</Link>
           </div>
         </header>
