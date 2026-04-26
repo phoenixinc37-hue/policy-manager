@@ -45,8 +45,8 @@ export default function CreatePage({ searchParams }: { searchParams?: { type?: s
 
                 <textarea placeholder="Example: Draft a client file documentation policy for the tax team using the approved structure, then route it to the owners group for approval." style={{ ...inputStyle, minHeight: 120, resize: "vertical" as const, marginTop: 14 }} />
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
-                  <button style={primaryButton}>Use AI assistant</button>
-                  <button style={ghostButton}>Follow template</button>
+                  <Link href="/create/ai-assistant" style={primaryLinkButton}>Use AI assistant</Link>
+                  <Link href="/create/template" style={secondaryButton}>Follow template</Link>
                 </div>
               </div>
 
@@ -97,19 +97,22 @@ export default function CreatePage({ searchParams }: { searchParams?: { type?: s
                   {activeType === "policy" && (
                     <div style={routingCard}>
                       <div style={{ fontWeight: 800 }}>Policy</div>
-                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Policies typically stay within the owners group for approval before wider circulation.</div>
+                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginTop: 6 }}>Policies typically stay within the owners group for approval before wider circulation.</div>
+                      <div style={{ fontSize: 13, color: "#2e7d32", fontWeight: 700, marginTop: 10 }}>Approval group: Owners</div>
                     </div>
                   )}
                   {activeType === "sog" && (
                     <div style={routingCard}>
                       <div style={{ fontWeight: 800 }}>SOG</div>
-                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>SOGs are reviewed by a smaller, more refined operating group before release.</div>
+                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginTop: 6 }}>SOGs are reviewed by a smaller, more refined operating group before release.</div>
+                      <div style={{ fontSize: 13, color: "#2e7d32", fontWeight: 700, marginTop: 10 }}>Approval group: Operating leads</div>
                     </div>
                   )}
                   {activeType === "memo" && (
                     <div style={routingCard}>
                       <div style={{ fontWeight: 800 }}>Memo</div>
-                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Memos are reviewed by the relevant leadership group before circulation to the intended team.</div>
+                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginTop: 6 }}>Memos are reviewed by the relevant leadership group before circulation to the intended team.</div>
+                      <div style={{ fontSize: 13, color: "#2e7d32", fontWeight: 700, marginTop: 10 }}>Approval group: Leadership</div>
                     </div>
                   )}
                 </div>

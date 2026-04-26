@@ -51,6 +51,7 @@ export default function TeamView({ searchParams }: { searchParams?: { type?: str
                 <li>No visibility into other employees</li>
                 <li>Clear action required vs completed status</li>
                 <li>Direct visibility into document type and team</li>
+                <li>In the live version, employee selection moves to setup/leadership workflow rather than team view.</li>
               </ul>
             </div>
           </section>
