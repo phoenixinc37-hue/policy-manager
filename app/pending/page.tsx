@@ -17,8 +17,11 @@ export default function PendingPage() {
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/status" style={secondaryButton}>Circulating</Link>
-            <Link href="/manager" style={primaryButton}>Leadership View</Link>
+            <Link href="/status" style={greenMenuButton}>Circulating</Link>
+            <Link href="/completion" style={greenMenuButton}>Complete</Link>
+            <Link href="/policy-index" style={greenMenuButton}>Library</Link>
+            <Link href="/create" style={greenMenuButton}>Create</Link>
+            <Link href="/" style={primaryButton}>Home</Link>
           </div>
         </header>
 
@@ -92,6 +95,16 @@ const secondaryButton = {
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #cfe1d2",
+};
+
+const greenMenuButton = {
+  textDecoration: "none",
+  background: "#66a97a",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #66a97a",
 };
 
 const primaryButton = {
