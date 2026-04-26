@@ -4,7 +4,7 @@ import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 export default function CreatePage() {
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
-      <div style={{ maxWidth: 960, margin: "0 auto", padding: "24px 16px 48px" }}>
+      <div style={{ maxWidth: 1180, margin: "0 auto", padding: "24px 16px 48px" }}>
         <header style={headerCard}>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={cabinetIcon}>{[0, 1].map((row) => <div key={row} style={drawerRow}><div style={drawerHandle} /></div>)}</div>
@@ -89,8 +89,8 @@ const headerCard = {
   borderRadius: 18,
   padding: "18px 22px",
   boxShadow: "0 12px 30px rgba(15, 23, 42, 0.06)",
-  gap: 16,
-  flexWrap: "wrap" as const,
+  gap: 12,
+  flexWrap: "nowrap" as const,
 };
 
 const panelCard = {
@@ -141,10 +141,12 @@ const greenMenuButton = {
   textDecoration: "none",
   background: "#66a97a",
   color: "#ffffff",
-  padding: "10px 12px",
+  padding: "8px 10px",
   borderRadius: 10,
   fontWeight: 700,
+  fontSize: 13,
   border: "1px solid #66a97a",
+  whiteSpace: "nowrap" as const,
 };
 
 const primaryButton = {
@@ -160,10 +162,12 @@ const primaryLinkButton = {
   textDecoration: "none",
   background: "#1f5d24",
   color: "#ffffff",
-  padding: "10px 12px",
+  padding: "8px 10px",
   borderRadius: 10,
   fontWeight: 700,
+  fontSize: 13,
   border: "1px solid #1f5d24",
+  whiteSpace: "nowrap" as const,
 };
 
 const ghostButton = {
