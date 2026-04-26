@@ -13,7 +13,7 @@ export default function StatusPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={cabinetIcon}>{[0, 1].map((row) => <div key={row} style={drawerRow}><div style={drawerHandle} /></div>)}</div>
             <div>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager · Circulating</div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager <span style={{ fontSize: 20, fontWeight: 700, color: "#2e7d32", marginLeft: 10 }}>· Circulating</span></div>
               <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
             </div>
           </div>
