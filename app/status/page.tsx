@@ -22,7 +22,7 @@ export default function StatusPage() {
             <Link href="/completion" style={greenMenuButton}>Complete</Link>
             <Link href="/policy-index" style={greenMenuButton}>Library</Link>
             <Link href="/create" style={greenMenuButton}>Create</Link>
-            <Link href="/" style={primaryButton}>Home</Link>
+            <Link href="/manager" style={primaryButton}>Leadership View</Link>
           </div>
         </header>
 
@@ -141,7 +141,7 @@ const detailButtonLink = {
   textDecoration: "none",
   background: "#1f5d24",
   color: "#ffffff",
-  padding: "10px 14px",
+  padding: "10px 12px",
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #1f5d24",
@@ -161,7 +161,7 @@ const greenMenuButton = {
   textDecoration: "none",
   background: "#66a97a",
   color: "#ffffff",
-  padding: "10px 14px",
+  padding: "10px 12px",
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #66a97a",
@@ -171,7 +171,7 @@ const primaryButton = {
   textDecoration: "none",
   background: "#1f5d24",
   color: "#ffffff",
-  padding: "10px 14px",
+  padding: "10px 12px",
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #1f5d24",
