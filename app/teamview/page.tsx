@@ -3,11 +3,17 @@ import { Search } from "lucide-react";
 import { employees, getTeamItems } from "../data";
 import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
-export default function TeamView({ searchParams }: { searchParams?: { type?: string } }) {
+export default function TeamView({ searchParams }: { searchParams?: { type?: string; q?: string } }) {
   const selectedEmployee = employees[0];
   const assignedItems = getTeamItems(selectedEmployee).filter((item) => !item.acknowledged);
   const activeType = searchParams?.type ?? "all";
-  const filteredItems = activeType === "all" ? assignedItems : assignedItems.filter((item) => item.type.toLowerCase() === activeType);
+  const query = (searchParams?.q ?? "").toLowerCase().trim();
+  const typeFilteredItems = activeType === "all" ? assignedItems : assignedItems.filter((item) => item.type.toLowerCase() === activeType);
+  const filteredItems = !query
+    ? typeFilteredItems
+    : typeFilteredItems.filter((item) =>
+        [item.title, item.type, item.team].some((value) => value.toLowerCase().includes(query))
+      );
 
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
@@ -52,10 +58,11 @@ export default function TeamView({ searchParams }: { searchParams?: { type?: str
                 <div style={{ fontSize: 24, fontWeight: 800 }}>{selectedEmployee} active circulating items</div>
                 <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Live queue for the selected team member.</div>
               </div>
-              <div style={searchWrap}>
+              <form method="GET" action="/teamview" style={searchWrap}>
+                <input type="hidden" name="type" value={activeType} />
                 <Search size={16} color="#5c7368" />
-                <input placeholder="Search documents" style={searchInput} />
-              </div>
+                <input name="q" defaultValue={searchParams?.q ?? ""} placeholder="Search documents" style={searchInput} />
+              </form>
             </div>
 
             <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap" }}>
