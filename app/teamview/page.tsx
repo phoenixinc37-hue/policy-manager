@@ -69,12 +69,12 @@ export default function TeamView() {
 
             <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap" }}>
               {[
-                { label: `All (${assignedItems.length})`, active: true },
-                { label: `Policy (${assignedItems.filter((item) => item.type === "Policy").length})` },
-                { label: `SOG (${assignedItems.filter((item) => item.type === "SOG").length})` },
-                { label: `Memo (${assignedItems.filter((item) => item.type === "Memo").length})` },
+                { label: `All (${assignedItems.length})`, href: "/teamview", active: true },
+                { label: `Policy (${assignedItems.filter((item) => item.type === "Policy").length})`, href: "/policy-index" },
+                { label: `SOG (${assignedItems.filter((item) => item.type === "SOG").length})`, href: "/policy-index" },
+                { label: `Memo (${assignedItems.filter((item) => item.type === "Memo").length})`, href: "/policy-index" },
               ].map((pill) => (
-                <span key={pill.label} style={pillStyle(Boolean(pill.active))}>{pill.label}</span>
+                <Link key={pill.label} href={pill.href} style={pillStyle(Boolean(pill.active), pill.label.startsWith("Policy") || pill.label.startsWith("SOG") || pill.label.startsWith("Memo"))}>{pill.label}</Link>
               ))}
             </div>
 
@@ -186,15 +186,16 @@ const searchInput = {
   width: 160,
 };
 
-function pillStyle(active: boolean) {
+function pillStyle(active: boolean, lightGreen = false) {
   return {
+    textDecoration: "none",
     padding: "8px 14px",
     borderRadius: 999,
     fontSize: 13,
     fontWeight: 700,
-    background: active ? "#2e7d32" : "#f1f6f2",
-    color: active ? "#ffffff" : "#486055",
-    border: active ? "1px solid #2e7d32" : "1px solid #d6e4d8",
+    background: active ? "#2e7d32" : lightGreen ? "#66a97a" : "#f1f6f2",
+    color: active ? "#ffffff" : lightGreen ? "#ffffff" : "#486055",
+    border: active ? "1px solid #2e7d32" : lightGreen ? "1px solid #66a97a" : "1px solid #d6e4d8",
   };
 }
 
