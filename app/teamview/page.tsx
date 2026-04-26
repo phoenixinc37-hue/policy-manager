@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronDown, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { employees, getTeamItems } from "../data";
 import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
@@ -29,30 +29,19 @@ export default function TeamView({ searchParams }: { searchParams?: { type?: str
         <main style={{ display: "grid", gridTemplateColumns: "0.78fr 1.22fr", gap: 22, marginTop: 24 }}>
           <section style={panelCard}>
             <div style={{ borderBottom: "1px solid #e4ece6", paddingBottom: 18, marginBottom: 18 }}>
-              <div style={{ fontSize: 24, fontWeight: 800 }}>Employee selector</div>
+              <div style={{ fontSize: 24, fontWeight: 800 }}>Employee view</div>
               <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>
-                Live demo of what the selected team member still needs to acknowledge.
+                This page represents what the logged-in team member sees. They should only see their own assigned items and acknowledgement status.
               </p>
             </div>
 
-            <label style={{ display: "block", fontSize: 12, fontWeight: 800, letterSpacing: "0.06em", color: "#5c7368", marginBottom: 8 }}>
-              SELECT EMPLOYEE
-            </label>
-            <div style={{ position: "relative" }}>
-              <select defaultValue={selectedEmployee} style={selectStyle}>
-                {employees.map((employee) => (
-                  <option key={employee} value={employee}>{employee}</option>
-                ))}
-              </select>
-              <ChevronDown style={{ position: "absolute", right: 16, top: "50%", marginTop: -10, color: "#5c7368", pointerEvents: "none" }} />
-            </div>
-
-            <div style={{ marginTop: 18, padding: 16, background: "#f8fbf9", border: "1px solid #e4ece6", borderRadius: 14 }}>
-              <div style={{ fontWeight: 700, marginBottom: 8 }}>What the team member sees</div>
+            <div style={{ padding: 16, background: "#f8fbf9", border: "1px solid #e4ece6", borderRadius: 14 }}>
+              <div style={{ fontWeight: 700, marginBottom: 8 }}>{selectedEmployee}</div>
               <ul style={{ margin: 0, paddingLeft: 18, color: "#60766b", lineHeight: 1.8, fontSize: 14 }}>
-                <li>Only items assigned to them</li>
+                <li>Only items assigned to this team member</li>
+                <li>No visibility into other employees</li>
                 <li>Clear action required vs completed status</li>
-                <li>Direct visibility into team and document type</li>
+                <li>Direct visibility into document type and team</li>
               </ul>
             </div>
           </section>
@@ -156,18 +145,6 @@ const primaryButtonLink = {
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #1f5d24",
-};
-
-const selectStyle = {
-  width: "100%",
-  padding: "14px 16px",
-  borderRadius: 12,
-  border: "1px solid #d6e4d8",
-  background: "#f8fbf9",
-  fontSize: 16,
-  fontWeight: 600,
-  color: "#10221a",
-  appearance: "none" as const,
 };
 
 const searchWrap = {
