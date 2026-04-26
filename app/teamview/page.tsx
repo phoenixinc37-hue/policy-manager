@@ -49,7 +49,7 @@ export default function TeamView({ searchParams }: { searchParams?: { type?: str
           <section style={panelCard}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, marginBottom: 18, flexWrap: "wrap" }}>
               <div>
-                <div style={{ fontSize: 24, fontWeight: 800 }}>Active circulating items</div>
+                <div style={{ fontSize: 24, fontWeight: 800 }}>{selectedEmployee} active circulating items</div>
                 <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Live queue for the selected team member.</div>
               </div>
               <div style={searchWrap}>
