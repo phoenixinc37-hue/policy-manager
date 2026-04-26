@@ -25,21 +25,31 @@ export default function CreatePage() {
         <main style={{ marginTop: 24 }}>
           <section style={panelCard}>
             <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>Create a new document</div>
-            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 20 }}>Create or build a policy, SOG, or memo with AI, or upload an existing document.</div>
+            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 20, lineHeight: 1.7 }}>Build a new policy, SOG, or memo using the established structure, then route it to the correct leadership approval group before circulation.</div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 18, marginBottom: 20 }}>
               <div style={featureCard}>
-                <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Generate with AI</div>
-                <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 14 }}>Describe the policy you want, choose the document type, and generate a first draft to review before circulation.</div>
-                <textarea placeholder="Example: Draft a client file documentation policy for the tax team with acknowledgement required from all staff." style={{ ...inputStyle, minHeight: 120, resize: "vertical" as const }} />
+                <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Choose how to create</div>
+                <div style={{ display: "grid", gap: 14 }}>
+                  <div style={optionCard}>
+                    <div style={{ fontWeight: 800, marginBottom: 6 }}>Follow established template</div>
+                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Use the firm’s approved structure for the selected document type. Template rules will be expanded in the next version.</div>
+                  </div>
+                  <div style={optionCard}>
+                    <div style={{ fontWeight: 800, marginBottom: 6 }}>Use AI assistant</div>
+                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Generate a first draft with AI, but still keep it inside the firm’s required structure and approval pathway.</div>
+                  </div>
+                </div>
+
+                <textarea placeholder="Example: Draft a client file documentation policy for the tax team using the approved structure, then route it to the owners group for approval." style={{ ...inputStyle, minHeight: 120, resize: "vertical" as const, marginTop: 14 }} />
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
-                  <button style={primaryButton}>Generate draft</button>
-                  <button style={ghostButton}>Use template</button>
+                  <button style={primaryButton}>Use AI assistant</button>
+                  <button style={ghostButton}>Follow template</button>
                 </div>
               </div>
 
               <div style={featureCard}>
-                <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Upload previous document</div>
+                <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Existing document intake</div>
                 <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 14 }}>Bring in an existing policy, SOG, or memo so it can be indexed, updated, and redistributed through Policy Manager.</div>
                 <div style={uploadBox}>
                   <div style={{ fontWeight: 700, marginBottom: 6 }}>Drop file here or browse</div>
@@ -47,6 +57,24 @@ export default function CreatePage() {
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
                   <Link href="/import-existing" style={primaryLinkButton}>Upload file</Link>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ ...featureCard, marginBottom: 20 }}>
+              <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 10 }}>Approval pathway by document type</div>
+              <div style={{ display: "grid", gap: 12 }}>
+                <div style={routingCard}>
+                  <div style={{ fontWeight: 800 }}>Memo</div>
+                  <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Draft is reviewed by the relevant leadership group before circulation to the intended team.</div>
+                </div>
+                <div style={routingCard}>
+                  <div style={{ fontWeight: 800 }}>SOG</div>
+                  <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Draft is reviewed by a smaller, more refined operating group before release to the affected team.</div>
+                </div>
+                <div style={routingCard}>
+                  <div style={{ fontWeight: 800 }}>Policy</div>
+                  <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Draft typically stays within the owners group for approval before wider circulation.</div>
                 </div>
               </div>
             </div>
@@ -125,6 +153,20 @@ const uploadBox = {
   padding: 18,
   background: "#ffffff",
   textAlign: "center" as const,
+};
+
+const optionCard = {
+  border: "1px solid #dbe7de",
+  borderRadius: 14,
+  padding: 14,
+  background: "#ffffff",
+};
+
+const routingCard = {
+  border: "1px solid #dbe7de",
+  borderRadius: 14,
+  padding: 14,
+  background: "#ffffff",
 };
 
 const secondaryButton = {
