@@ -13,13 +13,16 @@ export default function StatusPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={cabinetIcon}>{[0, 1].map((row) => <div key={row} style={drawerRow}><div style={drawerHandle} /></div>)}</div>
             <div>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager · Status</div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager · Circulating</div>
               <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/manager" style={secondaryButton}>Leadership View</Link>
-            <Link href="/policy-index" style={primaryButton}>Library</Link>
+            <Link href="/pending" style={secondaryButton}>Pending</Link>
+            <Link href="/completion" style={secondaryButton}>Complete</Link>
+            <Link href="/policy-index" style={secondaryButton}>Library</Link>
+            <Link href="/create" style={secondaryButton}>Create</Link>
+            <Link href="/" style={primaryButton}>Home</Link>
           </div>
         </header>
 
