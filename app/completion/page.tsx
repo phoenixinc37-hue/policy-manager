@@ -51,8 +51,8 @@ export default function CompletionPage() {
                     <div style={{ fontSize: 13, color: "#64748b" }}>{doc.team}</div>
                     <div style={{ fontSize: 13, color: "#1f7a37", fontWeight: 700 }}>Fully circulated</div>
                     <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
-                      <button style={actionButton}>Version history</button>
-                      <button style={actionButton}>Review</button>
+                      <Link href={`/completion/history/${doc.id}`} style={actionButtonLink}>Version history</Link>
+                      <Link href={`/completion/review/${doc.id}`} style={actionButtonLink}>Review</Link>
                     </div>
                   </div>
                 ))}
@@ -147,7 +147,8 @@ const primaryButton = {
   border: "1px solid #1f5d24",
 };
 
-const actionButton = {
+const actionButtonLink = {
+  textDecoration: "none",
   background: "#ffffff",
   color: "#1f5d24",
   padding: "10px 14px",

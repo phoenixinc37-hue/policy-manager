@@ -42,7 +42,10 @@ export default function TeamView({ searchParams }: { searchParams?: { type?: str
             </div>
 
             <div style={{ padding: 16, background: "#f8fbf9", border: "1px solid #e4ece6", borderRadius: 14 }}>
-              <div style={{ fontWeight: 700, marginBottom: 8 }}>{selectedEmployee}</div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, marginBottom: 8, flexWrap: "wrap" }}>
+                <div style={{ fontWeight: 700 }}>{selectedEmployee}</div>
+                <Link href="/policy-index" style={greenMenuButton}>Library</Link>
+              </div>
               <ul style={{ margin: 0, paddingLeft: 18, color: "#60766b", lineHeight: 1.8, fontSize: 14 }}>
                 <li>Only items assigned to this team member</li>
                 <li>No visibility into other employees</li>
