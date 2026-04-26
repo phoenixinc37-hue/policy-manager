@@ -19,8 +19,8 @@ export default function TeamView() {
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/" style={secondaryButton}>Home</Link>
-            <Link href="/manager" style={secondaryButton}>Manager View</Link>
+            <Link href="/" style={primaryButtonLink}>Home</Link>
+            <Link href="/manager" style={greenMenuButton}>Leadership View</Link>
           </div>
         </header>
 
@@ -134,6 +134,26 @@ const secondaryButton = {
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #cfe1d2",
+};
+
+const greenMenuButton = {
+  textDecoration: "none",
+  background: "#66a97a",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #66a97a",
+};
+
+const primaryButtonLink = {
+  textDecoration: "none",
+  background: "#1f5d24",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #1f5d24",
 };
 
 const selectStyle = {
