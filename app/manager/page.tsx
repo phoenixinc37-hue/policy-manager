@@ -43,7 +43,7 @@ export default function ManagerPage() {
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/" style={secondaryButton}>Home</Link>
+            <Link href="/" style={primaryButtonLink}>Home</Link>
             <Link href="/teamview" style={teamButton}>Team View</Link>
           </div>
         </header>
@@ -55,7 +55,13 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Create new policy, SOG, or memo</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Start a new document and assign it to your team.</p>
               </div>
-              <Link href="/create" style={primaryButtonLink}>Create New</Link>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <Link href="/pending" style={greenMenuButton}>Pending</Link>
+                <Link href="/completion" style={greenMenuButton}>Complete</Link>
+                <Link href="/policy-index" style={greenMenuButton}>Library</Link>
+                <Link href="/create" style={greenMenuButton}>Create</Link>
+                <Link href="/" style={primaryButtonLink}>Home</Link>
+              </div>
             </div>
           </section>
 
@@ -84,7 +90,6 @@ export default function ManagerPage() {
                 <div style={{ fontSize: 24, fontWeight: 800 }}>Quick View</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>A preview of the selected status area. Full details live on their own pages.</p>
               </div>
-              <Link href="/status" style={primaryButtonLink}>Open full view</Link>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 22 }}>
@@ -225,6 +230,16 @@ const secondaryGreenButton = {
   fontWeight: 700,
   fontSize: 14,
   width: "100%",
+};
+
+const greenMenuButton = {
+  textDecoration: "none",
+  background: "#66a97a",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #66a97a",
 };
 
 const secondaryGreenButtonLink = {
