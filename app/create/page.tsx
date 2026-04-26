@@ -13,7 +13,13 @@ export default function CreatePage() {
               <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
             </div>
           </div>
-          <Link href="/manager" style={secondaryButton}>Leadership View</Link>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Link href="/pending" style={greenMenuButton}>Pending</Link>
+            <Link href="/completion" style={greenMenuButton}>Complete</Link>
+            <Link href="/policy-index" style={greenMenuButton}>Library</Link>
+            <Link href="/create" style={greenMenuButton}>Create</Link>
+            <Link href="/" style={primaryLinkButton}>Home</Link>
+          </div>
         </header>
 
         <main style={{ marginTop: 24 }}>
@@ -131,7 +137,27 @@ const secondaryButton = {
   border: "1px solid #cfe1d2",
 };
 
+const greenMenuButton = {
+  textDecoration: "none",
+  background: "#66a97a",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #66a97a",
+};
+
 const primaryButton = {
+  background: "#1f5d24",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #1f5d24",
+};
+
+const primaryLinkButton = {
+  textDecoration: "none",
   background: "#1f5d24",
   color: "#ffffff",
   padding: "10px 14px",
