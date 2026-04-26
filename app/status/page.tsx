@@ -18,10 +18,10 @@ export default function StatusPage() {
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Link href="/pending" style={secondaryButton}>Pending</Link>
-            <Link href="/completion" style={secondaryButton}>Complete</Link>
-            <Link href="/policy-index" style={secondaryButton}>Library</Link>
-            <Link href="/create" style={secondaryButton}>Create</Link>
+            <Link href="/pending" style={greenMenuButton}>Pending</Link>
+            <Link href="/completion" style={greenMenuButton}>Complete</Link>
+            <Link href="/policy-index" style={greenMenuButton}>Library</Link>
+            <Link href="/create" style={greenMenuButton}>Create</Link>
             <Link href="/" style={primaryButton}>Home</Link>
           </div>
         </header>
@@ -155,6 +155,16 @@ const secondaryButton = {
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #cfe1d2",
+};
+
+const greenMenuButton = {
+  textDecoration: "none",
+  background: "#66a97a",
+  color: "#ffffff",
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #66a97a",
 };
 
 const primaryButton = {
