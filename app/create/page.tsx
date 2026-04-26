@@ -80,19 +80,33 @@ export default function CreatePage() {
             </div>
 
             <div style={{ display: "grid", gap: 16 }}>
-              <input placeholder="Document title" style={inputStyle} />
-              <select style={inputStyle} defaultValue="Policy">
-                <option>Policy</option>
-                <option>SOG</option>
-                <option>Memo</option>
-              </select>
-              <select style={inputStyle} defaultValue="Tax team">
-                <option>Tax team</option>
-                <option>Admin team</option>
-                <option>Leadership</option>
-                <option>Firm-wide</option>
-              </select>
-              <textarea placeholder="Summary or rollout note" style={{ ...inputStyle, minHeight: 140, resize: "vertical" as const }} />
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <button style={activeTypeButton}>Policy</button>
+                <button style={typeButton}>SOG</button>
+                <button style={typeButton}>Memo</button>
+              </div>
+
+              <div style={approvalOverviewCard}>
+                <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Approval overview</div>
+                <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.7, marginBottom: 14 }}>
+                  The selected document type determines who reviews the draft before it can move into circulation.
+                </div>
+                <div style={{ display: "grid", gap: 12 }}>
+                  <div style={routingCard}>
+                    <div style={{ fontWeight: 800 }}>Policy</div>
+                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Policies typically stay within the owners group for approval before wider circulation.</div>
+                  </div>
+                  <div style={routingCardMuted}>
+                    <div style={{ fontWeight: 800 }}>SOG</div>
+                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>SOGs are reviewed by a smaller, more refined operating group before release.</div>
+                  </div>
+                  <div style={routingCardMuted}>
+                    <div style={{ fontWeight: 800 }}>Memo</div>
+                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Memos are reviewed by the relevant leadership group before circulation to the intended team.</div>
+                  </div>
+                </div>
+              </div>
+
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "space-between" }}>
                 <button style={primaryButton}>Save draft</button>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -167,6 +181,39 @@ const routingCard = {
   borderRadius: 14,
   padding: 14,
   background: "#ffffff",
+};
+
+const approvalOverviewCard = {
+  border: "1px solid #dbe7de",
+  borderRadius: 16,
+  padding: 18,
+  background: "#f9fbf9",
+};
+
+const activeTypeButton = {
+  background: "#1f5d24",
+  color: "#ffffff",
+  padding: "10px 16px",
+  borderRadius: 10,
+  fontWeight: 800,
+  border: "1px solid #1f5d24",
+};
+
+const typeButton = {
+  background: "#66a97a",
+  color: "#ffffff",
+  padding: "10px 16px",
+  borderRadius: 10,
+  fontWeight: 800,
+  border: "1px solid #66a97a",
+};
+
+const routingCardMuted = {
+  border: "1px solid #dbe7de",
+  borderRadius: 14,
+  padding: 14,
+  background: "#ffffff",
+  opacity: 0.78,
 };
 
 const secondaryButton = {
