@@ -47,7 +47,7 @@ export default function PolicyIndex() {
               <div style={tableHeader}>
                 <div>Type</div>
                 <div>Title</div>
-                <div>Team</div>
+                <div>History</div>
                 <div>Status</div>
               </div>
 
@@ -59,10 +59,18 @@ export default function PolicyIndex() {
                       {policy.type === "SOG" && <span style={{ ...typeBadge, background: "#e0f2fe", color: "#0369a1" }}>SOG</span>}
                       {policy.type === "Memo" && <span style={{ ...typeBadge, background: "#f3f4f6", color: "#475569" }}>MEMO</span>}
                     </div>
-                    <div style={{ fontSize: 15, fontWeight: 600 }}>{policy.title}</div>
-                    <div style={{ fontSize: 13, color: "#64748b" }}>{policy.team}</div>
-                    <div style={{ fontSize: 13, color: policy.status === "library" ? "#1f7a37" : policy.status === "pending-approval" ? "#9a6700" : "#475569", fontWeight: 700 }}>
-                      {policy.status === "library" ? "Published" : policy.status === "pending-approval" ? "Pending approval" : "Circulating"}
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <Link href={`/policy-index/document/${policy.id}`} style={rowActionButton}>Open</Link>
+                      <div style={{ fontSize: 15, fontWeight: 600 }}>{policy.title}</div>
+                    </div>
+                    <div>
+                      <Link href={`/policy-index/history/${policy.id}`} style={rowSecondaryButton}>History</Link>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+                      <span style={{ fontSize: 13, color: policy.status === "library" ? "#1f7a37" : policy.status === "pending-approval" ? "#9a6700" : "#475569", fontWeight: 700 }}>
+                        {policy.status === "library" ? "Published" : policy.status === "pending-approval" ? "Pending approval" : "Circulating"}
+                      </span>
+                      <Link href={`/policy-index/status/${policy.id}`} style={rowSecondaryButton}>Status</Link>
                     </div>
                   </div>
                 ))}
@@ -119,7 +127,7 @@ const searchInput = {
 
 const tableHeader = {
   display: "grid",
-  gridTemplateColumns: "120px 1.4fr 160px 140px",
+  gridTemplateColumns: "120px 1.4fr 140px 220px",
   gap: 16,
   padding: "12px 20px",
   background: "#f8fafc",
@@ -133,7 +141,7 @@ const tableHeader = {
 
 const tableRow = {
   display: "grid",
-  gridTemplateColumns: "120px 1.4fr 160px 140px",
+  gridTemplateColumns: "120px 1.4fr 140px 220px",
   gap: 16,
   padding: "16px 20px",
   alignItems: "center",
@@ -176,6 +184,28 @@ const primaryButton = {
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #1f5d24",
+};
+
+const rowActionButton = {
+  textDecoration: "none",
+  background: "#1f5d24",
+  color: "#ffffff",
+  padding: "8px 10px",
+  borderRadius: 8,
+  fontSize: 12,
+  fontWeight: 800,
+  border: "1px solid #1f5d24",
+};
+
+const rowSecondaryButton = {
+  textDecoration: "none",
+  background: "#ffffff",
+  color: "#1f5d24",
+  padding: "8px 10px",
+  borderRadius: 8,
+  fontSize: 12,
+  fontWeight: 800,
+  border: "1px solid #cfe1d2",
 };
 
 const activeFilterButton = {
