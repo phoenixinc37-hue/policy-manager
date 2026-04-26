@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
-export default function CreatePage() {
+export default function CreatePage({ searchParams }: { searchParams?: { type?: string } }) {
+  const activeType = searchParams?.type ?? "policy";
+
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto", padding: "24px 16px 48px" }}>
@@ -81,9 +83,9 @@ export default function CreatePage() {
 
             <div style={{ display: "grid", gap: 16 }}>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <button style={activeTypeButton}>Policy</button>
-                <button style={typeButton}>SOG</button>
-                <button style={typeButton}>Memo</button>
+                <Link href="/create?type=policy" style={activeType === "policy" ? activeTypeLinkButton : typeLinkButton}>Policy</Link>
+                <Link href="/create?type=sog" style={activeType === "sog" ? activeTypeLinkButton : typeLinkButton}>SOG</Link>
+                <Link href="/create?type=memo" style={activeType === "memo" ? activeTypeLinkButton : typeLinkButton}>Memo</Link>
               </div>
 
               <div style={approvalOverviewCard}>
@@ -92,18 +94,24 @@ export default function CreatePage() {
                   The selected document type determines who reviews the draft before it can move into circulation.
                 </div>
                 <div style={{ display: "grid", gap: 12 }}>
-                  <div style={routingCard}>
-                    <div style={{ fontWeight: 800 }}>Policy</div>
-                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Policies typically stay within the owners group for approval before wider circulation.</div>
-                  </div>
-                  <div style={routingCardMuted}>
-                    <div style={{ fontWeight: 800 }}>SOG</div>
-                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>SOGs are reviewed by a smaller, more refined operating group before release.</div>
-                  </div>
-                  <div style={routingCardMuted}>
-                    <div style={{ fontWeight: 800 }}>Memo</div>
-                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Memos are reviewed by the relevant leadership group before circulation to the intended team.</div>
-                  </div>
+                  {activeType === "policy" && (
+                    <div style={routingCard}>
+                      <div style={{ fontWeight: 800 }}>Policy</div>
+                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Policies typically stay within the owners group for approval before wider circulation.</div>
+                    </div>
+                  )}
+                  {activeType === "sog" && (
+                    <div style={routingCard}>
+                      <div style={{ fontWeight: 800 }}>SOG</div>
+                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>SOGs are reviewed by a smaller, more refined operating group before release.</div>
+                    </div>
+                  )}
+                  {activeType === "memo" && (
+                    <div style={routingCard}>
+                      <div style={{ fontWeight: 800 }}>Memo</div>
+                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Memos are reviewed by the relevant leadership group before circulation to the intended team.</div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -190,7 +198,8 @@ const approvalOverviewCard = {
   background: "#f9fbf9",
 };
 
-const activeTypeButton = {
+const activeTypeLinkButton = {
+  textDecoration: "none",
   background: "#1f5d24",
   color: "#ffffff",
   padding: "10px 16px",
@@ -199,21 +208,14 @@ const activeTypeButton = {
   border: "1px solid #1f5d24",
 };
 
-const typeButton = {
+const typeLinkButton = {
+  textDecoration: "none",
   background: "#66a97a",
   color: "#ffffff",
   padding: "10px 16px",
   borderRadius: 10,
   fontWeight: 800,
   border: "1px solid #66a97a",
-};
-
-const routingCardMuted = {
-  border: "1px solid #dbe7de",
-  borderRadius: 14,
-  padding: 14,
-  background: "#ffffff",
-  opacity: 0.78,
 };
 
 const secondaryButton = {
