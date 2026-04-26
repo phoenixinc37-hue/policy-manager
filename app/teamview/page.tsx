@@ -3,9 +3,11 @@ import { ChevronDown, Search } from "lucide-react";
 import { employees, getTeamItems } from "../data";
 import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
-export default function TeamView() {
+export default function TeamView({ searchParams }: { searchParams?: { type?: string } }) {
   const selectedEmployee = employees[0];
-  const assignedItems = getTeamItems(selectedEmployee);
+  const assignedItems = getTeamItems(selectedEmployee).filter((item) => !item.acknowledged);
+  const activeType = searchParams?.type ?? "all";
+  const filteredItems = activeType === "all" ? assignedItems : assignedItems.filter((item) => item.type.toLowerCase() === activeType);
 
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
@@ -69,17 +71,17 @@ export default function TeamView() {
 
             <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap" }}>
               {[
-                { label: `All (${assignedItems.length})`, href: "/teamview", active: true },
-                { label: `Policy (${assignedItems.filter((item) => item.type === "Policy").length})`, href: "/policy-index" },
-                { label: `SOG (${assignedItems.filter((item) => item.type === "SOG").length})`, href: "/policy-index" },
-                { label: `Memo (${assignedItems.filter((item) => item.type === "Memo").length})`, href: "/policy-index" },
+                { key: "all", label: `All (${assignedItems.length})`, href: "/teamview" },
+                { key: "policy", label: `Policy (${assignedItems.filter((item) => item.type === "Policy").length})`, href: "/teamview?type=policy" },
+                { key: "sog", label: `SOG (${assignedItems.filter((item) => item.type === "SOG").length})`, href: "/teamview?type=sog" },
+                { key: "memo", label: `Memo (${assignedItems.filter((item) => item.type === "Memo").length})`, href: "/teamview?type=memo" },
               ].map((pill) => (
-                <Link key={pill.label} href={pill.href} style={pillStyle(Boolean(pill.active), pill.label.startsWith("Policy") || pill.label.startsWith("SOG") || pill.label.startsWith("Memo"))}>{pill.label}</Link>
+                <Link key={pill.label} href={pill.href} style={pillStyle(activeType === pill.key, pill.key !== "all")}>{pill.label}</Link>
               ))}
             </div>
 
             <div style={{ display: "grid", gap: 12 }}>
-              {assignedItems.map((item) => {
+              {filteredItems.map((item) => {
                 const status = item.acknowledged ? "Completed" : "Action required";
                 const subtext = item.acknowledged ? "Acknowledged" : "Awaiting acknowledgement";
                 return (
