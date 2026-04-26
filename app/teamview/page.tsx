@@ -78,6 +78,7 @@ export default function TeamView({ searchParams }: { searchParams?: { type?: str
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "start", flexWrap: "wrap" }}>
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                          <Link href={`/teamview/document/${item.id}`} style={openDocButton}>Open</Link>
                           <span style={typeBadge(item.type)}>{item.type}</span>
                           <span style={{ fontWeight: 700, fontSize: 17, color: item.acknowledged ? "#667c71" : "#10221a", textDecoration: item.acknowledged ? "line-through" : "none" }}>{item.title}</span>
                         </div>
@@ -186,6 +187,17 @@ function rowCard(done: boolean) {
     padding: 18,
   };
 }
+
+const openDocButton = {
+  textDecoration: "none",
+  background: "#1f5d24",
+  color: "#ffffff",
+  padding: "6px 10px",
+  borderRadius: 8,
+  fontSize: 12,
+  fontWeight: 800,
+  border: "1px solid #1f5d24",
+};
 
 function typeBadge(type: string) {
   const map: Record<string, { background: string; color: string }> = {
