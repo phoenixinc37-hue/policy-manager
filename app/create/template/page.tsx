@@ -50,7 +50,7 @@ export default function CreateTemplatePage() {
                 </div>
                 <div>
                   <label style={label}>Version number</label>
-                  <div style={versionBubble}>V 1.0</div>
+                  <input style={inputStyle} placeholder="Enter version number or auto assign" defaultValue="1.0" />
                 </div>
                 <div>
                   <label style={label}>Author name</label>
@@ -72,6 +72,20 @@ export default function CreateTemplatePage() {
                     <option>Annually · Apr 28, 2027</option>
                     <option>Bi annually · Apr 28, 2028</option>
                   </select>
+                </div>
+                <div>
+                  <label style={label}>Circulate to</label>
+                  <select style={inputStyle} defaultValue="All">
+                    <option>All</option>
+                    <option>All leadership</option>
+                    <option>All team</option>
+                    <option>Groups</option>
+                    <option>Individual team members</option>
+                  </select>
+                </div>
+                <div style={fullWidth}>
+                  <label style={label}>Distribution list</label>
+                  <input style={inputStyle} placeholder="List group or individual names here" />
                 </div>
                 <div style={fullWidth}>
                   <label style={label}>Time stamp bar</label>
@@ -137,7 +151,6 @@ const stackWrap = { display: "grid", gap: 16 };
 const label = { display: "block", fontSize: 13, fontWeight: 700, color: "#466255", marginBottom: 8 };
 const inputStyle = { width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const };
 const titleInputStyle = { width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, minHeight: 52 };
-const versionBubble = { display: "inline-flex", alignItems: "center", padding: "12px 18px", borderRadius: 999, background: "#1f5d24", color: "#ffffff", fontSize: 14, fontWeight: 800, border: "1px solid #1f5d24" };
 const timeStampBar = { display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" as const, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 14, color: "#466255" };
 const textAreaStyle = { width: "100%", minHeight: 100, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, resize: "vertical" as const };
 const largeTextAreaStyle = { width: "100%", minHeight: 160, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, resize: "vertical" as const };
