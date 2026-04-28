@@ -2,8 +2,23 @@ import Link from "next/link";
 import { documents } from "../data";
 import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
-export default function PolicyIndex() {
-  const policies = documents.filter((doc) => doc.status === "library" || doc.status === "circulating" || doc.status === "pending-approval");
+const libraryTypes = ["all", "Policy", "SOG", "Memo"] as const;
+type LibraryType = typeof libraryTypes[number];
+
+export default function PolicyIndex({
+  searchParams,
+}: {
+  searchParams?: { type?: string };
+}) {
+  const selectedType: LibraryType = libraryTypes.includes(searchParams?.type as LibraryType)
+    ? (searchParams?.type as LibraryType)
+    : "all";
+
+  const policies = documents.filter((doc) => {
+    const inLibraryFlow = doc.status === "library" || doc.status === "circulating" || doc.status === "pending-approval";
+    const typeMatch = selectedType === "all" ? true : doc.type === selectedType;
+    return inLibraryFlow && typeMatch;
+  });
 
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
@@ -36,10 +51,10 @@ export default function PolicyIndex() {
               </div>
 
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                <button style={activeFilterButton}>All</button>
-                <button style={filterButton}>Policy</button>
-                <button style={filterButton}>SOG</button>
-                <button style={filterButton}>Memo</button>
+                <Link href="/policy-index" style={selectedType === "all" ? activeFilterButton : filterButtonLink}>All</Link>
+                <Link href="/policy-index?type=Policy" style={selectedType === "Policy" ? activeFilterButton : filterButtonLink}>Policy</Link>
+                <Link href="/policy-index?type=SOG" style={selectedType === "SOG" ? activeFilterButton : filterButtonLink}>SOG</Link>
+                <Link href="/policy-index?type=Memo" style={selectedType === "Memo" ? activeFilterButton : filterButtonLink}>Memo</Link>
               </div>
             </div>
 
@@ -200,7 +215,8 @@ const activeFilterButton = {
   border: "none",
 };
 
-const filterButton = {
+const filterButtonLink = {
+  textDecoration: "none",
   padding: "10px 16px",
   borderRadius: 8,
   background: "#f1f5f9",
