@@ -41,26 +41,40 @@ export default function CreateTemplatePage() {
                   </select>
                 </div>
                 <div>
+                  <label style={label}>Assigned number / code</label>
+                  <input style={inputStyle} value="Auto: next available based on type" readOnly />
+                </div>
+                <div style={fullWidth}>
                   <label style={label}>Title</label>
                   <input style={inputStyle} placeholder="Enter document title" />
                 </div>
                 <div>
-                  <label style={label}>Team / audience</label>
-                  <input style={inputStyle} placeholder="Ex. Firm-wide, Tax team, Admin team" />
+                  <label style={label}>Version number</label>
+                  <input style={inputStyle} placeholder="Ex. 1.0" />
                 </div>
                 <div>
-                  <label style={label}>Author</label>
-                  <input style={inputStyle} placeholder="Enter author name" />
+                  <label style={label}>Status</label>
+                  <select style={inputStyle} defaultValue="In progress draft">
+                    <option>In progress draft</option>
+                    <option>Pending approval</option>
+                    <option>Approved</option>
+                    <option>In effect</option>
+                    <option>Archived</option>
+                  </select>
                 </div>
                 <div>
-                  <label style={label}>Effective date</label>
-                  <input type="date" style={inputStyle} />
+                  <label style={label}>Date stamp / history</label>
+                  <input style={inputStyle} value="Timeline generated from document history" readOnly />
                 </div>
                 <div>
-                  <label style={label}>Acknowledgment required</label>
-                  <select style={inputStyle} defaultValue="Yes">
-                    <option>Yes</option>
-                    <option>No</option>
+                  <label style={label}>Author name</label>
+                  <select style={inputStyle} defaultValue="Select author">
+                    <option>Select author</option>
+                    <option>Scott Wilde</option>
+                    <option>Jack Wilde</option>
+                    <option>Dawn</option>
+                    <option>Penny</option>
+                    <option>Kat</option>
                   </select>
                 </div>
               </div>
@@ -103,6 +117,7 @@ const card = { background: "#ffffff", borderRadius: 18, padding: 24, border: "1p
 const sectionCard = { borderRadius: 16, border: "1px solid #dbe7de", background: "#f9fbf9", padding: 20, marginBottom: 20 };
 const sectionTitle = { fontSize: 18, fontWeight: 800, marginBottom: 16 };
 const gridTwo = { display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 16 };
+const fullWidth = { gridColumn: "1 / -1" };
 const stackWrap = { display: "grid", gap: 16 };
 const label = { display: "block", fontSize: 13, fontWeight: 700, color: "#466255", marginBottom: 8 };
 const inputStyle = { width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const };
