@@ -20,7 +20,13 @@ export default function LibraryDocumentPage({ params }: { params: { docId: strin
               <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
             </div>
           </div>
-          <Link href="/policy-index" style={primaryButton}>Back to Library</Link>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Link href="/status" style={greenMenuButton}>Circulating</Link>
+            <Link href="/policy-index" style={greenMenuButton}>Library</Link>
+            <Link href="/create" style={greenMenuButton}>Create</Link>
+            <Link href="/pending" style={greenMenuButton}>Pending</Link>
+            <Link href="/manager" style={primaryButton}>Leadership View</Link>
+          </div>
         </header>
 
         <main style={{ marginTop: 24 }}>
@@ -42,4 +48,5 @@ const headerCard = { display: "flex", justifyContent: "space-between", alignItem
 const card = { background: "#ffffff", borderRadius: 18, padding: 24, border: "1px solid #dbe7de", boxShadow: "0 12px 30px rgba(15, 23, 42, 0.06)" };
 const bodyCard = { borderRadius: 16, border: "1px solid #dbe7de", background: "#f9fbf9", padding: 20 };
 const bodyText = { fontSize: 15, lineHeight: 1.7, color: "#31473d", margin: "0 0 12px" };
-const primaryButton = { textDecoration: "none", background: "#1f5d24", color: "#ffffff", padding: "10px 14px", borderRadius: 10, fontWeight: 700, border: "1px solid #1f5d24" };
+const greenMenuButton = { textDecoration: "none", background: "#66a97a", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #66a97a" };
+const primaryButton = { textDecoration: "none", background: "#1f5d24", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #1f5d24" };
