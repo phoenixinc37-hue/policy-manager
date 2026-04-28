@@ -62,7 +62,7 @@ export default function PolicyIndex({
               <div style={tableHeader}>
                 <div>Type</div>
                 <div>Title</div>
-                <div>Status</div>
+                <div>In effect</div>
               </div>
 
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -77,8 +77,8 @@ export default function PolicyIndex({
                       <Link href={`/policy-index/document/${policy.id}`} style={rowActionButton}>Open</Link>
                       <div style={{ fontSize: 15, fontWeight: 600 }}>{policy.title}</div>
                     </div>
-                    <div style={{ fontSize: 13, color: policy.status === "library" ? "#1f7a37" : policy.status === "pending-approval" ? "#9a6700" : "#475569", fontWeight: 700 }}>
-                      {policy.status === "library" ? "Published" : policy.status === "pending-approval" ? "Pending approval" : "Circulating"}
+                    <div style={{ fontSize: 13, color: "#1f7a37", fontWeight: 700 }}>
+                      {policy.effectiveDate ?? "TBD"}
                     </div>
                   </div>
                 ))}

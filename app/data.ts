@@ -9,6 +9,7 @@ export type PolicyDocument = {
   assignedTo: string[];
   acknowledgedBy: string[];
   status: DocumentStatus;
+  effectiveDate?: string;
   needsAttention?: boolean;
   awaitingApproval?: boolean;
   latestPublished?: boolean;
@@ -36,6 +37,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: ["Sarah Jenkins", "Michael Chang", "Emily Rodriguez", "David Thompson", "Amanda Cole", "Robert Chen", "Jessica Patel", "Thomas Wright", "Olivia Bennett"],
     status: "circulating",
+    effectiveDate: "May 1, 2026",
     needsAttention: true,
   },
   {
@@ -46,6 +48,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: employees,
     status: "library",
+    effectiveDate: "Jan 8, 2026",
   },
   {
     id: "policy-client-call-standard",
@@ -55,6 +58,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: employees,
     status: "library",
+    effectiveDate: "Feb 14, 2026",
   },
   {
     id: "sog-month-end-closing",
@@ -64,6 +68,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: ["Sarah Jenkins", "Michael Chang", "Emily Rodriguez", "David Thompson", "Amanda Cole", "Robert Chen", "Jessica Patel"],
     status: "circulating",
+    effectiveDate: "May 15, 2026",
   },
   {
     id: "sog-client-onboarding-checklist",
@@ -73,6 +78,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: ["Sarah Jenkins", "Michael Chang", "Emily Rodriguez", "David Thompson", "Amanda Cole", "Robert Chen", "Jessica Patel", "Thomas Wright"],
     status: "circulating",
+    effectiveDate: "May 18, 2026",
   },
   {
     id: "sog-year-end-file-assembly",
@@ -82,6 +88,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: employees,
     status: "library",
+    effectiveDate: "Mar 4, 2026",
   },
   {
     id: "sog-engagement-letter-processing",
@@ -91,6 +98,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: employees,
     status: "library",
+    effectiveDate: "Mar 21, 2026",
   },
   {
     id: "sog-document-retention-workflow",
@@ -100,6 +108,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: employees,
     status: "library",
+    effectiveDate: "Apr 2, 2026",
   },
   {
     id: "memo-remote-work-expectations",
@@ -109,6 +118,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: employees,
     status: "library",
+    effectiveDate: "Apr 9, 2026",
     latestPublished: true,
   },
   {
@@ -119,6 +129,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: ["Sarah Jenkins", "Michael Chang", "Emily Rodriguez", "David Thompson", "Amanda Cole", "Robert Chen"],
     status: "circulating",
+    effectiveDate: "May 20, 2026",
   },
   {
     id: "memo-client-portal-rollout",
@@ -128,6 +139,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: employees,
     acknowledgedBy: ["Sarah Jenkins", "Michael Chang", "Emily Rodriguez", "David Thompson", "Amanda Cole"],
     status: "circulating",
+    effectiveDate: "May 22, 2026",
   },
   {
     id: "policy-client-billing-standards",
@@ -137,6 +149,7 @@ export const documents: PolicyDocument[] = [
     assignedTo: ["Jack Wilde", "Sarah Jenkins", "Michael Chang", "Emily Rodriguez"],
     acknowledgedBy: [],
     status: "pending-approval",
+    effectiveDate: "Pending final rule",
     awaitingApproval: true,
   },
 ];
