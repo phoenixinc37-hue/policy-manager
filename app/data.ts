@@ -10,6 +10,7 @@ export type PolicyDocument = {
   acknowledgedBy: string[];
   status: DocumentStatus;
   effectiveDate?: string;
+  completedDate?: string;
   needsAttention?: boolean;
   awaitingApproval?: boolean;
   latestPublished?: boolean;
@@ -49,6 +50,7 @@ export const documents: PolicyDocument[] = [
     acknowledgedBy: employees,
     status: "library",
     effectiveDate: "Jan 8, 2026",
+    completedDate: "2026-04-20",
   },
   {
     id: "policy-client-call-standard",
@@ -59,6 +61,7 @@ export const documents: PolicyDocument[] = [
     acknowledgedBy: employees,
     status: "library",
     effectiveDate: "Feb 14, 2026",
+    completedDate: "2026-03-18",
   },
   {
     id: "sog-month-end-closing",
@@ -89,6 +92,7 @@ export const documents: PolicyDocument[] = [
     acknowledgedBy: employees,
     status: "library",
     effectiveDate: "Mar 4, 2026",
+    completedDate: "2026-02-15",
   },
   {
     id: "sog-engagement-letter-processing",
@@ -99,6 +103,7 @@ export const documents: PolicyDocument[] = [
     acknowledgedBy: employees,
     status: "library",
     effectiveDate: "Mar 21, 2026",
+    completedDate: "2025-12-10",
   },
   {
     id: "sog-document-retention-workflow",
@@ -109,6 +114,7 @@ export const documents: PolicyDocument[] = [
     acknowledgedBy: employees,
     status: "library",
     effectiveDate: "Apr 2, 2026",
+    completedDate: "2025-07-15",
   },
   {
     id: "memo-remote-work-expectations",
@@ -119,6 +125,7 @@ export const documents: PolicyDocument[] = [
     acknowledgedBy: employees,
     status: "library",
     effectiveDate: "Apr 9, 2026",
+    completedDate: "2025-05-10",
     latestPublished: true,
   },
   {

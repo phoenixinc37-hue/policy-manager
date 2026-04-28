@@ -1,9 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import { documents } from "../data";
 import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
-export default function CompletionPage() {
-  const completed = documents.filter((doc) => doc.assignedTo.length > 0 && doc.acknowledgedBy.length === doc.assignedTo.length);
+const dateRanges = [30, 60, 180, 365] as const;
+
+export default function CompletionPage({ searchParams }: { searchParams?: { days?: string } }) {
+  const selectedDays = dateRanges.includes(Number(searchParams?.days) as 30 | 60 | 180 | 365)
+    ? Number(searchParams?.days)
+    : 30;
+
+  const cutoff = new Date("2026-04-28T12:00:00Z");
+  cutoff.setUTCDate(cutoff.getUTCDate() - selectedDays);
+
+  const completed = documents.filter((doc) => {
+    if (!(doc.assignedTo.length > 0 && doc.acknowledgedBy.length === doc.assignedTo.length && doc.completedDate)) {
+      return false;
+    }
+    return new Date(doc.completedDate) >= cutoff;
+  });
 
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
@@ -30,12 +46,27 @@ export default function CompletionPage() {
           <p style={{ color: "#64748b", fontSize: 14, marginBottom: 24 }}>All fully circulated documents across the firm.</p>
 
           <section style={panelCard}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, flexWrap: "wrap", marginBottom: 18 }}>
+              <div style={{ fontSize: 14, color: "#64748b", fontWeight: 700 }}>Show completed items from the last:</div>
+              <select
+                value={selectedDays}
+                onChange={(event) => {
+                  window.location.href = `/completion?days=${event.target.value}`;
+                }}
+                style={rangeSelect}
+              >
+                <option value="30">30 days</option>
+                <option value="60">60 days</option>
+                <option value="180">180 days</option>
+                <option value="365">365 days</option>
+              </select>
+            </div>
             <div style={{ border: "1px solid #e2e8f0", borderRadius: 12, overflow: "hidden" }}>
               <div style={tableHeader}>
                 <div>Type</div>
                 <div>Title</div>
                 <div>Team</div>
-                <div>Status</div>
+                <div>Completed</div>
                 <div>Actions</div>
               </div>
 
@@ -49,7 +80,7 @@ export default function CompletionPage() {
                     </div>
                     <div style={{ fontSize: 15, fontWeight: 600 }}>{doc.title}</div>
                     <div style={{ fontSize: 13, color: "#64748b" }}>{doc.team}</div>
-                    <div style={{ fontSize: 13, color: "#1f7a37", fontWeight: 700 }}>Fully circulated</div>
+                    <div style={{ fontSize: 13, color: "#1f7a37", fontWeight: 700 }}>{doc.completedDate}</div>
                     <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
                       <Link href={`/completion/history/${doc.id}`} style={actionButtonLink}>Version history</Link>
                       <Link href={`/completion/review/${doc.id}`} style={actionButtonLink}>Review</Link>
@@ -155,4 +186,13 @@ const actionButtonLink = {
   borderRadius: 10,
   fontWeight: 700,
   border: "1px solid #cfe1d2",
+};
+
+const rangeSelect = {
+  padding: "10px 14px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #cfe1d2",
+  background: "#ffffff",
+  color: "#1f5d24",
 };
