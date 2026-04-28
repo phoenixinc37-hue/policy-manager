@@ -206,12 +206,12 @@ const activeTypeLinkButton = {
 
 const typeLinkButton = {
   textDecoration: "none",
-  background: "#66a97a",
+  background: "#1f5d24",
   color: "#ffffff",
   padding: "10px 16px",
   borderRadius: 10,
   fontWeight: 800,
-  border: "1px solid #66a97a",
+  border: "1px solid #1f5d24",
 };
 
 const secondaryButton = {
