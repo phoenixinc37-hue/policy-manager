@@ -63,24 +63,6 @@ export default function CreatePage({ searchParams }: { searchParams?: { type?: s
               </div>
             </div>
 
-            <div style={{ ...featureCard, marginBottom: 20 }}>
-              <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 10 }}>Approval pathway by document type</div>
-              <div style={{ display: "grid", gap: 12 }}>
-                <div style={routingCard}>
-                  <div style={{ fontWeight: 800 }}>Memo</div>
-                  <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Draft is reviewed by the relevant leadership group before circulation to the intended team.</div>
-                </div>
-                <div style={routingCard}>
-                  <div style={{ fontWeight: 800 }}>SOG</div>
-                  <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Draft is reviewed by a smaller, more refined operating group before release to the affected team.</div>
-                </div>
-                <div style={routingCard}>
-                  <div style={{ fontWeight: 800 }}>Policy</div>
-                  <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Draft typically stays within the owners group for approval before wider circulation.</div>
-                </div>
-              </div>
-            </div>
-
             <div style={{ display: "grid", gap: 16 }}>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 <Link href="/create?type=policy" style={activeType === "policy" ? activeTypeLinkButton : typeLinkButton}>Policy</Link>
@@ -89,33 +71,51 @@ export default function CreatePage({ searchParams }: { searchParams?: { type?: s
               </div>
 
               <div style={approvalOverviewCard}>
-                <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Approval overview</div>
-                <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.7, marginBottom: 14 }}>
-                  The selected document type determines who reviews the draft before it can move into circulation.
-                </div>
-                <div style={{ display: "grid", gap: 12 }}>
-                  {activeType === "policy" && (
-                    <div style={routingCard}>
-                      <div style={{ fontWeight: 800 }}>Policy</div>
-                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginTop: 6 }}>Policies typically stay within the owners group for approval before wider circulation.</div>
-                      <div style={{ fontSize: 13, color: "#2e7d32", fontWeight: 700, marginTop: 10 }}>Approval group: Owners</div>
+                {activeType === "policy" && (
+                  <div style={routingCard}>
+                    <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Policy pathway</div>
+                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.7, marginBottom: 12 }}>
+                      Policies are built with the effective date decided during creation, then move through the policy pathway before they enter the library.
                     </div>
-                  )}
-                  {activeType === "sog" && (
-                    <div style={routingCard}>
-                      <div style={{ fontWeight: 800 }}>SOG</div>
-                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginTop: 6 }}>SOGs are reviewed by a smaller, more refined operating group before release.</div>
-                      <div style={{ fontSize: 13, color: "#2e7d32", fontWeight: 700, marginTop: 10 }}>Approval group: Operating leads</div>
+                    <div style={{ display: "grid", gap: 8, fontSize: 14, color: "#243c31" }}>
+                      <div>• Author creates the policy</div>
+                      <div>• Effective date is chosen during creation</div>
+                      <div>• Policy goes to the owners group for approval</div>
+                      <div>• Once approved and posted, it follows the authored effective date</div>
+                      <div>• Staff acknowledgment is tracked after posting</div>
                     </div>
-                  )}
-                  {activeType === "memo" && (
-                    <div style={routingCard}>
-                      <div style={{ fontWeight: 800 }}>Memo</div>
-                      <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginTop: 6 }}>Memos are reviewed by the relevant leadership group before circulation to the intended team.</div>
-                      <div style={{ fontSize: 13, color: "#2e7d32", fontWeight: 700, marginTop: 10 }}>Approval group: Leadership</div>
+                  </div>
+                )}
+                {activeType === "sog" && (
+                  <div style={routingCard}>
+                    <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>SOG pathway</div>
+                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.7, marginBottom: 12 }}>
+                      SOGs are more operating-specific and move through a smaller refinement and release path.
                     </div>
-                  )}
-                </div>
+                    <div style={{ display: "grid", gap: 8, fontSize: 14, color: "#243c31" }}>
+                      <div>• Author creates the SOG</div>
+                      <div>• Effective date is chosen during creation</div>
+                      <div>• SOG is reviewed by the operating leads</div>
+                      <div>• Once approved and posted, it follows the authored effective date</div>
+                      <div>• Acknowledgment can still be tracked after release</div>
+                    </div>
+                  </div>
+                )}
+                {activeType === "memo" && (
+                  <div style={routingCard}>
+                    <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Memo pathway</div>
+                    <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.7, marginBottom: 12 }}>
+                      Memos move through the memo pathway and still carry an authored effective date where needed.
+                    </div>
+                    <div style={{ display: "grid", gap: 8, fontSize: 14, color: "#243c31" }}>
+                      <div>• Author creates the memo</div>
+                      <div>• Effective date is chosen during creation if needed</div>
+                      <div>• Memo is reviewed by the relevant leadership group</div>
+                      <div>• Once approved and posted, it follows the authored effective date</div>
+                      <div>• Acknowledgment can be tracked separately from effect</div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "space-between" }}>
