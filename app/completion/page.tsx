@@ -78,7 +78,10 @@ export default function CompletionPage({ searchParams }: { searchParams?: { days
                       {doc.type === "SOG" && <span style={{ ...typeBadge, background: "#e0f2fe", color: "#0369a1" }}>SOG</span>}
                       {doc.type === "Memo" && <span style={{ ...typeBadge, background: "#f3f4f6", color: "#475569" }}>MEMO</span>}
                     </div>
-                    <div style={{ fontSize: 15, fontWeight: 600 }}>{doc.title}</div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <Link href={`/policy-index/document/${doc.id}`} style={actionButtonLink}>Open</Link>
+                      <div style={{ fontSize: 15, fontWeight: 600 }}>{doc.title}</div>
+                    </div>
                     <div style={{ fontSize: 13, color: "#64748b" }}>{doc.team}</div>
                     <div style={{ fontSize: 13, color: "#1f7a37", fontWeight: 700 }}>{doc.completedDate}</div>
                     <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
