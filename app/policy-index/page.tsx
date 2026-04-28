@@ -219,9 +219,9 @@ const filterButtonLink = {
   textDecoration: "none",
   padding: "10px 16px",
   borderRadius: 8,
-  background: "#f1f5f9",
-  color: "#475569",
+  background: "#66a97a",
+  color: "#ffffff",
   fontSize: 14,
-  fontWeight: 500,
-  border: "1px solid #cbd5e1",
+  fontWeight: 700,
+  border: "1px solid #66a97a",
 };
