@@ -53,16 +53,6 @@ export default function CreateTemplatePage() {
                   <div style={versionBubble}>V 1.0</div>
                 </div>
                 <div>
-                  <label style={label}>Status</label>
-                  <select style={inputStyle} defaultValue="In progress draft">
-                    <option>In progress draft</option>
-                    <option>Pending approval</option>
-                    <option>Approved</option>
-                    <option>In effect</option>
-                    <option>Archived</option>
-                  </select>
-                </div>
-                <div>
                   <label style={label}>Author name</label>
                   <select style={inputStyle} defaultValue="Setup controlled dropdown">
                     <option>Setup controlled dropdown</option>
@@ -71,6 +61,16 @@ export default function CreateTemplatePage() {
                     <option>Dawn</option>
                     <option>Penny</option>
                     <option>Kat</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={label}>Review timeline</label>
+                  <select style={inputStyle} defaultValue="30 days · May 28, 2026">
+                    <option>30 days · May 28, 2026</option>
+                    <option>Quarterly · Jul 28, 2026</option>
+                    <option>Semi annually · Oct 28, 2026</option>
+                    <option>Annually · Apr 28, 2027</option>
+                    <option>Bi annually · Apr 28, 2028</option>
                   </select>
                 </div>
                 <div style={fullWidth}>
@@ -107,7 +107,18 @@ export default function CreateTemplatePage() {
                   <label style={label}>Exceptions / notes</label>
                   <textarea style={textAreaStyle} placeholder="Exceptions, edge cases, or extra notes" />
                 </div>
+                <div>
+                  <label style={label}>Definitions</label>
+                  <textarea style={textAreaStyle} placeholder="Define important terms used in this document" />
+                </div>
+                <div>
+                  <label style={label}>Attachments / references</label>
+                  <textarea style={textAreaStyle} placeholder="List linked files, source material, or reference documents" />
+                </div>
               </div>
+            </div>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 24 }}>
+              <button style={saveButton}>Save</button>
             </div>
           </section>
         </main>
@@ -132,3 +143,4 @@ const textAreaStyle = { width: "100%", minHeight: 100, padding: "12px 14px", bor
 const largeTextAreaStyle = { width: "100%", minHeight: 160, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, resize: "vertical" as const };
 const greenMenuButton = { textDecoration: "none", background: "#66a97a", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #66a97a" };
 const primaryButton = { textDecoration: "none", background: "#1f5d24", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #1f5d24" };
+const saveButton = { background: "#1f5d24", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #1f5d24" };
