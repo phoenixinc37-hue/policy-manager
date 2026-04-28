@@ -46,11 +46,11 @@ export default function CreateTemplatePage() {
                 </div>
                 <div style={fullWidth}>
                   <label style={label}>Title</label>
-                  <input style={inputStyle} placeholder="Enter document title" />
+                  <input style={titleInputStyle} placeholder="Enter document title" />
                 </div>
                 <div>
                   <label style={label}>Version number</label>
-                  <input style={inputStyle} placeholder="Ex. 1.0" />
+                  <div style={versionBubble}>V 1.0</div>
                 </div>
                 <div>
                   <label style={label}>Status</label>
@@ -63,19 +63,23 @@ export default function CreateTemplatePage() {
                   </select>
                 </div>
                 <div>
-                  <label style={label}>Date stamp / history</label>
-                  <input style={inputStyle} value="Timeline generated from document history" readOnly />
-                </div>
-                <div>
                   <label style={label}>Author name</label>
-                  <select style={inputStyle} defaultValue="Select author">
-                    <option>Select author</option>
+                  <select style={inputStyle} defaultValue="Setup controlled dropdown">
+                    <option>Setup controlled dropdown</option>
                     <option>Scott Wilde</option>
                     <option>Jack Wilde</option>
                     <option>Dawn</option>
                     <option>Penny</option>
                     <option>Kat</option>
                   </select>
+                </div>
+                <div style={fullWidth}>
+                  <label style={label}>Time stamp bar</label>
+                  <div style={timeStampBar}>
+                    <span>Started: Apr 28, 2026</span>
+                    <span>Last touched: Apr 28, 2026 · 2:00 PM</span>
+                    <span>Time entries grow as work is added</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,6 +125,9 @@ const fullWidth = { gridColumn: "1 / -1" };
 const stackWrap = { display: "grid", gap: 16 };
 const label = { display: "block", fontSize: 13, fontWeight: 700, color: "#466255", marginBottom: 8 };
 const inputStyle = { width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const };
+const titleInputStyle = { width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, minHeight: 52 };
+const versionBubble = { display: "inline-flex", alignItems: "center", padding: "12px 18px", borderRadius: 999, background: "#1f5d24", color: "#ffffff", fontSize: 14, fontWeight: 800, border: "1px solid #1f5d24" };
+const timeStampBar = { display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" as const, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 14, color: "#466255" };
 const textAreaStyle = { width: "100%", minHeight: 100, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, resize: "vertical" as const };
 const largeTextAreaStyle = { width: "100%", minHeight: 160, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, resize: "vertical" as const };
 const greenMenuButton = { textDecoration: "none", background: "#66a97a", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #66a97a" };
