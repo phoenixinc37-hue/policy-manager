@@ -34,7 +34,7 @@ export default function CreatePage({ searchParams }: { searchParams?: { type?: s
                 <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Choose how to create</div>
                 <div style={{ display: "grid", gap: 14 }}>
                   <div style={optionCard}>
-                    <div style={{ fontWeight: 800, marginBottom: 6 }}>Follow established template</div>
+                    <div style={{ fontWeight: 800, marginBottom: 6 }}>Build manually</div>
                     <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6 }}>Use the firm’s approved structure for the selected document type. Template rules will be expanded in the next version.</div>
                   </div>
                   <div style={optionCard}>
@@ -46,7 +46,7 @@ export default function CreatePage({ searchParams }: { searchParams?: { type?: s
                 <textarea placeholder="Example: Draft a client file documentation policy for the tax team using the approved structure, then route it to the owners group for approval." style={{ ...inputStyle, minHeight: 120, resize: "vertical" as const, marginTop: 14 }} />
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
                   <Link href="/create/ai-assistant" style={primaryLinkButton}>Use AI assistant</Link>
-                  <Link href="/create/template" style={secondaryButton}>Follow template</Link>
+                  <Link href="/create/template" style={secondaryButton}>Build manually</Link>
                 </div>
               </div>
 
