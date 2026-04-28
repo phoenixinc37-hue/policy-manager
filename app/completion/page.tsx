@@ -180,12 +180,12 @@ const primaryButton = {
 
 const actionButtonLink = {
   textDecoration: "none",
-  background: "#ffffff",
-  color: "#1f5d24",
+  background: "#66a97a",
+  color: "#ffffff",
   padding: "10px 14px",
   borderRadius: 10,
   fontWeight: 700,
-  border: "1px solid #cfe1d2",
+  border: "1px solid #66a97a",
 };
 
 const rangeSelect = {
