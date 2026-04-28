@@ -118,13 +118,6 @@ export default function CreatePage({ searchParams }: { searchParams?: { type?: s
                 )}
               </div>
 
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "space-between" }}>
-                <button style={primaryButton}>Save draft</button>
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <button style={ghostButton}>Import</button>
-                  <Link href="/policy-index" style={secondaryButton}>View library</Link>
-                </div>
-              </div>
             </div>
           </section>
         </main>
@@ -243,15 +236,6 @@ const greenMenuButton = {
   whiteSpace: "nowrap" as const,
 };
 
-const primaryButton = {
-  background: "#1f5d24",
-  color: "#ffffff",
-  padding: "10px 12px",
-  borderRadius: 10,
-  fontWeight: 700,
-  border: "1px solid #1f5d24",
-};
-
 const primaryLinkButton = {
   textDecoration: "none",
   background: "#1f5d24",
@@ -264,11 +248,3 @@ const primaryLinkButton = {
   whiteSpace: "nowrap" as const,
 };
 
-const ghostButton = {
-  background: "#ffffff",
-  color: "#1f5d24",
-  padding: "10px 14px",
-  borderRadius: 10,
-  fontWeight: 700,
-  border: "1px solid #cfe1d2",
-};
