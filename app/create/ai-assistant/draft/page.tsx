@@ -1,7 +1,41 @@
 import Link from "next/link";
 import { cabinetIcon, drawerHandle, drawerRow } from "../../../cabinet";
 
-export default function AiDraftPage() {
+function getValue(value: string | string[] | undefined, fallback: string) {
+  if (Array.isArray(value)) return value[0] ?? fallback;
+  return value ?? fallback;
+}
+
+function getLines(value: string) {
+  return value
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+export default function AiDraftPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const title = getValue(searchParams?.title, "AI Draft");
+  const type = getValue(searchParams?.type, "Policy");
+  const version = getValue(searchParams?.version, "1.0");
+  const author = getValue(searchParams?.author, "Scott Wilde");
+  const review = getValue(searchParams?.review, "30 days · May 28, 2026");
+  const circulateTo = getValue(searchParams?.circulateTo, "All");
+  const distributionList = getValue(searchParams?.distributionList, "Not specified");
+  const purpose = getValue(searchParams?.purpose, "AI-generated purpose based on the requested document type.");
+  const scope = getValue(searchParams?.scope, "AI-generated scope based on the intended audience.");
+  const policyStatement = getValue(searchParams?.policyStatement, "AI-generated core policy statement for this draft.");
+  const procedureSteps = getValue(searchParams?.procedureSteps, "1. Follow the approved process\n2. Document the required steps\n3. Escalate exceptions as needed");
+  const exceptionsNotes = getValue(searchParams?.exceptionsNotes, "No additional exceptions noted in the draft request.");
+  const definitions = getValue(searchParams?.definitions, "Definitions will be refined during review.");
+  const attachments = getValue(searchParams?.attachments, "No attachments or references listed yet.");
+
+  const steps = getLines(procedureSteps);
+  const attachmentLines = getLines(attachments);
+
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
       <div style={{ maxWidth: 980, margin: "0 auto", padding: "24px 16px 48px" }}>
@@ -26,60 +60,59 @@ export default function AiDraftPage() {
           <section style={card}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 20, flexWrap: "wrap" }}>
               <div>
-                <div style={{ fontSize: 13, color: "#567164", fontWeight: 700, marginBottom: 8 }}>POL-143 · V1.0</div>
-                <h1 style={{ fontSize: 30, margin: 0, fontWeight: 800 }}>AI Draft, Client Intake Documentation Standard</h1>
-                <div style={{ fontSize: 14, color: "#60766b", marginTop: 10 }}>Policy · Leadership review · Author: Scott Wilde</div>
+                <div style={{ fontSize: 13, color: "#567164", fontWeight: 700, marginBottom: 8 }}>{type.toUpperCase()} · V{version}</div>
+                <h1 style={{ fontSize: 30, margin: 0, fontWeight: 800 }}>{title}</h1>
+                <div style={{ fontSize: 14, color: "#60766b", marginTop: 10 }}>{type} · Author: {author}</div>
               </div>
-              <div style={statusChip}>AI draft preview</div>
+              <div style={statusChip}>Generated draft</div>
             </div>
 
             <div style={metaBar}>
-              <span>Effective date: May 20, 2026</span>
-              <span>Review: 30 days · Jun 19, 2026</span>
-              <span>Circulate to: All leadership</span>
+              <span>Review: {review}</span>
+              <span>Circulate to: {circulateTo}</span>
+              <span>Distribution: {distributionList}</span>
             </div>
 
             <section style={sectionCard}>
-              <div style={sectionTitle}>AI prompt summary</div>
-              <p style={bodyText}>Draft a clear internal policy for intake documentation standards using the approved policy structure, aimed at leadership review first and broader staff release later.</p>
-            </section>
-
-            <section style={sectionCard}>
               <div style={sectionTitle}>Purpose</div>
-              <p style={bodyText}>To establish a consistent intake documentation standard so client information is complete, traceable, and easy to review across the firm.</p>
+              <p style={bodyText}>{purpose}</p>
             </section>
 
             <section style={sectionCard}>
               <div style={sectionTitle}>Scope</div>
-              <p style={bodyText}>This document applies to all staff involved in intake, documentation, review, and client handoff processes.</p>
+              <p style={bodyText}>{scope}</p>
             </section>
 
             <section style={sectionCard}>
               <div style={sectionTitle}>Policy statement</div>
-              <p style={bodyText}>All intake-related client records must be documented using the approved intake standard, with required fields completed before the file moves to the next stage.</p>
+              <p style={bodyText}>{policyStatement}</p>
             </section>
 
             <section style={sectionCard}>
               <div style={sectionTitle}>Procedure / steps</div>
               <ol style={orderedList}>
-                <li>Open the intake checklist at the start of the client interaction.</li>
-                <li>Capture all required details before moving the file onward.</li>
-                <li>Confirm supporting documentation is attached.</li>
-                <li>Escalate incomplete files for correction before release.</li>
+                {steps.map((step, index) => (
+                  <li key={`${step}-${index}`}>{step.replace(/^\d+\.\s*/, "")}</li>
+                ))}
               </ol>
             </section>
 
             <section style={sectionCard}>
+              <div style={sectionTitle}>Exceptions / notes</div>
+              <p style={bodyText}>{exceptionsNotes}</p>
+            </section>
+
+            <section style={sectionCard}>
               <div style={sectionTitle}>Definitions</div>
-              <p style={bodyText}><strong>Intake standard</strong> means the required fields, notes, attachments, and file handling rules that must be completed before a client file can move forward.</p>
+              <p style={bodyText}>{definitions}</p>
             </section>
 
             <section style={sectionCard}>
               <div style={sectionTitle}>Attachments / references</div>
               <ul style={orderedList}>
-                <li>Intake checklist</li>
-                <li>Client onboarding checklist</li>
-                <li>Leadership review notes</li>
+                {attachmentLines.map((line, index) => (
+                  <li key={`${line}-${index}`}>{line}</li>
+                ))}
               </ul>
             </section>
 

@@ -1,7 +1,46 @@
+"use client";
+
 import Link from "next/link";
+import { useMemo, useState } from "react";
 import { cabinetIcon, drawerHandle, drawerRow } from "../../cabinet";
 
 export default function CreateAiAssistantPage() {
+  const [documentType, setDocumentType] = useState("Policy");
+  const [title, setTitle] = useState("");
+  const [version, setVersion] = useState("1.0");
+  const [author, setAuthor] = useState("Scott Wilde");
+  const [reviewTimeline, setReviewTimeline] = useState("30 days · May 28, 2026");
+  const [circulateTo, setCirculateTo] = useState("All");
+  const [distributionList, setDistributionList] = useState("");
+  const [purpose, setPurpose] = useState("");
+  const [scope, setScope] = useState("");
+  const [policyStatement, setPolicyStatement] = useState("");
+  const [procedureSteps, setProcedureSteps] = useState("");
+  const [exceptionsNotes, setExceptionsNotes] = useState("");
+  const [definitions, setDefinitions] = useState("");
+  const [attachments, setAttachments] = useState("");
+
+  const generatedHref = useMemo(() => {
+    const params = new URLSearchParams({
+      type: documentType,
+      title: title || `${documentType} Draft`,
+      version,
+      author,
+      review: reviewTimeline,
+      circulateTo,
+      distributionList: distributionList || "Not specified",
+      purpose: purpose || "AI-generated purpose based on the requested document type.",
+      scope: scope || "AI-generated scope based on the intended audience.",
+      policyStatement: policyStatement || "AI-generated core policy statement for this draft.",
+      procedureSteps: procedureSteps || "1. Follow the approved process\n2. Document the required steps\n3. Escalate exceptions as needed",
+      exceptionsNotes: exceptionsNotes || "No additional exceptions noted in the draft request.",
+      definitions: definitions || "Definitions will be refined during review.",
+      attachments: attachments || "No attachments or references listed yet.",
+    });
+
+    return `/create/ai-assistant/draft?${params.toString()}`;
+  }, [documentType, title, version, author, reviewTimeline, circulateTo, distributionList, purpose, scope, policyStatement, procedureSteps, exceptionsNotes, definitions, attachments]);
+
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
       <div style={{ maxWidth: 1080, margin: "0 auto", padding: "24px 16px 48px" }}>
@@ -26,7 +65,7 @@ export default function CreateAiAssistantPage() {
           <section style={card}>
             <div style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>AI-assisted document template</div>
             <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.7, marginBottom: 24 }}>
-              This uses the same base template as manual creation, but this path will later be wired so AI helps fill and shape the draft.
+              Fill in the template, then generate one polished AI draft from the information entered below.
             </div>
 
             <div style={sectionCard}>
@@ -34,7 +73,7 @@ export default function CreateAiAssistantPage() {
               <div style={gridTwo}>
                 <div>
                   <label style={label}>Document type</label>
-                  <select style={inputStyle} defaultValue="Policy">
+                  <select style={inputStyle} value={documentType} onChange={(e) => setDocumentType(e.target.value)}>
                     <option>Policy</option>
                     <option>SOG</option>
                     <option>Memo</option>
@@ -46,16 +85,15 @@ export default function CreateAiAssistantPage() {
                 </div>
                 <div style={fullWidth}>
                   <label style={label}>Title</label>
-                  <input style={titleInputStyle} placeholder="Enter document title" />
+                  <input style={titleInputStyle} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter document title" />
                 </div>
                 <div>
                   <label style={label}>Version number</label>
-                  <input style={inputStyle} placeholder="Enter version number or auto assign" defaultValue="1.0" />
+                  <input style={inputStyle} value={version} onChange={(e) => setVersion(e.target.value)} placeholder="Enter version number or auto assign" />
                 </div>
                 <div>
                   <label style={label}>Author name</label>
-                  <select style={inputStyle} defaultValue="Setup controlled dropdown">
-                    <option>Setup controlled dropdown</option>
+                  <select style={inputStyle} value={author} onChange={(e) => setAuthor(e.target.value)}>
                     <option>Scott Wilde</option>
                     <option>Jack Wilde</option>
                     <option>Dawn</option>
@@ -65,7 +103,7 @@ export default function CreateAiAssistantPage() {
                 </div>
                 <div>
                   <label style={label}>Review timeline</label>
-                  <select style={inputStyle} defaultValue="30 days · May 28, 2026">
+                  <select style={inputStyle} value={reviewTimeline} onChange={(e) => setReviewTimeline(e.target.value)}>
                     <option>30 days · May 28, 2026</option>
                     <option>Quarterly · Jul 28, 2026</option>
                     <option>Semi annually · Oct 28, 2026</option>
@@ -75,7 +113,7 @@ export default function CreateAiAssistantPage() {
                 </div>
                 <div>
                   <label style={label}>Circulate to</label>
-                  <select style={inputStyle} defaultValue="All">
+                  <select style={inputStyle} value={circulateTo} onChange={(e) => setCirculateTo(e.target.value)}>
                     <option>All</option>
                     <option>All leadership</option>
                     <option>All team</option>
@@ -85,13 +123,13 @@ export default function CreateAiAssistantPage() {
                 </div>
                 <div style={fullWidth}>
                   <label style={label}>Distribution list</label>
-                  <input style={inputStyle} placeholder="List group or individual names here" />
+                  <input style={inputStyle} value={distributionList} onChange={(e) => setDistributionList(e.target.value)} placeholder="List group or individual names here" />
                 </div>
                 <div style={fullWidth}>
                   <label style={label}>Time stamp bar</label>
                   <div style={timeStampBar}>
                     <span>Started: Apr 28, 2026</span>
-                    <span>Last touched: Apr 28, 2026 · 2:00 PM</span>
+                    <span>Last touched: Apr 28, 2026 · 8:25 PM</span>
                     <span>Time entries grow as work is added</span>
                   </div>
                 </div>
@@ -103,37 +141,37 @@ export default function CreateAiAssistantPage() {
               <div style={stackWrap}>
                 <div>
                   <label style={label}>Purpose</label>
-                  <textarea style={textAreaStyle} placeholder="Why this document exists" />
+                  <textarea style={textAreaStyle} value={purpose} onChange={(e) => setPurpose(e.target.value)} placeholder="Why this document exists" />
                 </div>
                 <div>
                   <label style={label}>Scope</label>
-                  <textarea style={textAreaStyle} placeholder="Who or what this applies to" />
+                  <textarea style={textAreaStyle} value={scope} onChange={(e) => setScope(e.target.value)} placeholder="Who or what this applies to" />
                 </div>
                 <div>
                   <label style={label}>Policy statement</label>
-                  <textarea style={largeTextAreaStyle} placeholder="Core rule, standard, or directive" />
+                  <textarea style={largeTextAreaStyle} value={policyStatement} onChange={(e) => setPolicyStatement(e.target.value)} placeholder="Core rule, standard, or directive" />
                 </div>
                 <div>
                   <label style={label}>Procedure / steps</label>
-                  <textarea style={largeTextAreaStyle} placeholder="Operational steps or working instructions" />
+                  <textarea style={largeTextAreaStyle} value={procedureSteps} onChange={(e) => setProcedureSteps(e.target.value)} placeholder="Operational steps or working instructions" />
                 </div>
                 <div>
                   <label style={label}>Exceptions / notes</label>
-                  <textarea style={textAreaStyle} placeholder="Exceptions, edge cases, or extra notes" />
+                  <textarea style={textAreaStyle} value={exceptionsNotes} onChange={(e) => setExceptionsNotes(e.target.value)} placeholder="Exceptions, edge cases, or extra notes" />
                 </div>
                 <div>
                   <label style={label}>Definitions</label>
-                  <textarea style={textAreaStyle} placeholder="Define important terms used in this document" />
+                  <textarea style={textAreaStyle} value={definitions} onChange={(e) => setDefinitions(e.target.value)} placeholder="Define important terms used in this document" />
                 </div>
                 <div>
                   <label style={label}>Attachments / references</label>
-                  <textarea style={textAreaStyle} placeholder="List linked files, source material, or reference documents" />
+                  <textarea style={textAreaStyle} value={attachments} onChange={(e) => setAttachments(e.target.value)} placeholder="List linked files, source material, or reference documents" />
                 </div>
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 24, gap: 12 }}>
-              <Link href="/create/ai-assistant/draft" style={previewButton}>See draft</Link>
-              <Link href="/create/ai-assistant/draft" style={saveButton}>Save</Link>
+              <Link href={generatedHref} style={previewButton}>See draft</Link>
+              <Link href={generatedHref} style={saveButton}>Generate draft</Link>
             </div>
           </section>
         </main>
