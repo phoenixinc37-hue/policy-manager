@@ -1,10 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { cabinetIcon, drawerHandle, drawerRow } from "../../cabinet";
+import { generateAiDraft } from "./actions";
 
 export default function CreateAiAssistantPage() {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
   const [documentType, setDocumentType] = useState("Policy");
   const [title, setTitle] = useState("");
   const [version, setVersion] = useState("1.0");
@@ -20,26 +25,29 @@ export default function CreateAiAssistantPage() {
   const [definitions, setDefinitions] = useState("");
   const [attachments, setAttachments] = useState("");
 
-  const generatedHref = useMemo(() => {
-    const params = new URLSearchParams({
-      type: documentType,
-      title: title || `${documentType} Draft`,
-      version,
-      author,
-      review: reviewTimeline,
-      circulateTo,
-      distributionList: distributionList || "Not specified",
-      purpose: purpose || "AI-generated purpose based on the requested document type.",
-      scope: scope || "AI-generated scope based on the intended audience.",
-      policyStatement: policyStatement || "AI-generated core policy statement for this draft.",
-      procedureSteps: procedureSteps || "1. Follow the approved process\n2. Document the required steps\n3. Escalate exceptions as needed",
-      exceptionsNotes: exceptionsNotes || "No additional exceptions noted in the draft request.",
-      definitions: definitions || "Definitions will be refined during review.",
-      attachments: attachments || "No attachments or references listed yet.",
-    });
+  const handleGenerate = () => {
+    startTransition(async () => {
+      const result = await generateAiDraft({
+        documentType,
+        title,
+        version,
+        author,
+        reviewTimeline,
+        circulateTo,
+        distributionList,
+        purpose,
+        scope,
+        policyStatement,
+        procedureSteps,
+        exceptionsNotes,
+        definitions,
+        attachments,
+      });
 
-    return `/create/ai-assistant/draft?${params.toString()}`;
-  }, [documentType, title, version, author, reviewTimeline, circulateTo, distributionList, purpose, scope, policyStatement, procedureSteps, exceptionsNotes, definitions, attachments]);
+      sessionStorage.setItem("policy-manager-ai-draft", JSON.stringify(result));
+      router.push("/create/ai-assistant/draft");
+    });
+  };
 
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
@@ -65,7 +73,7 @@ export default function CreateAiAssistantPage() {
           <section style={card}>
             <div style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>AI-assisted document template</div>
             <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.7, marginBottom: 24 }}>
-              Fill in the template, then generate one polished AI draft from the information entered below.
+              Fill in the template, then generate one polished AI draft in a clear operator/staff tone.
             </div>
 
             <div style={sectionCard}>
@@ -129,7 +137,7 @@ export default function CreateAiAssistantPage() {
                   <label style={label}>Time stamp bar</label>
                   <div style={timeStampBar}>
                     <span>Started: Apr 28, 2026</span>
-                    <span>Last touched: Apr 28, 2026 · 8:25 PM</span>
+                    <span>Last touched: Apr 28, 2026 · 8:35 PM</span>
                     <span>Time entries grow as work is added</span>
                   </div>
                 </div>
@@ -170,8 +178,8 @@ export default function CreateAiAssistantPage() {
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 24, gap: 12 }}>
-              <Link href={generatedHref} style={previewButton}>See draft</Link>
-              <Link href={generatedHref} style={saveButton}>Generate draft</Link>
+              <button type="button" onClick={handleGenerate} style={previewButton} disabled={isPending}>{isPending ? "Generating..." : "See draft"}</button>
+              <button type="button" onClick={handleGenerate} style={saveButton} disabled={isPending}>{isPending ? "Generating..." : "Generate draft"}</button>
             </div>
           </section>
         </main>
@@ -195,5 +203,5 @@ const textAreaStyle = { width: "100%", minHeight: 100, padding: "12px 14px", bor
 const largeTextAreaStyle = { width: "100%", minHeight: 160, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, resize: "vertical" as const };
 const greenMenuButton = { textDecoration: "none", background: "#66a97a", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #66a97a" };
 const primaryButton = { textDecoration: "none", background: "#1f5d24", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #1f5d24" };
-const previewButton = { textDecoration: "none", background: "#66a97a", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #66a97a" };
-const saveButton = { textDecoration: "none", background: "#1f5d24", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #1f5d24" };
+const previewButton = { background: "#66a97a", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #66a97a" };
+const saveButton = { background: "#1f5d24", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #1f5d24" };
