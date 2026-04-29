@@ -132,8 +132,8 @@ export default function CreateAiAssistantPage() {
               </div>
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", marginTop: 24, gap: 12 }}>
-              <button style={previewButton}>See draft</button>
-              <button style={saveButton}>Save</button>
+              <Link href="/create/ai-assistant/draft" style={previewButton}>See draft</Link>
+              <Link href="/create/ai-assistant/draft" style={saveButton}>Save</Link>
             </div>
           </section>
         </main>
@@ -157,5 +157,5 @@ const textAreaStyle = { width: "100%", minHeight: 100, padding: "12px 14px", bor
 const largeTextAreaStyle = { width: "100%", minHeight: 160, padding: "12px 14px", borderRadius: 12, border: "1px solid #d6e4d8", background: "#ffffff", fontSize: 15, color: "#10221a", boxSizing: "border-box" as const, resize: "vertical" as const };
 const greenMenuButton = { textDecoration: "none", background: "#66a97a", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #66a97a" };
 const primaryButton = { textDecoration: "none", background: "#1f5d24", color: "#ffffff", padding: "10px 12px", borderRadius: 10, fontWeight: 700, border: "1px solid #1f5d24" };
-const previewButton = { background: "#66a97a", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #66a97a" };
-const saveButton = { background: "#1f5d24", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #1f5d24" };
+const previewButton = { textDecoration: "none", background: "#66a97a", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #66a97a" };
+const saveButton = { textDecoration: "none", background: "#1f5d24", color: "#ffffff", padding: "12px 18px", borderRadius: 10, fontWeight: 800, border: "1px solid #1f5d24" };
