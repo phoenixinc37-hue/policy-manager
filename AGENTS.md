@@ -12,19 +12,21 @@ Before doing anything else:
 
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
-3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
-4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
-5. In `MEMORY.md`, review the **FTM Log** first so durable operating rules are active before work starts
-6. Confirm the current operating model / role structure for active work
+3. Read `SESSION-CHECKLIST.md` — this is the active operating checklist and gate system
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+5. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+6. In `MEMORY.md`, review the **FTM Log** first so durable operating rules are active before work starts
+7. Read `indexes/active-matters.md` so current projects/cases are loaded before live work starts
+8. Confirm the current operating model / role structure for active work
    - Scott = **owner**
    - Kate = **general contractor (GC)**
    - sub-agents = **sub-trades / STs**
-7. Check the active model/provider at session start so Scott can confirm what system is being used if needed.
-8. Apply durable operating rules before reporting progress:
+9. Check the active model/provider at session start so Scott can confirm what system is being used if needed.
+10. Apply durable operating rules before reporting progress:
    - owner-visible completion only counts as done
    - GitHub push is not enough if Scott asked to see the app on laptop/phone; provide a real deployed/live URL
    - answers should be short, direct, and easy to read
-8. **For 7 Summits context:** Load `7summits/FULL7S-CURRENT.md` — this is the master structure file. Always read it, never guess.
+11. **For 7 Summits context:** Load `7summits/FULL7S-CURRENT.md` — this is the master structure file. Always read it, never guess.
 
 Don't ask permission. Just do it.
 
