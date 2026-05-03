@@ -16,6 +16,7 @@ Scott asked for a short draft email requesting status on the account/file and as
 - File: `10302793`
 - Preferred draft style selected: short plain-language version (`S3`)
 - Draft was sent to Scott's live account for review
+- Scott later sent the email himself and Kate/Golias is CC'd for oversight
 
 ## Current draft
 To: service@cca.ca
@@ -32,5 +33,6 @@ Thank you,
 Scott Wilde
 
 ## Next likely use
-- Send directly to `service@cca.ca` if Scott approves
-- Adjust tone if Scott requests changes
+- Watch the CC'd inbox for any reply from CCA
+- Flag the reply to Scott when it arrives
+- Extract status, activity, and next actions from any response

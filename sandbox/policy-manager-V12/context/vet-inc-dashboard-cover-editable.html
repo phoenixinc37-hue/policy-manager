@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vet INC Dashboard Cover Editable</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #2f3a4a;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      position: relative;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .stack {
+      position: absolute;
+      top: 76mm;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 112mm;
+      text-align: center;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 20mm;
+    }
+    .logo-img {
+      width: 68px;
+      height: auto;
+      display: block;
+      flex: 0 0 auto;
+    }
+    .brand-text {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: #2f4f7f;
+      line-height: 1;
+    }
+    .kicker {
+      font-size: 8.5px;
+      letter-spacing: 3.4px;
+      color: #727d8c;
+      margin-bottom: 9px;
+      font-weight: 700;
+    }
+    .divider {
+      width: 36px;
+      height: 2px;
+      background: #7c8693;
+      margin: 0 auto 18px auto;
+      border-radius: 1px;
+    }
+    .title {
+      font-size: 31px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #313b4b;
+      margin: 0 0 8px 0;
+    }
+    .subtitle {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #4b5563;
+      margin: 0 0 22mm 0;
+    }
+    .desc {
+      width: 92mm;
+      margin: 0 auto 18mm auto;
+      font-size: 10.5px;
+      line-height: 1.65;
+      color: #717b88;
+    }
+    .footer {
+      width: 68mm;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: #8a93a0;
+    }
+    [contenteditable="true"]:focus {
+      outline: 1px dashed #9bb7d3;
+      outline-offset: 3px;
+    }
+    @media print {
+      [contenteditable="true"]:focus { outline: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="stack">
+      <div class="brand">
+        <img class="logo-img" src="vetinc_xml-1_1.png" alt="Vet INC logo" />
+      </div>
+
+      <div class="kicker" contenteditable="true">FEATURE GUIDE</div>
+      <div class="divider"></div>
+      <div class="title" contenteditable="true">Dashboard v1.3</div>
+      <div class="subtitle" contenteditable="true">Complete Platform Directory</div>
+      <div class="desc" contenteditable="true">A visual walkthrough of every feature in the Vet INC Business Dashboard. From real-time revenue tracking to AI-powered pricing recommendations.</div>
+      <div class="footer">
+        <span contenteditable="true">April 2026</span>
+        <span contenteditable="true">Vet INC</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

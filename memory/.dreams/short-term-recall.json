@@ -1,0 +1,605 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-03T13:36:30.492Z",
+  "entries": {
+    "memory:memory/2026-03-24.md:70:94": {
+      "key": "memory:memory/2026-03-24.md:70:94",
+      "path": "memory/2026-03-24.md",
+      "startLine": 70,
+      "endLine": 94,
+      "source": "memory",
+      "snippet": "- Recommendation: rebuild incrementally in Next.js, Policy Manager first (done), then Daily features ## Summits Progress - Summit 1 (Vet Clinics): Going concern risk, pricing tool pending, rebates gap identified - Summit 4 (Achilles Athletics): Maeve Lavoy (Delta State) as presenter for Advice to a Teammate — back May, launch June 1 - Summit 5 (Save Sash Today): Fully researched and documented. No tech built. - Summit 7 (Moon Builder 1037): Clinic IQ + .99 Factor products. JSW Enterprises (Jack's company) being registered. ## Tammy Communication Patterns (Documented) | Communication | Ask | Response | |---|---|---| | Collaborative framing email | Work together | No response | | Staff draft",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4598537534475326,
+      "maxScore": 0.4598537534475326,
+      "firstRecalledAt": "2026-04-15T12:41:26.861Z",
+      "lastRecalledAt": "2026-04-15T12:41:26.861Z",
+      "queryHashes": [
+        "f62bf28ca288"
+      ],
+      "recallDays": [
+        "2026-04-15"
+      ],
+      "conceptTags": [
+        "next.js",
+        "recommendation",
+        "rebuild",
+        "incrementally",
+        "policy",
+        "manager",
+        "first",
+        "done"
+      ]
+    },
+    "memory:memory/2026-03-24.md:54:75": {
+      "key": "memory:memory/2026-03-24.md:54:75",
+      "path": "memory/2026-03-24.md",
+      "startLine": 54,
+      "endLine": 75,
+      "source": "memory",
+      "snippet": "- **Pricing Intelligence System** — analysis done (RV: $26,401/yr, TG: $73,211/yr), installation pending Tammy's technical questions answered. Jack sending response. - **.99 Factor** — LIVE at RV. End of month report pending. Estimated RV: $7K/yr, TG: $20K/yr - **Policy Manager** — MVP BUILT. Running at http://localhost:3000 on Mac mini. Vercel deploy pending (GitHub large file issue to fix) - **Save Sash Today** — fully documented in summits/summit-5-savesash/README.md. Concept only, no tech built yet. ## Tech Setup Status - claude login: ✅ (Jack's Anthropic account, wildejack1010@gmail.com) - gog auth: ❌ OAuth blocked — need to use phoenixinc37@gmail.com tomorrow fresh session - GitHub: p",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.45864138007163996,
+      "maxScore": 0.45864138007163996,
+      "firstRecalledAt": "2026-04-15T12:41:26.861Z",
+      "lastRecalledAt": "2026-04-15T12:41:26.861Z",
+      "queryHashes": [
+        "f62bf28ca288"
+      ],
+      "recallDays": [
+        "2026-04-15"
+      ],
+      "conceptTags": [
+        "401/yr",
+        "211/yr",
+        "7k/yr",
+        "20k/yr",
+        "gmail.com",
+        "pricing",
+        "intelligence",
+        "system"
+      ]
+    },
+    "memory:memory/2026-03-26.md:40:60": {
+      "key": "memory:memory/2026-03-26.md:40:60",
+      "path": "memory/2026-03-26.md",
+      "startLine": 40,
+      "endLine": 60,
+      "source": "memory",
+      "snippet": "- Summit 6 (Move Forward) is intentionally non-revenue — clears the path for the other 6 - AMS-VET vision: Kate at top, one agent per summit below her, sub-agents under each. Full autonomous operation. - Scott refers to ChatGPT as \"Humphrey\" — from Alpha & Omega (the omega wolf). Kate = alpha, Humphrey = follows Kate's lead. - \"Alex Finn\" — Moonshot podcast, March 2026. Introduced Scott to OpenClaw. His \"Henry\" system is the model for Kate's AMS role. ## Clinic IQ Pricing Structure (PARKED — to adjust later) - Free Scan: $0 (uplift potential + price age breakdown, no detail) - Package 1 (Full Report, DIY): $299–$499 - Package 2 (Full Report + Implementation via Jack's tool): $799–$1,499 - M",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8783557593822479,
+      "maxScore": 0.44854447841644285,
+      "firstRecalledAt": "2026-04-15T12:41:26.861Z",
+      "lastRecalledAt": "2026-05-01T12:08:18.102Z",
+      "queryHashes": [
+        "f62bf28ca288",
+        "bebf3867436d"
+      ],
+      "recallDays": [
+        "2026-04-15",
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "gpt",
+        "non-revenue",
+        "ams-vet",
+        "sub-agents",
+        "summit",
+        "forward",
+        "intentionally",
+        "non"
+      ]
+    },
+    "memory:memory/2026-03-21.md:1:39": {
+      "key": "memory:memory/2026-03-21.md:1:39",
+      "path": "memory/2026-03-21.md",
+      "startLine": 1,
+      "endLine": 39,
+      "source": "memory",
+      "snippet": "# 2026-03-21 ## Clinic IQ Website - Built complete website HTML file (clinic-iq.html in workspace) - Output in parts due to environment output limits - PART 1 (hero) and PART 2 (problem, insight, how-it-works) completed - Need to continue PART 3-7 for remaining sections ## Connection Issues - GitHub auth failing - environment times out during OAuth device flow - Gmail (gog tool) also failing - same environment limitation - Mac mini in St Albert has good connection but can't authenticate to external services - Not a general internet issue - specific to OAuth/API services ## Scott Context - At lakehouse, Mac mini in St Albert - Wanted long-term solutions, tried gog but same auth issues - We",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8999643355607986,
+      "maxScore": 0.45486217141151425,
+      "firstRecalledAt": "2026-04-15T12:41:26.861Z",
+      "lastRecalledAt": "2026-04-26T14:32:59.500Z",
+      "queryHashes": [
+        "f62bf28ca288",
+        "f032f8c327d6"
+      ],
+      "recallDays": [
+        "2026-04-15",
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "clinic-iq.html",
+        "how-it-works",
+        "3-7",
+        "oauth/api",
+        "long-term",
+        "clinic",
+        "website",
+        "built"
+      ]
+    },
+    "memory:memory/2026-03-21.md:30:53": {
+      "key": "memory:memory/2026-03-21.md:30:53",
+      "path": "memory/2026-03-21.md",
+      "startLine": 30,
+      "endLine": 53,
+      "source": "memory",
+      "snippet": "- Code EVERY question I ask using 60.XX.XX format - Don't proceed until all questions are coded and answered - If I forget to code, correct me and I'll fix ## How I Learn Scott's Commands - Write them to memory immediately when given - Reference memory at start of each task - Build habits around his preferred formats ## Question Mark Rule (CRITICAL) - EVERY sentence I write that ends with \"?\" MUST have a question code (60.XX.XX) at the BEGINNING - Example: \"60.06.05 - Does that make sense - and do you want to work on setting this up now?\" not \"Does that make sense - and do you want to work on setting this up now?\" - This applies to ALL questions I ask Scott - Never ask an uncoded question",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.44238437414169307,
+      "maxScore": 0.44238437414169307,
+      "firstRecalledAt": "2026-04-15T12:41:26.861Z",
+      "lastRecalledAt": "2026-04-15T12:41:26.861Z",
+      "queryHashes": [
+        "f62bf28ca288"
+      ],
+      "recallDays": [
+        "2026-04-15"
+      ],
+      "conceptTags": [
+        "60.xx.xx",
+        "60.06.05",
+        "code",
+        "question",
+        "ask",
+        "xx.xx",
+        "format",
+        "don't"
+      ]
+    },
+    "memory:memory/2026-04-02.md:1:36": {
+      "key": "memory:memory/2026-04-02.md:1:36",
+      "path": "memory/2026-04-02.md",
+      "startLine": 1,
+      "endLine": 36,
+      "source": "memory",
+      "snippet": "# 2026-04-02 — Rebecca Email Package Complete ## Status: HOLD — Awaiting Mel + Rebecca Input ### Rebecca Email Package (Ready to Send) **Subject:** CSI — Governance Review + Minute Book Drop-Off **Body:** Scott's revised version (pending Q93 + Q94 refinements on \"director\" vs \"officer\" language and exhibit reference sentence) **Exhibits (6 files):** - Exhibit A — Pricing Intelligence System Email Thread (March 24–26) - Exhibit B — Rosslyn Staffing Email Thread (March 26) - Exhibit C — Blaise Foulston, March 11, 2026 (going concern warning) - Exhibit D — Blaise Foulston, March 19, 2026 (going concern escalation) - Exhibit E — River Valley Inflationary Report ($26,401 annual opportunity) -",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8726354598999022,
+      "maxScore": 0.4410817116498947,
+      "firstRecalledAt": "2026-04-15T12:41:26.861Z",
+      "lastRecalledAt": "2026-05-01T12:08:18.102Z",
+      "queryHashes": [
+        "f62bf28ca288",
+        "bebf3867436d"
+      ],
+      "recallDays": [
+        "2026-04-15",
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "drop-off",
+        "rebecca",
+        "email",
+        "package",
+        "complete",
+        "status",
+        "hold",
+        "awaiting"
+      ]
+    },
+    "memory:memory/2026-03-20.md:1:39": {
+      "key": "memory:memory/2026-03-20.md:1:39",
+      "path": "memory/2026-03-20.md",
+      "startLine": 1,
+      "endLine": 39,
+      "source": "memory",
+      "snippet": "# March 20, 2026 ## To Do - [ ] Remind Scott about Gmail setup for email automation ## Notes - Connected to better internet - Discussed email forwarding - parked for now - Scott working on personal things today ## NEW: Sports Academy App (Summit 4) - Mobile-friendly, phone-focused - Virtual logbook for athletes - Features: - Login → personalized dashboard - Drills/exercises library (explained) - Current workout display - Enter results - Track results linked to goals ## ACHILLES ATHLETICS APP - App concept: Zone-based training logbook - Tagline: \"Move Forward\" - Philosophy: \"Fail to improve as long as you learn from failing\" - Red/Yellow/Green zones for measuring drill results -",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.45848099589347835,
+      "maxScore": 0.45848099589347835,
+      "firstRecalledAt": "2026-04-26T14:32:59.500Z",
+      "lastRecalledAt": "2026-04-26T14:32:59.500Z",
+      "queryHashes": [
+        "f032f8c327d6"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "mobile-friendly",
+        "phone-focused",
+        "drills/exercises",
+        "zone-based",
+        "red/yellow/green",
+        "march",
+        "remind",
+        "scott"
+      ]
+    },
+    "memory:memory/2026-04-02.md:49:74": {
+      "key": "memory:memory/2026-04-02.md:49:74",
+      "path": "memory/2026-04-02.md",
+      "startLine": 49,
+      "endLine": 74,
+      "source": "memory",
+      "snippet": "- Exhibit B — Rosslyn staffing thread (5 emails + Email 4 adjustment + significance statement) - Exhibit C intro — Blaise communications framing - Team governance letter (sealed envelope version, ready to print) --- ## Holds & Pending - **W1** — Deb: LOC confirmation ⏳ - **W2** — Deb: Canmore accounting (EOD Apr 2) ⏳ - **W3** — Down: Ogie Senic discount + Alliah update ⏳ - **W5** — Dr. Koshy: Pricing Intelligence text ⏳ - **W6** — EOD team (Down/Wayne/Deb/Scott): process history replies ⏳ - **HOLD-Q75**: gog auth long-term plan (Mac Mini visit needed) - **HOLD-Q81**: Carmen email Art Weekend (pending) --- ## Session Summary - Recovered full context from compaction - Assembled 6-exhibit g",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9184439808130264,
+      "maxScore": 0.4619783014059066,
+      "firstRecalledAt": "2026-05-01T12:08:18.102Z",
+      "lastRecalledAt": "2026-05-01T12:24:40.589Z",
+      "queryHashes": [
+        "bebf3867436d",
+        "4a614ff1bf9f"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "down/wayne/deb/scott",
+        "hold-q75",
+        "long-term",
+        "hold-q81",
+        "6-exhibit",
+        "exhibit",
+        "rosslyn",
+        "staffing"
+      ]
+    },
+    "memory:memory/2026-04-02.md:29:57": {
+      "key": "memory:memory/2026-04-02.md:29:57",
+      "path": "memory/2026-04-02.md",
+      "startLine": 29,
+      "endLine": 57,
+      "source": "memory",
+      "snippet": "**Q92:** Clean up text to Mel? NO — send as-is (friend context approved) **Q93:** \"director\" vs \"officer\" language in Rebecca email? PENDING **Q94:** Add exhibit reference sentence? PENDING **Next:** Scott texted Mel for CFL governance check. Awaiting response. Also requested call with Rebecca but unsure if available today. --- ## Key Context for Next Session - **Governance pattern documented:** Pricing Intelligence delays (Exhibit A) + Rosslyn staffing override (Exhibit B) both countermanded by Dr. Wilde within same week - **Both impacted same clinic:** River Valley (Pricing Intelligence blocked + staffing decision undermined simultaneously) - **ABVMA investigation link:** River Valley s",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8976256221532821,
+      "maxScore": 0.45517065227031706,
+      "firstRecalledAt": "2026-05-01T12:08:18.102Z",
+      "lastRecalledAt": "2026-05-01T12:24:40.589Z",
+      "queryHashes": [
+        "bebf3867436d",
+        "4a614ff1bf9f"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "as-is",
+        "q92",
+        "clean",
+        "mel",
+        "send",
+        "friend",
+        "context",
+        "approved"
+      ]
+    },
+    "memory:memory/2026-03-26.md:56:85": {
+      "key": "memory:memory/2026-03-26.md:56:85",
+      "path": "memory/2026-03-26.md",
+      "startLine": 56,
+      "endLine": 85,
+      "source": "memory",
+      "snippet": "- **Info**: Dixon Commercial collection forms — Alliah asking whether to send overdue AR to collections. Needs decision. - **AR**: Scanned PDF, unreadable — Alliah needs to resend clearer - **Bills**: Shaw/Rogers Rosslyn phone (780-475-9912) — $608.16 outstanding (Dec invoice), plus Feb invoice. Unpaid for a while. - Files saved to: `/Users/scottwilde/.openclaw/workspace/rosslyn-docs/` ## Wayne Moronchuk Replies (March 25 night) - **Leases**: \"Scott has PDF copies\" — Scott to forward to Kate - **Daily codebase**: \"Daily has a document repository already\" — needs access details, Q6 still open - **AbVMA guide**: No portal access, will try to track down ## Communication System (Q-coding) - Al",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.43817762732505794,
+      "maxScore": 0.43817762732505794,
+      "firstRecalledAt": "2026-05-01T12:08:18.102Z",
+      "lastRecalledAt": "2026-05-01T12:08:18.102Z",
+      "queryHashes": [
+        "bebf3867436d"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "shaw/rogers",
+        "780-475-9912",
+        "608.16",
+        "users/scottwilde",
+        "openclaw/workspace/rosslyn-docs",
+        "q-coding",
+        "info",
+        "dixon"
+      ]
+    },
+    "memory:memory/2026-03-27.md:35:61": {
+      "key": "memory:memory/2026-03-27.md:35:61",
+      "path": "memory/2026-03-27.md",
+      "startLine": 35,
+      "endLine": 61,
+      "source": "memory",
+      "snippet": "- **ABVMA connection** — Tammy is the Responsible DVM that ABVMA investigator has been trying to reach since February 2 with no response — same night she sent email claiming operational authority. Scott flagged this as significant (Q33 from last night). - **Ross Friday coverage** resolved: Dawn at Ross 8:30-9:30, Dianne coming in at 9:00, Dr. David managing afternoon - **Dawn coverage text sent** and confirmed via email forward ## Canmore Money Trail (Q32/Q33 — parked, active investigation) - Canmore unit 2104 (Copperstone) was sold - Condo sale proceeds allegedly used to pay supplier debt without Scott's authorization - Deb was involved — went to WDDC directly without Scott, told him meeti",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8826430320739745,
+      "maxScore": 0.4463767677545547,
+      "firstRecalledAt": "2026-05-01T12:08:18.102Z",
+      "lastRecalledAt": "2026-05-01T12:24:40.589Z",
+      "queryHashes": [
+        "bebf3867436d",
+        "4a614ff1bf9f"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "30-9",
+        "q32/q33",
+        "abvma",
+        "connection",
+        "tammy",
+        "the",
+        "responsible",
+        "dvm"
+      ]
+    },
+    "memory:memory/2026-03-26.md:77:102": {
+      "key": "memory:memory/2026-03-26.md:77:102",
+      "path": "memory/2026-03-26.md",
+      "startLine": 77,
+      "endLine": 102,
+      "source": "memory",
+      "snippet": "- **Q10** — Attach full comms log to Lesley kids email, or summarize and let Lesley request? ## Lesley Emails Drafted (pending Scott review/send) Two separate emails drafted and saved: - `context/collaborative-law/lesley-email-drafts-2026-03-26.md` **Email 1 — CSI Governance & Financial Position:** - Blaise going concern letter (March 19) - Tammy assuming operational authority without proper process - Banking incident (Tammy tried to remove Scott, blocked by Brian) - Co-management proposal (Medical Director vs Operations Director) - Request for Lesley to contact Cathryn under PA clause 2.17 **Email 2 — Kids Schedule & Parenting:** - Feb–March pattern: Scott proposes, Tammy ignores then bl",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8770420193672179,
+      "maxScore": 0.4445500612258911,
+      "firstRecalledAt": "2026-05-01T12:08:18.102Z",
+      "lastRecalledAt": "2026-05-01T12:24:40.589Z",
+      "queryHashes": [
+        "bebf3867436d",
+        "4a614ff1bf9f"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "review/send",
+        "co-management",
+        "2.17",
+        "q10",
+        "attach",
+        "full",
+        "comms",
+        "log"
+      ]
+    },
+    "memory:memory/2026-03-26.md:1:42": {
+      "key": "memory:memory/2026-03-26.md:1:42",
+      "path": "memory/2026-03-26.md",
+      "startLine": 1,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "# March 26, 2026 — Daily Memory Log ## Phoenix Inc — 7 Summits Structure (CONFIRMED TODAY) **The 7 Summits of Phoenix Inc** (finalized this morning): 1. **Clinic Solutions Inc** - Tudor Glen Veterinary Hospital (TG) - River Valley Veterinary Wellness Clinic (RV) - Rosslyn Veterinary Clinic (ROSS) - Urgent Pet Care — Ross (UPC-ROSS) ← heading toward UPC-RV as future expansion 2. **Wildeland Holdings Inc** - Copperstone / Canmore - Playa Del Sol / Kelowna - Disney Vacation Club (DVC) 3. **Lost Lake Resort Inc** (lake house, Jackfish Lake, Parkland County — vacation rental) 4. **Achilles Athletics Inc** - Coaching - Advice to a Teammate 5. **Open Spot Inc** *",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.44499839842319483,
+      "maxScore": 0.44499839842319483,
+      "firstRecalledAt": "2026-05-01T12:24:40.589Z",
+      "lastRecalledAt": "2026-05-01T12:24:40.589Z",
+      "queryHashes": [
+        "4a614ff1bf9f"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "upc-ross",
+        "upc-rv",
+        "march",
+        "log",
+        "phoenix",
+        "inc",
+        "summits",
+        "structure"
+      ]
+    },
+    "memory:memory/2026-05-03.md:1:8": {
+      "key": "memory:memory/2026-05-03.md:1:8",
+      "path": "memory/2026-05-03.md",
+      "startLine": 1,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "## Memory Flush 2026-05-03 (Pre-compaction) - **Policy Manager V13 `setup/page.tsx` Fixes (C12/C15 pattern bugs):** - Confirmed issues: Duplicate 'Save' buttons and incorrect 'Open'/'Edit' logic across multiple questions. - Current progress: Addressed and fixed issues for Questions 3, 4, and 5. - Challenges: Persistent exact-match errors with the `edit` tool due to subtle whitespace/newline differences. - Strategy: Implementing a more robust, incremental approach with multiple small, precise `edit` calls to target each specific UI element for correction.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5120617240667343,
+      "maxScore": 0.5120617240667343,
+      "firstRecalledAt": "2026-05-03T13:36:30.492Z",
+      "lastRecalledAt": "2026-05-03T13:36:30.492Z",
+      "queryHashes": [
+        "7ee5655da1e0"
+      ],
+      "recallDays": [
+        "2026-05-03"
+      ],
+      "conceptTags": [
+        "pre-compaction",
+        "setup/page.tsx",
+        "c12/c15",
+        "exact-match",
+        "whitespace/newline",
+        "flush",
+        "pre",
+        "compaction"
+      ]
+    },
+    "memory:memory/2026-04-30.md:11:14": {
+      "key": "memory:memory/2026-04-30.md:11:14",
+      "path": "memory/2026-04-30.md",
+      "startLine": 11,
+      "endLine": 14,
+      "source": "memory",
+      "snippet": "- Policy Manager V11 team view surface pass on 2026-04-30 late afternoon: all buttons changed to white; employee wording corrected to “This page represents what you see. You only see your own assigned items and acknowledgement status.”; Library button moved to top panel; lower library-area wording/list removed; pushed live at /teamview. - Policy Manager V11 library surface pass on 2026-04-30 late afternoon: all buttons changed to white; “Skystone” wording removed from library title and replaced with placeholder “Business Name Library”; pushed live at /policy-index. - Implementation note: trying to use useSiteConfig directly inside V11 app/policy-index/page.tsx caused a server/client mismatch",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5043455719947815,
+      "maxScore": 0.5043455719947815,
+      "firstRecalledAt": "2026-05-03T13:36:30.492Z",
+      "lastRecalledAt": "2026-05-03T13:36:30.492Z",
+      "queryHashes": [
+        "7ee5655da1e0"
+      ],
+      "recallDays": [
+        "2026-05-03"
+      ],
+      "conceptTags": [
+        "library-area",
+        "wording/list",
+        "policy-index",
+        "app/policy-index/page.tsx",
+        "server/client",
+        "policy",
+        "manager",
+        "v11"
+      ]
+    },
+    "memory:memory/2026-04-29.md:1:12": {
+      "key": "memory:memory/2026-04-29.md:1:12",
+      "path": "memory/2026-04-29.md",
+      "startLine": 1,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "# 2026-04-29 - Policy Manager V10 blank shell work continued from FD1-derived copy at `sandbox/policy-manager-V10`. - Verified live V10 URL in use: `https://policy-manager-v10.vercel.app`. - Scott requested home page wording change from \"Blank Template\" to `Business Inc` for V10. - Scott requested V10 home page changes: remove wording under Leadership Dashboard, install 3 panels for Policy / SOG / Memos, remove remaining \"Blank Template\" wording, and use the home page filing cabinet graphic as the source model for future page-by-page rollout. - Durable implementation lesson: do not mass-replace shared UI graphics across many pages in one sweep when the code patterns differ; standardize the",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4881941676139831,
+      "maxScore": 0.4881941676139831,
+      "firstRecalledAt": "2026-05-03T13:36:30.492Z",
+      "lastRecalledAt": "2026-05-03T13:36:30.492Z",
+      "queryHashes": [
+        "7ee5655da1e0"
+      ],
+      "recallDays": [
+        "2026-05-03"
+      ],
+      "conceptTags": [
+        "fd1-derived",
+        "sandbox/policy-manager-v10",
+        "policy-manager-v10.vercel.app",
+        "page-by-page",
+        "mass-replace",
+        "policy",
+        "manager",
+        "v10"
+      ]
+    },
+    "memory:memory/2026-04-29.md:11:16": {
+      "key": "memory:memory/2026-04-29.md:11:16",
+      "path": "memory/2026-04-29.md",
+      "startLine": 11,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "- Recommended Setup-page structure for Policy Manager: Company Profile, People and Groups, Document Rules, Workflow Rules, Template Rules, and Library Rules. - Initial V10 Setup page scaffold was created at `sandbox/policy-manager-V10/app/setup/page.tsx`, but deployment was blocked because earlier malformed cabinet-swap edits left other V10 pages broken and needing cleanup before clean build/deploy. - Current known issue at compaction: V10 has malformed page code from the earlier cabinet swap and needs a cleanup pass on broken pages before the new Setup page can go live. - New conversational workflow preference from Scott: when Kate offers multiple concrete suggestions/options, label them wi",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4870232671499252,
+      "maxScore": 0.4870232671499252,
+      "firstRecalledAt": "2026-05-03T13:36:30.492Z",
+      "lastRecalledAt": "2026-05-03T13:36:30.492Z",
+      "queryHashes": [
+        "7ee5655da1e0"
+      ],
+      "recallDays": [
+        "2026-05-03"
+      ],
+      "conceptTags": [
+        "setup-page",
+        "cabinet-swap",
+        "build/deploy",
+        "suggestions/options",
+        "recommended",
+        "setup",
+        "page",
+        "structure"
+      ]
+    },
+    "memory:memory/2026-03-23.md:22:38": {
+      "key": "memory:memory/2026-03-23.md:22:38",
+      "path": "memory/2026-03-23.md",
+      "startLine": 22,
+      "endLine": 38,
+      "source": "memory",
+      "snippet": "- **Policy Manager** — document management SaaS (Policy / SOG / Memo) - Built for any business, not just vet clinics - Coding agent running overnight: /Users/scottwilde/Projects/policy-manager - Stack: Next.js + Supabase + Tailwind - Will be part of Moon Builder product suite ## Personal Context - Scott wakes up ~5:30am, first coffee early - Separation from Tammy ongoing — complicates clinic decisions - 4 kids: Jack (college next year), Pete, Eastynn, Emmy ## Tomorrow Morning 1. Final review of RV email draft 2. Send to Tammy + Dawn 3. Check Policy Manager build progress 4. Continue setting up remaining summits",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4841792851686477,
+      "maxScore": 0.4841792851686477,
+      "firstRecalledAt": "2026-05-03T13:36:30.492Z",
+      "lastRecalledAt": "2026-05-03T13:36:30.492Z",
+      "queryHashes": [
+        "7ee5655da1e0"
+      ],
+      "recallDays": [
+        "2026-05-03"
+      ],
+      "conceptTags": [
+        "next.js",
+        "policy",
+        "manager",
+        "document",
+        "management",
+        "saas",
+        "sog",
+        "memo"
+      ]
+    },
+    "memory:memory/2026-04-30.md:1:12": {
+      "key": "memory:memory/2026-04-30.md:1:12",
+      "path": "memory/2026-04-30.md",
+      "startLine": 1,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "## 2026-04-30 - Scott clarified the long-term versioning strategy: - V11 (and future V12, etc.) is the **\"embryo\"** (the source code from which all other versions are born). Structural changes and new features happen here first. - V20 is the base beta blank version, derived from the embryo. - V30 is the live sandbox Scott will use to set up a real company (Vet clinics). Content changes happen here via the UI. - V40+ will be industry-specific variations derived from V20 (e.g., V40 for accountants, V50 for physios). - Urgent bug fixes can be applied directly to V20/V30 and backported to the embryo. - S2 (Wire V20 Setup to SQLite) is actively running in a sub-agent. Once S2 completes,",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4808402776718139,
+      "maxScore": 0.4808402776718139,
+      "firstRecalledAt": "2026-05-03T13:36:30.492Z",
+      "lastRecalledAt": "2026-05-03T13:36:30.492Z",
+      "queryHashes": [
+        "7ee5655da1e0"
+      ],
+      "recallDays": [
+        "2026-05-03"
+      ],
+      "conceptTags": [
+        "long-term",
+        "industry-specific",
+        "e.g",
+        "v20/v30",
+        "sub-agent",
+        "scott",
+        "clarified",
+        "the"
+      ]
+    }
+  }
+}

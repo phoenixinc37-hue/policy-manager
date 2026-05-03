@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vet Inc Blank Title Page Editable</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #5f6978;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      position: relative;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .brand {
+      position: absolute;
+      top: 58mm;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .logo-svg {
+      width: 38px;
+      height: 46px;
+      flex: 0 0 auto;
+      display: block;
+    }
+    .brand-text {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      color: #2d67a5;
+    }
+    .brand-text .inc {
+      color: #5d92c7;
+    }
+    .title-block {
+      position: absolute;
+      top: 105mm;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 0 24mm;
+      box-sizing: border-box;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: #667182;
+      margin: 0 0 12px 0;
+      min-height: 36px;
+    }
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #7a8391;
+      margin: 0;
+      min-height: 42px;
+    }
+    .description {
+      position: absolute;
+      top: 188mm;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 126mm;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #7a8391;
+      min-height: 50px;
+    }
+    .footer {
+      position: absolute;
+      bottom: 26mm;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 128mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #8a92a0;
+      letter-spacing: 0.2px;
+    }
+    [contenteditable="true"]:focus {
+      outline: 1px dashed #9bb7d3;
+      outline-offset: 4px;
+    }
+    .placeholder { color: #a9b0bb; }
+    @media print {
+      [contenteditable="true"]:focus { outline: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="brand">
+      <svg class="logo-svg" viewBox="0 0 64 78" aria-hidden="true">
+        <defs>
+          <linearGradient id="shieldGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4a90d6" />
+            <stop offset="100%" stop-color="#234e88" />
+          </linearGradient>
+        </defs>
+        <path d="M32 2 L56 12 Q60 13 60 18 L60 42 Q60 46 57 49 L32 76 L7 49 Q4 46 4 42 L4 18 Q4 13 8 12 Z" fill="url(#shieldGradient)"/>
+        <path d="M16 24 C17 19, 21 15, 26 14 C25 18, 26 22, 29 26 C31 29, 33 31, 35 34 C31 34, 28 34, 25 36 C22 38, 19 42, 18 47 C14 42, 12 36, 13 30 C13 28, 14 26, 16 24 Z" fill="#ffffff"/>
+        <path d="M25 39 C27 36, 31 34, 35 34 C40 34, 44 37, 46 42 C42 41, 39 42, 36 44 C34 46, 32 49, 31 53 C28 51, 25 48, 24 44 C24 42, 24 40, 25 39 Z" fill="#ffffff"/>
+        <rect x="45.5" y="12" width="4.5" height="13" rx="1" fill="#ffffff"/>
+        <rect x="41.25" y="16.25" width="13" height="4.5" rx="1" fill="#ffffff"/>
+      </svg>
+      <div class="brand-text">VET <span class="inc">INC.</span></div>
+    </div>
+
+    <div class="title-block">
+      <div class="title placeholder" contenteditable="true">Enter Title Here</div>
+      <p class="subtitle placeholder" contenteditable="true">Enter subtitle here.</p>
+    </div>
+
+    <div class="description placeholder" contenteditable="true">Enter supporting description here.</div>
+
+    <div class="footer">
+      <span class="placeholder" contenteditable="true">Month Year</span>
+      <span contenteditable="true">Vet INC</span>
+    </div>
+  </div>
+</body>
+</html>

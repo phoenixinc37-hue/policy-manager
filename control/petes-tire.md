@@ -2,6 +2,7 @@
 
 ## Project
 - P* petes tire
+- Quadrant: QD2
 
 ## Known facts
 - Scott clarified incident date as May 18, 2026

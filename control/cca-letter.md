@@ -2,6 +2,7 @@
 
 ## Project
 - P*cca letter
+- Quadrant: QD2
 
 ## Current task
 - Draft a status-request email regarding:
@@ -9,8 +10,10 @@
   - File: 10302793
 
 ## Current status
-- Short plain-language draft created
-- Draft was sent to Scott's live account for review
+- Short plain-language draft created and sent to Scott's live account
+- Scott requested the inquiries.s@rci.rogers.com address be added
+- Updated draft sent to Scott's live account
+- Scott sent the email to Rogers
 
 ## Draft text
 To: service@cca.ca
@@ -27,5 +30,5 @@ Thank you,
 Scott Wilde
 
 ## Next likely actions
-- If Scott approves, send directly to service@cca.ca
-- If Scott edits tone, update and resend
+- Wait for a response from Rogers regarding the breakdown and internet-only pricing
+- Alert Scott if a response comes back to the oversight inbox

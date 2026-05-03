@@ -5,11 +5,17 @@ Use this file as the first retrieval map for active work.
 ## Operating system files
 - `SESSION-CHECKLIST.md`
 - `codes/core-codes.md`
+- `indexes/quadrants.md`
 
 ## Active project control files
 - `control/policy-manager.md`
 - `control/petes-tire.md`
 - `control/cca-letter.md`
+
+## Quadrant map
+- `P* petes tire` = `QD2`
+- `P*policy manager` = `QD2`
+- `P*cca letter` = `QD2`
 
 ## Active case files
 - `cases/petes-tire.md`

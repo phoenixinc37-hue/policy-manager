@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf2xml SYSTEM "pdf2xml.dtd">
+
+<pdf2xml producer="poppler" version="26.03.0">
+<page number="1" position="absolute" top="0" left="0" height="1264" width="893">
+	<fontspec id="0" size="27" family="Helvetica" color="#6d7584"/>
+	<fontspec id="1" size="16" family="Helvetica" color="#6d7584"/>
+<image top="317" left="368" width="158" height="158" src="/Users/scottwilde/.openclaw/workspace/context/vetinc_xml-1_1.png"/>
+<text top="598" left="323" width="246" height="25" font="0">Core Thinking Notes</text>
+<text top="648" left="221" width="451" height="15" font="1">Pricing discipline framework for sustainable revenue capture and</text>
+<text top="671" left="383" width="126" height="15" font="1">margin protection.</text>
+</page>
+</pdf2xml>

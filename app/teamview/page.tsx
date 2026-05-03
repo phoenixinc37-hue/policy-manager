@@ -1,9 +1,15 @@
+"use client";
+
+import { useSiteConfig } from "../site-config";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import { employees, getTeamItems } from "../data";
 import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
 export default function TeamView({ searchParams }: { searchParams?: { type?: string; q?: string } }) {
+  const { config, isLoaded } = useSiteConfig();
+  if (!isLoaded) return null;
+
   const selectedEmployee = employees[0];
   const assignedItems = getTeamItems(selectedEmployee).filter((item) => !item.acknowledged);
   const activeType = searchParams?.type ?? "all";
@@ -22,13 +28,13 @@ export default function TeamView({ searchParams }: { searchParams?: { type?: str
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={cabinetIcon}>{[0, 1, 2].map((row) => <div key={row} style={drawerRow}><div style={drawerHandle} /></div>)}</div>
             <div>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager <span style={{ fontSize: 20, fontWeight: 700, color: "#2e7d32", marginLeft: 10 }}>· Team View</span></div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager <span style={{ fontSize: 20, fontWeight: 700, color: "#2e7d32", marginLeft: 10 }}>· {config.teamLabel} View</span></div>
               <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting firm demo</div>
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link href="/" style={primaryButtonLink}>Home</Link>
-            <Link href="/manager" style={greenMenuButton}>Leadership View</Link>
+            <Link href="/manager" style={greenMenuButton}>{config.leadershipLabel} View</Link>
           </div>
         </header>
 

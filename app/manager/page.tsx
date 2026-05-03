@@ -1,12 +1,15 @@
+"use client";
+
+import { useSiteConfig } from "../site-config";
 import Link from "next/link";
 import { documents, getLeadershipStats } from "../data";
 import { cabinetIcon, drawerHandle, drawerRow } from "../cabinet";
 
 const statusCards = [
   {
-    title: "Circulating documents",
+    title: "{config.circulateLabel} documents",
     text: "Active items, awaiting acknowledgement, and overdue.",
-    button: "View circulation",
+    button: "View {config.circulateLabel.toLowerCase()}",
   },
   {
     title: "Pending approval",
@@ -26,6 +29,9 @@ const statusCards = [
 ];
 
 export default function ManagerPage() {
+  const { config, isLoaded } = useSiteConfig();
+  if (!isLoaded) return null;
+
   const stats = getLeadershipStats();
   const circulatingDocs = documents.filter((doc) => doc.status === "circulating");
   const pendingApprovalDoc = documents.find((doc) => doc.status === "pending-approval");
@@ -38,13 +44,13 @@ export default function ManagerPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={cabinetIcon}>{[0, 1, 2].map((row) => <div key={row} style={drawerRow}><div style={drawerHandle} /></div>)}</div>
             <div>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager <span style={{ fontSize: 20, fontWeight: 700, color: "#2e7d32", marginLeft: 10 }}>· Leadership View</span></div>
-              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager <span style={{ fontSize: 20, fontWeight: 700, color: "#2e7d32", marginLeft: 10 }}>· {config.leadershipLabel} View</span></div>
+              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>{config.companyName}</div>
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link href="/" style={primaryButtonLink}>Home</Link>
-            <Link href="/teamview" style={teamButton}>Team View</Link>
+            <Link href="/teamview" style={teamButton}>{config.teamLabel} View</Link>
           </div>
         </header>
 
@@ -52,7 +58,7 @@ export default function ManagerPage() {
           <section style={panelCard}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
               <div>
-                <div style={{ fontSize: 24, fontWeight: 800 }}>Create new policy, SOG, or memo</div>
+                <div style={{ fontSize: 24, fontWeight: 800 }}>Create new {config.policyLabel.toLowerCase()}, {config.sogLabel.toLowerCase()}, or {config.memoLabel.toLowerCase()}</div>
                 <p style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, margin: "8px 0 0" }}>Start a new document and assign it to your team.</p>
               </div>
               <Link href="/create" style={primaryButtonLink}>Create New</Link>
@@ -72,7 +78,7 @@ export default function ManagerPage() {
                 <div key={card.title} style={statusCard}>
                   <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10 }}>{card.title}</div>
                   <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.6, marginBottom: 16 }}>{card.text}</div>
-                  <Link href={card.button === "View circulation" ? "/status" : card.button === "View approvals" ? "/pending" : card.button === "View report" ? "/completion" : "/policy-index"} style={secondaryGreenButtonLink}>{card.button}</Link>
+                  <Link href={card.button === "View {config.circulateLabel.toLowerCase()}" ? "/status" : card.button === "View approvals" ? "/pending" : card.button === "View report" ? "/completion" : "/policy-index"} style={secondaryGreenButtonLink}>{card.button}</Link>
                 </div>
               ))}
             </div>
@@ -90,10 +96,10 @@ export default function ManagerPage() {
               <div style={quickViewMainCard}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", gap: 12, marginBottom: 18 }}>
                   <div>
-                    <div style={{ fontWeight: 800, fontSize: 20 }}>Circulating documents</div>
+                    <div style={{ fontWeight: 800, fontSize: 20 }}>{config.circulateLabel} documents</div>
                     <div style={{ fontSize: 14, color: "#60766b", marginTop: 6 }}>Current active items and acknowledgement progress.</div>
                   </div>
-                  <span style={{ fontWeight: 800, color: "#1f5d24", fontSize: 14 }}>View circulating</span>
+                  <span style={{ fontWeight: 800, color: "#1f5d24", fontSize: 14 }}>View {config.circulateLabel.toLowerCase()}</span>
                 </div>
 
                 <div style={{ display: "grid", gap: 16 }}>

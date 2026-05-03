@@ -1,3 +1,6 @@
+"use client";
+
+import { useSiteConfig } from "./site-config";
 import Link from "next/link";
 
 const managerHighlights = [
@@ -13,6 +16,9 @@ const teamHighlights = [
 ];
 
 export default function LandingPage() {
+  const { config, isLoaded } = useSiteConfig();
+  if (!isLoaded) return null;
+
   return (
     <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto", padding: "24px 16px 48px" }}>
@@ -73,16 +79,16 @@ export default function LandingPage() {
             </div>
             <div>
               <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager</div>
-              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Accounting Firm Demo</div>
+              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>{config.companyName}</div>
             </div>
           </div>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link href="/manager" style={headerButton("#1f5d24")}>
-              Leadership View
+              {config.leadershipLabel} View
             </Link>
             <Link href="/teamview" style={headerButton("#66a97a")}>
-              Team View
+              {config.teamLabel} View
             </Link>
           </div>
         </header>
@@ -101,11 +107,11 @@ export default function LandingPage() {
                 letterSpacing: "0.03em",
               }}
             >
-              ACCOUNTING FIRM DEMO
+              {config.companyName.toUpperCase()}
             </div>
 
             <h1 style={{ fontSize: 48, lineHeight: 1.08, margin: "18px 0 14px", fontWeight: 800, maxWidth: 640 }}>
-              Keep policies, SOGs, and memos visible until the whole firm has actually read them.
+              Keep {config.policyLabel.toLowerCase()}s, {config.sogLabel}s, and {config.memoLabel.toLowerCase()}s visible until the whole firm has actually read them.
             </h1>
 
             <p style={{ fontSize: 18, lineHeight: 1.65, color: "#496156", maxWidth: 620, margin: 0 }}>
@@ -114,19 +120,19 @@ export default function LandingPage() {
 
             <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
               <Link href="/manager" style={primaryButton}>
-                Open Leadership Demo
+                Open {config.leadershipLabel} Demo
               </Link>
               <Link href="/teamview" style={teamDemoButton}>
-                Open Team Demo
+                Open {config.teamLabel} Demo
               </Link>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 14, marginTop: 30 }}>
               {[
-                { title: "Create", copy: "Create and assign policies, SOGs, and memos." },
-                { title: "Track", copy: "Track what is still circulating across the firm." },
+                { title: "Create", copy: "Create and assign {config.policyLabel.toLowerCase()}s, {config.sogLabel}s, and {config.memoLabel.toLowerCase()}s." },
+                { title: "Track", copy: "Track what is still {config.circulateLabel.toLowerCase()} across the firm." },
                 { title: "Confirm", copy: "Ensure documents are acknowledged before completion." },
-                { title: "Library", copy: "Access all firm policies and historical documents." },
+                { title: "Library", copy: "Access all firm {config.policyLabel.toLowerCase()}s and historical documents." },
               ].map((item) => (
                 <div key={item.title} style={infoCard}>
                   <div style={{ fontWeight: 700, marginBottom: 8 }}>{item.title}</div>
@@ -140,8 +146,8 @@ export default function LandingPage() {
             <div style={panelCard}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 20 }}>Leadership Dashboard</div>
-                  <div style={{ color: "#647b71", fontSize: 14, marginTop: 4 }}>What leadership sees at a glance.</div>
+                  <div style={{ fontWeight: 700, fontSize: 20 }}>{config.leadershipLabel} Dashboard</div>
+                  <div style={{ color: "#647b71", fontSize: 14, marginTop: 4 }}>What {config.leadershipLabel.toLowerCase()} sees at a glance.</div>
                 </div>
                 <Link href="/manager" style={{ ...textLink, color: "#1f5d24" }}>
                   View full screen
@@ -159,7 +165,7 @@ export default function LandingPage() {
 
               <div style={{ borderTop: "1px solid #e6eee8", paddingTop: 14 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "#4c6358", marginBottom: 8, gap: 12 }}>
-                  <span>Policy - Client File Document Standards</span>
+                  <span>{config.policyLabel} - Client File Document Standards</span>
                   <span>12 / 15 confirmed</span>
                 </div>
                 <div style={{ height: 10, background: "#e7efe9", borderRadius: 999, overflow: "hidden", marginBottom: 14 }}>
@@ -167,7 +173,7 @@ export default function LandingPage() {
                 </div>
 
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "#4c6358", marginBottom: 8, gap: 12 }}>
-                  <span>SOG - Month End Closing Procedure</span>
+                  <span>{config.sogLabel} - Month End Closing Procedure</span>
                   <span>9 / 15 confirmed</span>
                 </div>
                 <div style={{ height: 10, background: "#e7efe9", borderRadius: 999, overflow: "hidden" }}>
@@ -175,7 +181,7 @@ export default function LandingPage() {
                 </div>
 
                 <p style={{ fontSize: 12, color: "#70857b", marginTop: 10, marginBottom: 0 }}>
-                  Circulating means deployed to the team but not yet fully acknowledged.
+                  {config.circulateLabel} means deployed to the team but not yet fully acknowledged.
                 </p>
               </div>
             </div>
@@ -183,8 +189,8 @@ export default function LandingPage() {
             <div style={panelCard}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 20 }}>Team Dashboard</div>
-                  <div style={{ color: "#647b71", fontSize: 14, marginTop: 4 }}>Individual team members current status</div>
+                  <div style={{ fontWeight: 700, fontSize: 20 }}>{config.teamLabel} Dashboard</div>
+                  <div style={{ color: "#647b71", fontSize: 14, marginTop: 4 }}>Individual {config.teamLabel.toLowerCase()} members current status</div>
                 </div>
                 <Link href="/teamview" style={{ ...textLink, color: "#1f5d24" }}>
                   View full screen

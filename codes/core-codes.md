@@ -32,3 +32,11 @@
 - `FTM` = File to Memory
 - `SNS` = Start New Session
 - `Dev-T` = Developed Traffic, avoid creating extra corrective traffic through sloppy or unverified output
+
+## Quadrant coding
+- `QD1` = urgent and important
+- `QD2` = important but not urgent
+- `QD3` = urgent but not important
+- `QD4` = not urgent and not important
+- Default most strategic build/cleanup/system work into `QD2` unless a real deadline moves it
+- Only place projects in `QD1` when there is a definite time-sensitive deadline or immediate live consequence

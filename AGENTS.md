@@ -17,16 +17,17 @@ Before doing anything else:
 5. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 6. In `MEMORY.md`, review the **FTM Log** first so durable operating rules are active before work starts
 7. Read `indexes/active-matters.md` so current projects/cases are loaded before live work starts
-8. Confirm the current operating model / role structure for active work
+8. Read `indexes/quadrants.md` so project quadrant placement is active before live work starts
+9. Confirm the current operating model / role structure for active work
    - Scott = **owner**
    - Kate = **general contractor (GC)**
    - sub-agents = **sub-trades / STs**
-9. Check the active model/provider at session start so Scott can confirm what system is being used if needed.
-10. Apply durable operating rules before reporting progress:
+10. Check the active model/provider at session start so Scott can confirm what system is being used if needed.
+11. Apply durable operating rules before reporting progress:
    - owner-visible completion only counts as done
    - GitHub push is not enough if Scott asked to see the app on laptop/phone; provide a real deployed/live URL
    - answers should be short, direct, and easy to read
-11. **For 7 Summits context:** Load `7summits/FULL7S-CURRENT.md` — this is the master structure file. Always read it, never guess.
+12. **For 7 Summits context:** Load `7summits/FULL7S-CURRENT.md` — this is the master structure file. Always read it, never guess.
 
 Don't ask permission. Just do it.
 

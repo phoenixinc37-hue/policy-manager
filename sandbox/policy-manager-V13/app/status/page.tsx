@@ -1,0 +1,185 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { CabinetGraphic } from "../cabinet";
+import { loadCirculatingDrafts, type SavedDraftRecord } from "../create/ai-assistant/draftStorage";
+import { loadConfigSnapshot } from "../useSiteConfig";
+
+export default function StatusPage() {
+  const [circulating, setCirculating] = useState<SavedDraftRecord[]>([]);
+  const [config, setConfig] = useState<any>({});
+
+  useEffect(() => {
+    function forceLoad() {
+      setCirculating(loadCirculatingDrafts());
+      setConfig(loadConfigSnapshot());
+    }
+    forceLoad();
+    const interval = setInterval(forceLoad, 500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div style={{ minHeight: "100vh", background: "#f3f7f4", color: "#10221a", fontFamily: "Arial, sans-serif" }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "24px 16px 48px" }}>
+        <header style={headerCard}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <CabinetGraphic />
+            <div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager <span style={{ fontSize: 20, fontWeight: 700, color: "#dc2626", marginLeft: 10 }}>· Circulating</span></div>
+              <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Blank Template</div>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Link href="/approval" style={whiteButtonLink}>Approval</Link>
+            <Link href="/completion" style={whiteButtonLink}>Complete</Link>
+            <Link href="/policy-index" style={whiteButtonLink}>Library</Link>
+            <Link href="/teamview" style={whiteButtonLink}>Team View</Link>
+            <Link href="/manager" style={whiteButtonLink}>Leadership View</Link>
+          </div>
+        </header>
+
+        <main style={{ display: "grid", gap: 20, marginTop: 24 }}>
+          <section style={panelCard}>
+            <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 8 }}>Circulating documents</div>
+            <div style={{ fontSize: 14, color: "#60766b", marginBottom: 10 }}>Each circulating document has its own status panel and detailed member view.</div>
+            <div style={{ fontSize: 13, color: circulating.length ? "#1f7a37" : "#9a6700", marginBottom: 18, fontWeight: 700 }}>
+              Circulating records found: {circulating.length}
+            </div>
+            <div style={{ display: "grid", gap: 14 }}>
+              {circulating.length === 0 ? (
+                <div style={rowCard}>No documents are currently circulating.</div>
+              ) : (
+                circulating.map((doc) => {
+                  const requiredPersonnel = (config.personnel || []).filter((person: any) => {
+                    if (!doc.circulationTargets) return false;
+                    return doc.circulationTargets.some((target) => {
+                      if (target === person.fullName) return true;
+                      if (target === "ALL Leadership" && ["l1", "l2"].includes(person.accessLevelId)) return true;
+                      if (target === "ALL Clinics") return true;
+                      const siteName = config.siteLocations?.find((s: any) => s.id === person.siteLocationId)?.name;
+                      if (siteName && target === siteName) return true;
+                      return false;
+                    });
+                  });
+
+                  const assignedCount = requiredPersonnel.length;
+                  const ackCount = requiredPersonnel.filter((p: any) => doc.acknowledgments && doc.acknowledgments[p.id]).length;
+                  const progress = assignedCount > 0 ? Math.round((ackCount / assignedCount) * 100) : 0;
+                  const remaining = assignedCount - ackCount;
+
+                  return (
+                    <div key={doc.id} style={rowCard}>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "start" }}>
+                        <div>
+                          <div style={{ fontWeight: 700, fontSize: 18 }}>{doc.documentType} - {doc.title}</div>
+                          <div style={{ fontSize: 13, color: "#60766b", marginTop: 4 }}>
+                            Targets: {doc.circulationTargets ? doc.circulationTargets.join(", ") : "None"}
+                          </div>
+                        </div>
+                        <Link href={`/status/circulating/${doc.id}`} style={whiteButtonLink}>Status</Link>
+                      </div>
+
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 12, marginTop: 16 }}>
+                        <div style={miniCard}>
+                          <div style={miniValue}>{ackCount} / {assignedCount}</div>
+                          <div style={miniLabel}>Acknowledged</div>
+                        </div>
+                        <div style={miniCard}>
+                          <div style={miniValue}>{remaining}</div>
+                          <div style={miniLabel}>Still outstanding</div>
+                        </div>
+                        <div style={miniCard}>
+                          <div style={miniValue}>{progress}%</div>
+                          <div style={miniLabel}>Completion</div>
+                        </div>
+                      </div>
+
+                      <div style={{ ...progressTrack, marginTop: 14 }}>
+                        <div style={{ ...progressFill, width: `${progress}%` }} />
+                      </div>
+
+                      <div style={{ fontSize: 13, color: "#60766b", marginTop: 10 }}>
+                        {remaining} awaiting acknowledgement
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+const headerCard = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  background: "#ffffff",
+  border: "1px solid #dbe7de",
+  borderRadius: 18,
+  padding: "18px 22px",
+  boxShadow: "0 12px 30px rgba(15, 23, 42, 0.06)",
+  gap: 16,
+  flexWrap: "wrap" as const,
+};
+
+const panelCard = {
+  background: "#ffffff",
+  borderRadius: 18,
+  padding: 22,
+  border: "1px solid #dbe7de",
+  boxShadow: "0 12px 30px rgba(15, 23, 42, 0.06)",
+};
+
+const rowCard = {
+  borderRadius: 16,
+  border: "1px solid #dbe7de",
+  background: "#f9fbf9",
+  padding: 18,
+};
+
+const miniCard = {
+  borderRadius: 12,
+  border: "1px solid #dbe7de",
+  background: "#ffffff",
+  padding: 14,
+};
+
+const miniValue = {
+  fontSize: 22,
+  fontWeight: 800,
+  color: "#1f5d24",
+};
+
+const miniLabel = {
+  fontSize: 12,
+  color: "#60766b",
+  marginTop: 4,
+};
+
+const progressTrack = {
+  height: 10,
+  background: "#e7efe9",
+  borderRadius: 999,
+  overflow: "hidden",
+};
+
+const progressFill = {
+  height: "100%",
+  background: "#2e7d32",
+};
+
+const whiteButtonLink = {
+  textDecoration: "none",
+  background: "#ffffff",
+  color: "#10221a",
+  padding: "10px 12px",
+  borderRadius: 10,
+  fontWeight: 700,
+  border: "1px solid #dbe7de",
+};
