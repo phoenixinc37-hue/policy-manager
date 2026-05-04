@@ -7,9 +7,13 @@ import { useSiteConfig } from "../useSiteConfig";
 
 const employerGroupOptions = ["Managers", "Leadership", "Custom"];
 const employeeGroupOptions = ["Employees", "Team", "Staff", "Custom"];
-const policyMessageOptions = [
+const policyStatementOptions = [
   "Policy Statement goes here",
   "Policies only work when people understand them, follow them, and can find them when they need them.",
+  "Custom",
+];
+
+const policyMessageHomeOptions = [
   "Policy Message goes here",
   "Clear policies create consistency, accountability, and confidence across the business.",
   "Custom",
@@ -239,7 +243,7 @@ export default function SetupPage() {
                 <button type="button" onClick={() => setOpenPanel(null)} style={saveSmallButton}>Save</button>
               </div>
               <div style={{ display: "grid", gap: 12 }}>
-                {policyMessageOptions.map((option) => (
+                {policyStatementOptions.map((option) => (
                   <button
                     key={option}
                     type="button"
@@ -285,7 +289,7 @@ export default function SetupPage() {
                 <button type="button" onClick={() => setOpenPanel(null)} style={saveSmallButton}>Save</button>
               </div>
               <div style={{ display: "grid", gap: 12 }}>
-                {policyMessageOptions.map((option) => (
+                {policyMessageHomeOptions.map((option) => (
                   <button
                     key={option}
                     type="button"
