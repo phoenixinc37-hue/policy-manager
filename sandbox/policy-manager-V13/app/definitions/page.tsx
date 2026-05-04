@@ -18,7 +18,7 @@ export default function DefinitionsPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <CabinetGraphic />
             <div>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager V11 <span style={{ fontSize: 20, fontWeight: 700, color: "#dc2626", marginLeft: 10 }}>· Definitions</span></div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager V13 <span style={{ fontSize: 20, fontWeight: 700, color: "#dc2626", marginLeft: 10 }}>· Definitions</span></div>
               <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Definitions Library</div>
             </div>
           </div>

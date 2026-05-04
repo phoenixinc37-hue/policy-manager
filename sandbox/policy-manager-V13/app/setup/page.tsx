@@ -88,7 +88,7 @@ export default function SetupPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <CabinetGraphic />
             <div>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager V11 <span style={{ fontSize: 20, fontWeight: 700, color: "#dc2626", marginLeft: 10 }}>· Setup Page</span></div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager V13 <span style={{ fontSize: 20, fontWeight: 700, color: "#dc2626", marginLeft: 10 }}>· Setup Page</span></div>
               <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>Template Version</div>
             </div>
           </div>

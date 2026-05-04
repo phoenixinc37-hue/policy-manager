@@ -25,7 +25,7 @@ export default function LandingPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <CabinetGraphic />
             <div>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager V11</div>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>Policy Manager V13</div>
               <div style={{ fontSize: 13, color: "#567164", fontWeight: 700 }}>{businessName}</div>
             </div>
           </div>
