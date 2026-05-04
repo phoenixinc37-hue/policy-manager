@@ -267,7 +267,7 @@ export default function SetupPage() {
           <section style={questionPanel}>
             <div style={questionTextBlock}>
               <div style={questionLabel}>Question 5</div>
-              <div style={questionText}>What is your policy statement?</div>
+              <div style={questionText}>What is your policy message?</div>
             </div>
             <div style={answerArea}>
               <button type="button" onClick={() => togglePanel(openPanel, setOpenPanel, "policy-message-home-page")} style={answerButton}>
@@ -278,7 +278,10 @@ export default function SetupPage() {
 
           {openPanel === "policy-message-home-page" && (
             <section style={dropdownCard}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>Policy message for home page</div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>Policy message for home page</div>
+                <button type="button" onClick={() => setOpenPanel(null)} style={saveSmallButton}>Save</button>
+              </div>
               <div style={{ display: "grid", gap: 12 }}>
                 {policyMessageOptions.map((option) => (
                   <button
@@ -716,7 +719,10 @@ export default function SetupPage() {
 
           {openPanel === "action-bubble-color" && (
             <section style={dropdownCard}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>Action bubble color</div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>Action bubble color</div>
+                <button type="button" onClick={() => setOpenPanel(null)} style={saveSmallButton}>Save</button>
+              </div>
               <div style={swatchGrid}>
                 {actionBubbleSwatches.map((swatch) => (
                   <button
@@ -748,7 +754,10 @@ export default function SetupPage() {
 
           {openPanel === "employee-action-button-color" && (
             <section style={dropdownCard}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>Employee action button color</div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>Employee action button color</div>
+                <button type="button" onClick={() => setOpenPanel(null)} style={saveSmallButton}>Save</button>
+              </div>
               <div style={swatchGrid}>
                 {actionBubbleSwatches.map((swatch) => (
                   <button
@@ -780,7 +789,10 @@ export default function SetupPage() {
 
           {openPanel === "general-action-button-color" && (
             <section style={dropdownCard}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>General action button color</div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>General action button color</div>
+                <button type="button" onClick={() => setOpenPanel(null)} style={saveSmallButton}>Save</button>
+              </div>
               <div style={swatchGrid}>
                 {actionBubbleSwatches.map((swatch) => {
                   const active = generalActionButtonColor === swatch.value;
