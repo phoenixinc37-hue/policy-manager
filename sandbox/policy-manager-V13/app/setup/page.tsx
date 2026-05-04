@@ -331,6 +331,7 @@ export default function SetupPage() {
           {openPanel === "core-definitions" && (
             <section style={dropdownCard}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                <div style={{ fontSize: 14, color: "#60766b", lineHeight: 1.7, maxWidth: 840, marginBottom: 14 }}>Core definitions clarify key terms, ensuring everyone understands fundamental concepts consistently across your policies and guidelines.</div>
                 <div style={{ fontSize: 13, fontWeight: 700, color: "#567164" }}>Include core definitions</div>
                 <button type="button" onClick={() => setOpenPanel(null)} style={saveSmallButton}>Save</button>
               </div>
