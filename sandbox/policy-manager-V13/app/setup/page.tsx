@@ -8,7 +8,9 @@ import { useSiteConfig } from "../useSiteConfig";
 const employerGroupOptions = ["Managers", "Leadership", "Custom"];
 const employeeGroupOptions = ["Employees", "Team", "Staff", "Custom"];
 const policyMessageOptions = [
+  "Policy Statement goes here",
   "Policies only work when people understand them, follow them, and can find them when they need them.",
+  "Policy Message goes here",
   "Clear policies create consistency, accountability, and confidence across the business.",
   "Custom",
 ];

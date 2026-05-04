@@ -10,8 +10,10 @@ export default function LandingPage() {
   const businessName = isLoaded && config.businessName ? config.businessName : "Business Inc";
   const employerDisplay = isLoaded ? (config.employerGroup === "Custom" ? config.employerGroupCustom || "Custom" : config.employerGroup) : "Leadership";
   const employeeDisplay = isLoaded ? (config.employeeGroup === "Custom" ? config.employeeGroupCustom || "Custom" : config.employeeGroup) : "Team";
-  const policyStatementDisplay = isLoaded ? (config.policyMessage === "Custom" ? config.policyMessageCustom || "" : config.policyMessage) : "Policies only work when people understand them, follow them, and can find them when they need them.";
-  const policyMessageHomeDisplay = isLoaded ? (config.policyMessageHomePage === "Custom" ? config.policyMessageHomePageCustom || "" : config.policyMessageHomePage) : "Clear policies create consistency, accountability, and confidence across the business.";
+  let policyStatementDisplay = isLoaded ? (config.policyMessage === "Custom" ? config.policyMessageCustom || "Policy Statement goes here" : config.policyMessage) : "Policy Statement goes here";
+  if (policyStatementDisplay === "Policies only work when people understand them, follow them, and can find them when they need them.") policyStatementDisplay = "Policy Statement goes here";
+  let policyMessageHomeDisplay = isLoaded ? (config.policyMessageHomePage === "Custom" ? config.policyMessageHomePageCustom || "Policy Message goes here" : config.policyMessageHomePage) : "Policy Message goes here";
+  if (policyMessageHomeDisplay === "Clear policies create consistency, accountability, and confidence across the business.") policyMessageHomeDisplay = "Policy Message goes here";
   const definitionsActive = isLoaded ? config.includeCoreDefinitions === "Yes" : true;
   const aiAssistantChoice = isLoaded ? config.aiAssistantSetupChoice : "Maybe later";
   const aiConnectionStatus = isLoaded ? config.aiConnectionStatus : "Not connected";
