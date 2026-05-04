@@ -10,10 +10,10 @@ export default function LandingPage() {
   const businessName = isLoaded && config.businessName ? config.businessName : "Business Inc";
   const employerDisplay = isLoaded ? (config.employerGroup === "Custom" ? config.employerGroupCustom || "Custom" : config.employerGroup) : "Leadership";
   const employeeDisplay = isLoaded ? (config.employeeGroup === "Custom" ? config.employeeGroupCustom || "Custom" : config.employeeGroup) : "Team";
-  let policyStatementDisplay = isLoaded ? (config.policyMessage === "Custom" ? config.policyMessageCustom || "Policy Statement goes here" : config.policyMessage) : "Policy Statement goes here";
-  if (policyStatementDisplay === "Policies only work when people understand them, follow them, and can find them when they need them.") policyStatementDisplay = "Policy Statement goes here";
-  let policyMessageHomeDisplay = isLoaded ? (config.policyMessageHomePage === "Custom" ? config.policyMessageHomePageCustom || "Policy Message goes here" : config.policyMessageHomePage) : "Policy Message goes here";
-  if (policyMessageHomeDisplay === "Clear policies create consistency, accountability, and confidence across the business.") policyMessageHomeDisplay = "Policy Message goes here";
+  let policyStatementDisplay = isLoaded ? (config.policyMessage === "Custom" ? config.policyMessageCustom || "Policy Statement goes here (default)" : config.policyMessage) : "Policy Statement goes here (default)";
+  if (policyStatementDisplay === "Policies only work when people understand them, follow them, and can find them when they need them.") policyStatementDisplay = "Policy Statement goes here (default)";
+  let policyMessageHomeDisplay = isLoaded ? (config.policyMessageHomePage === "Custom" ? config.policyMessageHomePageCustom || "Policy Message goes here (default)" : config.policyMessageHomePage) : "Policy Message goes here (default)";
+  if (policyMessageHomeDisplay === "Clear policies create consistency, accountability, and confidence across the business.") policyMessageHomeDisplay = "Policy Message goes here (default)";
   const definitionsActive = isLoaded ? config.includeCoreDefinitions === "Yes" : true;
   const aiAssistantChoice = isLoaded ? config.aiAssistantSetupChoice : "Maybe later";
   const aiConnectionStatus = isLoaded ? config.aiConnectionStatus : "Not connected";
